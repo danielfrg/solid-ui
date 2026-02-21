@@ -6,13 +6,9 @@ description: Styled button component with multiple variants and sizes.
 import ShadcnDemo from "../../../components/shadcn-demo.astro"
 import { ButtonShowcase } from "../../../demos/styled/button"
 
-Styled button with 6 variants and 8 sizes. Wraps the headless [`@danielfrg/ui-core`](/components/button) button primitive with a shadcn-inspired Tailwind theme via `class-variance-authority`.
+# Button 
 
-## Installation
-
-```bash
-npm install @danielfrg/ui
-```
+## Usage
 
 Add the theme to your CSS:
 
@@ -21,11 +17,12 @@ Add the theme to your CSS:
 @import "@danielfrg/ui/theme.css";
 ```
 
-## Usage
+Import and use the `Button` component:
 
 ```tsx
-import { Button } from "@danielfrg/ui/button"
-;<Button variant="outline" size="sm">
+import { Button } from "@danielfrg/ui/button";
+
+<Button variant="outline" size="sm">
   Click me
 </Button>
 ```
