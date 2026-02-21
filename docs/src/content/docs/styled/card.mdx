@@ -1,0 +1,55 @@
+---
+title: Card
+description: Styled card container with header, content, and footer sections.
+---
+
+import ShadcnDemo from "../../../components/shadcn-demo.astro"
+import { CardShowcase } from "../../../demos/styled/card"
+
+# Card
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Card` components:
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@danielfrg/ui/card"
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Content goes here.</p>
+  </CardContent>
+  <CardFooter>
+    <p>Footer</p>
+  </CardFooter>
+</Card>
+```
+
+## Demo
+
+<ShadcnDemo>
+  <CardShowcase client:load />
+</ShadcnDemo>
+
+## Parts
+
+| Component         | Description                               |
+| ----------------- | ----------------------------------------- |
+| `Card`            | Root container with border and shadow     |
+| `CardHeader`      | Top section with grid layout              |
+| `CardTitle`       | Semibold heading                          |
+| `CardDescription` | Muted description text                    |
+| `CardAction`      | Action area aligned to top-right          |
+| `CardContent`     | Main content area with horizontal padding |
+| `CardFooter`      | Bottom section with flex layout           |

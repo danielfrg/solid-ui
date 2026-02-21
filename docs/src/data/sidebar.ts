@@ -20,7 +20,18 @@ export const sidebar: SidebarSection[] = [
   },
   {
     title: "Styled Components",
-    items: [{ label: "Button", slug: "styled/button" }],
+    items: [
+      { label: "Alert", slug: "styled/alert" },
+      { label: "Badge", slug: "styled/badge" },
+      { label: "Button", slug: "styled/button" },
+      { label: "Card", slug: "styled/card" },
+      { label: "Popover", slug: "styled/popover" },
+      { label: "Separator", slug: "styled/separator" },
+      { label: "Skeleton", slug: "styled/skeleton" },
+      { label: "Table", slug: "styled/table" },
+      { label: "Toggle", slug: "styled/toggle" },
+      { label: "Tooltip", slug: "styled/tooltip" },
+    ],
   },
   {
     title: "Core Components",

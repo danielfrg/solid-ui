@@ -36,10 +36,55 @@
       "solid": "./src/index.ts",
       "default": "./src/index.ts"
     },
+    "./alert": {
+      "types": "./src/alert.tsx",
+      "solid": "./src/alert.tsx",
+      "default": "./src/alert.tsx"
+    },
+    "./badge": {
+      "types": "./src/badge.tsx",
+      "solid": "./src/badge.tsx",
+      "default": "./src/badge.tsx"
+    },
     "./button": {
       "types": "./src/button.tsx",
       "solid": "./src/button.tsx",
       "default": "./src/button.tsx"
+    },
+    "./card": {
+      "types": "./src/card.tsx",
+      "solid": "./src/card.tsx",
+      "default": "./src/card.tsx"
+    },
+    "./popover": {
+      "types": "./src/popover.tsx",
+      "solid": "./src/popover.tsx",
+      "default": "./src/popover.tsx"
+    },
+    "./separator": {
+      "types": "./src/separator.tsx",
+      "solid": "./src/separator.tsx",
+      "default": "./src/separator.tsx"
+    },
+    "./skeleton": {
+      "types": "./src/skeleton.tsx",
+      "solid": "./src/skeleton.tsx",
+      "default": "./src/skeleton.tsx"
+    },
+    "./table": {
+      "types": "./src/table.tsx",
+      "solid": "./src/table.tsx",
+      "default": "./src/table.tsx"
+    },
+    "./toggle": {
+      "types": "./src/toggle.tsx",
+      "solid": "./src/toggle.tsx",
+      "default": "./src/toggle.tsx"
+    },
+    "./tooltip": {
+      "types": "./src/tooltip.tsx",
+      "solid": "./src/tooltip.tsx",
+      "default": "./src/tooltip.tsx"
     },
     "./utils": {
       "types": "./src/utils.ts",

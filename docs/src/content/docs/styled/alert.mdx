@@ -1,0 +1,52 @@
+---
+title: Alert
+description: Styled alert component for displaying important messages.
+---
+
+import ShadcnDemo from "../../../components/shadcn-demo.astro"
+import { AlertShowcase } from "../../../demos/styled/alert"
+
+# Alert
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Alert` component:
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@danielfrg/ui/alert"
+import { Terminal } from "lucide-solid"
+
+<Alert>
+  <Terminal />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>You can add components to your app using the cli.</AlertDescription>
+</Alert>
+```
+
+## Demo
+
+<ShadcnDemo>
+  <AlertShowcase client:load />
+</ShadcnDemo>
+
+## Variants
+
+| Variant       | Description                            |
+| ------------- | -------------------------------------- |
+| `default`     | Standard alert with card background    |
+| `destructive` | Error or warning with destructive tone |
+
+## Parts
+
+| Component          | Description                        |
+| ------------------ | ---------------------------------- |
+| `Alert`            | Root container with `role="alert"` |
+| `AlertTitle`       | Bold heading text                  |
+| `AlertDescription` | Supporting description text        |
