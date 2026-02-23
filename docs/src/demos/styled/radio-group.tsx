@@ -5,95 +5,167 @@ export function RadioGroupShowcase() {
     <div class="flex flex-col gap-10">
       <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Basic</h3>
-        <RadioGroup defaultValue="comfortable" class="w-fit">
+        <RadioGroup defaultValue="comfortable" class="grid gap-3">
           <div class="flex items-center gap-3">
-            <RadioGroupItem value="default" />
-            <RadioGroupItemLabel>Default</RadioGroupItemLabel>
+            <RadioGroupItem value="default" id="r1" />
+            <RadioGroupItemLabel for="r1" class="font-normal">
+              Default
+            </RadioGroupItemLabel>
           </div>
           <div class="flex items-center gap-3">
-            <RadioGroupItem value="comfortable" />
-            <RadioGroupItemLabel>Comfortable</RadioGroupItemLabel>
+            <RadioGroupItem value="comfortable" id="r2" />
+            <RadioGroupItemLabel for="r2" class="font-normal">
+              Comfortable
+            </RadioGroupItemLabel>
           </div>
           <div class="flex items-center gap-3">
-            <RadioGroupItem value="compact" />
-            <RadioGroupItemLabel>Compact</RadioGroupItemLabel>
+            <RadioGroupItem value="compact" id="r3" />
+            <RadioGroupItemLabel for="r3" class="font-normal">
+              Compact
+            </RadioGroupItemLabel>
           </div>
         </RadioGroup>
       </section>
 
       <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">With Descriptions</h3>
-        <RadioGroup defaultValue="comfortable" class="w-fit">
-          <div class="flex items-start gap-3">
-            <RadioGroupItem value="default" class="mt-1" />
-            <div class="flex flex-col">
-              <RadioGroupItemLabel>Default</RadioGroupItemLabel>
-              <span class="text-xs text-muted-foreground">Standard spacing for most use cases.</span>
+        <RadioGroup defaultValue="plus" class="grid gap-3">
+          <label for="plus-plan" class="flex cursor-pointer items-center justify-between gap-2">
+            <div class="flex flex-col gap-1">
+              <div class="font-medium">Plus</div>
+              <div class="text-xs text-muted-foreground">For individuals and small teams</div>
             </div>
-          </div>
-          <div class="flex items-start gap-3">
-            <RadioGroupItem value="comfortable" class="mt-1" />
-            <div class="flex flex-col">
-              <RadioGroupItemLabel>Comfortable</RadioGroupItemLabel>
-              <span class="text-xs text-muted-foreground">More space between elements.</span>
+            <RadioGroupItem value="plus" id="plus-plan" />
+          </label>
+          <label for="pro-plan" class="flex cursor-pointer items-center justify-between gap-2">
+            <div class="flex flex-col gap-1">
+              <div class="font-medium">Pro</div>
+              <div class="text-xs text-muted-foreground">For growing businesses</div>
             </div>
-          </div>
-          <div class="flex items-start gap-3">
-            <RadioGroupItem value="compact" class="mt-1" />
-            <div class="flex flex-col">
-              <RadioGroupItemLabel>Compact</RadioGroupItemLabel>
-              <span class="text-xs text-muted-foreground">Minimal spacing for dense layouts.</span>
+            <RadioGroupItem value="pro" id="pro-plan" />
+          </label>
+          <label for="enterprise-plan" class="flex cursor-pointer items-center justify-between gap-2">
+            <div class="flex flex-col gap-1">
+              <div class="font-medium">Enterprise</div>
+              <div class="text-xs text-muted-foreground">For large teams and enterprises</div>
             </div>
-          </div>
+            <RadioGroupItem value="enterprise" id="enterprise-plan" />
+          </label>
         </RadioGroup>
       </section>
 
       <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">With FieldSet</h3>
+        <fieldset class="flex flex-col gap-3 rounded-md border p-4">
+          <legend class="text-sm font-medium">Battery Level</legend>
+          <p class="text-xs text-muted-foreground">Choose your preferred battery level.</p>
+          <RadioGroup defaultValue="medium" class="grid gap-3">
+            <div class="flex items-center gap-3">
+              <RadioGroupItem value="high" id="battery-high" />
+              <RadioGroupItemLabel for="battery-high" class="font-normal">
+                High
+              </RadioGroupItemLabel>
+            </div>
+            <div class="flex items-center gap-3">
+              <RadioGroupItem value="medium" id="battery-medium" />
+              <RadioGroupItemLabel for="battery-medium" class="font-normal">
+                Medium
+              </RadioGroupItemLabel>
+            </div>
+            <div class="flex items-center gap-3">
+              <RadioGroupItem value="low" id="battery-low" />
+              <RadioGroupItemLabel for="battery-low" class="font-normal">
+                Low
+              </RadioGroupItemLabel>
+            </div>
+          </RadioGroup>
+        </fieldset>
+      </section>
+
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Grid Layout</h3>
-        <RadioGroup defaultValue="starter" class="grid max-w-sm grid-cols-2 gap-4">
-          <label class="flex cursor-pointer items-center gap-3 rounded-lg border p-4 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-            <RadioGroupItem value="starter" />
-            <div>
-              <div class="text-sm font-medium">Starter</div>
-              <div class="text-xs text-muted-foreground">$9/month</div>
-            </div>
+        <RadioGroup defaultValue="medium" class="grid grid-cols-2 gap-2">
+          <label
+            for="size-small"
+            class="flex cursor-pointer items-center gap-3 rounded-md border p-3 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+          >
+            <RadioGroupItem value="small" id="size-small" />
+            <div class="font-medium">Small</div>
           </label>
-          <label class="flex cursor-pointer items-center gap-3 rounded-lg border p-4 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-            <RadioGroupItem value="pro" />
-            <div>
-              <div class="text-sm font-medium">Pro</div>
-              <div class="text-xs text-muted-foreground">$29/month</div>
-            </div>
+          <label
+            for="size-medium"
+            class="flex cursor-pointer items-center gap-3 rounded-md border p-3 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+          >
+            <RadioGroupItem value="medium" id="size-medium" />
+            <div class="font-medium">Medium</div>
           </label>
-          <label class="flex cursor-pointer items-center gap-3 rounded-lg border p-4 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-            <RadioGroupItem value="team" />
-            <div>
-              <div class="text-sm font-medium">Team</div>
-              <div class="text-xs text-muted-foreground">$49/month</div>
-            </div>
+          <label
+            for="size-large"
+            class="flex cursor-pointer items-center gap-3 rounded-md border p-3 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+          >
+            <RadioGroupItem value="large" id="size-large" />
+            <div class="font-medium">Large</div>
           </label>
-          <label class="flex cursor-pointer items-center gap-3 rounded-lg border p-4 has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-            <RadioGroupItem value="enterprise" />
-            <div>
-              <div class="text-sm font-medium">Enterprise</div>
-              <div class="text-xs text-muted-foreground">$99/month</div>
-            </div>
+          <label
+            for="size-xlarge"
+            class="flex cursor-pointer items-center gap-3 rounded-md border p-3 has-[:checked]:border-primary has-[:checked]:bg-primary/5"
+          >
+            <RadioGroupItem value="xlarge" id="size-xlarge" />
+            <div class="font-medium">X-Large</div>
           </label>
         </RadioGroup>
       </section>
 
       <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Disabled</h3>
-        <RadioGroup defaultValue="option-1" disabled class="w-fit">
+        <RadioGroup defaultValue="option2" disabled class="grid gap-3">
           <div class="flex items-center gap-3">
-            <RadioGroupItem value="option-1" />
-            <RadioGroupItemLabel class="text-muted-foreground">Option One</RadioGroupItemLabel>
+            <RadioGroupItem value="option1" id="disabled-1" />
+            <RadioGroupItemLabel for="disabled-1" class="font-normal text-muted-foreground">
+              Option 1
+            </RadioGroupItemLabel>
           </div>
           <div class="flex items-center gap-3">
-            <RadioGroupItem value="option-2" />
-            <RadioGroupItemLabel class="text-muted-foreground">Option Two</RadioGroupItemLabel>
+            <RadioGroupItem value="option2" id="disabled-2" />
+            <RadioGroupItemLabel for="disabled-2" class="font-normal text-muted-foreground">
+              Option 2
+            </RadioGroupItemLabel>
+          </div>
+          <div class="flex items-center gap-3">
+            <RadioGroupItem value="option3" id="disabled-3" />
+            <RadioGroupItemLabel for="disabled-3" class="font-normal text-muted-foreground">
+              Option 3
+            </RadioGroupItemLabel>
           </div>
         </RadioGroup>
+      </section>
+
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Invalid</h3>
+        <fieldset class="flex flex-col gap-3 rounded-md border p-4">
+          <legend class="text-sm font-medium">Notification Preferences</legend>
+          <p class="text-xs text-muted-foreground">Choose how you want to receive notifications.</p>
+          <RadioGroup defaultValue="email" class="grid gap-3">
+            <div class="flex items-center gap-3" data-invalid>
+              <RadioGroupItem value="email" id="invalid-email" aria-invalid />
+              <RadioGroupItemLabel for="invalid-email" class="font-normal">
+                Email only
+              </RadioGroupItemLabel>
+            </div>
+            <div class="flex items-center gap-3" data-invalid>
+              <RadioGroupItem value="sms" id="invalid-sms" aria-invalid />
+              <RadioGroupItemLabel for="invalid-sms" class="font-normal">
+                SMS only
+              </RadioGroupItemLabel>
+            </div>
+            <div class="flex items-center gap-3" data-invalid>
+              <RadioGroupItem value="both" id="invalid-both" aria-invalid />
+              <RadioGroupItemLabel for="invalid-both" class="font-normal">
+                Both Email & SMS
+              </RadioGroupItemLabel>
+            </div>
+          </RadioGroup>
+        </fieldset>
       </section>
     </div>
   )

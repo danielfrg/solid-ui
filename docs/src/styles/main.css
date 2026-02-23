@@ -36,8 +36,8 @@
     --docs-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --docs-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-    --docs-container-max-width: 1080px;
-    --docs-section-padding-x: 80px;
+    --docs-container-max-width: 1280px;
+    --docs-section-padding-x: 40px;
     --docs-content-width: 860px;
     --docs-sidebar-width: 220px;
     --docs-nav-gap: 40px;
@@ -463,7 +463,7 @@
   }
 
   .demo-playground-inner {
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     min-height: 8rem;
     display: flex;
     align-items: center;

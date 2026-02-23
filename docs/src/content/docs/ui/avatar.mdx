@@ -7,13 +7,11 @@ import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/avatar.tsx?raw"
 import {
   AvatarBasic,
-  AvatarBadge,
-  AvatarBadgeIcon,
-  AvatarGroup,
-  AvatarGroupCount,
-  AvatarGroupIcon,
-  AvatarSizes,
-  AvatarDropdown,
+  AvatarWithBadge,
+  AvatarWithBadgeIcon,
+  AvatarGroupExample,
+  AvatarGroupWithCount,
+  AvatarGroupWithIconCount,
 } from "../../../demos/styled/avatar"
 
 # Avatar
@@ -31,7 +29,7 @@ Import and use the Avatar components:
 
 ```tsx
 import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
-<Avatar>
+;<Avatar>
   <AvatarImage src="/avatar.png" />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
@@ -45,52 +43,43 @@ import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
   <AvatarBasic client:load />
 </StyledDemoBlock>
 
-### Badge
+### With Badge
 
 <StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarBadge client:load />
+  <AvatarWithBadge client:load />
 </StyledDemoBlock>
 
-### Badge with Icon
+### With Badge Icon
 
 <StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarBadgeIcon client:load />
+  <AvatarWithBadgeIcon client:load />
 </StyledDemoBlock>
 
-### Avatar Group
+### Group
 
 <StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarGroup client:load />
+  <AvatarGroupExample client:load />
 </StyledDemoBlock>
 
-### Avatar Group Count
+### Group with Count
 
 <StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarGroupCount client:load />
+  <AvatarGroupWithCount client:load />
 </StyledDemoBlock>
 
-### Avatar Group with Icon
+### Group with Icon Count
 
 <StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarGroupIcon client:load />
-</StyledDemoBlock>
-
-### Sizes
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarSizes client:load />
-</StyledDemoBlock>
-
-### Dropdown
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarDropdown client:load />
+  <AvatarGroupWithIconCount client:load />
 </StyledDemoBlock>
 
 ## Parts
 
-| Component        | Description                                    |
-| ---------------- | ---------------------------------------------- |
-| `Avatar`         | Root container (rounded, overflow hidden)      |
-| `AvatarImage`    | The user image                                 |
-| `AvatarFallback` | Displayed when image is loading or unavailable |
+| Component          | Description                                    |
+| ------------------ | ---------------------------------------------- |
+| `Avatar`           | Root container (rounded, overflow hidden)      |
+| `AvatarImage`      | The user image                                 |
+| `AvatarFallback`   | Displayed when image is loading or unavailable |
+| `AvatarBadge`      | Status indicator badge                         |
+| `AvatarGroup`      | Container for grouped avatars                  |
+| `AvatarGroupCount` | Counter for additional avatars                 |

@@ -5,7 +5,15 @@ description: Styled card container with header, content, and footer sections.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/card.tsx?raw"
-import { CardSize, CardImage, CardLogin, CardMeetingNotes, CardWithAction } from "../../../demos/styled/card"
+import {
+  CardDefault,
+  CardSmall,
+  CardHeaderWithBorder,
+  CardFooterWithBorder,
+  CardWithImage,
+  CardLogin,
+  CardMeetingNotes,
+} from "../../../demos/styled/card"
 
 # Card
 
@@ -22,7 +30,7 @@ Import and use the `Card` components:
 
 ```tsx
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@danielfrg/solid-ui/card"
-<Card>
+;<Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card description.</CardDescription>
@@ -38,16 +46,34 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 ## Demo
 
-### Size
+### Default Size
 
 <StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardSize client:load />
+  <CardDefault client:load />
 </StyledDemoBlock>
 
-### Image
+### Small Size
 
 <StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardImage client:load />
+  <CardSmall client:load />
+</StyledDemoBlock>
+
+### Header with Border
+
+<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
+  <CardHeaderWithBorder client:load />
+</StyledDemoBlock>
+
+### Footer with Border
+
+<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
+  <CardFooterWithBorder client:load />
+</StyledDemoBlock>
+
+### With Image
+
+<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
+  <CardWithImage client:load />
 </StyledDemoBlock>
 
 ### Login
@@ -60,12 +86,6 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 <StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
   <CardMeetingNotes client:load />
-</StyledDemoBlock>
-
-### Create Project
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardWithAction client:load />
 </StyledDemoBlock>
 
 ## Parts

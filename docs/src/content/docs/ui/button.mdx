@@ -3,9 +3,9 @@ title: Button
 description: Styled button component with multiple variants and sizes.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/button.tsx?raw"
-import { ButtonShowcase } from "../../../demos/styled/button"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import ButtonExample from "@/demos/styled/button"
+import demoCode from "@/demos/styled/button.tsx?raw"
 
 # Button
 
@@ -22,7 +22,8 @@ Import and use the `Button` component:
 
 ```tsx
 import { Button } from "@danielfrg/solid-ui/button"
-<Button variant="outline" size="sm">
+
+;<Button variant="outline" size="sm">
   Click me
 </Button>
 ```
@@ -30,29 +31,5 @@ import { Button } from "@danielfrg/solid-ui/button"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "button.tsx", code: demoCode }]}>
-  <ButtonShowcase client:load />
+  <ButtonExample client:load />
 </StyledDemoBlock>
-
-## Variants
-
-| Variant       | Description                          |
-| ------------- | ------------------------------------ |
-| `default`     | Primary action, solid background     |
-| `secondary`   | Less prominent action                |
-| `outline`     | Bordered with transparent background |
-| `ghost`       | No background, hover reveals fill    |
-| `destructive` | Dangerous or destructive action      |
-| `link`        | Looks like a text link               |
-
-## Sizes
-
-| Size      | Description                 |
-| --------- | --------------------------- |
-| `default` | Standard size (h-9)         |
-| `xs`      | Extra small (h-6)           |
-| `sm`      | Small (h-8)                 |
-| `lg`      | Large (h-10)                |
-| `icon`    | Square icon button (size-9) |
-| `icon-xs` | Small icon button (size-6)  |
-| `icon-sm` | Small icon button (size-8)  |
-| `icon-lg` | Large icon button (size-10) |

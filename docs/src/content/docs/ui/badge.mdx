@@ -7,9 +7,11 @@ import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/badge.tsx?raw"
 import {
   BadgeVariants,
-  BadgeWithIcon,
+  BadgeWithIconLeft,
+  BadgeWithIconRight,
   BadgeWithSpinner,
-  BadgeLink,
+  BadgeAsLink,
+  BadgeLongText,
   BadgeCustomColors,
 } from "../../../demos/styled/badge"
 
@@ -28,7 +30,7 @@ Import and use the `Badge` component:
 
 ```tsx
 import { Badge } from "@danielfrg/solid-ui/badge"
-<Badge variant="outline">Badge</Badge>
+;<Badge variant="outline">Badge</Badge>
 ```
 
 ## Demo
@@ -39,10 +41,16 @@ import { Badge } from "@danielfrg/solid-ui/badge"
   <BadgeVariants client:load />
 </StyledDemoBlock>
 
-### With Icon
+### With Icon Left
 
 <StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeWithIcon client:load />
+  <BadgeWithIconLeft client:load />
+</StyledDemoBlock>
+
+### With Icon Right
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeWithIconRight client:load />
 </StyledDemoBlock>
 
 ### With Spinner
@@ -51,10 +59,16 @@ import { Badge } from "@danielfrg/solid-ui/badge"
   <BadgeWithSpinner client:load />
 </StyledDemoBlock>
 
-### Link
+### As Link
 
 <StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeLink client:load />
+  <BadgeAsLink client:load />
+</StyledDemoBlock>
+
+### Long Text
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeLongText client:load />
 </StyledDemoBlock>
 
 ### Custom Colors

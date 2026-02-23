@@ -1,4 +1,4 @@
-import { createSignal, For } from "solid-js"
+import { For } from "solid-js"
 import {
   Dialog,
   DialogTrigger,
@@ -47,7 +47,7 @@ export function DialogShowcase() {
         </Dialog>
       </section>
 
-      {/* Scrollable */}
+      {/* Scrollable Content */}
       <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Scrollable Content</h3>
         <Dialog>
@@ -56,17 +56,18 @@ export function DialogShowcase() {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Terms of Service</DialogTitle>
-              <DialogDescription>Please read the following terms carefully.</DialogDescription>
+              <DialogTitle>Scrollable Content</DialogTitle>
+              <DialogDescription>This is a dialog with scrollable content.</DialogDescription>
             </DialogHeader>
-            <div class="-mx-4 max-h-[50vh] overflow-y-auto px-4">
-              <For each={Array.from({ length: 8 })}>
+            <div class="-mx-4 max-h-[70vh] overflow-y-auto px-4">
+              <For each={Array.from({ length: 10 })}>
                 {() => (
                   <p class="mb-4 text-sm leading-relaxed text-muted-foreground">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
                   </p>
                 )}
               </For>
@@ -77,26 +78,25 @@ export function DialogShowcase() {
 
       {/* Sticky footer */}
       <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Sticky Footer</h3>
+        <h3 class="text-sm font-semibold">With Sticky Footer</h3>
         <Dialog>
           <DialogTrigger as={Button} variant="outline">
             Sticky Footer
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>License Agreement</DialogTitle>
-              <DialogDescription>
-                This dialog has a sticky footer that stays visible while the content scrolls.
-              </DialogDescription>
+              <DialogTitle>Scrollable Content</DialogTitle>
+              <DialogDescription>This is a dialog with scrollable content.</DialogDescription>
             </DialogHeader>
-            <div class="-mx-4 max-h-[50vh] overflow-y-auto px-4">
-              <For each={Array.from({ length: 8 })}>
+            <div class="-mx-4 max-h-[70vh] overflow-y-auto px-4">
+              <For each={Array.from({ length: 10 })}>
                 {() => (
                   <p class="mb-4 text-sm leading-relaxed text-muted-foreground">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
                   </p>
                 )}
               </For>
@@ -105,7 +105,6 @@ export function DialogShowcase() {
               <DialogClose as={Button} variant="outline">
                 Close
               </DialogClose>
-              <Button>Accept</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -120,54 +119,13 @@ export function DialogShowcase() {
           </DialogTrigger>
           <DialogContent showCloseButton={false}>
             <DialogHeader>
-              <DialogTitle>Confirm Action</DialogTitle>
-              <DialogDescription>Use the buttons below to proceed or cancel.</DialogDescription>
+              <DialogTitle>No Close Button</DialogTitle>
+              <DialogDescription>This dialog doesn't have a close button in the top-right corner.</DialogDescription>
             </DialogHeader>
             <DialogFooter>
               <DialogClose as={Button} variant="outline">
-                Cancel
+                Close
               </DialogClose>
-              <Button>Confirm</Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </section>
-
-      {/* Custom width */}
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Custom Width</h3>
-        <Dialog>
-          <DialogTrigger as={Button} variant="outline">
-            Wide Dialog
-          </DialogTrigger>
-          <DialogContent class="sm:max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>Dashboard Settings</DialogTitle>
-              <DialogDescription>Configure your dashboard layout and preferences.</DialogDescription>
-            </DialogHeader>
-            <div class="grid grid-cols-2 gap-4">
-              <Input>
-                <InputLabel>Display name</InputLabel>
-                <InputField placeholder="Enter name" />
-              </Input>
-              <Input>
-                <InputLabel>Email</InputLabel>
-                <InputField type="email" placeholder="name@example.com" />
-              </Input>
-              <Input>
-                <InputLabel>Company</InputLabel>
-                <InputField placeholder="Acme Inc." />
-              </Input>
-              <Input>
-                <InputLabel>Role</InputLabel>
-                <InputField placeholder="Developer" />
-              </Input>
-            </div>
-            <DialogFooter>
-              <DialogClose as={Button} variant="outline">
-                Cancel
-              </DialogClose>
-              <Button>Save</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>

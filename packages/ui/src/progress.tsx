@@ -50,5 +50,8 @@ const ProgressValueLabel: Component<ProgressValueLabelProps> = (props) => {
   )
 }
 
-export { Progress, ProgressLabel, ProgressValueLabel }
+// Alias for shadcn compatibility
+const ProgressValue = ProgressValueLabel
+
+export { Progress, ProgressLabel, ProgressValueLabel, ProgressValue }
 export type { ProgressProps, ProgressLabelProps, ProgressValueLabelProps }

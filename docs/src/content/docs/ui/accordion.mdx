@@ -8,9 +8,9 @@ import demoCode from "../../../demos/styled/accordion.tsx?raw"
 import {
   AccordionBasic,
   AccordionMultiple,
-  AccordionDisabled,
-  AccordionBorders,
-  AccordionCard,
+  AccordionWithDisabled,
+  AccordionWithBorders,
+  AccordionInCard,
 } from "../../../demos/styled/accordion"
 
 # Accordion
@@ -28,7 +28,7 @@ Import and use the Accordion components:
 
 ```tsx
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@danielfrg/solid-ui/accordion"
-<Accordion defaultValue={["item-1"]}>
+;<Accordion defaultValue={["item-1"]}>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
@@ -50,22 +50,22 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@d
   <AccordionMultiple client:load />
 </StyledDemoBlock>
 
-### Disabled
+### With Disabled
 
 <StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionDisabled client:load />
+  <AccordionWithDisabled client:load />
 </StyledDemoBlock>
 
-### Borders
+### With Borders
 
 <StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionBorders client:load />
+  <AccordionWithBorders client:load />
 </StyledDemoBlock>
 
-### Card
+### In Card
 
 <StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionCard client:load />
+  <AccordionInCard client:load />
 </StyledDemoBlock>
 
 ## Parts

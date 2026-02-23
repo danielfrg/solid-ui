@@ -9,10 +9,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ──────────────────────────────────────────────
-   Theme tokens  →  Tailwind v4 color / radius
-   ────────────────────────────────────────────── */
-
 @theme {
   @keyframes accordion-down {
     from {
@@ -153,5 +149,10 @@
     @apply bg-background text-foreground;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
+  }
+
+  a:active,
+  button:active {
+    @apply opacity-60 md:opacity-100;
   }
 }

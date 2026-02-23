@@ -1,74 +1,31 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@danielfrg/solid-ui/accordion"
+import { Button } from "@danielfrg/solid-ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@danielfrg/solid-ui/card"
+import { ArrowUpRight } from "lucide-solid"
 import { For } from "solid-js"
 
-const faqItems = [
-  {
-    value: "item-1",
-    trigger: "How do I reset my password?",
-    content:
-      "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password. The link will expire in 24 hours.",
-  },
-  {
-    value: "item-2",
-    trigger: "Can I change my subscription plan?",
-    content:
-      "Yes, you can upgrade or downgrade your plan at any time from your account settings. Changes will be reflected in your next billing cycle.",
-  },
-  {
-    value: "item-3",
-    trigger: "What payment methods do you accept?",
-    content:
-      "We accept all major credit cards, PayPal, and bank transfers. All payments are processed securely through our payment partners.",
-  },
-]
-
-const settingsItems = [
-  {
-    value: "notifications",
-    trigger: "Notification Settings",
-    content:
-      "Manage how you receive notifications. You can enable email alerts for updates or push notifications for mobile devices.",
-  },
-  {
-    value: "privacy",
-    trigger: "Privacy & Security",
-    content:
-      "Control your privacy settings and security preferences. Enable two-factor authentication, manage connected devices, review active sessions, and configure data sharing preferences.",
-  },
-  {
-    value: "billing",
-    trigger: "Billing & Subscription",
-    content:
-      "View your current plan, payment history, and upcoming invoices. Update your payment method, change your subscription tier, or cancel your subscription.",
-  },
-]
-
-const billingItems = [
-  {
-    value: "plans",
-    trigger: "What subscription plans do you offer?",
-    content:
-      "We offer three tiers: Starter ($9/month), Professional ($29/month), and Enterprise ($99/month). Each includes increasing storage, API access, and priority support.",
-  },
-  {
-    value: "billing",
-    trigger: "How does billing work?",
-    content:
-      "Billing occurs automatically at the start of each cycle. We accept major credit cards, PayPal, and ACH transfers for enterprise customers.",
-  },
-  {
-    value: "cancel",
-    trigger: "How do I cancel my subscription?",
-    content:
-      "Cancel anytime from your account settings. No cancellation fees. Access continues until the end of your current billing period.",
-  },
-]
-
 export function AccordionBasic() {
+  const items = [
+    {
+      value: "item-1",
+      trigger: "Is it accessible?",
+      content: "Yes. It adheres to the WAI-ARIA design pattern.",
+    },
+    {
+      value: "item-2",
+      trigger: "Is it styled?",
+      content: "Yes. It comes with default styles that matches the other components' aesthetic.",
+    },
+    {
+      value: "item-3",
+      trigger: "Is it animated?",
+      content: "Yes. It's animated by default, but you can disable it if you prefer.",
+    },
+  ]
+
   return (
-    <Accordion defaultValue={["item-1"]} class="max-w-lg">
-      <For each={faqItems}>
+    <Accordion class="mx-auto max-w-lg">
+      <For each={items}>
         {(item) => (
           <AccordionItem value={item.value}>
             <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -81,9 +38,26 @@ export function AccordionBasic() {
 }
 
 export function AccordionMultiple() {
+  const items = [
+    {
+      value: "item-1",
+      trigger:
+        "What are the key considerations when implementing a comprehensive enterprise-level authentication system?",
+      content:
+        "Implementing a robust enterprise authentication system requires careful consideration of multiple factors. This includes secure password hashing and storage, multi-factor authentication (MFA) implementation, session management, OAuth2 and SSO integration, regular security audits, rate limiting to prevent brute force attacks, and maintaining detailed audit logs. Additionally, you'll need to consider scalability, performance impact, and compliance with relevant data protection regulations such as GDPR or HIPAA.",
+    },
+    {
+      value: "item-2",
+      trigger:
+        "How does modern distributed system architecture handle eventual consistency and data synchronization across multiple regions?",
+      content:
+        "Modern distributed systems employ various strategies to maintain data consistency across regions. This often involves using techniques like CRDT (Conflict-Free Replicated Data Types), vector clocks, and gossip protocols. Systems might implement event sourcing patterns, utilize message queues for asynchronous updates, and employ sophisticated conflict resolution strategies. Popular solutions like Amazon's DynamoDB and Google's Spanner demonstrate different approaches to solving these challenges, balancing between consistency, availability, and partition tolerance as described in the CAP theorem.",
+    },
+  ]
+
   return (
-    <Accordion multiple defaultValue={["notifications"]} class="max-w-lg">
-      <For each={settingsItems}>
+    <Accordion multiple class="mx-auto max-w-lg">
+      <For each={items}>
         {(item) => (
           <AccordionItem value={item.value}>
             <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -95,60 +69,147 @@ export function AccordionMultiple() {
   )
 }
 
-export function AccordionDisabled() {
+export function AccordionWithBorders() {
+  const items = [
+    {
+      value: "billing",
+      trigger: "How does billing work?",
+      content:
+        "We offer monthly and annual subscription plans. Billing is charged at the beginning of each cycle, and you can cancel anytime. All plans include automatic backups, 24/7 support, and unlimited team members. There are no hidden fees or setup costs.",
+    },
+    {
+      value: "security",
+      trigger: "Is my data secure?",
+      content:
+        "Yes. We use end-to-end encryption, SOC 2 Type II compliance, and regular third-party security audits. All data is encrypted at rest and in transit using industry-standard protocols. We also offer optional two-factor authentication and single sign-on for enterprise customers.",
+    },
+    {
+      value: "integration",
+      trigger: "What integrations do you support?",
+      content: (
+        <>
+          <p>
+            We integrate with 500+ popular tools including Slack, Zapier, Salesforce, HubSpot, and more. You can also
+            build custom integrations using our REST API and webhooks.{" "}
+          </p>
+          <p>Our API documentation includes code examples in 10+ programming languages.</p>
+        </>
+      ),
+    },
+  ]
+
   return (
-    <Accordion defaultValue={["item-1"]} class="max-w-lg">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Available Section</AccordionTrigger>
-        <AccordionContent>This section can be toggled open and closed.</AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2" disabled>
-        <AccordionTrigger>Disabled Section</AccordionTrigger>
-        <AccordionContent>This content is not accessible.</AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Another Section</AccordionTrigger>
-        <AccordionContent>This section is also available for interaction.</AccordionContent>
-      </AccordionItem>
+    <Accordion class="mx-auto max-w-lg gap-2">
+      <For each={items}>
+        {(item) => (
+          <AccordionItem value={item.value} class="border rounded-lg">
+            <AccordionTrigger class="px-4 font-medium">{item.trigger}</AccordionTrigger>
+            <AccordionContent class="px-4 text-muted-foreground">{item.content}</AccordionContent>
+          </AccordionItem>
+        )}
+      </For>
     </Accordion>
   )
 }
 
-export function AccordionBorders() {
-  return (
-    <Accordion defaultValue={["item-1"]} class="max-w-lg rounded-lg border px-4">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>What are your shipping options?</AccordionTrigger>
-        <AccordionContent>
-          We offer standard (5-7 days), express (2-3 days), and overnight shipping. Free shipping on orders over $50.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>What is your return policy?</AccordionTrigger>
-        <AccordionContent>
-          Returns accepted within 30 days. Items must be unused and in original packaging. Refunds processed within 5-7 business days.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>How can I contact support?</AccordionTrigger>
-        <AccordionContent>
-          Reach us via email, live chat, or phone. We respond within 24 hours during business days.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
-}
+export function AccordionInCard() {
+  const items = [
+    {
+      value: "plans",
+      trigger: "What subscription plans do you offer?",
+      content: (
+        <>
+          <p>
+            We offer three subscription tiers: Starter ($9/month), Professional ($29/month), and Enterprise ($99/month).
+            Each plan includes increasing storage limits, API access, priority support, and team collaboration features.
+          </p>
+          <p>
+            <a href="#">Annual billing is available</a> with a 20% discount. All plans include a 14-day free trial with
+            no credit card required.
+          </p>
+          <Button size="sm">
+            View plans
+            <ArrowUpRight class="size-4" />
+          </Button>
+        </>
+      ),
+    },
+    {
+      value: "billing",
+      trigger: "How does billing work?",
+      content: (
+        <>
+          <p>
+            Billing occurs automatically at the start of each billing cycle. We accept all major credit cards, PayPal,
+            and ACH transfers for enterprise customers.
+          </p>
+          <p>
+            You'll receive an invoice via email after each payment. You can update your payment method or billing
+            information anytime in your account settings. Failed payments will trigger automated retry attempts and email
+            notifications.
+          </p>
+        </>
+      ),
+    },
+    {
+      value: "upgrade",
+      trigger: "Can I upgrade or downgrade my plan?",
+      content: (
+        <>
+          <p>
+            Yes, you can change your plan at any time. When upgrading, you'll be charged a prorated amount for the
+            remainder of your billing cycle and immediately gain access to new features.
+          </p>
+          <p>
+            When downgrading, the change takes effect at the end of your current billing period, and you'll retain
+            access to premium features until then. No refunds are provided for downgrades.
+          </p>
+        </>
+      ),
+    },
+    {
+      value: "cancel",
+      trigger: "How do I cancel my subscription?",
+      content: (
+        <>
+          <p>
+            You can cancel your subscription anytime from your account settings. There are no cancellation fees or
+            penalties. Your access will continue until the end of your current billing period.
+          </p>
+          <p>
+            After cancellation, your data is retained for 30 days in case you want to reactivate. You can export all
+            your data before or after canceling. We'd love to hear your feedback about why you're leaving.
+          </p>
+        </>
+      ),
+    },
+    {
+      value: "refund",
+      trigger: "What is your refund policy?",
+      content: (
+        <>
+          <p>
+            We offer a 30-day money-back guarantee for new subscriptions. If you're not satisfied within the first 30
+            days, contact our support team for a full refund.
+          </p>
+          <p>
+            After 30 days, we don't provide refunds for partial billing periods, but you can cancel anytime to avoid
+            future charges. Enterprise customers have custom refund terms outlined in their contracts.
+          </p>
+        </>
+      ),
+    },
+  ]
 
-export function AccordionCard() {
   return (
-    <Card class="w-full max-w-sm">
+    <Card class="mx-auto w-full max-w-lg gap-4">
       <CardHeader>
         <CardTitle>Subscription & Billing</CardTitle>
-        <CardDescription>Common questions about your account, plans, payments, and cancellations.</CardDescription>
+        <CardDescription>Common questions about your account, plans, and payments</CardDescription>
       </CardHeader>
       <CardContent>
-        <Accordion defaultValue={["plans"]}>
-          <For each={billingItems}>
+        <Accordion multiple defaultValue={["plans"]}>
+          <For each={items}>
             {(item) => (
               <AccordionItem value={item.value}>
                 <AccordionTrigger>{item.trigger}</AccordionTrigger>
@@ -159,5 +220,44 @@ export function AccordionCard() {
         </Accordion>
       </CardContent>
     </Card>
+  )
+}
+
+export function AccordionWithDisabled() {
+  const items = [
+    {
+      value: "item-1",
+      trigger: "Can I access my account history?",
+      content:
+        "Yes, you can view your complete account history including all transactions, plan changes, and support tickets in the Account History section of your dashboard.",
+      disabled: false,
+    },
+    {
+      value: "item-2",
+      trigger: "Premium feature information",
+      content:
+        "This section contains information about premium features. Upgrade your plan to access this content.",
+      disabled: true,
+    },
+    {
+      value: "item-3",
+      trigger: "How do I update my email address?",
+      content:
+        "You can update your email address in your account settings. You'll receive a verification email at your new address to confirm the change.",
+      disabled: false,
+    },
+  ]
+
+  return (
+    <Accordion class="mx-auto max-w-lg overflow-hidden rounded-lg border">
+      <For each={items}>
+        {(item) => (
+          <AccordionItem value={item.value} disabled={item.disabled} class="data-[open]:bg-muted/50 p-1">
+            <AccordionTrigger class="px-4">{item.trigger}</AccordionTrigger>
+            <AccordionContent class="px-4">{item.content}</AccordionContent>
+          </AccordionItem>
+        )}
+      </For>
+    </Accordion>
   )
 }

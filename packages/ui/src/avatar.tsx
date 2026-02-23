@@ -11,15 +11,21 @@ import { cn } from "./utils"
 type AvatarProps = CoreAvatarRootProps & {
   class?: string
   children?: JSX.Element
+  size?: "sm" | "default" | "lg"
 }
 
 const Avatar: Component<AvatarProps> = (props) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "size"])
 
   return (
     <AvatarPrimitive
       data-slot="avatar"
-      class={cn("relative flex size-10 shrink-0 overflow-hidden rounded-full", local.class)}
+      data-size={local.size ?? "default"}
+      class={cn(
+        "group/avatar relative flex shrink-0 select-none rounded-full",
+        local.size === "sm" ? "size-7" : local.size === "lg" ? "size-14" : "size-10",
+        local.class,
+      )}
       {...others}
     />
   )
@@ -33,7 +39,11 @@ const AvatarImage: Component<AvatarImageProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
 
   return (
-    <AvatarPrimitive.Image data-slot="avatar-image" class={cn("aspect-square size-full", local.class)} {...others} />
+    <AvatarPrimitive.Image
+      data-slot="avatar-image"
+      class={cn("aspect-square size-full rounded-full object-cover", local.class)}
+      {...others}
+    />
   )
 }
 
@@ -48,11 +58,83 @@ const AvatarFallback: Component<AvatarFallbackProps> = (props) => {
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
-      class={cn("flex size-full items-center justify-center rounded-full bg-muted text-sm font-medium", local.class)}
+      class={cn(
+        "flex size-full items-center justify-center rounded-full bg-muted text-sm group-data-[size=sm]/avatar:text-xs font-medium",
+        local.class,
+      )}
       {...others}
     />
   )
 }
 
-export { Avatar, AvatarImage, AvatarFallback }
-export type { AvatarProps, AvatarImageProps, AvatarFallbackProps }
+type AvatarBadgeProps = {
+  class?: string
+  children?: JSX.Element
+}
+
+const AvatarBadge: Component<AvatarBadgeProps> = (props) => {
+  const [local, others] = splitProps(props, ["class"])
+
+  return (
+    <span
+      data-slot="avatar-badge"
+      class={cn(
+        "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-blend-color ring-2 ring-background select-none",
+        "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
+        "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
+        "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
+        local.class,
+      )}
+      {...others}
+    />
+  )
+}
+
+type AvatarGroupProps = {
+  class?: string
+  children?: JSX.Element
+}
+
+const AvatarGroup: Component<AvatarGroupProps> = (props) => {
+  const [local, others] = splitProps(props, ["class"])
+
+  return (
+    <div
+      data-slot="avatar-group"
+      class={cn("flex -space-x-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:ring-2", local.class)}
+      {...others}
+    />
+  )
+}
+
+type AvatarGroupCountProps = {
+  class?: string
+  children?: JSX.Element
+  size?: "sm" | "default" | "lg"
+}
+
+const AvatarGroupCount: Component<AvatarGroupCountProps> = (props) => {
+  const [local, others] = splitProps(props, ["class", "size"])
+
+  return (
+    <div
+      data-slot="avatar-group-count"
+      class={cn(
+        "relative flex shrink-0 items-center justify-center rounded-full bg-muted text-sm font-medium ring-2 ring-background",
+        local.size === "sm" ? "size-7" : local.size === "lg" ? "size-14" : "size-10",
+        local.class,
+      )}
+      {...others}
+    />
+  )
+}
+
+export { Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount }
+export type {
+  AvatarProps,
+  AvatarImageProps,
+  AvatarFallbackProps,
+  AvatarBadgeProps,
+  AvatarGroupProps,
+  AvatarGroupCountProps,
+}

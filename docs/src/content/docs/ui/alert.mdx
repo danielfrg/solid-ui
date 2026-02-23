@@ -5,7 +5,7 @@ description: Styled alert component for displaying important messages.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/alert.tsx?raw"
-import { AlertBasic, AlertDestructive, AlertActionDemo, AlertCustomColors } from "../../../demos/styled/alert"
+import { AlertBasic, AlertWithIcons, AlertDestructive, AlertWithActions } from "../../../demos/styled/alert"
 
 # Alert
 
@@ -23,7 +23,7 @@ Import and use the `Alert` component:
 ```tsx
 import { Alert, AlertTitle, AlertDescription } from "@danielfrg/solid-ui/alert"
 import { Terminal } from "lucide-solid"
-<Alert>
+;<Alert>
   <Terminal />
   <AlertTitle>Heads up!</AlertTitle>
   <AlertDescription>You can add components to your app using the cli.</AlertDescription>
@@ -38,22 +38,22 @@ import { Terminal } from "lucide-solid"
   <AlertBasic client:load />
 </StyledDemoBlock>
 
+### With Icons
+
+<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
+  <AlertWithIcons client:load />
+</StyledDemoBlock>
+
 ### Destructive
 
 <StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
   <AlertDestructive client:load />
 </StyledDemoBlock>
 
-### Action
+### With Actions
 
 <StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
-  <AlertActionDemo client:load />
-</StyledDemoBlock>
-
-### Custom Colors
-
-<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
-  <AlertCustomColors client:load />
+  <AlertWithActions client:load />
 </StyledDemoBlock>
 
 ## Variants

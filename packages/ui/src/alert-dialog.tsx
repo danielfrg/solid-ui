@@ -37,39 +37,25 @@ const AlertDialogOverlay: Component<AlertDialogOverlayProps> = (props) => {
 type AlertDialogContentProps = CoreAlertDialogContentProps & {
   class?: string
   children?: JSX.Element
+  size?: "default" | "sm"
 }
 
 const AlertDialogContent: Component<AlertDialogContentProps> = (props) => {
-  const [local, others] = splitProps(props, ["class", "children"])
+  const [local, others] = splitProps(props, ["class", "children", "size"])
 
   return (
     <AlertDialogPrimitive.Portal>
       <AlertDialogOverlay />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
+        data-size={local.size ?? "default"}
         class={cn(
-          "fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-6 shadow-lg duration-200 data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 sm:rounded-lg md:w-full",
+          "group/alert-dialog-content fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 border bg-background p-6 shadow-lg duration-200 outline-none data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 sm:rounded-lg md:w-full",
           local.class,
         )}
         {...others}
       >
         {local.children}
-        <AlertDialogPrimitive.CloseButton class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[expanded]:bg-accent data-[expanded]:text-muted-foreground">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
-          >
-            <path d="M18 6l-12 12" />
-            <path d="M6 6l12 12" />
-          </svg>
-          <span class="sr-only">Close</span>
-        </AlertDialogPrimitive.CloseButton>
       </AlertDialogPrimitive.Content>
     </AlertDialogPrimitive.Portal>
   )
@@ -103,7 +89,10 @@ const AlertDialogFooter: Component<AlertDialogFooterProps> = (props) => {
   return (
     <div
       data-slot="alert-dialog-footer"
-      class={cn("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", local.class)}
+      class={cn(
+        "flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
+        local.class,
+      )}
       {...others}
     />
   )
@@ -146,16 +135,25 @@ const AlertDialogDescription: Component<AlertDialogDescriptionProps> = (props) =
 type AlertDialogActionProps = CoreAlertDialogCloseButtonProps & {
   class?: string
   children?: JSX.Element
+  variant?: "default" | "destructive"
 }
 
 const AlertDialogAction: Component<AlertDialogActionProps> = (props) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "variant"])
+
+  const variantClasses = () => {
+    if (local.variant === "destructive") {
+      return "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40"
+    }
+    return "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90"
+  }
 
   return (
     <AlertDialogPrimitive.CloseButton
       data-slot="alert-dialog-action"
       class={cn(
-        "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 inline-flex h-9 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex h-9 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+        variantClasses(),
         local.class,
       )}
       {...others}
@@ -166,18 +164,44 @@ const AlertDialogAction: Component<AlertDialogActionProps> = (props) => {
 type AlertDialogCancelProps = CoreAlertDialogCloseButtonProps & {
   class?: string
   children?: JSX.Element
+  variant?: "default" | "ghost"
 }
 
 const AlertDialogCancel: Component<AlertDialogCancelProps> = (props) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "variant"])
+
+  const variantClasses = () => {
+    if (local.variant === "ghost") {
+      return "hover:bg-accent hover:text-accent-foreground"
+    }
+    return "border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground border"
+  }
 
   return (
     <AlertDialogPrimitive.CloseButton
       data-slot="alert-dialog-cancel"
       class={cn(
-        "border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground inline-flex h-9 items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex h-9 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+        variantClasses(),
         local.class,
       )}
+      {...others}
+    />
+  )
+}
+
+type AlertDialogMediaProps = {
+  class?: string
+  children?: JSX.Element
+}
+
+const AlertDialogMedia: Component<AlertDialogMediaProps> = (props) => {
+  const [local, others] = splitProps(props, ["class"])
+
+  return (
+    <div
+      data-slot="alert-dialog-media"
+      class={cn("mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-muted", local.class)}
       {...others}
     />
   )
@@ -194,6 +218,7 @@ export {
   AlertDialogOverlay,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogMedia,
 }
 export type {
   AlertDialogContentProps,

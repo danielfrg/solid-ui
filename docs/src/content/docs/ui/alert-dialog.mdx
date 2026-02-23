@@ -8,9 +8,10 @@ import demoCode from "../../../demos/styled/alert-dialog.tsx?raw"
 import {
   AlertDialogBasic,
   AlertDialogSmall,
-  AlertDialogMedia,
-  AlertDialogSmallMedia,
+  AlertDialogWithMedia,
+  AlertDialogSmallWithMedia,
   AlertDialogDestructive,
+  AlertDialogInDialog,
 } from "../../../demos/styled/alert-dialog"
 
 # Alert Dialog
@@ -38,7 +39,7 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
 } from "@danielfrg/solid-ui/alert-dialog"
-<AlertDialog>
+;<AlertDialog>
   <AlertDialogTrigger>Delete</AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
@@ -67,22 +68,28 @@ import {
   <AlertDialogSmall client:load />
 </StyledDemoBlock>
 
-### Media
+### With Media
 
 <StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogMedia client:load />
+  <AlertDialogWithMedia client:load />
 </StyledDemoBlock>
 
-### Small with Media
+### Small With Media
 
 <StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogSmallMedia client:load />
+  <AlertDialogSmallWithMedia client:load />
 </StyledDemoBlock>
 
 ### Destructive
 
 <StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
   <AlertDialogDestructive client:load />
+</StyledDemoBlock>
+
+### In Dialog
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogInDialog client:load />
 </StyledDemoBlock>
 
 ## Parts
@@ -98,4 +105,5 @@ import {
 | `AlertDialogDescription` | Accessible description                               |
 | `AlertDialogAction`      | Confirm button (styled as primary, closes on click)  |
 | `AlertDialogCancel`      | Cancel button (styled as outline, closes on click)   |
+| `AlertDialogMedia`       | Media/icon container for visual elements             |
 | `AlertDialogOverlay`     | Backdrop overlay (included automatically in Content) |
