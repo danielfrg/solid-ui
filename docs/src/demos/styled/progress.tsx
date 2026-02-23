@@ -1,84 +1,97 @@
 import { createSignal, onCleanup, onMount } from "solid-js"
-import { Progress, ProgressLabel, ProgressValueLabel } from "@danielfrg/solid-ui/progress"
+import { Progress, ProgressLabel, ProgressValueLabel, ProgressValue } from "@danielfrg/solid-ui/progress"
 import { Slider } from "@danielfrg/solid-ui/slider"
+import { ExampleWrapper, Example } from "@/components/example"
 
-export function ProgressShowcase() {
-  const [controlled, setControlled] = createSignal(50)
-  const [animated, setAnimated] = createSignal(13)
+export default function ProgressExample() {
+  return (
+    <ExampleWrapper>
+      <ProgressValues />
+      <ProgressWithLabel />
+      <ProgressControlled />
+      <FileUploadList />
+    </ExampleWrapper>
+  )
+}
 
-  onMount(() => {
-    const timer = setTimeout(() => setAnimated(66), 500)
-    onCleanup(() => clearTimeout(timer))
-  })
+function ProgressValues() {
+  return (
+    <Example title="Progress Bar">
+      <div class="flex w-full flex-col gap-4">
+        <Progress value={0} />
+        <Progress value={25} />
+        <Progress value={50} />
+        <Progress value={75} />
+        <Progress value={100} />
+      </div>
+    </Example>
+  )
+}
+
+function ProgressWithLabel() {
+  return (
+    <Example title="With Label">
+      <Progress value={56}>
+        <ProgressLabel>Upload progress</ProgressLabel>
+        <ProgressValue />
+      </Progress>
+    </Example>
+  )
+}
+
+function ProgressControlled() {
+  const [value, setValue] = createSignal(50)
 
   return (
-    <div class="flex flex-col gap-10">
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Values</h3>
-        <div class="flex max-w-sm flex-col gap-4">
-          <Progress value={0} />
-          <Progress value={25} />
-          <Progress value={50} />
-          <Progress value={75} />
-          <Progress value={100} />
-        </div>
-      </section>
-
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">With Label</h3>
-        <Progress value={56} class="max-w-sm">
-          <ProgressLabel>Upload progress</ProgressLabel>
-          <ProgressValueLabel />
+    <Example title="Controlled">
+      <div class="flex w-full flex-col gap-4">
+        <Progress value={value()}>
+          <ProgressLabel class="sr-only">Progress</ProgressLabel>
+          <ProgressValue />
         </Progress>
-      </section>
+        <Slider value={[value()]} onChange={(v: number[]) => setValue(v[0])} minValue={0} maxValue={100} step={1} />
+      </div>
+    </Example>
+  )
+}
 
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Custom Label</h3>
-        <Progress value={30} minValue={0} maxValue={100} class="max-w-sm">
-          <ProgressLabel>Tasks completed</ProgressLabel>
-          <ProgressValueLabel>3 of 10</ProgressValueLabel>
-        </Progress>
-      </section>
+function FileUploadList() {
+  const files = [
+    { id: "1", name: "document.pdf", progress: 45, timeRemaining: "2m 30s" },
+    { id: "2", name: "presentation.pptx", progress: 78, timeRemaining: "45s" },
+    { id: "3", name: "spreadsheet.xlsx", progress: 12, timeRemaining: "5m 12s" },
+    { id: "4", name: "image.jpg", progress: 100, timeRemaining: "Complete" },
+  ]
 
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Controlled</h3>
-        <div class="flex max-w-sm flex-col gap-4">
-          <Progress value={controlled()} />
-          <Slider
-            value={[controlled()]}
-            onChange={(v: number[]) => setControlled(v[0])}
-            minValue={0}
-            maxValue={100}
-            step={1}
-          />
-        </div>
-      </section>
-
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Animated</h3>
-        <Progress value={animated()} class="max-w-sm transition-all" />
-      </section>
-
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">File Upload</h3>
-        <div class="flex max-w-sm flex-col gap-3">
-          <div class="flex items-center gap-3">
-            <span class="flex-1 truncate text-sm">report-q4.pdf</span>
-            <Progress value={100} class="w-24" />
-            <span class="text-xs text-muted-foreground">Done</span>
+  return (
+    <Example title="File Upload List">
+      <div class="flex flex-col gap-3">
+        {files.map((file) => (
+          <div class="flex items-start gap-3 px-0">
+            <div class="flex size-5 items-center justify-center mt-0.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-5"
+              >
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <Progress value={file.progress} class="w-full">
+                <ProgressLabel class="truncate">{file.name}</ProgressLabel>
+                <ProgressValue>{file.timeRemaining}</ProgressValue>
+              </Progress>
+            </div>
           </div>
-          <div class="flex items-center gap-3">
-            <span class="flex-1 truncate text-sm">presentation.pptx</span>
-            <Progress value={65} class="w-24" />
-            <span class="text-xs text-muted-foreground">65%</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="flex-1 truncate text-sm">data-export.csv</span>
-            <Progress value={30} class="w-24" />
-            <span class="text-xs text-muted-foreground">30%</span>
-          </div>
-        </div>
-      </section>
-    </div>
+        ))}
+      </div>
+    </Example>
   )
 }

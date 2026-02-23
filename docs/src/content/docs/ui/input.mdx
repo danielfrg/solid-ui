@@ -5,7 +5,7 @@ description: Styled text input with label, description, and error message suppor
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/input.tsx?raw"
-import { InputShowcase } from "../../../demos/styled/input"
+import InputExample from "../../../demos/styled/input"
 
 # Input
 
@@ -22,6 +22,7 @@ Import and use the Input components:
 
 ```tsx
 import { Input, InputField, InputLabel } from "@danielfrg/solid-ui/input"
+
 <Input>
   <InputLabel>Email</InputLabel>
   <InputField type="email" placeholder="you@example.com" />
@@ -31,16 +32,5 @@ import { Input, InputField, InputLabel } from "@danielfrg/solid-ui/input"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "input.tsx", code: demoCode }]}>
-  <InputShowcase client:only="solid-js" />
+  <InputExample client:only="solid-js" />
 </StyledDemoBlock>
-
-## Parts
-
-| Component           | Description                                          |
-| ------------------- | ---------------------------------------------------- |
-| `Input`             | Root container (form control context provider)       |
-| `InputField`        | The `<input>` element with shadcn styling            |
-| `InputTextArea`     | The `<textarea>` element with shadcn styling         |
-| `InputLabel`        | Accessible label linked to the field                 |
-| `InputDescription`  | Helper text below the input                          |
-| `InputErrorMessage` | Error message shown when `validationState="invalid"` |

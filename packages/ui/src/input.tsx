@@ -19,7 +19,7 @@ type InputProps = CoreInputRootProps & {
 const Input: Component<InputProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
 
-  return <InputPrimitive data-slot="input-root" class={cn("flex flex-col gap-1", local.class)} {...others} />
+  return <InputPrimitive data-slot="input-root" class={cn("flex flex-col gap-1.5", local.class)} {...others} />
 }
 
 type InputFieldProps = CoreInputFieldProps &
@@ -34,9 +34,10 @@ const InputField: Component<InputFieldProps> = (props) => {
     <InputPrimitive.Field
       data-slot="input"
       class={cn(
-        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        "border-input file:text-foreground placeholder:text-muted-foreground h-8 w-full rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 dark:disabled:bg-input/80 dark:bg-input/30 md:text-sm",
+        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 focus-visible:outline-none",
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50",
+        "aria-invalid:shadow-[0_0_0_3px] aria-invalid:shadow-destructive/20 dark:aria-invalid:shadow-destructive/40",
         local.class,
       )}
       {...others}
@@ -56,9 +57,10 @@ const InputTextArea: Component<InputTextAreaProps> = (props) => {
     <InputPrimitive.TextArea
       data-slot="textarea"
       class={cn(
-        "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input w-full min-w-0 rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        "border-input placeholder:text-muted-foreground w-full rounded-lg border bg-transparent px-3 py-2 text-base transition-colors disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 dark:disabled:bg-input/80 dark:bg-input/30 md:text-sm",
+        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 focus-visible:outline-none",
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50",
+        "aria-invalid:shadow-[0_0_0_3px] aria-invalid:shadow-destructive/20 dark:aria-invalid:shadow-destructive/40",
         "min-h-[80px] resize-y",
         local.class,
       )}
@@ -79,7 +81,7 @@ const InputLabel: Component<InputLabelProps> = (props) => {
     <InputPrimitive.Label
       data-slot="label"
       class={cn(
-        "flex items-center gap-2 text-sm leading-none font-medium select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[invalid]:text-destructive",
+        "text-sm font-medium leading-snug select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         local.class,
       )}
       {...others}
@@ -98,7 +100,7 @@ const InputDescription: Component<InputDescriptionProps> = (props) => {
   return (
     <InputPrimitive.Description
       data-slot="input-description"
-      class={cn("text-muted-foreground text-sm", local.class)}
+      class={cn("text-muted-foreground text-sm leading-snug", local.class)}
       {...others}
     />
   )
@@ -115,7 +117,7 @@ const InputErrorMessage: Component<InputErrorMessageProps> = (props) => {
   return (
     <InputPrimitive.ErrorMessage
       data-slot="input-error-message"
-      class={cn("text-destructive text-sm", local.class)}
+      class={cn("text-destructive text-sm leading-snug", local.class)}
       {...others}
     />
   )

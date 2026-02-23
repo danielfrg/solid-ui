@@ -5,7 +5,7 @@ description: Styled menu triggered by a button, with support for submenus, check
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/dropdown-menu.tsx?raw"
-import { DropdownMenuShowcase } from "../../../demos/styled/dropdown-menu"
+import DropdownMenuExample from "../../../demos/styled/dropdown-menu"
 
 # Dropdown Menu
 
@@ -28,7 +28,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@danielfrg/solid-ui/dropdown-menu"
-<DropdownMenu>
+;<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
   <DropdownMenuContent>
     <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -42,7 +42,7 @@ import {
 ## Demo
 
 <StyledDemoBlock files={[{ label: "dropdown-menu.tsx", code: demoCode }]}>
-  <DropdownMenuShowcase client:only="solid-js" />
+  <DropdownMenuExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

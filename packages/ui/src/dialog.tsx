@@ -12,7 +12,6 @@ import type {
 } from "@danielfrg/solid-ui-core/dialog"
 import { cn } from "./utils"
 
-// Re-export Root and Trigger directly to preserve polymorphic `as` prop typing
 const Dialog = DialogPrimitive
 const DialogTrigger = DialogPrimitive.Trigger
 
@@ -37,7 +36,8 @@ const DialogOverlay: Component<DialogOverlayProps> = (props) => {
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       class={cn(
-        "fixed inset-0 z-50 bg-background/80 data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0",
+        "fixed inset-0 z-50 bg-black/10 backdrop-blur-xs",
+        "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0",
         local.class,
       )}
       {...others}
@@ -60,7 +60,8 @@ const DialogContent: Component<DialogContentProps> = (props) => {
       <DialogPrimitive.Content
         data-slot="dialog-content"
         class={cn(
-          "fixed left-1/2 top-1/2 z-50 grid max-h-screen w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto border bg-background p-6 shadow-lg duration-200 data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 sm:rounded-lg",
+          "fixed left-1/2 top-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-xl bg-background p-4 text-sm ring-1 ring-foreground/10 sm:max-w-sm",
+          "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
           local.class,
         )}
         {...others}
@@ -69,7 +70,7 @@ const DialogContent: Component<DialogContentProps> = (props) => {
         {(local.showCloseButton ?? true) && (
           <DialogPrimitive.CloseButton
             data-slot="dialog-close"
-            class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[expanded]:bg-accent data-[expanded]:text-muted-foreground"
+            class="absolute right-2 top-2 rounded-md p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -100,13 +101,7 @@ type DialogHeaderProps = {
 const DialogHeader: Component<DialogHeaderProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
 
-  return (
-    <div
-      data-slot="dialog-header"
-      class={cn("flex flex-col space-y-1.5 text-center sm:text-left", local.class)}
-      {...others}
-    />
-  )
+  return <div data-slot="dialog-header" class={cn("flex flex-col gap-2", local.class)} {...others} />
 }
 
 type DialogFooterProps = {
@@ -120,7 +115,7 @@ const DialogFooter: Component<DialogFooterProps> = (props) => {
   return (
     <div
       data-slot="dialog-footer"
-      class={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", local.class)}
+      class={cn("bg-muted/50 -mx-4 -mb-4 flex flex-row justify-end gap-2 rounded-b-xl border-t p-4", local.class)}
       {...others}
     />
   )
@@ -137,7 +132,7 @@ const DialogTitle: Component<DialogTitleProps> = (props) => {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      class={cn("text-lg font-semibold leading-none tracking-tight", local.class)}
+      class={cn("text-base font-medium leading-none", local.class)}
       {...others}
     />
   )

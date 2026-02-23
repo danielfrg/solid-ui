@@ -17,9 +17,9 @@ import type {
 } from "@danielfrg/solid-ui-core/menu"
 import { cn } from "./utils"
 
-// Re-export Root and Trigger directly to preserve typing
 const DropdownMenu = MenuPrimitive.Root
 const DropdownMenuTrigger = MenuPrimitive.Trigger
+const DropdownMenuPortal = MenuPrimitive.Portal
 
 type DropdownMenuContentProps = CoreMenuPopupProps & {
   class?: string
@@ -34,7 +34,8 @@ const DropdownMenuContent: Component<DropdownMenuContentProps> = (props) => {
       <MenuPrimitive.Popup
         data-slot="dropdown-menu-content"
         class={cn(
-          "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] animate-content-hide overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none data-[expanded]:animate-content-show",
+          "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-lg border-0 ring-1 ring-foreground/10 bg-popover p-1 text-popover-foreground shadow-md outline-none",
+          "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
           local.class,
         )}
         {...others}
@@ -49,17 +50,24 @@ type DropdownMenuItemProps = CoreMenuItemProps & {
   class?: string
   children?: JSX.Element
   inset?: boolean
+  variant?: "default" | "destructive"
 }
 
 const DropdownMenuItem: Component<DropdownMenuItemProps> = (props) => {
-  const [local, others] = splitProps(props, ["class", "inset"])
+  const [local, others] = splitProps(props, ["class", "inset", "variant"])
 
   return (
     <MenuPrimitive.Item
       data-slot="dropdown-menu-item"
       data-inset={local.inset || undefined}
+      data-variant={local.variant ?? "default"}
       class={cn(
-        "relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default select-none items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-none transition-colors",
+        "focus:bg-accent focus:text-accent-foreground",
+        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "data-[inset]:pl-7",
+        "data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         local.class,
       )}
       {...others}
@@ -70,21 +78,27 @@ const DropdownMenuItem: Component<DropdownMenuItemProps> = (props) => {
 type DropdownMenuCheckboxItemProps = CoreMenuCheckboxItemProps & {
   class?: string
   children?: JSX.Element
+  inset?: boolean
 }
 
 const DropdownMenuCheckboxItem: Component<DropdownMenuCheckboxItemProps> = (props) => {
-  const [local, others] = splitProps(props, ["class", "children"])
+  const [local, others] = splitProps(props, ["class", "children", "inset"])
 
   return (
     <MenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
+      data-inset={local.inset || undefined}
       class={cn(
-        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex cursor-default select-none items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-none transition-colors",
+        "focus:bg-accent focus:text-accent-foreground",
+        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "data-[inset]:pl-7",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         local.class,
       )}
       {...others}
     >
-      <span class="absolute left-2 flex size-3.5 items-center justify-center">
+      <span class="pointer-events-none absolute right-2 flex size-3.5 items-center justify-center">
         <MenuPrimitive.ItemIndicator>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +108,7 @@ const DropdownMenuCheckboxItem: Component<DropdownMenuCheckboxItemProps> = (prop
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="size-4"
+            class="size-3.5"
           >
             <path d="M5 12l5 5l10 -10" />
           </svg>
@@ -117,21 +131,27 @@ const DropdownMenuRadioGroup: Component<DropdownMenuRadioGroupProps> = (props) =
 type DropdownMenuRadioItemProps = CoreMenuRadioItemProps & {
   class?: string
   children?: JSX.Element
+  inset?: boolean
 }
 
 const DropdownMenuRadioItem: Component<DropdownMenuRadioItemProps> = (props) => {
-  const [local, others] = splitProps(props, ["class", "children"])
+  const [local, others] = splitProps(props, ["class", "children", "inset"])
 
   return (
     <MenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
+      data-inset={local.inset || undefined}
       class={cn(
-        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex cursor-default select-none items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-none transition-colors",
+        "focus:bg-accent focus:text-accent-foreground",
+        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "data-[inset]:pl-7",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         local.class,
       )}
       {...others}
     >
-      <span class="absolute left-2 flex size-3.5 items-center justify-center">
+      <span class="pointer-events-none absolute right-2 flex size-3.5 items-center justify-center">
         <MenuPrimitive.ItemIndicator>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +194,7 @@ const DropdownMenuLabel: Component<DropdownMenuLabelProps> = (props) => {
     <MenuPrimitive.GroupLabel
       data-slot="dropdown-menu-label"
       data-inset={local.inset || undefined}
-      class={cn("px-2 py-1.5 text-sm font-semibold", local.class)}
+      class={cn("px-1.5 py-1 text-xs font-medium text-muted-foreground data-[inset]:pl-7", local.class)}
       {...others}
     />
   )
@@ -190,7 +210,7 @@ const DropdownMenuSeparator: Component<DropdownMenuSeparatorProps> = (props) => 
   return (
     <MenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
-      class={cn("-mx-1 my-1 h-px bg-muted", local.class)}
+      class={cn("-mx-1 my-1 h-px bg-border", local.class)}
       {...others}
     />
   )
@@ -207,13 +227,12 @@ const DropdownMenuShortcut: Component<DropdownMenuShortcutProps> = (props) => {
   return (
     <span
       data-slot="dropdown-menu-shortcut"
-      class={cn("ml-auto text-xs tracking-widest opacity-60", local.class)}
+      class={cn("ml-auto text-xs tracking-widest text-muted-foreground", local.class)}
       {...others}
     />
   )
 }
 
-// Re-export SubmenuRoot directly
 const DropdownMenuSub = MenuPrimitive.SubmenuRoot
 
 type DropdownMenuSubTriggerProps = CoreMenuSubmenuTriggerProps & {
@@ -230,7 +249,11 @@ const DropdownMenuSubTrigger: Component<DropdownMenuSubTriggerProps> = (props) =
       data-slot="dropdown-menu-sub-trigger"
       data-inset={local.inset || undefined}
       class={cn(
-        "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[expanded]:bg-accent",
+        "flex cursor-default select-none items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-none transition-colors",
+        "focus:bg-accent focus:text-accent-foreground",
+        "data-[expanded]:bg-accent data-[expanded]:text-accent-foreground",
+        "data-[inset]:pl-7",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         local.class,
       )}
       {...others}
@@ -265,7 +288,8 @@ const DropdownMenuSubContent: Component<DropdownMenuSubContentProps> = (props) =
       <MenuPrimitive.SubmenuPopup
         data-slot="dropdown-menu-sub-content"
         class={cn(
-          "z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none animate-in",
+          "z-50 min-w-24 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
+          "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
           local.class,
         )}
         {...others}
@@ -279,6 +303,7 @@ const DropdownMenuSubContent: Component<DropdownMenuSubContentProps> = (props) =
 export {
   DropdownMenu,
   DropdownMenuTrigger,
+  DropdownMenuPortal,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuLabel,

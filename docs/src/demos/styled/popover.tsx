@@ -1,94 +1,185 @@
 import { Button } from "@danielfrg/solid-ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@danielfrg/solid-ui/popover"
+import {
+  Popover,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverDescription,
+  PopoverTrigger,
+} from "@danielfrg/solid-ui/popover"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@danielfrg/solid-ui/dialog"
+import { ExampleWrapper, Example } from "@/components/example"
 
-export function PopoverShowcase() {
+export default function PopoverExample() {
   return (
-    <div class="flex flex-col gap-10">
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Basic</h3>
-        <Popover>
-          <PopoverTrigger as={Button} variant="outline">
-            Open popover
-          </PopoverTrigger>
-          <PopoverContent class="w-80">
-            <div class="grid gap-4">
-              <div class="space-y-2">
-                <h4 class="leading-none font-medium">Dimensions</h4>
-                <p class="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
-              </div>
-              <div class="grid gap-2">
-                <div class="grid grid-cols-3 items-center gap-4">
-                  <label class="text-sm">Width</label>
-                  <input class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm" value="100%" />
-                </div>
-                <div class="grid grid-cols-3 items-center gap-4">
-                  <label class="text-sm">Max. width</label>
-                  <input class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm" value="300px" />
-                </div>
-                <div class="grid grid-cols-3 items-center gap-4">
-                  <label class="text-sm">Height</label>
-                  <input class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm" value="25px" />
-                </div>
-                <div class="grid grid-cols-3 items-center gap-4">
-                  <label class="text-sm">Max. height</label>
-                  <input class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm" value="none" />
-                </div>
-              </div>
-            </div>
-          </PopoverContent>
-        </Popover>
-      </section>
+    <ExampleWrapper>
+      <PopoverBasic />
+      <PopoverSides />
+      <PopoverAlignments />
+      <PopoverWithForm />
+      <PopoverInDialog />
+    </ExampleWrapper>
+  )
+}
 
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Alignment</h3>
+function PopoverBasic() {
+  return (
+    <Example title="Basic">
+      <Popover>
+        <PopoverTrigger as={Button} variant="outline" class="w-fit">
+          Open Popover
+        </PopoverTrigger>
+        <PopoverContent>
+          <PopoverHeader>
+            <PopoverTitle>Dimensions</PopoverTitle>
+            <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
+          </PopoverHeader>
+        </PopoverContent>
+      </Popover>
+    </Example>
+  )
+}
+
+function PopoverSides() {
+  return (
+    <Example title="Sides">
+      <div class="flex flex-col gap-2">
         <div class="flex flex-wrap gap-2">
-          <Popover>
-            <PopoverTrigger as={Button} variant="outline">Start</PopoverTrigger>
-            <PopoverContent align="start" class="w-60">
-              <p class="text-sm">This popover is aligned to the start.</p>
+          <Popover placement="left">
+            <PopoverTrigger as={Button} variant="outline" class="w-fit">
+              Left
+            </PopoverTrigger>
+            <PopoverContent class="w-40">
+              <p class="text-sm">Popover on left</p>
             </PopoverContent>
           </Popover>
-          <Popover>
-            <PopoverTrigger as={Button} variant="outline">Center</PopoverTrigger>
-            <PopoverContent align="center" class="w-60">
-              <p class="text-sm">This popover is aligned to the center.</p>
-            </PopoverContent>
-          </Popover>
-          <Popover>
-            <PopoverTrigger as={Button} variant="outline">End</PopoverTrigger>
-            <PopoverContent align="end" class="w-60">
-              <p class="text-sm">This popover is aligned to the end.</p>
+          <Popover placement="top">
+            <PopoverTrigger as={Button} variant="outline" class="w-fit">
+              Top
+            </PopoverTrigger>
+            <PopoverContent class="w-40">
+              <p class="text-sm">Popover on top</p>
             </PopoverContent>
           </Popover>
         </div>
-      </section>
+        <div class="flex flex-wrap gap-2">
+          <Popover placement="bottom">
+            <PopoverTrigger as={Button} variant="outline" class="w-fit">
+              Bottom
+            </PopoverTrigger>
+            <PopoverContent class="w-40">
+              <p class="text-sm">Popover on bottom</p>
+            </PopoverContent>
+          </Popover>
+          <Popover placement="right">
+            <PopoverTrigger as={Button} variant="outline" class="w-fit">
+              Right
+            </PopoverTrigger>
+            <PopoverContent class="w-40">
+              <p class="text-sm">Popover on right</p>
+            </PopoverContent>
+          </Popover>
+        </div>
+      </div>
+    </Example>
+  )
+}
 
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">With Form</h3>
-        <Popover>
-          <PopoverTrigger as={Button} variant="outline">
-            Set Dimensions
+function PopoverAlignments() {
+  return (
+    <Example title="Alignments">
+      <div class="flex gap-6">
+        <Popover placement="bottom-start">
+          <PopoverTrigger as={Button} variant="outline" size="sm">
+            Start
           </PopoverTrigger>
-          <PopoverContent class="w-64" align="start">
-            <div class="grid gap-4">
-              <div class="space-y-2">
-                <h4 class="text-sm font-medium leading-none">Dimensions</h4>
-                <p class="text-muted-foreground text-xs">Set width and height for the layer.</p>
-              </div>
-              <div class="grid gap-3">
-                <div class="flex items-center gap-3">
-                  <label class="w-16 text-sm">Width</label>
-                  <input class="h-8 flex-1 rounded-md border border-input bg-transparent px-3 text-sm" value="100%" />
-                </div>
-                <div class="flex items-center gap-3">
-                  <label class="w-16 text-sm">Height</label>
-                  <input class="h-8 flex-1 rounded-md border border-input bg-transparent px-3 text-sm" value="25px" />
-                </div>
-              </div>
-            </div>
+          <PopoverContent class="w-40">
+            <p class="text-sm">Aligned to start</p>
           </PopoverContent>
         </Popover>
-      </section>
-    </div>
+        <Popover placement="bottom">
+          <PopoverTrigger as={Button} variant="outline" size="sm">
+            Center
+          </PopoverTrigger>
+          <PopoverContent class="w-40">
+            <p class="text-sm">Aligned to center</p>
+          </PopoverContent>
+        </Popover>
+        <Popover placement="bottom-end">
+          <PopoverTrigger as={Button} variant="outline" size="sm">
+            End
+          </PopoverTrigger>
+          <PopoverContent class="w-40">
+            <p class="text-sm">Aligned to end</p>
+          </PopoverContent>
+        </Popover>
+      </div>
+    </Example>
+  )
+}
+
+function PopoverWithForm() {
+  return (
+    <Example title="With Form">
+      <Popover>
+        <PopoverTrigger as={Button} variant="outline">
+          Open Popover
+        </PopoverTrigger>
+        <PopoverContent class="w-64">
+          <PopoverHeader>
+            <PopoverTitle>Dimensions</PopoverTitle>
+            <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
+          </PopoverHeader>
+          <div class="grid gap-4">
+            <div class="grid grid-cols-3 items-center gap-4">
+              <label class="text-sm">Width</label>
+              <input class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm" value="100%" />
+            </div>
+            <div class="grid grid-cols-3 items-center gap-4">
+              <label class="text-sm">Height</label>
+              <input class="col-span-2 h-8 rounded-md border border-input bg-transparent px-3 text-sm" value="25px" />
+            </div>
+          </div>
+        </PopoverContent>
+      </Popover>
+    </Example>
+  )
+}
+
+function PopoverInDialog() {
+  return (
+    <Example title="In Dialog">
+      <Dialog>
+        <DialogTrigger as={Button} variant="outline">
+          Open Dialog
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Popover Example</DialogTitle>
+            <DialogDescription>Click the button below to see the popover.</DialogDescription>
+          </DialogHeader>
+          <Popover>
+            <PopoverTrigger as={Button} variant="outline" class="w-fit">
+              Open Popover
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverHeader>
+                <PopoverTitle>Popover in Dialog</PopoverTitle>
+                <PopoverDescription>
+                  This popover appears inside a dialog. Click the button to open it.
+                </PopoverDescription>
+              </PopoverHeader>
+            </PopoverContent>
+          </Popover>
+        </DialogContent>
+      </Dialog>
+    </Example>
   )
 }

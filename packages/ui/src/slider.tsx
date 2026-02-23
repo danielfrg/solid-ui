@@ -15,17 +15,20 @@ const Slider: Component<SliderProps> = (props) => {
   return (
     <SliderPrimitive
       data-slot="slider"
-      class={cn("relative flex w-full touch-none select-none flex-col items-center", local.class)}
+      class={cn(
+        "relative flex w-full touch-none select-none flex-col items-center data-[orientation=vertical]:min-h-40",
+        local.class,
+      )}
       {...others}
     >
       {local.children}
-      <SliderPrimitive.Track class="relative h-2 w-full grow rounded-full bg-secondary">
-        <SliderPrimitive.Fill class="absolute h-full rounded-full bg-primary" />
+      <SliderPrimitive.Track class="relative h-1 w-full grow rounded-full bg-muted data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1">
+        <SliderPrimitive.Fill class="absolute h-full rounded-full bg-primary data-[orientation=vertical]:w-full data-[disabled]:bg-muted" />
         <SliderPrimitive.Thumb
           class={cn(
-            "top-[-6px] block size-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-            "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+            "absolute top-1/2 block size-3 -translate-y-1/2 rounded-full border border-ring bg-background",
+            "hover:ring-3 hover:ring-ring/50",
+            "data-[disabled]:pointer-events-none",
           )}
         >
           <SliderPrimitive.Input />
@@ -43,7 +46,7 @@ const SliderLabel: Component<SliderLabelProps> = (props) => {
   return (
     <SliderPrimitive.Label
       data-slot="slider-label"
-      class={cn("text-sm font-medium leading-none", local.class)}
+      class={cn("text-sm font-medium leading-snug", local.class)}
       {...others}
     />
   )
@@ -57,7 +60,7 @@ const SliderValueLabel: Component<SliderValueLabelProps> = (props) => {
   return (
     <SliderPrimitive.ValueLabel
       data-slot="slider-value-label"
-      class={cn("text-sm font-medium text-muted-foreground tabular-nums", local.class)}
+      class={cn("text-sm font-medium text-muted-foreground tabular-nums leading-snug", local.class)}
       {...others}
     />
   )

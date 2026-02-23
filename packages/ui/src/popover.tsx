@@ -5,7 +5,8 @@ import type { PopoverContentProps as CorePopoverContentProps } from "@danielfrg/
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing
-const Popover = PopoverPrimitive
+const PopoverRoot = PopoverPrimitive
+
 const PopoverTrigger = PopoverPrimitive.Trigger
 
 type PopoverContentProps = CorePopoverContentProps & {
@@ -21,13 +22,20 @@ function PopoverContent(props: PopoverContentProps) {
       <PopoverPrimitive.Content
         data-slot="popover-content"
         class={cn(
-          "z-50 w-72 origin-[var(--kb-popover-content-transform-origin)] rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
+          "z-50 w-72 origin-[var(--kb-popover-content-transform-origin)] rounded-lg border bg-popover p-2.5 text-popover-foreground text-sm shadow-md outline-none",
+          "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0",
+          "data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
+          "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           local.class,
         )}
         {...others}
       />
     </PopoverPrimitive.Portal>
   )
+}
+
+const Popover = (props: any) => {
+  return <PopoverRoot gutter={4} {...props} />
 }
 
 type PopoverHeaderProps = {
@@ -38,7 +46,7 @@ type PopoverHeaderProps = {
 const PopoverHeader: Component<PopoverHeaderProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
 
-  return <div data-slot="popover-header" class={cn("flex flex-col space-y-1.5", local.class)} {...others} />
+  return <div data-slot="popover-header" class={cn("flex flex-col gap-1.5", local.class)} {...others} />
 }
 
 type PopoverTitleProps = {
@@ -60,7 +68,13 @@ type PopoverDescriptionProps = {
 const PopoverDescription: Component<PopoverDescriptionProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
 
-  return <p data-slot="popover-description" class={cn("text-muted-foreground text-xs", local.class)} {...others} />
+  return (
+    <p
+      data-slot="popover-description"
+      class={cn("text-muted-foreground text-sm leading-snug", local.class)}
+      {...others}
+    />
+  )
 }
 
 export { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverTitle, PopoverDescription }

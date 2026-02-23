@@ -5,7 +5,7 @@ description: Styled popover for displaying rich content in a floating panel.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/popover.tsx?raw"
-import { PopoverShowcase } from "../../../demos/styled/popover"
+import PopoverExample from "../../../demos/styled/popover"
 
 # Popover
 
@@ -21,14 +21,25 @@ Add the theme to your CSS:
 Import and use the `Popover` components:
 
 ```tsx
-import { Popover, PopoverTrigger, PopoverContent } from "@danielfrg/solid-ui/popover"
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverDescription,
+} from "@danielfrg/solid-ui/popover"
 import { Button } from "@danielfrg/solid-ui/button"
-<Popover>
+
+;<Popover>
   <PopoverTrigger as={Button} variant="outline">
     Open
   </PopoverTrigger>
   <PopoverContent>
-    <p>Popover content here.</p>
+    <PopoverHeader>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description here.</PopoverDescription>
+    </PopoverHeader>
   </PopoverContent>
 </Popover>
 ```
@@ -36,13 +47,16 @@ import { Button } from "@danielfrg/solid-ui/button"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "popover.tsx", code: demoCode }]}>
-  <PopoverShowcase client:only="solid-js" />
+  <PopoverExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts
 
-| Component        | Description                                  |
-| ---------------- | -------------------------------------------- |
-| `Popover`        | Root provider                                |
-| `PopoverTrigger` | Element that toggles the popover             |
-| `PopoverContent` | Styled floating panel with border and shadow |
+| Component            | Description                                  |
+| -------------------- | -------------------------------------------- |
+| `Popover`            | Root provider with placement options         |
+| `PopoverTrigger`     | Element that toggles the popover             |
+| `PopoverContent`     | Styled floating panel with border and shadow |
+| `PopoverHeader`      | Container for title and description          |
+| `PopoverTitle`       | Title text for the popover                   |
+| `PopoverDescription` | Description text for the popover             |

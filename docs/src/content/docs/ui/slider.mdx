@@ -5,7 +5,7 @@ description: Styled range input for selecting a numeric value.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/slider.tsx?raw"
-import { SliderShowcase } from "../../../demos/styled/slider"
+import SliderExample from "../../../demos/styled/slider"
 
 # Slider
 
@@ -22,7 +22,7 @@ Import and use the Slider components:
 
 ```tsx
 import { Slider, SliderLabel, SliderValueLabel } from "@danielfrg/solid-ui/slider"
-<Slider defaultValue={[50]}>
+;<Slider defaultValue={[50]}>
   <div class="flex justify-between mb-3">
     <SliderLabel>Volume</SliderLabel>
     <SliderValueLabel />
@@ -33,7 +33,7 @@ import { Slider, SliderLabel, SliderValueLabel } from "@danielfrg/solid-ui/slide
 ## Demo
 
 <StyledDemoBlock files={[{ label: "slider.tsx", code: demoCode }]}>
-  <SliderShowcase client:only="solid-js" />
+  <SliderExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

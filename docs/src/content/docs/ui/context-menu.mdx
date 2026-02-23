@@ -5,7 +5,7 @@ description: Styled right-click menu with support for submenus, checkbox items, 
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/context-menu.tsx?raw"
-import { ContextMenuShowcase } from "../../../demos/styled/context-menu"
+import ContextMenuExample from "../../../demos/styled/context-menu"
 
 # Context Menu
 
@@ -22,7 +22,7 @@ Import and use the Context Menu components:
 
 ```tsx
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from "@danielfrg/solid-ui/context-menu"
-<ContextMenu>
+;<ContextMenu>
   <ContextMenuTrigger>Right click here</ContextMenuTrigger>
   <ContextMenuContent>
     <ContextMenuItem>Back</ContextMenuItem>
@@ -35,7 +35,7 @@ import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } 
 ## Demo
 
 <StyledDemoBlock files={[{ label: "context-menu.tsx", code: demoCode }]}>
-  <ContextMenuShowcase client:only="solid-js" />
+  <ContextMenuExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

@@ -13,10 +13,14 @@ const Progress: Component<ProgressProps> = (props) => {
   const [local, others] = splitProps(props, ["class", "children"])
 
   return (
-    <ProgressPrimitive data-slot="progress" class={cn("relative w-full", local.class)} {...others}>
+    <ProgressPrimitive
+      data-slot="progress"
+      class={cn("grid grid-cols-[1fr_auto] gap-x-2 gap-y-1.5", local.class)}
+      {...others}
+    >
       {local.children}
-      <ProgressPrimitive.Track class="relative h-2 w-full overflow-hidden rounded-full bg-secondary">
-        <ProgressPrimitive.Fill class="h-full w-[var(--kb-progress-fill-width)] flex-1 bg-primary transition-all" />
+      <ProgressPrimitive.Track class="col-span-2 relative h-1 w-full overflow-hidden rounded-full bg-muted">
+        <ProgressPrimitive.Fill class="h-full w-[var(--kb-progress-fill-width)] bg-primary transition-all" />
       </ProgressPrimitive.Track>
     </ProgressPrimitive>
   )
@@ -30,7 +34,7 @@ const ProgressLabel: Component<ProgressLabelProps> = (props) => {
   return (
     <ProgressPrimitive.Label
       data-slot="progress-label"
-      class={cn("text-sm font-medium leading-none", local.class)}
+      class={cn("text-sm font-medium leading-snug", local.class)}
       {...others}
     />
   )
@@ -44,7 +48,7 @@ const ProgressValueLabel: Component<ProgressValueLabelProps> = (props) => {
   return (
     <ProgressPrimitive.ValueLabel
       data-slot="progress-value-label"
-      class={cn("text-sm font-medium text-muted-foreground tabular-nums", local.class)}
+      class={cn("text-sm font-medium tabular-nums leading-snug text-right", local.class)}
       {...others}
     />
   )

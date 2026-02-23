@@ -5,7 +5,7 @@ description: Styled modal dialog that interrupts the user with important content
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/dialog.tsx?raw"
-import { DialogShowcase } from "../../../demos/styled/dialog"
+import DialogExample from "../../../demos/styled/dialog"
 
 # Dialog
 
@@ -30,7 +30,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@danielfrg/solid-ui/dialog"
-<Dialog>
+;<Dialog>
   <DialogTrigger>Open</DialogTrigger>
   <DialogContent>
     <DialogHeader>
@@ -47,7 +47,7 @@ import {
 ## Demo
 
 <StyledDemoBlock files={[{ label: "dialog.tsx", code: demoCode }]}>
-  <DialogShowcase client:only="solid-js" />
+  <DialogExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts
