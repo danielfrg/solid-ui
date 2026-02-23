@@ -11,6 +11,7 @@ type CheckboxProps = CoreCheckboxRootProps & {
 
 const Checkbox: Component<CheckboxProps> = (props) => {
   const [local, others] = splitProps(props, ["class", "children"])
+  const ariaInvalid = () => (others as any)["aria-invalid"]
 
   return (
     <CheckboxPrimitive
@@ -20,10 +21,12 @@ const Checkbox: Component<CheckboxProps> = (props) => {
     >
       <CheckboxPrimitive.Input class="peer" />
       <CheckboxPrimitive.Control
+        aria-invalid={ariaInvalid()}
         class={cn(
-          "size-4 shrink-0 rounded-sm border border-primary ring-offset-background",
+          "flex size-4 shrink-0 items-center justify-center rounded-[4px] border border-primary transition-colors",
           "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
-          "peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2",
+          "aria-invalid:border-destructive aria-invalid:shadow-[0_0_0_3px] aria-invalid:shadow-destructive/20",
+          "dark:aria-invalid:border-destructive/50 dark:aria-invalid:shadow-destructive/40",
           "data-[checked]:border-none data-[indeterminate]:border-none",
           "data-[checked]:bg-primary data-[indeterminate]:bg-primary",
           "data-[checked]:text-primary-foreground data-[indeterminate]:text-primary-foreground",
@@ -67,7 +70,10 @@ const Checkbox: Component<CheckboxProps> = (props) => {
   )
 }
 
-type CheckboxLabelProps = { class?: string; children?: JSX.Element }
+type CheckboxLabelProps = {
+  class?: string
+  children?: JSX.Element
+}
 
 const CheckboxLabel: Component<CheckboxLabelProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
@@ -76,7 +82,7 @@ const CheckboxLabel: Component<CheckboxLabelProps> = (props) => {
     <CheckboxPrimitive.Label
       data-slot="checkbox-label"
       class={cn(
-        "text-sm font-medium leading-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
+        "text-sm font-medium leading-snug data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 group-aria-invalid:text-destructive",
         local.class,
       )}
       {...others}

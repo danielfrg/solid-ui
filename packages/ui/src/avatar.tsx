@@ -79,7 +79,7 @@ const AvatarBadge: Component<AvatarBadgeProps> = (props) => {
     <span
       data-slot="avatar-badge"
       class={cn(
-        "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-blend-color ring-2 ring-background select-none",
+        "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground ring-2 ring-background select-none",
         "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
         "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
         "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
@@ -101,7 +101,10 @@ const AvatarGroup: Component<AvatarGroupProps> = (props) => {
   return (
     <div
       data-slot="avatar-group"
-      class={cn("flex -space-x-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:ring-2", local.class)}
+      class={cn(
+        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:ring-2",
+        local.class,
+      )}
       {...others}
     />
   )
@@ -110,18 +113,24 @@ const AvatarGroup: Component<AvatarGroupProps> = (props) => {
 type AvatarGroupCountProps = {
   class?: string
   children?: JSX.Element
-  size?: "sm" | "default" | "lg"
 }
 
 const AvatarGroupCount: Component<AvatarGroupCountProps> = (props) => {
-  const [local, others] = splitProps(props, ["class", "size"])
+  const [local, others] = splitProps(props, ["class"])
 
   return (
     <div
       data-slot="avatar-group-count"
       class={cn(
-        "relative flex shrink-0 items-center justify-center rounded-full bg-muted text-sm font-medium ring-2 ring-background",
-        local.size === "sm" ? "size-7" : local.size === "lg" ? "size-14" : "size-10",
+        "relative flex shrink-0 items-center justify-center rounded-full bg-muted text-sm font-medium ring-2 ring-background select-none",
+        // default size matches Avatar default (size-10)
+        "size-10",
+        // shrink to sm when the group contains sm avatars
+        "group-has-data-[size=sm]/avatar-group:size-7 group-has-data-[size=sm]/avatar-group:text-xs",
+        // grow to lg when the group contains lg avatars
+        "group-has-data-[size=lg]/avatar-group:size-14",
+        // icon sizing
+        "[&>svg]:size-4 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5",
         local.class,
       )}
       {...others}

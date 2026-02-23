@@ -3,15 +3,9 @@ title: Checkbox
 description: Styled checkbox control with check and indeterminate icons.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/checkbox.tsx?raw"
-import {
-  CheckboxBasic,
-  CheckboxDescriptionDemo,
-  CheckboxDisabled,
-  CheckboxGroup,
-  CheckboxTable,
-} from "../../../demos/styled/checkbox"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/checkbox.tsx?raw"
+import CheckboxExample from "@/demos/styled/checkbox"
 
 # Checkbox
 
@@ -28,41 +22,16 @@ Import and use the Checkbox components:
 
 ```tsx
 import { Checkbox, CheckboxLabel } from "@danielfrg/solid-ui/checkbox"
-<Checkbox defaultChecked>
+
+;<Checkbox defaultChecked>
   <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
 </Checkbox>
 ```
 
 ## Demo
 
-### Basic
-
 <StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
-  <CheckboxBasic client:only="solid-js" />
-</StyledDemoBlock>
-
-### Description
-
-<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
-  <CheckboxDescriptionDemo client:only="solid-js" />
-</StyledDemoBlock>
-
-### Disabled
-
-<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
-  <CheckboxDisabled client:only="solid-js" />
-</StyledDemoBlock>
-
-### Group
-
-<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
-  <CheckboxGroup client:only="solid-js" />
-</StyledDemoBlock>
-
-### Table
-
-<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
-  <CheckboxTable client:only="solid-js" />
+  <CheckboxExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

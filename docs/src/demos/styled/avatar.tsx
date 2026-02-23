@@ -6,81 +6,97 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from "@danielfrg/solid-ui/avatar"
+import { Button } from "@danielfrg/solid-ui/button"
 import { Check, Plus } from "lucide-solid"
+import { ExampleWrapper, Example } from "@/components/example"
 
-export function AvatarBasic() {
+export default function AvatarExample() {
   return (
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-wrap items-center gap-2">
-        <Avatar size="sm">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <Avatar size="lg">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-      </div>
-      <div class="flex flex-wrap items-center gap-2">
-        <Avatar size="sm">
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <Avatar size="lg">
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-      </div>
-    </div>
+    <ExampleWrapper>
+      <AvatarSizes />
+      <AvatarWithBadge />
+      <AvatarWithBadgeIcon />
+      <AvatarGroupExample />
+      <AvatarGroupWithCount />
+      <AvatarGroupWithIconCount />
+      <AvatarInEmpty />
+    </ExampleWrapper>
   )
 }
 
-export function AvatarWithBadge() {
+function AvatarSizes() {
   return (
-    <div class="flex flex-col gap-4">
+    <Example title="Sizes">
       <div class="flex flex-wrap items-center gap-2">
         <Avatar size="sm">
-          <AvatarImage src="https://github.com/jorgezreik.png" alt="@jorgezreik" />
-          <AvatarFallback>JZ</AvatarFallback>
-          <AvatarBadge />
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar>
-          <AvatarImage src="https://github.com/jorgezreik.png" alt="@jorgezreik" />
-          <AvatarFallback>JZ</AvatarFallback>
-          <AvatarBadge />
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar size="lg">
-          <AvatarImage src="https://github.com/jorgezreik.png" alt="@jorgezreik" />
-          <AvatarFallback>JZ</AvatarFallback>
-          <AvatarBadge />
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <Avatar size="sm">
-          <AvatarFallback>JZ</AvatarFallback>
-          <AvatarBadge />
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar>
-          <AvatarFallback>JZ</AvatarFallback>
-          <AvatarBadge />
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <Avatar size="lg">
-          <AvatarFallback>JZ</AvatarFallback>
-          <AvatarBadge />
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
-    </div>
+    </Example>
   )
 }
 
-export function AvatarWithBadgeIcon() {
+function AvatarWithBadge() {
   return (
-    <div class="flex flex-col gap-4">
+    <Example title="Badge">
+      <div class="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarImage src="https://github.com/jorgezreik.png" alt="@jorgezreik" />
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar>
+          <AvatarImage src="https://github.com/jorgezreik.png" alt="@jorgezreik" />
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage src="https://github.com/jorgezreik.png" alt="@jorgezreik" />
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <Avatar size="sm">
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar>
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarFallback>JZ</AvatarFallback>
+          <AvatarBadge />
+        </Avatar>
+      </div>
+    </Example>
+  )
+}
+
+function AvatarWithBadgeIcon() {
+  return (
+    <Example title="Badge with Icon">
       <div class="flex flex-wrap items-center gap-2">
         <Avatar size="sm">
           <AvatarImage src="https://github.com/pranathip.png" alt="@pranathip" />
@@ -124,13 +140,13 @@ export function AvatarWithBadgeIcon() {
           </AvatarBadge>
         </Avatar>
       </div>
-    </div>
+    </Example>
   )
 }
 
-export function AvatarGroupExample() {
+function AvatarGroupExample() {
   return (
-    <div class="flex flex-col gap-4">
+    <Example title="Group">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -173,13 +189,13 @@ export function AvatarGroupExample() {
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
       </AvatarGroup>
-    </div>
+    </Example>
   )
 }
 
-export function AvatarGroupWithCount() {
+function AvatarGroupWithCount() {
   return (
-    <div class="flex flex-col gap-4">
+    <Example title="Group with Count">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -193,7 +209,7 @@ export function AvatarGroupWithCount() {
           <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
-        <AvatarGroupCount size="sm">+3</AvatarGroupCount>
+        <AvatarGroupCount>+3</AvatarGroupCount>
       </AvatarGroup>
       <AvatarGroup>
         <Avatar>
@@ -223,15 +239,49 @@ export function AvatarGroupWithCount() {
           <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
-        <AvatarGroupCount size="lg">+3</AvatarGroupCount>
+        <AvatarGroupCount>+3</AvatarGroupCount>
       </AvatarGroup>
-    </div>
+    </Example>
   )
 }
 
-export function AvatarGroupWithIconCount() {
+function AvatarInEmpty() {
   return (
-    <div class="flex flex-col gap-4">
+    <Example title="In Empty">
+      <div class="w-full flex-none rounded-xl border flex flex-col items-center justify-center gap-4 py-10 px-6 text-center">
+        <AvatarGroup>
+          <Avatar size="lg">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" class="grayscale" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src="https://github.com/maxleiter.png" alt="@maxleiter" class="grayscale" />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" class="grayscale" />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+          <AvatarGroupCount>
+            <Plus />
+          </AvatarGroupCount>
+        </AvatarGroup>
+        <div class="flex flex-col gap-1">
+          <p class="text-sm font-semibold">No Team Members</p>
+          <p class="text-muted-foreground text-sm">Invite your team to collaborate on this project.</p>
+        </div>
+        <Button>
+          <Plus />
+          Invite Members
+        </Button>
+      </div>
+    </Example>
+  )
+}
+
+function AvatarGroupWithIconCount() {
+  return (
+    <Example title="Group with Icon Count">
       <AvatarGroup>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -245,8 +295,8 @@ export function AvatarGroupWithIconCount() {
           <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
-        <AvatarGroupCount size="sm">
-          <Plus class="h-3 w-3" />
+        <AvatarGroupCount>
+          <Plus />
         </AvatarGroupCount>
       </AvatarGroup>
       <AvatarGroup>
@@ -263,7 +313,7 @@ export function AvatarGroupWithIconCount() {
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
         <AvatarGroupCount>
-          <Plus class="h-4 w-4" />
+          <Plus />
         </AvatarGroupCount>
       </AvatarGroup>
       <AvatarGroup>
@@ -279,10 +329,10 @@ export function AvatarGroupWithIconCount() {
           <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" class="grayscale" />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
-        <AvatarGroupCount size="lg">
-          <Plus class="h-4 w-4" />
+        <AvatarGroupCount>
+          <Plus />
         </AvatarGroupCount>
       </AvatarGroup>
-    </div>
+    </Example>
   )
 }

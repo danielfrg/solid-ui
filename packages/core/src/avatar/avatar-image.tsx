@@ -16,6 +16,7 @@ export interface AvatarImageOptions {}
 
 export interface AvatarImageCommonProps<T extends HTMLElement = HTMLElement> {
   src?: string
+  alt?: string
 }
 
 export interface AvatarImageRenderProps extends AvatarImageCommonProps {}

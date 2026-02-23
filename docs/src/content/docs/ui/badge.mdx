@@ -3,17 +3,9 @@ title: Badge
 description: Styled badge component for displaying short status text.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/badge.tsx?raw"
-import {
-  BadgeVariants,
-  BadgeWithIconLeft,
-  BadgeWithIconRight,
-  BadgeWithSpinner,
-  BadgeAsLink,
-  BadgeLongText,
-  BadgeCustomColors,
-} from "../../../demos/styled/badge"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/badge.tsx?raw"
+import BadgeExample from "@/demos/styled/badge"
 
 # Badge
 
@@ -30,60 +22,12 @@ Import and use the `Badge` component:
 
 ```tsx
 import { Badge } from "@danielfrg/solid-ui/badge"
-;<Badge variant="outline">Badge</Badge>
+
+<Badge variant="outline">Badge</Badge>
 ```
 
 ## Demo
 
-### Variants
-
 <StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeVariants client:only="solid-js" />
+  <BadgeExample client:only="solid-js" />
 </StyledDemoBlock>
-
-### With Icon Left
-
-<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeWithIconLeft client:only="solid-js" />
-</StyledDemoBlock>
-
-### With Icon Right
-
-<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeWithIconRight client:only="solid-js" />
-</StyledDemoBlock>
-
-### With Spinner
-
-<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeWithSpinner client:only="solid-js" />
-</StyledDemoBlock>
-
-### As Link
-
-<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeAsLink client:only="solid-js" />
-</StyledDemoBlock>
-
-### Long Text
-
-<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeLongText client:only="solid-js" />
-</StyledDemoBlock>
-
-### Custom Colors
-
-<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
-  <BadgeCustomColors client:only="solid-js" />
-</StyledDemoBlock>
-
-## Variants
-
-| Variant       | Description                    |
-| ------------- | ------------------------------ |
-| `default`     | Primary background             |
-| `secondary`   | Muted background               |
-| `outline`     | Bordered with transparent fill |
-| `destructive` | Red destructive styling        |
-| `ghost`       | No background                  |
-| `link`        | Text link appearance           |

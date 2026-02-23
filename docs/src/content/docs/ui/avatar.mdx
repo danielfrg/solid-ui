@@ -3,16 +3,9 @@ title: Avatar
 description: Styled image element with a fallback for representing users.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/avatar.tsx?raw"
-import {
-  AvatarBasic,
-  AvatarWithBadge,
-  AvatarWithBadgeIcon,
-  AvatarGroupExample,
-  AvatarGroupWithCount,
-  AvatarGroupWithIconCount,
-} from "../../../demos/styled/avatar"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/avatar.tsx?raw"
+import AvatarExample from "@/demos/styled/avatar"
 
 # Avatar
 
@@ -29,7 +22,8 @@ Import and use the Avatar components:
 
 ```tsx
 import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
-;<Avatar>
+
+<Avatar>
   <AvatarImage src="/avatar.png" />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
@@ -37,49 +31,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
 
 ## Demo
 
-### Basic
-
 <StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarBasic client:only="solid-js" />
+  <AvatarExample client:only="solid-js" />
 </StyledDemoBlock>
-
-### With Badge
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarWithBadge client:only="solid-js" />
-</StyledDemoBlock>
-
-### With Badge Icon
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarWithBadgeIcon client:only="solid-js" />
-</StyledDemoBlock>
-
-### Group
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarGroupExample client:only="solid-js" />
-</StyledDemoBlock>
-
-### Group with Count
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarGroupWithCount client:only="solid-js" />
-</StyledDemoBlock>
-
-### Group with Icon Count
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarGroupWithIconCount client:only="solid-js" />
-</StyledDemoBlock>
-
-## Parts
-
-| Component          | Description                                    |
-| ------------------ | ---------------------------------------------- |
-| `Avatar`           | Root container (rounded, overflow hidden)      |
-| `AvatarImage`      | The user image                                 |
-| `AvatarFallback`   | Displayed when image is loading or unavailable |
-| `AvatarBadge`      | Status indicator badge                         |
-| `AvatarGroup`      | Container for grouped avatars                  |
-| `AvatarGroupCount` | Counter for additional avatars                 |

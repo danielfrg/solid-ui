@@ -3,17 +3,9 @@ title: Card
 description: Styled card container with header, content, and footer sections.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/card.tsx?raw"
-import {
-  CardDefault,
-  CardSmall,
-  CardHeaderWithBorder,
-  CardFooterWithBorder,
-  CardWithImage,
-  CardLogin,
-  CardMeetingNotes,
-} from "../../../demos/styled/card"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/card.tsx?raw"
+import CardExample from "@/demos/styled/card"
 
 # Card
 
@@ -30,7 +22,8 @@ Import and use the `Card` components:
 
 ```tsx
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@danielfrg/solid-ui/card"
-;<Card>
+
+<Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card description.</CardDescription>
@@ -46,56 +39,6 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 ## Demo
 
-### Default Size
-
 <StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardDefault client:only="solid-js" />
+  <CardExample client:only="solid-js" />
 </StyledDemoBlock>
-
-### Small Size
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardSmall client:only="solid-js" />
-</StyledDemoBlock>
-
-### Header with Border
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardHeaderWithBorder client:only="solid-js" />
-</StyledDemoBlock>
-
-### Footer with Border
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardFooterWithBorder client:only="solid-js" />
-</StyledDemoBlock>
-
-### With Image
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardWithImage client:only="solid-js" />
-</StyledDemoBlock>
-
-### Login
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardLogin client:only="solid-js" />
-</StyledDemoBlock>
-
-### Meeting Notes
-
-<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
-  <CardMeetingNotes client:only="solid-js" />
-</StyledDemoBlock>
-
-## Parts
-
-| Component         | Description                               |
-| ----------------- | ----------------------------------------- |
-| `Card`            | Root container with border and shadow     |
-| `CardHeader`      | Top section with grid layout              |
-| `CardTitle`       | Semibold heading                          |
-| `CardDescription` | Muted description text                    |
-| `CardAction`      | Action area aligned to top-right          |
-| `CardContent`     | Main content area with horizontal padding |
-| `CardFooter`      | Bottom section with flex layout           |
