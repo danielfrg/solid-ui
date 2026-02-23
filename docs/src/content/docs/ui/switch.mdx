@@ -1,0 +1,41 @@
+---
+title: Switch
+description: Styled toggle switch for on/off states.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/switch.tsx?raw"
+import { SwitchShowcase } from "../../../demos/styled/switch"
+
+# Switch
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Switch components:
+
+```tsx
+import { Switch, SwitchLabel } from "@danielfrg/ui/switch"
+;<Switch defaultChecked>
+  <SwitchLabel>Airplane Mode</SwitchLabel>
+</Switch>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "switch.tsx", code: demoCode }]}>
+  <SwitchShowcase client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component     | Description                          |
+| ------------- | ------------------------------------ |
+| `Switch`      | Root with built-in control and thumb |
+| `SwitchLabel` | Label text for the switch            |

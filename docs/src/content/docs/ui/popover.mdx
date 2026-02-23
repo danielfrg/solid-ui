@@ -1,0 +1,48 @@
+---
+title: Popover
+description: Styled popover for displaying rich content in a floating panel.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/popover.tsx?raw"
+import { PopoverShowcase } from "../../../demos/styled/popover"
+
+# Popover
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Popover` components:
+
+```tsx
+import { Popover, PopoverTrigger, PopoverContent } from "@danielfrg/ui/popover"
+import { Button } from "@danielfrg/ui/button"
+;<Popover>
+  <PopoverTrigger as={Button} variant="outline">
+    Open
+  </PopoverTrigger>
+  <PopoverContent>
+    <p>Popover content here.</p>
+  </PopoverContent>
+</Popover>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "popover.tsx", code: demoCode }]}>
+  <PopoverShowcase client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component        | Description                                  |
+| ---------------- | -------------------------------------------- |
+| `Popover`        | Root provider                                |
+| `PopoverTrigger` | Element that toggles the popover             |
+| `PopoverContent` | Styled floating panel with border and shadow |

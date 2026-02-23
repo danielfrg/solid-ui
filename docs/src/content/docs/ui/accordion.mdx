@@ -1,0 +1,78 @@
+---
+title: Accordion
+description: Styled vertically stacked sections that expand and collapse.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/accordion.tsx?raw"
+import {
+  AccordionBasic,
+  AccordionMultiple,
+  AccordionDisabled,
+  AccordionBorders,
+  AccordionCard,
+} from "../../../demos/styled/accordion"
+
+# Accordion
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Accordion components:
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@danielfrg/ui/accordion"
+;<Accordion defaultValue={["item-1"]}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Demo
+
+### Basic
+
+<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
+  <AccordionBasic client:load />
+</StyledDemoBlock>
+
+### Multiple
+
+<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
+  <AccordionMultiple client:load />
+</StyledDemoBlock>
+
+### Disabled
+
+<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
+  <AccordionDisabled client:load />
+</StyledDemoBlock>
+
+### Borders
+
+<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
+  <AccordionBorders client:load />
+</StyledDemoBlock>
+
+### Card
+
+<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
+  <AccordionCard client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component          | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| `Accordion`        | Root container                                          |
+| `AccordionItem`    | Individual collapsible section                          |
+| `AccordionTrigger` | Button that toggles the section (includes chevron icon) |
+| `AccordionContent` | Content revealed when the section is open               |

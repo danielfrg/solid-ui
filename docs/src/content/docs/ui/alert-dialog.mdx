@@ -1,0 +1,101 @@
+---
+title: Alert Dialog
+description: Styled modal dialog that interrupts the user with important content and expects a confirmation response.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/alert-dialog.tsx?raw"
+import {
+  AlertDialogBasic,
+  AlertDialogSmall,
+  AlertDialogMedia,
+  AlertDialogSmallMedia,
+  AlertDialogDestructive,
+} from "../../../demos/styled/alert-dialog"
+
+# Alert Dialog
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Alert Dialog components:
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from "@danielfrg/ui/alert-dialog"
+;<AlertDialog>
+  <AlertDialogTrigger>Delete</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Demo
+
+### Basic
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogBasic client:load />
+</StyledDemoBlock>
+
+### Small
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogSmall client:load />
+</StyledDemoBlock>
+
+### Media
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogMedia client:load />
+</StyledDemoBlock>
+
+### Small with Media
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogSmallMedia client:load />
+</StyledDemoBlock>
+
+### Destructive
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogDestructive client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component                | Description                                          |
+| ------------------------ | ---------------------------------------------------- |
+| `AlertDialog`            | Root container (manages open state)                  |
+| `AlertDialogTrigger`     | Button that opens the alert dialog                   |
+| `AlertDialogContent`     | The modal panel (includes Portal and Overlay)        |
+| `AlertDialogHeader`      | Layout wrapper for title and description             |
+| `AlertDialogFooter`      | Layout wrapper for action buttons                    |
+| `AlertDialogTitle`       | Accessible title                                     |
+| `AlertDialogDescription` | Accessible description                               |
+| `AlertDialogAction`      | Confirm button (styled as primary, closes on click)  |
+| `AlertDialogCancel`      | Cancel button (styled as outline, closes on click)   |
+| `AlertDialogOverlay`     | Backdrop overlay (included automatically in Content) |

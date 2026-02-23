@@ -1,0 +1,72 @@
+---
+title: Alert
+description: Styled alert component for displaying important messages.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/alert.tsx?raw"
+import { AlertBasic, AlertDestructive, AlertActionDemo, AlertCustomColors } from "../../../demos/styled/alert"
+
+# Alert
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Alert` component:
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@danielfrg/ui/alert"
+import { Terminal } from "lucide-solid"
+;<Alert>
+  <Terminal />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>You can add components to your app using the cli.</AlertDescription>
+</Alert>
+```
+
+## Demo
+
+### Basic
+
+<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
+  <AlertBasic client:load />
+</StyledDemoBlock>
+
+### Destructive
+
+<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
+  <AlertDestructive client:load />
+</StyledDemoBlock>
+
+### Action
+
+<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
+  <AlertActionDemo client:load />
+</StyledDemoBlock>
+
+### Custom Colors
+
+<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
+  <AlertCustomColors client:load />
+</StyledDemoBlock>
+
+## Variants
+
+| Variant       | Description                            |
+| ------------- | -------------------------------------- |
+| `default`     | Standard alert with card background    |
+| `destructive` | Error or warning with destructive tone |
+
+## Parts
+
+| Component          | Description                        |
+| ------------------ | ---------------------------------- |
+| `Alert`            | Root container with `role="alert"` |
+| `AlertTitle`       | Bold heading text                  |
+| `AlertDescription` | Supporting description text        |

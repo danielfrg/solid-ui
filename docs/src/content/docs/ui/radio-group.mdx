@@ -1,0 +1,50 @@
+---
+title: Radio Group
+description: Styled radio button group for selecting one option from a set.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/radio-group.tsx?raw"
+import { RadioGroupShowcase } from "../../../demos/styled/radio-group"
+
+# Radio Group
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the RadioGroup components:
+
+```tsx
+import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "@danielfrg/ui/radio-group"
+;<RadioGroup defaultValue="comfortable">
+  <RadioGroupItem value="default">
+    <RadioGroupItemLabel>Default</RadioGroupItemLabel>
+  </RadioGroupItem>
+  <RadioGroupItem value="comfortable">
+    <RadioGroupItemLabel>Comfortable</RadioGroupItemLabel>
+  </RadioGroupItem>
+  <RadioGroupItem value="compact">
+    <RadioGroupItemLabel>Compact</RadioGroupItemLabel>
+  </RadioGroupItem>
+</RadioGroup>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "radio-group.tsx", code: demoCode }]}>
+  <RadioGroupShowcase client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component             | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| `RadioGroup`          | Root container with selection state                  |
+| `RadioGroupItem`      | Individual radio with built-in control and indicator |
+| `RadioGroupItemLabel` | Label text for a radio item                          |

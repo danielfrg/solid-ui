@@ -1,0 +1,48 @@
+---
+title: Tooltip
+description: Styled tooltip that displays on hover.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/tooltip.tsx?raw"
+import { TooltipShowcase } from "../../../demos/styled/tooltip"
+
+# Tooltip
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Tooltip` components:
+
+```tsx
+import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/ui/tooltip"
+import { Button } from "@danielfrg/ui/button"
+;<Tooltip>
+  <TooltipTrigger as={Button} variant="outline">
+    Hover me
+  </TooltipTrigger>
+  <TooltipContent>
+    <p>Tooltip content</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "tooltip.tsx", code: demoCode }]}>
+  <TooltipShowcase client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component        | Description                          |
+| ---------------- | ------------------------------------ |
+| `Tooltip`        | Root provider                        |
+| `TooltipTrigger` | Element that triggers the tooltip    |
+| `TooltipContent` | Styled content with arrow and portal |

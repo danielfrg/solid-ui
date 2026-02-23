@@ -1,0 +1,74 @@
+---
+title: Checkbox
+description: Styled checkbox control with check and indeterminate icons.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/checkbox.tsx?raw"
+import {
+  CheckboxBasic,
+  CheckboxDescriptionDemo,
+  CheckboxDisabled,
+  CheckboxGroup,
+  CheckboxTable,
+} from "../../../demos/styled/checkbox"
+
+# Checkbox
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Checkbox components:
+
+```tsx
+import { Checkbox, CheckboxLabel } from "@danielfrg/ui/checkbox"
+;<Checkbox defaultChecked>
+  <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+</Checkbox>
+```
+
+## Demo
+
+### Basic
+
+<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
+  <CheckboxBasic client:load />
+</StyledDemoBlock>
+
+### Description
+
+<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
+  <CheckboxDescriptionDemo client:load />
+</StyledDemoBlock>
+
+### Disabled
+
+<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
+  <CheckboxDisabled client:load />
+</StyledDemoBlock>
+
+### Group
+
+<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
+  <CheckboxGroup client:load />
+</StyledDemoBlock>
+
+### Table
+
+<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
+  <CheckboxTable client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component             | Description                                      |
+| --------------------- | ------------------------------------------------ |
+| `Checkbox`            | Root with built-in control, input, and indicator |
+| `CheckboxLabel`       | Label text for the checkbox                      |
+| `CheckboxDescription` | Additional descriptive text                      |

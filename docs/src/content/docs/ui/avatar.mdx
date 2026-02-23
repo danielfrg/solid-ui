@@ -1,0 +1,96 @@
+---
+title: Avatar
+description: Styled image element with a fallback for representing users.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/avatar.tsx?raw"
+import {
+  AvatarBasic,
+  AvatarBadge,
+  AvatarBadgeIcon,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarGroupIcon,
+  AvatarSizes,
+  AvatarDropdown,
+} from "../../../demos/styled/avatar"
+
+# Avatar
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Avatar components:
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/ui/avatar"
+;<Avatar>
+  <AvatarImage src="/avatar.png" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+## Demo
+
+### Basic
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarBasic client:load />
+</StyledDemoBlock>
+
+### Badge
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarBadge client:load />
+</StyledDemoBlock>
+
+### Badge with Icon
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarBadgeIcon client:load />
+</StyledDemoBlock>
+
+### Avatar Group
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarGroup client:load />
+</StyledDemoBlock>
+
+### Avatar Group Count
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarGroupCount client:load />
+</StyledDemoBlock>
+
+### Avatar Group with Icon
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarGroupIcon client:load />
+</StyledDemoBlock>
+
+### Sizes
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarSizes client:load />
+</StyledDemoBlock>
+
+### Dropdown
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarDropdown client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component        | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| `Avatar`         | Root container (rounded, overflow hidden)      |
+| `AvatarImage`    | The user image                                 |
+| `AvatarFallback` | Displayed when image is loading or unavailable |

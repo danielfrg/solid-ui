@@ -1,0 +1,75 @@
+---
+title: Badge
+description: Styled badge component for displaying short status text.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/badge.tsx?raw"
+import {
+  BadgeVariants,
+  BadgeWithIcon,
+  BadgeWithSpinner,
+  BadgeLink,
+  BadgeCustomColors,
+} from "../../../demos/styled/badge"
+
+# Badge
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Badge` component:
+
+```tsx
+import { Badge } from "@danielfrg/ui/badge"
+;<Badge variant="outline">Badge</Badge>
+```
+
+## Demo
+
+### Variants
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeVariants client:load />
+</StyledDemoBlock>
+
+### With Icon
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeWithIcon client:load />
+</StyledDemoBlock>
+
+### With Spinner
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeWithSpinner client:load />
+</StyledDemoBlock>
+
+### Link
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeLink client:load />
+</StyledDemoBlock>
+
+### Custom Colors
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeCustomColors client:load />
+</StyledDemoBlock>
+
+## Variants
+
+| Variant       | Description                    |
+| ------------- | ------------------------------ |
+| `default`     | Primary background             |
+| `secondary`   | Muted background               |
+| `outline`     | Bordered with transparent fill |
+| `destructive` | Red destructive styling        |
+| `ghost`       | No background                  |
+| `link`        | Text link appearance           |

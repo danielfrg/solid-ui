@@ -1,0 +1,45 @@
+---
+title: Slider
+description: Styled range input for selecting a numeric value.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/slider.tsx?raw"
+import { SliderShowcase } from "../../../demos/styled/slider"
+
+# Slider
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Slider components:
+
+```tsx
+import { Slider, SliderLabel, SliderValueLabel } from "@danielfrg/ui/slider"
+;<Slider defaultValue={[50]}>
+  <div class="flex justify-between mb-3">
+    <SliderLabel>Volume</SliderLabel>
+    <SliderValueLabel />
+  </div>
+</Slider>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "slider.tsx", code: demoCode }]}>
+  <SliderShowcase client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component          | Description                               |
+| ------------------ | ----------------------------------------- |
+| `Slider`           | Root with built-in track, fill, and thumb |
+| `SliderLabel`      | Text label for the slider                 |
+| `SliderValueLabel` | Displays the current value                |

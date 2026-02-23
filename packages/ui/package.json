@@ -86,6 +86,81 @@
       "solid": "./src/tooltip.tsx",
       "default": "./src/tooltip.tsx"
     },
+    "./accordion": {
+      "types": "./src/accordion.tsx",
+      "solid": "./src/accordion.tsx",
+      "default": "./src/accordion.tsx"
+    },
+    "./avatar": {
+      "types": "./src/avatar.tsx",
+      "solid": "./src/avatar.tsx",
+      "default": "./src/avatar.tsx"
+    },
+    "./checkbox": {
+      "types": "./src/checkbox.tsx",
+      "solid": "./src/checkbox.tsx",
+      "default": "./src/checkbox.tsx"
+    },
+    "./collapsible": {
+      "types": "./src/collapsible.tsx",
+      "solid": "./src/collapsible.tsx",
+      "default": "./src/collapsible.tsx"
+    },
+    "./progress": {
+      "types": "./src/progress.tsx",
+      "solid": "./src/progress.tsx",
+      "default": "./src/progress.tsx"
+    },
+    "./radio-group": {
+      "types": "./src/radio-group.tsx",
+      "solid": "./src/radio-group.tsx",
+      "default": "./src/radio-group.tsx"
+    },
+    "./slider": {
+      "types": "./src/slider.tsx",
+      "solid": "./src/slider.tsx",
+      "default": "./src/slider.tsx"
+    },
+    "./switch": {
+      "types": "./src/switch.tsx",
+      "solid": "./src/switch.tsx",
+      "default": "./src/switch.tsx"
+    },
+    "./tabs": {
+      "types": "./src/tabs.tsx",
+      "solid": "./src/tabs.tsx",
+      "default": "./src/tabs.tsx"
+    },
+    "./toggle-group": {
+      "types": "./src/toggle-group.tsx",
+      "solid": "./src/toggle-group.tsx",
+      "default": "./src/toggle-group.tsx"
+    },
+    "./dialog": {
+      "types": "./src/dialog.tsx",
+      "solid": "./src/dialog.tsx",
+      "default": "./src/dialog.tsx"
+    },
+    "./alert-dialog": {
+      "types": "./src/alert-dialog.tsx",
+      "solid": "./src/alert-dialog.tsx",
+      "default": "./src/alert-dialog.tsx"
+    },
+    "./input": {
+      "types": "./src/input.tsx",
+      "solid": "./src/input.tsx",
+      "default": "./src/input.tsx"
+    },
+    "./dropdown-menu": {
+      "types": "./src/dropdown-menu.tsx",
+      "solid": "./src/dropdown-menu.tsx",
+      "default": "./src/dropdown-menu.tsx"
+    },
+    "./context-menu": {
+      "types": "./src/context-menu.tsx",
+      "solid": "./src/context-menu.tsx",
+      "default": "./src/context-menu.tsx"
+    },
     "./utils": {
       "types": "./src/utils.ts",
       "solid": "./src/utils.ts",

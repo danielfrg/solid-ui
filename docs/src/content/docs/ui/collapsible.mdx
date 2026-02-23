@@ -1,0 +1,59 @@
+---
+title: Collapsible
+description: Styled interactive component that expands and collapses content.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/collapsible.tsx?raw"
+import { CollapsibleBasic, CollapsibleSettingsPanel, CollapsibleFileTree } from "../../../demos/styled/collapsible"
+
+# Collapsible
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the Collapsible components:
+
+```tsx
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@danielfrg/ui/collapsible"
+;<Collapsible>
+  <CollapsibleTrigger class="inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium hover:bg-accent">
+    Toggle
+  </CollapsibleTrigger>
+  <CollapsibleContent>Hidden content revealed on toggle.</CollapsibleContent>
+</Collapsible>
+```
+
+## Demo
+
+### Basic
+
+<StyledDemoBlock files={[{ label: "collapsible.tsx", code: demoCode }]}>
+  <CollapsibleBasic client:load />
+</StyledDemoBlock>
+
+### Settings Panel
+
+<StyledDemoBlock files={[{ label: "collapsible.tsx", code: demoCode }]}>
+  <CollapsibleSettingsPanel client:load />
+</StyledDemoBlock>
+
+### File Tree
+
+<StyledDemoBlock files={[{ label: "collapsible.tsx", code: demoCode }]}>
+  <CollapsibleFileTree client:load />
+</StyledDemoBlock>
+
+## Parts
+
+| Component            | Description                          |
+| -------------------- | ------------------------------------ |
+| `Collapsible`        | Root container with open/close state |
+| `CollapsibleTrigger` | Button that toggles visibility       |
+| `CollapsibleContent` | Content that expands/collapses       |

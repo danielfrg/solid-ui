@@ -77,7 +77,7 @@ const getHref = (item: { slug?: string; link?: string }) => {
             ))}
           </aside>
 
-          <article class="content">
+          <article class="content prose prose-neutral max-w-none prose-headings:text-[var(--docs-text-strong)] prose-p:text-[var(--docs-text)] prose-li:text-[var(--docs-text)] prose-strong:text-[var(--docs-text-strong)] prose-a:text-[var(--docs-text-strong)] prose-a:underline prose-a:underline-offset-4 prose-code:bg-[var(--docs-bg-weak)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[13px] prose-code:font-normal prose-code:before:content-[''] prose-code:after:content-[''] prose-pre:bg-[var(--docs-bg-weak)] prose-pre:rounded-md prose-pre:px-4 prose-pre:py-3 prose-pre:overflow-x-auto prose-pre:relative prose-pre:my-4 prose-pre:text-[15px] prose-pre:leading-6 prose-table:text-[13px] prose-table:w-full prose-table:min-w-full prose-th:font-medium prose-th:text-[var(--docs-text-strong)] prose-td:border-b prose-th:border-b prose-td:border-[var(--docs-border)] prose-th:border-[var(--docs-border)] prose-td:whitespace-nowrap prose-th:whitespace-nowrap">
             <slot />
           </article>
         </div>

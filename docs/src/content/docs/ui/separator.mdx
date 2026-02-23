@@ -1,0 +1,42 @@
+---
+title: Separator
+description: Styled separator for visually dividing content.
+---
+
+import StyledDemoBlock from "../../../components/styled-demo-block.astro"
+import demoCode from "../../../demos/styled/separator.tsx?raw"
+import { SeparatorShowcase } from "../../../demos/styled/separator"
+
+# Separator
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/ui/theme.css";
+```
+
+Import and use the `Separator` component:
+
+```tsx
+import { Separator } from "@danielfrg/ui/separator";
+
+<Separator />
+<Separator orientation="vertical" />
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "separator.tsx", code: demoCode }]}>
+  <SeparatorShowcase client:load />
+</StyledDemoBlock>
+
+## Props
+
+| Prop          | Type                         | Default        |
+| ------------- | ---------------------------- | -------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `decorative`  | `boolean`                    | —              |
+| `class`       | `string`                     | —              |

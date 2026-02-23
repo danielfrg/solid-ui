@@ -1,3 +1,4 @@
+import type { JSX } from "solid-js"
 import { splitProps } from "solid-js"
 import { Popover as PopoverPrimitive } from "@danielfrg/ui-core/popover"
 import type { PopoverContentProps as CorePopoverContentProps } from "@danielfrg/ui-core/popover"
@@ -9,6 +10,7 @@ const PopoverTrigger = PopoverPrimitive.Trigger
 
 type PopoverContentProps = CorePopoverContentProps & {
   class?: string
+  children?: JSX.Element
 }
 
 function PopoverContent(props: PopoverContentProps) {
@@ -19,7 +21,7 @@ function PopoverContent(props: PopoverContentProps) {
       <PopoverPrimitive.Content
         data-slot="popover-content"
         class={cn(
-          "bg-popover text-popover-foreground z-50 w-72 origin-[var(--kb-popover-content-transform-origin)] rounded-md border p-4 shadow-md outline-hidden",
+          "z-50 w-72 origin-[var(--kb-popover-content-transform-origin)] rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95",
           local.class,
         )}
         {...others}
