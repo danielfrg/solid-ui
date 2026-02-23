@@ -1,4 +1,4 @@
-import { Menubar } from "@danielfrg/ui-core/menubar"
+import { Menubar } from "@danielfrg/solid-ui-core/menubar"
 import styles from "./index.module.css"
 
 export function DemoMenubarHero() {

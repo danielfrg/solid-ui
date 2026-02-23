@@ -1,4 +1,4 @@
-import * as Toast from "@danielfrg/ui-core/toast"
+import * as Toast from "@danielfrg/solid-ui-core/toast"
 import styles from "./index.module.css"
 
 let count = 0

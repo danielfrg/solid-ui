@@ -6,7 +6,7 @@ import {
   InputField,
   InputLabel,
   InputTextArea,
-} from "@danielfrg/ui"
+} from "@danielfrg/solid-ui"
 
 const selectClass =
   "border-input bg-transparent h-9 w-full rounded-md border px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"

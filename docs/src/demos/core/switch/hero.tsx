@@ -1,4 +1,4 @@
-import * as Switch from "@danielfrg/ui-core/switch"
+import * as Switch from "@danielfrg/solid-ui-core/switch"
 import styles from "./index.module.css"
 
 export function DemoSwitchHero() {

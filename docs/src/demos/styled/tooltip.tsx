@@ -1,5 +1,5 @@
-import { Button } from "@danielfrg/ui/button"
-import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/ui/tooltip"
+import { Button } from "@danielfrg/solid-ui/button"
+import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/solid-ui/tooltip"
 import { Plus } from "lucide-solid"
 
 export function TooltipShowcase() {

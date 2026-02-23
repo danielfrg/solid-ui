@@ -1,4 +1,4 @@
-import { NavigationMenu } from "@danielfrg/ui-core/navigation-menu"
+import { NavigationMenu } from "@danielfrg/solid-ui-core/navigation-menu"
 import styles from "./index.module.css"
 
 export function DemoNavigationMenuHero() {

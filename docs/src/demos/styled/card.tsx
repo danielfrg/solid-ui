@@ -1,7 +1,7 @@
-import { Button } from "@danielfrg/ui/button"
-import { Badge } from "@danielfrg/ui/badge"
-import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/ui/avatar"
-import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter } from "@danielfrg/ui/card"
+import { Button } from "@danielfrg/solid-ui/button"
+import { Badge } from "@danielfrg/solid-ui/badge"
+import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
+import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter } from "@danielfrg/solid-ui/card"
 
 function avatarUrl(seed: number) {
   return `https://avatar.vercel.sh/${seed}`

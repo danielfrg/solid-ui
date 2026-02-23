@@ -1,4 +1,4 @@
-import * as Slider from "@danielfrg/ui-core/slider"
+import * as Slider from "@danielfrg/solid-ui-core/slider"
 import styles from "./index.module.css"
 
 export function DemoSliderHero() {

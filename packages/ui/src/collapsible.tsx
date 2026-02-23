@@ -1,11 +1,11 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Collapsible as CollapsiblePrimitive } from "@danielfrg/ui-core/collapsible"
+import { Collapsible as CollapsiblePrimitive } from "@danielfrg/solid-ui-core/collapsible"
 import type {
   CollapsibleRootProps as CoreCollapsibleRootProps,
   CollapsibleTriggerProps as CoreCollapsibleTriggerProps,
   CollapsibleContentProps as CoreCollapsibleContentProps,
-} from "@danielfrg/ui-core/collapsible"
+} from "@danielfrg/solid-ui-core/collapsible"
 import { cn } from "./utils"
 
 type CollapsibleProps = CoreCollapsibleRootProps & {

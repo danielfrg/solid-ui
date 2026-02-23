@@ -1,7 +1,7 @@
 import { For, createSignal } from "solid-js"
-import { Badge } from "@danielfrg/ui/badge"
-import { Button } from "@danielfrg/ui/button"
-import { Checkbox } from "@danielfrg/ui/checkbox"
+import { Badge } from "@danielfrg/solid-ui/badge"
+import { Button } from "@danielfrg/solid-ui/button"
+import { Checkbox } from "@danielfrg/solid-ui/checkbox"
 import {
   Table,
   TableHeader,
@@ -11,7 +11,7 @@ import {
   TableRow,
   TableCell,
   TableCaption,
-} from "@danielfrg/ui/table"
+} from "@danielfrg/solid-ui/table"
 
 const invoices = [
   { invoice: "INV001", status: "Paid", method: "Credit Card", amount: "$250.00" },

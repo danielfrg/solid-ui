@@ -1,6 +1,6 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { ContextMenu as ContextMenuPrimitive } from "@danielfrg/ui-core/context-menu"
+import { ContextMenu as ContextMenuPrimitive } from "@danielfrg/solid-ui-core/context-menu"
 import type {
   ContextMenuRootProps as CoreContextMenuRootProps,
   ContextMenuTriggerProps as CoreContextMenuTriggerProps,
@@ -15,7 +15,7 @@ import type {
   ContextMenuSubmenuRootProps as CoreContextMenuSubmenuRootProps,
   ContextMenuSubmenuTriggerProps as CoreContextMenuSubmenuTriggerProps,
   ContextMenuSubmenuPopupProps as CoreContextMenuSubmenuPopupProps,
-} from "@danielfrg/ui-core/context-menu"
+} from "@danielfrg/solid-ui-core/context-menu"
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly

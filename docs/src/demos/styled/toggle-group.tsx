@@ -1,4 +1,4 @@
-import { ToggleGroup, ToggleGroupItem } from "@danielfrg/ui/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@danielfrg/solid-ui/toggle-group"
 import { AlignCenter, AlignLeft, AlignRight, Bold, Italic, Underline } from "lucide-solid"
 
 export function ToggleGroupShowcase() {

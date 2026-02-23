@@ -1,12 +1,12 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Accordion as AccordionPrimitive } from "@danielfrg/ui-core/accordion"
+import { Accordion as AccordionPrimitive } from "@danielfrg/solid-ui-core/accordion"
 import type {
   AccordionRootProps as CoreAccordionRootProps,
   AccordionItemProps as CoreAccordionItemProps,
   AccordionTriggerProps as CoreAccordionTriggerProps,
   AccordionContentProps as CoreAccordionContentProps,
-} from "@danielfrg/ui-core/accordion"
+} from "@danielfrg/solid-ui-core/accordion"
 import { cn } from "./utils"
 
 type AccordionProps = CoreAccordionRootProps & {

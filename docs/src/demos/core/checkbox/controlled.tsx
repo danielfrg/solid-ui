@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js"
 
-import * as Checkbox from "@danielfrg/ui-core/checkbox"
+import * as Checkbox from "@danielfrg/solid-ui-core/checkbox"
 import styles from "./index.module.css"
 
 export function DemoCheckboxControlled() {

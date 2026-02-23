@@ -1,4 +1,4 @@
-import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "@danielfrg/ui/radio-group"
+import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "@danielfrg/solid-ui/radio-group"
 
 export function RadioGroupShowcase() {
   return (

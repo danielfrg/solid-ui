@@ -1,9 +1,9 @@
-/* @danielfrg/ui Docs — Single CSS entrypoint
+/* @danielfrg/solid-ui Docs — Single CSS entrypoint
    Tailwind v4 + shadcn theme + docs layout styles */
 
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@danielfrg/ui/theme.css";
+@import "@danielfrg/solid-ui/theme.css";
 @import "../demos/theme.css";
 @plugin "@tailwindcss/typography";
 

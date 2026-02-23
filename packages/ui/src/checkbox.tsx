@@ -1,7 +1,7 @@
 import type { Component, JSX } from "solid-js"
 import { Match, splitProps, Switch } from "solid-js"
-import { Checkbox as CheckboxPrimitive } from "@danielfrg/ui-core/checkbox"
-import type { CheckboxRootProps as CoreCheckboxRootProps } from "@danielfrg/ui-core/checkbox"
+import { Checkbox as CheckboxPrimitive } from "@danielfrg/solid-ui-core/checkbox"
+import type { CheckboxRootProps as CoreCheckboxRootProps } from "@danielfrg/solid-ui-core/checkbox"
 import { cn } from "./utils"
 
 type CheckboxProps = CoreCheckboxRootProps & {

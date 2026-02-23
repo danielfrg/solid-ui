@@ -1,5 +1,5 @@
 import { createSignal, onCleanup, onMount } from "solid-js"
-import * as Progress from "@danielfrg/ui-core/progress"
+import * as Progress from "@danielfrg/solid-ui-core/progress"
 import styles from "./index.module.css"
 
 export function DemoProgressHero() {

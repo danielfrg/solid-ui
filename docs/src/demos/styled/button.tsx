@@ -1,4 +1,4 @@
-import { Button } from "@danielfrg/ui/button"
+import { Button } from "@danielfrg/solid-ui/button"
 import { ArrowRight, Check, Loader2, Mail, Plus, Send, Trash2 } from "lucide-solid"
 
 export function ButtonShowcase() {

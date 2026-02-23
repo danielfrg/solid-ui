@@ -1,6 +1,6 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Input as InputPrimitive } from "@danielfrg/ui-core/input"
+import { Input as InputPrimitive } from "@danielfrg/solid-ui-core/input"
 import type {
   InputRootProps as CoreInputRootProps,
   InputFieldProps as CoreInputFieldProps,
@@ -8,7 +8,7 @@ import type {
   InputLabelProps as CoreInputLabelProps,
   InputDescriptionProps as CoreInputDescriptionProps,
   InputErrorMessageProps as CoreInputErrorMessageProps,
-} from "@danielfrg/ui-core/input"
+} from "@danielfrg/solid-ui-core/input"
 import { cn } from "./utils"
 
 type InputProps = CoreInputRootProps & {

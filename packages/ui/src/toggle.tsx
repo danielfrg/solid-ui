@@ -1,8 +1,8 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
 import { cva, type VariantProps } from "class-variance-authority"
-import { ToggleButton as TogglePrimitive } from "@danielfrg/ui-core/toggle-button"
-import type { ToggleButtonRootProps } from "@danielfrg/ui-core/toggle-button"
+import { ToggleButton as TogglePrimitive } from "@danielfrg/solid-ui-core/toggle-button"
+import type { ToggleButtonRootProps } from "@danielfrg/solid-ui-core/toggle-button"
 import { cn } from "./utils"
 
 const toggleVariants = cva(

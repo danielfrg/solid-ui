@@ -1,4 +1,4 @@
-import { Skeleton } from "@danielfrg/ui/skeleton"
+import { Skeleton } from "@danielfrg/solid-ui/skeleton"
 
 export function SkeletonShowcase() {
   return (

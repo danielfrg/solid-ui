@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js"
-import { Slider } from "@danielfrg/ui"
+import { Slider } from "@danielfrg/solid-ui"
 
 export function SliderShowcase() {
   const [value, setValue] = createSignal([0.3, 0.7])

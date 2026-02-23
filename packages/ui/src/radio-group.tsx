@@ -1,10 +1,10 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { RadioGroup as RadioGroupPrimitive } from "@danielfrg/ui-core/radio-group"
+import { RadioGroup as RadioGroupPrimitive } from "@danielfrg/solid-ui-core/radio-group"
 import type {
   RadioGroupRootProps as CoreRadioGroupRootProps,
   RadioGroupItemProps as CoreRadioGroupItemProps,
-} from "@danielfrg/ui-core/radio-group"
+} from "@danielfrg/solid-ui-core/radio-group"
 import { cn } from "./utils"
 
 type RadioGroupProps = CoreRadioGroupRootProps & {

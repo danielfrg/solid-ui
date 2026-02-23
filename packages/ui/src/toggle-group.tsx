@@ -1,11 +1,11 @@
 import type { Component, JSX } from "solid-js"
 import { createContext, splitProps, useContext } from "solid-js"
 import type { VariantProps } from "class-variance-authority"
-import { ToggleGroup as ToggleGroupPrimitive } from "@danielfrg/ui-core/toggle-group"
+import { ToggleGroup as ToggleGroupPrimitive } from "@danielfrg/solid-ui-core/toggle-group"
 import type {
   ToggleGroupRootProps as CoreToggleGroupRootProps,
   ToggleGroupItemProps as CoreToggleGroupItemProps,
-} from "@danielfrg/ui-core/toggle-group"
+} from "@danielfrg/solid-ui-core/toggle-group"
 import { cn } from "./utils"
 import { toggleVariants } from "./toggle"
 

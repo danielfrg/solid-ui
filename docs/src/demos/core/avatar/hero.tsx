@@ -1,4 +1,4 @@
-import * as Avatar from "@danielfrg/ui-core/avatar"
+import * as Avatar from "@danielfrg/solid-ui-core/avatar"
 import styles from "./index.module.css"
 
 export function DemoAvatarHero() {

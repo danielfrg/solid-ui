@@ -21,7 +21,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@danielfrg/ui"
+} from "@danielfrg/solid-ui"
 
 const IconStub = (props: { class?: string }) => (
   <span

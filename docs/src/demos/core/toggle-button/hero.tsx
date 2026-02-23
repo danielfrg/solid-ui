@@ -1,5 +1,5 @@
 import type { JSX } from "solid-js"
-import * as ToggleButton from "@danielfrg/ui-core/toggle-button"
+import * as ToggleButton from "@danielfrg/solid-ui-core/toggle-button"
 import styles from "./index.module.css"
 
 export function DemoToggleButtonHero() {

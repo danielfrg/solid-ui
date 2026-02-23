@@ -1,4 +1,4 @@
-import * as NumberField from "@danielfrg/ui-core/number-field"
+import * as NumberField from "@danielfrg/solid-ui-core/number-field"
 import styles from "./index.module.css"
 
 export function DemoNumberFieldHero() {

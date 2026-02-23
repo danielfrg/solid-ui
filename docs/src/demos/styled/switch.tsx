@@ -1,4 +1,4 @@
-import { Switch, SwitchLabel } from "@danielfrg/ui"
+import { Switch, SwitchLabel } from "@danielfrg/solid-ui"
 
 export function SwitchShowcase() {
   return (

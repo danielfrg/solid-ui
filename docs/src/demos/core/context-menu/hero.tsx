@@ -1,4 +1,4 @@
-import { ContextMenu } from "@danielfrg/ui-core/context-menu"
+import { ContextMenu } from "@danielfrg/solid-ui-core/context-menu"
 import styles from "./index.module.css"
 
 export function DemoContextMenuHero() {

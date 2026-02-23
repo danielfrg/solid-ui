@@ -1,5 +1,5 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@danielfrg/ui/accordion"
-import { Card, CardContent, CardHeader, CardTitle } from "@danielfrg/ui/card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@danielfrg/solid-ui/accordion"
+import { Card, CardContent, CardHeader, CardTitle } from "@danielfrg/solid-ui/card"
 
 const items = [
   {

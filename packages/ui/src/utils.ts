@@ -1,1 +1,1 @@
-export { cn } from "@danielfrg/ui-core/utils"
+export { cn } from "@danielfrg/solid-ui-core/utils"

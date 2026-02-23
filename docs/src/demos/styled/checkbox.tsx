@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js"
-import { Checkbox, CheckboxLabel, CheckboxDescription } from "@danielfrg/ui/checkbox"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@danielfrg/ui/table"
+import { Checkbox, CheckboxLabel, CheckboxDescription } from "@danielfrg/solid-ui/checkbox"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@danielfrg/solid-ui/table"
 
 const tableData = [
   { id: "1", name: "Sarah Chen", email: "sarah.chen@example.com", role: "Admin" },

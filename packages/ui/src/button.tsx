@@ -1,7 +1,7 @@
 import type { Component, ComponentProps, JSX } from "solid-js"
 import { splitProps } from "solid-js"
 import { cva, type VariantProps } from "class-variance-authority"
-import { Button as ButtonPrimitive } from "@danielfrg/ui-core/button"
+import { Button as ButtonPrimitive } from "@danielfrg/solid-ui-core/button"
 import { cn } from "./utils"
 
 const buttonVariants = cva(

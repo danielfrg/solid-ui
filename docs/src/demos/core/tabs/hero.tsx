@@ -1,4 +1,4 @@
-import * as Tabs from "@danielfrg/ui-core/tabs"
+import * as Tabs from "@danielfrg/solid-ui-core/tabs"
 import styles from "./index.module.css"
 
 export function DemoTabsHero() {

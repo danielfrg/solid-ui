@@ -1,4 +1,4 @@
-import * as Select from "@danielfrg/ui-core/select"
+import * as Select from "@danielfrg/solid-ui-core/select"
 import styles from "./index.module.css"
 
 const FRUITS = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]

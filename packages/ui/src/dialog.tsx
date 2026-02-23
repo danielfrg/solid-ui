@@ -1,6 +1,6 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Dialog as DialogPrimitive } from "@danielfrg/ui-core/dialog"
+import { Dialog as DialogPrimitive } from "@danielfrg/solid-ui-core/dialog"
 import type {
   DialogRootProps as CoreDialogRootProps,
   DialogContentProps as CoreDialogContentProps,
@@ -9,7 +9,7 @@ import type {
   DialogDescriptionProps as CoreDialogDescriptionProps,
   DialogCloseButtonProps as CoreDialogCloseButtonProps,
   DialogPortalProps as CoreDialogPortalProps,
-} from "@danielfrg/ui-core/dialog"
+} from "@danielfrg/solid-ui-core/dialog"
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing

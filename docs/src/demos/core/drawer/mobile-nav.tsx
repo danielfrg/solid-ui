@@ -1,5 +1,5 @@
-import * as Drawer from "@danielfrg/ui-core/drawer"
-import * as ScrollArea from "@danielfrg/ui-core/scroll-area"
+import * as Drawer from "@danielfrg/solid-ui-core/drawer"
+import * as ScrollArea from "@danielfrg/solid-ui-core/scroll-area"
 import styles from "./index.module.css"
 
 const NAV_ITEMS = [

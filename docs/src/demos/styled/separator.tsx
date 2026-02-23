@@ -1,4 +1,4 @@
-import { Separator } from "@danielfrg/ui/separator"
+import { Separator } from "@danielfrg/solid-ui/separator"
 
 export function SeparatorShowcase() {
   return (
@@ -7,7 +7,7 @@ export function SeparatorShowcase() {
         <h3 class="text-sm font-semibold">Horizontal</h3>
         <div class="flex max-w-sm flex-col gap-4 text-sm">
           <div class="flex flex-col gap-1.5">
-            <div class="leading-none font-medium">danielfrg/ui</div>
+            <div class="leading-none font-medium">danielfrg/solid-ui</div>
             <div class="text-muted-foreground">An open-source UI component library for SolidJS.</div>
           </div>
           <Separator />

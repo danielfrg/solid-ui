@@ -1,5 +1,5 @@
-import * as Fieldset from "@danielfrg/ui-core/fieldset"
-import * as Field from "@danielfrg/ui-core/field"
+import * as Fieldset from "@danielfrg/solid-ui-core/fieldset"
+import * as Field from "@danielfrg/solid-ui-core/field"
 import styles from "./index.module.css"
 
 export function DemoFieldsetHero() {

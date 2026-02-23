@@ -1,4 +1,4 @@
-import * as Combobox from "@danielfrg/ui-core/combobox"
+import * as Combobox from "@danielfrg/solid-ui-core/combobox"
 import styles from "./index.module.css"
 
 const FRUITS = ["Apple", "Banana", "Blueberry", "Grapes", "Pineapple"]

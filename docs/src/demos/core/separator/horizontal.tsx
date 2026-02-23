@@ -1,4 +1,4 @@
-import { Separator } from "@danielfrg/ui-core/separator"
+import { Separator } from "@danielfrg/solid-ui-core/separator"
 import styles from "./index.module.css"
 
 export function DemoSeparatorHorizontal() {

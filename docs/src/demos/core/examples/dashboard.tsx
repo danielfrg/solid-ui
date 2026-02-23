@@ -1,11 +1,11 @@
 import { createSignal, For, Show, type JSX } from "solid-js"
-import * as Avatar from "@danielfrg/ui-core/avatar"
-import { Button } from "@danielfrg/ui-core/button"
-import * as Checkbox from "@danielfrg/ui-core/checkbox"
-import * as Switch from "@danielfrg/ui-core/switch"
-import { Separator } from "@danielfrg/ui-core/separator"
-import { Menu } from "@danielfrg/ui-core/menu"
-import * as Input from "@danielfrg/ui-core/input"
+import * as Avatar from "@danielfrg/solid-ui-core/avatar"
+import { Button } from "@danielfrg/solid-ui-core/button"
+import * as Checkbox from "@danielfrg/solid-ui-core/checkbox"
+import * as Switch from "@danielfrg/solid-ui-core/switch"
+import { Separator } from "@danielfrg/solid-ui-core/separator"
+import { Menu } from "@danielfrg/solid-ui-core/menu"
+import * as Input from "@danielfrg/solid-ui-core/input"
 import {
   ArrowUp as ArrowUpIcon,
   ArrowDown as ArrowDownIcon,

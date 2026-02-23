@@ -1,4 +1,4 @@
-import * as Collapsible from "@danielfrg/ui-core/collapsible"
+import * as Collapsible from "@danielfrg/solid-ui-core/collapsible"
 import styles from "./index.module.css"
 
 export function DemoCollapsibleHero() {

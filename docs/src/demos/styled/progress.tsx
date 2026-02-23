@@ -1,6 +1,6 @@
 import { createSignal, onCleanup, onMount, For } from "solid-js"
-import { Progress, ProgressLabel, ProgressValueLabel } from "@danielfrg/ui/progress"
-import { Slider } from "@danielfrg/ui/slider"
+import { Progress, ProgressLabel, ProgressValueLabel } from "@danielfrg/solid-ui/progress"
+import { Slider } from "@danielfrg/solid-ui/slider"
 
 export function ProgressShowcase() {
   return (

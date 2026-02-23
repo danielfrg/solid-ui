@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js"
-import * as Autocomplete from "@danielfrg/ui-core/autocomplete"
+import * as Autocomplete from "@danielfrg/solid-ui-core/autocomplete"
 import styles from "./index.module.css"
 
 interface Fruit {

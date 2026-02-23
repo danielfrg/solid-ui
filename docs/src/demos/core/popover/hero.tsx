@@ -1,4 +1,4 @@
-import * as Popover from "@danielfrg/ui-core/popover"
+import * as Popover from "@danielfrg/solid-ui-core/popover"
 import styles from "./index.module.css"
 
 export function DemoPopoverHero() {

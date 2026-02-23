@@ -1,11 +1,11 @@
-import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/ui/avatar"
+import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@danielfrg/ui/dropdown-menu"
+} from "@danielfrg/solid-ui/dropdown-menu"
 import { Check, LogOut, Settings, UserPlus } from "lucide-solid"
 
 const avatarUrl = (id: number) => `https://i.pravatar.cc/128?img=${id}`

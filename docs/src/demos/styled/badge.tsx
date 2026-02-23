@@ -1,4 +1,4 @@
-import { Badge } from "@danielfrg/ui/badge"
+import { Badge } from "@danielfrg/solid-ui/badge"
 import { Check, Loader2, Mail } from "lucide-solid"
 
 export function BadgeVariants() {

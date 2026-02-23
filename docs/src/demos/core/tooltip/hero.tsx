@@ -1,4 +1,4 @@
-import * as Tooltip from "@danielfrg/ui-core/tooltip"
+import * as Tooltip from "@danielfrg/solid-ui-core/tooltip"
 import styles from "./index.module.css"
 
 export function DemoTooltipHero() {

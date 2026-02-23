@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js"
-import { Button } from "@danielfrg/ui-core/button"
+import { Button } from "@danielfrg/solid-ui-core/button"
 import styles from "./index.module.css"
 
 export function DemoButtonLoading() {

@@ -1,6 +1,6 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Menu as MenuPrimitive } from "@danielfrg/ui-core/menu"
+import { Menu as MenuPrimitive } from "@danielfrg/solid-ui-core/menu"
 import type {
   MenuRootProps as CoreMenuRootProps,
   MenuPopupProps as CoreMenuPopupProps,
@@ -14,7 +14,7 @@ import type {
   MenuSubmenuRootProps as CoreMenuSubmenuRootProps,
   MenuSubmenuTriggerProps as CoreMenuSubmenuTriggerProps,
   MenuSubmenuPopupProps as CoreMenuSubmenuPopupProps,
-} from "@danielfrg/ui-core/menu"
+} from "@danielfrg/solid-ui-core/menu"
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly to preserve typing

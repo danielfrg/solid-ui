@@ -1,9 +1,9 @@
 import { createSignal } from "solid-js"
-import { Button } from "@danielfrg/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@danielfrg/ui/card"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@danielfrg/ui/collapsible"
-import { Input, InputField, InputLabel } from "@danielfrg/ui/input"
-import { Tabs, TabsList, TabsTrigger } from "@danielfrg/ui/tabs"
+import { Button } from "@danielfrg/solid-ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@danielfrg/solid-ui/card"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@danielfrg/solid-ui/collapsible"
+import { Input, InputField, InputLabel } from "@danielfrg/solid-ui/input"
+import { Tabs, TabsList, TabsTrigger } from "@danielfrg/solid-ui/tabs"
 
 type FileTreeItem = { name: string; items?: FileTreeItem[] }
 

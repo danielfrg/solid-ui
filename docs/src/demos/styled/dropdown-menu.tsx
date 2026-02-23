@@ -14,8 +14,8 @@ import {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
-} from "@danielfrg/ui/dropdown-menu"
-import { Button } from "@danielfrg/ui/button"
+} from "@danielfrg/solid-ui/dropdown-menu"
+import { Button } from "@danielfrg/solid-ui/button"
 
 export function DropdownMenuShowcase() {
   const [showStatusBar, setShowStatusBar] = createSignal(true)

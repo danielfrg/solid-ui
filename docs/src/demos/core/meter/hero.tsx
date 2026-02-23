@@ -1,4 +1,4 @@
-import * as Meter from "@danielfrg/ui-core/meter"
+import * as Meter from "@danielfrg/solid-ui-core/meter"
 import styles from "./index.module.css"
 
 export function DemoMeterHero() {

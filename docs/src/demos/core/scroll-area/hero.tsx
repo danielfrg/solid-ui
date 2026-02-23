@@ -1,4 +1,4 @@
-import * as ScrollArea from "@danielfrg/ui-core/scroll-area"
+import * as ScrollArea from "@danielfrg/solid-ui-core/scroll-area"
 import styles from "./index.module.css"
 
 export function DemoScrollAreaHero() {

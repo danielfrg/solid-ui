@@ -1,4 +1,4 @@
-import * as Accordion from "@danielfrg/ui-core/accordion"
+import * as Accordion from "@danielfrg/solid-ui-core/accordion"
 import styles from "./index.module.css"
 
 export function DemoAccordionHero() {

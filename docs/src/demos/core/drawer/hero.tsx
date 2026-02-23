@@ -1,4 +1,4 @@
-import * as Drawer from "@danielfrg/ui-core/drawer"
+import * as Drawer from "@danielfrg/solid-ui-core/drawer"
 import styles from "./index.module.css"
 
 export function DemoDrawerHero() {

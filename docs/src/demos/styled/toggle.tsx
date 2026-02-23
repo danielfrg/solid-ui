@@ -1,4 +1,4 @@
-import { Toggle } from "@danielfrg/ui/toggle"
+import { Toggle } from "@danielfrg/solid-ui/toggle"
 import { Bold, Italic, Underline } from "lucide-solid"
 
 export function ToggleShowcase() {

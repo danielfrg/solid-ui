@@ -1,11 +1,11 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Avatar as AvatarPrimitive } from "@danielfrg/ui-core/avatar"
+import { Avatar as AvatarPrimitive } from "@danielfrg/solid-ui-core/avatar"
 import type {
   AvatarRootProps as CoreAvatarRootProps,
   AvatarImageProps as CoreAvatarImageProps,
   AvatarFallbackProps as CoreAvatarFallbackProps,
-} from "@danielfrg/ui-core/avatar"
+} from "@danielfrg/solid-ui-core/avatar"
 import { cn } from "./utils"
 
 type AvatarProps = CoreAvatarRootProps & {

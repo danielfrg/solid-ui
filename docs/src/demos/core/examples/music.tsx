@@ -1,9 +1,9 @@
 import { For, type JSX } from "solid-js"
-import { Button } from "@danielfrg/ui-core/button"
-import * as Avatar from "@danielfrg/ui-core/avatar"
-import * as Checkbox from "@danielfrg/ui-core/checkbox"
-import * as Switch from "@danielfrg/ui-core/switch"
-import { Separator } from "@danielfrg/ui-core/separator"
+import { Button } from "@danielfrg/solid-ui-core/button"
+import * as Avatar from "@danielfrg/solid-ui-core/avatar"
+import * as Checkbox from "@danielfrg/solid-ui-core/checkbox"
+import * as Switch from "@danielfrg/solid-ui-core/switch"
+import { Separator } from "@danielfrg/solid-ui-core/separator"
 import {
   Search as MagnifyingGlassIcon,
   Heart as HeartIconLucide,

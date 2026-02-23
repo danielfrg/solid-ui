@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js"
-import * as AlertDialog from "@danielfrg/ui-core/alert-dialog"
-import * as Dialog from "@danielfrg/ui-core/dialog"
+import * as AlertDialog from "@danielfrg/solid-ui-core/alert-dialog"
+import * as Dialog from "@danielfrg/solid-ui-core/dialog"
 import styles from "./index.module.css"
 
 export function DemoAlertDialogCloseConfirmation() {

@@ -1,4 +1,4 @@
-import * as Input from "@danielfrg/ui-core/input"
+import * as Input from "@danielfrg/solid-ui-core/input"
 import styles from "./index.module.css"
 
 export function DemoInputHero() {

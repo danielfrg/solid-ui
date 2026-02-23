@@ -1,4 +1,4 @@
-import { Menu } from "@danielfrg/ui-core/menu"
+import { Menu } from "@danielfrg/solid-ui-core/menu"
 import styles from "./index.module.css"
 
 export function DemoMenuHero() {

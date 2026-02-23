@@ -1,7 +1,7 @@
 import type { JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Tooltip as TooltipPrimitive } from "@danielfrg/ui-core/tooltip"
-import type { TooltipContentProps as CoreTooltipContentProps } from "@danielfrg/ui-core/tooltip"
+import { Tooltip as TooltipPrimitive } from "@danielfrg/solid-ui-core/tooltip"
+import type { TooltipContentProps as CoreTooltipContentProps } from "@danielfrg/solid-ui-core/tooltip"
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing

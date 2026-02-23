@@ -1,5 +1,5 @@
 {
-  "name": "@danielfrg/ui-core",
+  "name": "@danielfrg/solid-ui-core",
   "version": "0.0.1",
   "description": "A SolidJS collection of unstyled, headless UI components",
   "type": "module",
@@ -7,11 +7,11 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielfrg/ui.git",
+    "url": "https://github.com/danielfrg/solid-ui.git",
     "directory": "packages/ui"
   },
-  "homepage": "https://github.com/danielfrg/ui",
-  "bugs": "https://github.com/danielfrg/ui/issues",
+  "homepage": "https://github.com/danielfrg/solid-ui",
+  "bugs": "https://github.com/danielfrg/solid-ui/issues",
   "keywords": [
     "solid",
     "solidjs",

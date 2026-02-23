@@ -1,4 +1,4 @@
-import { Button } from "@danielfrg/ui/button"
+import { Button } from "@danielfrg/solid-ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,8 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@danielfrg/ui/dialog"
-import { Popover, PopoverTrigger, PopoverContent } from "@danielfrg/ui/popover"
+} from "@danielfrg/solid-ui/dialog"
+import { Popover, PopoverTrigger, PopoverContent } from "@danielfrg/solid-ui/popover"
 
 export function PopoverShowcase() {
   return (

@@ -1,5 +1,5 @@
-import { Alert, AlertAction, AlertTitle, AlertDescription } from "@danielfrg/ui/alert"
-import { Button } from "@danielfrg/ui/button"
+import { Alert, AlertAction, AlertTitle, AlertDescription } from "@danielfrg/solid-ui/alert"
+import { Button } from "@danielfrg/solid-ui/button"
 import { AlertCircle, Info, Terminal } from "lucide-solid"
 
 export function AlertBasic() {

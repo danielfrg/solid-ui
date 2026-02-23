@@ -1,5 +1,5 @@
 import type { JSX } from "solid-js"
-import * as ToggleGroup from "@danielfrg/ui-core/toggle-group"
+import * as ToggleGroup from "@danielfrg/solid-ui-core/toggle-group"
 import styles from "./index.module.css"
 
 export function DemoToggleGroupHero() {

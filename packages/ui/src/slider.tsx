@@ -1,7 +1,7 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Slider as SliderPrimitive } from "@danielfrg/ui-core/slider"
-import type { SliderRootProps as CoreSliderRootProps } from "@danielfrg/ui-core/slider"
+import { Slider as SliderPrimitive } from "@danielfrg/solid-ui-core/slider"
+import type { SliderRootProps as CoreSliderRootProps } from "@danielfrg/solid-ui-core/slider"
 import { cn } from "./utils"
 
 type SliderProps = CoreSliderRootProps & {

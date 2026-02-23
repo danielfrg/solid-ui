@@ -1,7 +1,7 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Switch as SwitchPrimitive } from "@danielfrg/ui-core/switch"
-import type { SwitchRootProps as CoreSwitchRootProps } from "@danielfrg/ui-core/switch"
+import { Switch as SwitchPrimitive } from "@danielfrg/solid-ui-core/switch"
+import type { SwitchRootProps as CoreSwitchRootProps } from "@danielfrg/solid-ui-core/switch"
 import { cn } from "./utils"
 
 type SwitchProps = CoreSwitchRootProps & {

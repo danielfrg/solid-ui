@@ -1,7 +1,7 @@
 import { createSignal, For, type JSX } from "solid-js"
-import { Button } from "@danielfrg/ui-core/button"
-import { Separator } from "@danielfrg/ui-core/separator"
-import * as Switch from "@danielfrg/ui-core/switch"
+import { Button } from "@danielfrg/solid-ui-core/button"
+import { Separator } from "@danielfrg/solid-ui-core/separator"
+import * as Switch from "@danielfrg/solid-ui-core/switch"
 import {
   Bookmark as BookmarkIconLucide,
   Search as MagnifyingGlassIcon,

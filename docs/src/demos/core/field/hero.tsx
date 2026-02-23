@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js"
-import * as Field from "@danielfrg/ui-core/field"
+import * as Field from "@danielfrg/solid-ui-core/field"
 import styles from "./index.module.css"
 
 export function DemoFieldHero() {

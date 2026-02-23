@@ -1,5 +1,5 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@danielfrg/ui/tabs"
-import { Button } from "@danielfrg/ui/button"
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@danielfrg/solid-ui/tabs"
+import { Button } from "@danielfrg/solid-ui/button"
 
 export function TabsShowcase() {
   return (

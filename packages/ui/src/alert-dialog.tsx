@@ -1,6 +1,6 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { AlertDialog as AlertDialogPrimitive } from "@danielfrg/ui-core/alert-dialog"
+import { AlertDialog as AlertDialogPrimitive } from "@danielfrg/solid-ui-core/alert-dialog"
 import type {
   AlertDialogRootProps as CoreAlertDialogRootProps,
   AlertDialogContentProps as CoreAlertDialogContentProps,
@@ -8,7 +8,7 @@ import type {
   AlertDialogTitleProps as CoreAlertDialogTitleProps,
   AlertDialogDescriptionProps as CoreAlertDialogDescriptionProps,
   AlertDialogCloseButtonProps as CoreAlertDialogCloseButtonProps,
-} from "@danielfrg/ui-core/alert-dialog"
+} from "@danielfrg/solid-ui-core/alert-dialog"
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing

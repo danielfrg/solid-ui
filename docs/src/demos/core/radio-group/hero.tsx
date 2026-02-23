@@ -1,4 +1,4 @@
-import * as RadioGroup from "@danielfrg/ui-core/radio-group"
+import * as RadioGroup from "@danielfrg/solid-ui-core/radio-group"
 import styles from "./index.module.css"
 
 export function DemoRadioGroupHero() {

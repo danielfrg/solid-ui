@@ -1,4 +1,4 @@
-import * as Dialog from "@danielfrg/ui-core/dialog"
+import * as Dialog from "@danielfrg/solid-ui-core/dialog"
 import styles from "./index.module.css"
 
 export function DemoDialogHero() {

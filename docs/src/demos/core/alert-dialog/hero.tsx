@@ -1,4 +1,4 @@
-import * as AlertDialog from "@danielfrg/ui-core/alert-dialog"
+import * as AlertDialog from "@danielfrg/solid-ui-core/alert-dialog"
 import styles from "./index.module.css"
 
 export function DemoAlertDialogHero() {

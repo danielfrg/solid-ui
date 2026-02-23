@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js"
-import * as Form from "@danielfrg/ui-core/form"
-import * as Field from "@danielfrg/ui-core/field"
+import * as Form from "@danielfrg/solid-ui-core/form"
+import * as Field from "@danielfrg/solid-ui-core/field"
 import styles from "./index.module.css"
 
 export function DemoFormHero() {

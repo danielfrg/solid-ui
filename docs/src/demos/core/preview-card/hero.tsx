@@ -1,4 +1,4 @@
-import * as PreviewCard from "@danielfrg/ui-core/preview-card"
+import * as PreviewCard from "@danielfrg/solid-ui-core/preview-card"
 import styles from "./index.module.css"
 
 export function DemoPreviewCardHero() {

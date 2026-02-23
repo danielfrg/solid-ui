@@ -1,12 +1,12 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { Tabs as TabsPrimitive } from "@danielfrg/ui-core/tabs"
+import { Tabs as TabsPrimitive } from "@danielfrg/solid-ui-core/tabs"
 import type {
   TabsRootProps as CoreTabsRootProps,
   TabsListProps as CoreTabsListProps,
   TabsTriggerProps as CoreTabsTriggerProps,
   TabsContentProps as CoreTabsContentProps,
-} from "@danielfrg/ui-core/tabs"
+} from "@danielfrg/solid-ui-core/tabs"
 import { cn } from "./utils"
 
 type TabsProps = CoreTabsRootProps & {

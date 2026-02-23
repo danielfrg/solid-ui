@@ -8,8 +8,8 @@ import {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-} from "@danielfrg/ui/alert-dialog"
-import { Button } from "@danielfrg/ui/button"
+} from "@danielfrg/solid-ui/alert-dialog"
+import { Button } from "@danielfrg/solid-ui/button"
 
 export function AlertDialogBasic() {
   return (
