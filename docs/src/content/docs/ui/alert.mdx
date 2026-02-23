@@ -3,9 +3,9 @@ title: Alert
 description: Styled alert component for displaying important messages.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/alert.tsx?raw"
-import { AlertBasic, AlertWithIcons, AlertDestructive, AlertWithActions } from "../../../demos/styled/alert"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/alert.tsx?raw"
+import AlertExample from "@/demos/styled/alert"
 
 # Alert
 
@@ -23,7 +23,8 @@ Import and use the `Alert` component:
 ```tsx
 import { Alert, AlertTitle, AlertDescription } from "@danielfrg/solid-ui/alert"
 import { Terminal } from "lucide-solid"
-;<Alert>
+
+<Alert>
   <Terminal />
   <AlertTitle>Heads up!</AlertTitle>
   <AlertDescription>You can add components to your app using the cli.</AlertDescription>
@@ -32,41 +33,6 @@ import { Terminal } from "lucide-solid"
 
 ## Demo
 
-### Basic
-
 <StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
-  <AlertBasic client:load />
+  <AlertExample client:only="solid-js" />
 </StyledDemoBlock>
-
-### With Icons
-
-<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
-  <AlertWithIcons client:load />
-</StyledDemoBlock>
-
-### Destructive
-
-<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
-  <AlertDestructive client:load />
-</StyledDemoBlock>
-
-### With Actions
-
-<StyledDemoBlock files={[{ label: "alert.tsx", code: demoCode }]}>
-  <AlertWithActions client:load />
-</StyledDemoBlock>
-
-## Variants
-
-| Variant       | Description                            |
-| ------------- | -------------------------------------- |
-| `default`     | Standard alert with card background    |
-| `destructive` | Error or warning with destructive tone |
-
-## Parts
-
-| Component          | Description                        |
-| ------------------ | ---------------------------------- |
-| `Alert`            | Root container with `role="alert"` |
-| `AlertTitle`       | Bold heading text                  |
-| `AlertDescription` | Supporting description text        |

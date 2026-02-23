@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "./utils"
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  "group/alert grid gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default: "bg-card text-card-foreground",
         destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+          "text-destructive bg-card *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current",
       },
     },
     defaultVariants: {
@@ -46,7 +46,10 @@ const AlertTitle: Component<AlertTitleProps> = (props) => {
   return (
     <div
       data-slot="alert-title"
-      class={cn("col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight", local.class)}
+      class={cn(
+        "font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
+        local.class,
+      )}
       {...others}
     />
   )
@@ -60,7 +63,7 @@ const AlertDescription: Component<AlertDescriptionProps> = (props) => {
     <div
       data-slot="alert-description"
       class={cn(
-        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+        "text-muted-foreground text-sm text-balance md:text-pretty [&_p:not(:last-child)]:mb-4 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
         local.class,
       )}
       {...others}
@@ -72,13 +75,7 @@ type AlertActionProps = ComponentProps<"div"> & { class?: string; children?: JSX
 
 const AlertAction: Component<AlertActionProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
-  return (
-    <div
-      data-slot="alert-action"
-      class={cn("col-start-2 row-start-1 flex items-start justify-end self-start", local.class)}
-      {...others}
-    />
-  )
+  return <div data-slot="alert-action" class={cn("absolute top-2 right-2", local.class)} {...others} />
 }
 
 export { Alert, AlertTitle, AlertDescription, AlertAction, alertVariants }

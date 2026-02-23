@@ -83,12 +83,12 @@
       color 0.2s ease;
   }
 
-  a {
+  a:not(.demo-playground-inner *) {
     color: var(--docs-text-strong);
     text-decoration: none;
   }
 
-  a:hover {
+  a:not(.demo-playground-inner *):hover {
     text-decoration: underline;
   }
 

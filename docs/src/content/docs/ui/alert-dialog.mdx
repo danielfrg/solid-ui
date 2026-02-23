@@ -3,16 +3,9 @@ title: Alert Dialog
 description: Styled modal dialog that interrupts the user with important content and expects a confirmation response.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/alert-dialog.tsx?raw"
-import {
-  AlertDialogBasic,
-  AlertDialogSmall,
-  AlertDialogWithMedia,
-  AlertDialogSmallWithMedia,
-  AlertDialogDestructive,
-  AlertDialogInDialog,
-} from "../../../demos/styled/alert-dialog"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/alert-dialog.tsx?raw"
+import AlertDialogExample from "@/demos/styled/alert-dialog"
 
 # Alert Dialog
 
@@ -39,6 +32,7 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
 } from "@danielfrg/solid-ui/alert-dialog"
+
 ;<AlertDialog>
   <AlertDialogTrigger>Delete</AlertDialogTrigger>
   <AlertDialogContent>
@@ -56,40 +50,8 @@ import {
 
 ## Demo
 
-### Basic
-
 <StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogBasic client:load />
-</StyledDemoBlock>
-
-### Small
-
-<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogSmall client:load />
-</StyledDemoBlock>
-
-### With Media
-
-<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogWithMedia client:load />
-</StyledDemoBlock>
-
-### Small With Media
-
-<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogSmallWithMedia client:load />
-</StyledDemoBlock>
-
-### Destructive
-
-<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogDestructive client:load />
-</StyledDemoBlock>
-
-### In Dialog
-
-<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogInDialog client:load />
+  <AlertDialogExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

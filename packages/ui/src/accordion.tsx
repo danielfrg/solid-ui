@@ -15,9 +15,16 @@ type AccordionProps = CoreAccordionRootProps & {
 }
 
 const Accordion: Component<AccordionProps> = (props) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "collapsible"])
 
-  return <AccordionPrimitive data-slot="accordion" class={cn(local.class)} {...others} />
+  return (
+    <AccordionPrimitive
+      data-slot="accordion"
+      collapsible={local.collapsible ?? true}
+      class={cn("flex w-full flex-col", local.class)}
+      {...others}
+    />
+  )
 }
 
 type AccordionItemProps = CoreAccordionItemProps & {
@@ -28,7 +35,13 @@ type AccordionItemProps = CoreAccordionItemProps & {
 const AccordionItem: Component<AccordionItemProps> = (props) => {
   const [local, others] = splitProps(props, ["class"])
 
-  return <AccordionPrimitive.Item data-slot="accordion-item" class={cn("border-b", local.class)} {...others} />
+  return (
+    <AccordionPrimitive.Item
+      data-slot="accordion-item"
+      class={cn("not-last:border-b data-[disabled]:opacity-50 data-[disabled]:pointer-events-none", local.class)}
+      {...others}
+    />
+  )
 }
 
 type AccordionTriggerProps = CoreAccordionTriggerProps & {
@@ -44,7 +57,7 @@ const AccordionTrigger: Component<AccordionTriggerProps> = (props) => {
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         class={cn(
-          "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-expanded]>svg]:rotate-180",
+          "group/accordion-trigger focus-visible:ring-ring/50 focus-visible:border-ring rounded-lg py-2.5 text-left text-sm font-medium hover:underline focus-visible:ring-3 flex flex-1 items-start justify-between border border-transparent transition-all outline-none aria-disabled:pointer-events-none aria-disabled:opacity-50",
           local.class,
         )}
         {...others}
@@ -58,9 +71,23 @@ const AccordionTrigger: Component<AccordionTriggerProps> = (props) => {
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="size-4 shrink-0 transition-transform duration-200"
+          data-slot="accordion-trigger-icon"
+          class="text-muted-foreground pointer-events-none ml-auto size-4 shrink-0 group-aria-expanded/accordion-trigger:hidden"
         >
           <path d="M6 9l6 6l6 -6" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          data-slot="accordion-trigger-icon"
+          class="text-muted-foreground pointer-events-none ml-auto size-4 shrink-0 hidden group-aria-expanded/accordion-trigger:inline"
+        >
+          <path d="M6 15l6 -6l6 6" />
         </svg>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -78,13 +105,17 @@ const AccordionContent: Component<AccordionContentProps> = (props) => {
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      class={cn(
-        "animate-accordion-up overflow-hidden text-sm transition-all data-[expanded]:animate-accordion-down",
-        local.class,
-      )}
+      class="animate-accordion-up overflow-hidden text-sm data-[expanded]:animate-accordion-down"
       {...others}
     >
-      <div class="pb-4 pt-0">{local.children}</div>
+      <div
+        class={cn(
+          "pt-0 pb-2.5 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
+          local.class,
+        )}
+      >
+        {local.children}
+      </div>
     </AccordionPrimitive.Content>
   )
 }

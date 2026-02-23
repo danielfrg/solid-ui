@@ -19,7 +19,7 @@ export const sidebar: SidebarSection[] = [
     ],
   },
   {
-    title: "UI Components",
+    title: "Styled Components",
     items: [
       { label: "Accordion", slug: "ui/accordion" },
       { label: "Alert", slug: "ui/alert" },

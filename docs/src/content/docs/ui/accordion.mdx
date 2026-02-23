@@ -3,15 +3,9 @@ title: Accordion
 description: Styled vertically stacked sections that expand and collapse.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/accordion.tsx?raw"
-import {
-  AccordionBasic,
-  AccordionMultiple,
-  AccordionWithDisabled,
-  AccordionWithBorders,
-  AccordionInCard,
-} from "../../../demos/styled/accordion"
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/styled/accordion.tsx?raw"
+import AccordionExample from "@/demos/styled/accordion"
 
 # Accordion
 
@@ -28,7 +22,8 @@ Import and use the Accordion components:
 
 ```tsx
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@danielfrg/solid-ui/accordion"
-;<Accordion defaultValue={["item-1"]}>
+
+<Accordion defaultValue={["item-1"]}>
   <AccordionItem value="item-1">
     <AccordionTrigger>Is it accessible?</AccordionTrigger>
     <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
@@ -38,41 +33,6 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@d
 
 ## Demo
 
-### Basic
-
 <StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionBasic client:load />
+  <AccordionExample client:only="solid-js" />
 </StyledDemoBlock>
-
-### Multiple
-
-<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionMultiple client:load />
-</StyledDemoBlock>
-
-### With Disabled
-
-<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionWithDisabled client:load />
-</StyledDemoBlock>
-
-### With Borders
-
-<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionWithBorders client:load />
-</StyledDemoBlock>
-
-### In Card
-
-<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionInCard client:load />
-</StyledDemoBlock>
-
-## Parts
-
-| Component          | Description                                             |
-| ------------------ | ------------------------------------------------------- |
-| `Accordion`        | Root container                                          |
-| `AccordionItem`    | Individual collapsible section                          |
-| `AccordionTrigger` | Button that toggles the section (includes chevron icon) |
-| `AccordionContent` | Content revealed when the section is open               |

@@ -3,8 +3,21 @@ import { Button } from "@danielfrg/solid-ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@danielfrg/solid-ui/card"
 import { ArrowUpRight } from "lucide-solid"
 import { For } from "solid-js"
+import { ExampleWrapper, Example } from "@/components/example"
 
-export function AccordionBasic() {
+export default function AccordionExample() {
+  return (
+    <ExampleWrapper class="w-full max-w-4xl lg:grid-cols-1 2xl:max-w-4xl 2xl:grid-cols-1">
+      <AccordionBasic />
+      <AccordionMultiple />
+      <AccordionWithBorders />
+      <AccordionInCard />
+      <AccordionWithDisabled />
+    </ExampleWrapper>
+  )
+}
+
+function AccordionBasic() {
   const items = [
     {
       value: "item-1",
@@ -24,20 +37,22 @@ export function AccordionBasic() {
   ]
 
   return (
-    <Accordion class="mx-auto max-w-lg">
-      <For each={items}>
-        {(item) => (
-          <AccordionItem value={item.value}>
-            <AccordionTrigger>{item.trigger}</AccordionTrigger>
-            <AccordionContent>{item.content}</AccordionContent>
-          </AccordionItem>
-        )}
-      </For>
-    </Accordion>
+    <Example title="Basic">
+      <Accordion class="mx-auto max-w-lg">
+        <For each={items}>
+          {(item) => (
+            <AccordionItem value={item.value}>
+              <AccordionTrigger>{item.trigger}</AccordionTrigger>
+              <AccordionContent>{item.content}</AccordionContent>
+            </AccordionItem>
+          )}
+        </For>
+      </Accordion>
+    </Example>
   )
 }
 
-export function AccordionMultiple() {
+function AccordionMultiple() {
   const items = [
     {
       value: "item-1",
@@ -56,20 +71,22 @@ export function AccordionMultiple() {
   ]
 
   return (
-    <Accordion multiple class="mx-auto max-w-lg">
-      <For each={items}>
-        {(item) => (
-          <AccordionItem value={item.value}>
-            <AccordionTrigger>{item.trigger}</AccordionTrigger>
-            <AccordionContent>{item.content}</AccordionContent>
-          </AccordionItem>
-        )}
-      </For>
-    </Accordion>
+    <Example title="Multiple">
+      <Accordion multiple class="mx-auto max-w-lg">
+        <For each={items}>
+          {(item) => (
+            <AccordionItem value={item.value}>
+              <AccordionTrigger>{item.trigger}</AccordionTrigger>
+              <AccordionContent>{item.content}</AccordionContent>
+            </AccordionItem>
+          )}
+        </For>
+      </Accordion>
+    </Example>
   )
 }
 
-export function AccordionWithBorders() {
+function AccordionWithBorders() {
   const items = [
     {
       value: "billing",
@@ -99,20 +116,22 @@ export function AccordionWithBorders() {
   ]
 
   return (
-    <Accordion class="mx-auto max-w-lg gap-2">
-      <For each={items}>
-        {(item) => (
-          <AccordionItem value={item.value} class="border rounded-lg">
-            <AccordionTrigger class="px-4 font-medium">{item.trigger}</AccordionTrigger>
-            <AccordionContent class="px-4 text-muted-foreground">{item.content}</AccordionContent>
-          </AccordionItem>
-        )}
-      </For>
-    </Accordion>
+    <Example title="With Borders">
+      <Accordion class="mx-auto max-w-lg gap-2">
+        <For each={items}>
+          {(item) => (
+            <AccordionItem value={item.value} class="rounded-lg border border-b">
+              <AccordionTrigger class="px-2.5 font-medium">{item.trigger}</AccordionTrigger>
+              <AccordionContent class="px-2.5 text-muted-foreground">{item.content}</AccordionContent>
+            </AccordionItem>
+          )}
+        </For>
+      </Accordion>
+    </Example>
   )
 }
 
-export function AccordionInCard() {
+function AccordionInCard() {
   const items = [
     {
       value: "plans",
@@ -129,7 +148,7 @@ export function AccordionInCard() {
           </p>
           <Button size="sm">
             View plans
-            <ArrowUpRight class="size-4" />
+            <ArrowUpRight />
           </Button>
         </>
       ),
@@ -145,8 +164,8 @@ export function AccordionInCard() {
           </p>
           <p>
             You'll receive an invoice via email after each payment. You can update your payment method or billing
-            information anytime in your account settings. Failed payments will trigger automated retry attempts and email
-            notifications.
+            information anytime in your account settings. Failed payments will trigger automated retry attempts and
+            email notifications.
           </p>
         </>
       ),
@@ -202,28 +221,30 @@ export function AccordionInCard() {
   ]
 
   return (
-    <Card class="mx-auto w-full max-w-lg gap-4">
-      <CardHeader>
-        <CardTitle>Subscription & Billing</CardTitle>
-        <CardDescription>Common questions about your account, plans, and payments</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Accordion multiple defaultValue={["plans"]}>
-          <For each={items}>
-            {(item) => (
-              <AccordionItem value={item.value}>
-                <AccordionTrigger>{item.trigger}</AccordionTrigger>
-                <AccordionContent>{item.content}</AccordionContent>
-              </AccordionItem>
-            )}
-          </For>
-        </Accordion>
-      </CardContent>
-    </Card>
+    <Example title="In Card">
+      <Card class="mx-auto w-full max-w-lg gap-4">
+        <CardHeader>
+          <CardTitle>Subscription & Billing</CardTitle>
+          <CardDescription>Common questions about your account, plans, and payments</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Accordion multiple defaultValue={["plans"]}>
+            <For each={items}>
+              {(item) => (
+                <AccordionItem value={item.value}>
+                  <AccordionTrigger>{item.trigger}</AccordionTrigger>
+                  <AccordionContent>{item.content}</AccordionContent>
+                </AccordionItem>
+              )}
+            </For>
+          </Accordion>
+        </CardContent>
+      </Card>
+    </Example>
   )
 }
 
-export function AccordionWithDisabled() {
+function AccordionWithDisabled() {
   const items = [
     {
       value: "item-1",
@@ -235,8 +256,7 @@ export function AccordionWithDisabled() {
     {
       value: "item-2",
       trigger: "Premium feature information",
-      content:
-        "This section contains information about premium features. Upgrade your plan to access this content.",
+      content: "This section contains information about premium features. Upgrade your plan to access this content.",
       disabled: true,
     },
     {
@@ -249,15 +269,17 @@ export function AccordionWithDisabled() {
   ]
 
   return (
-    <Accordion class="mx-auto max-w-lg overflow-hidden rounded-lg border">
-      <For each={items}>
-        {(item) => (
-          <AccordionItem value={item.value} disabled={item.disabled} class="data-[open]:bg-muted/50 p-1">
-            <AccordionTrigger class="px-4">{item.trigger}</AccordionTrigger>
-            <AccordionContent class="px-4">{item.content}</AccordionContent>
-          </AccordionItem>
-        )}
-      </For>
-    </Accordion>
+    <Example title="With Disabled">
+      <Accordion class="mx-auto max-w-lg overflow-hidden rounded-lg border">
+        <For each={items}>
+          {(item) => (
+            <AccordionItem value={item.value} disabled={item.disabled} class="data-[expanded]:bg-muted/50 p-1">
+              <AccordionTrigger class="px-2.5">{item.trigger}</AccordionTrigger>
+              <AccordionContent class="px-2.5">{item.content}</AccordionContent>
+            </AccordionItem>
+          )}
+        </For>
+      </Accordion>
+    </Example>
   )
 }
