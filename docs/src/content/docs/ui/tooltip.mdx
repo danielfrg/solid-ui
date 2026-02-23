@@ -5,7 +5,7 @@ description: Styled tooltip that displays on hover.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/tooltip.tsx?raw"
-import { TooltipShowcase } from "../../../demos/styled/tooltip"
+import TooltipExample from "../../../demos/styled/tooltip"
 
 # Tooltip
 
@@ -23,7 +23,7 @@ Import and use the `Tooltip` components:
 ```tsx
 import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/solid-ui/tooltip"
 import { Button } from "@danielfrg/solid-ui/button"
-<Tooltip>
+;<Tooltip>
   <TooltipTrigger as={Button} variant="outline">
     Hover me
   </TooltipTrigger>
@@ -36,7 +36,7 @@ import { Button } from "@danielfrg/solid-ui/button"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "tooltip.tsx", code: demoCode }]}>
-  <TooltipShowcase client:only="solid-js" />
+  <TooltipExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

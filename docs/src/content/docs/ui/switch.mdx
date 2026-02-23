@@ -5,7 +5,7 @@ description: Styled toggle switch for on/off states.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/switch.tsx?raw"
-import { SwitchShowcase } from "../../../demos/styled/switch"
+import SwitchExample from "../../../demos/styled/switch"
 
 # Switch
 
@@ -22,7 +22,7 @@ Import and use the Switch components:
 
 ```tsx
 import { Switch, SwitchLabel } from "@danielfrg/solid-ui/switch"
-<Switch defaultChecked>
+;<Switch defaultChecked>
   <SwitchLabel>Airplane Mode</SwitchLabel>
 </Switch>
 ```
@@ -30,7 +30,7 @@ import { Switch, SwitchLabel } from "@danielfrg/solid-ui/switch"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "switch.tsx", code: demoCode }]}>
-  <SwitchShowcase client:only="solid-js" />
+  <SwitchExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

@@ -9,26 +9,39 @@ import type {
 import { cn } from "./utils"
 import { toggleVariants } from "./toggle"
 
-const ToggleGroupContext = createContext<VariantProps<typeof toggleVariants>>({
+const ToggleGroupContext = createContext<{
+  size?: VariantProps<typeof toggleVariants>["size"]
+  variant?: VariantProps<typeof toggleVariants>["variant"]
+  spacing?: number
+}>({
   size: "default",
   variant: "default",
+  spacing: 1,
 })
 
 type ToggleGroupProps = CoreToggleGroupRootProps &
   VariantProps<typeof toggleVariants> & {
     class?: string
     children?: JSX.Element
+    spacing?: number
   }
 
 const ToggleGroup: Component<ToggleGroupProps> = (props) => {
-  const [local, others] = splitProps(props, ["class", "children", "size", "variant"])
+  const [local, others] = splitProps(props, ["class", "children", "size", "variant", "spacing"])
+  const spacing = () => local.spacing ?? 1
 
   return (
     <ToggleGroupPrimitive
       data-slot="toggle-group"
       data-variant={local.variant ?? "default"}
       data-size={local.size ?? "default"}
-      class={cn("flex items-center justify-center gap-1", local.class)}
+      data-spacing={spacing()}
+      class={cn(
+        "flex items-center justify-center",
+        spacing() === 0 ? "gap-0" : spacing() === 1 ? "gap-1" : "gap-2",
+        "rounded-lg",
+        local.class,
+      )}
       {...others}
     >
       <ToggleGroupContext.Provider
@@ -38,6 +51,9 @@ const ToggleGroup: Component<ToggleGroupProps> = (props) => {
           },
           get variant() {
             return local.variant
+          },
+          get spacing() {
+            return spacing()
           },
         }}
       >
@@ -56,6 +72,7 @@ type ToggleGroupItemProps = CoreToggleGroupItemProps &
 const ToggleGroupItem: Component<ToggleGroupItemProps> = (props) => {
   const [local, others] = splitProps(props, ["class", "size", "variant"])
   const context = useContext(ToggleGroupContext)
+  const spacing = () => context.spacing ?? 1
 
   return (
     <ToggleGroupPrimitive.Item
@@ -65,6 +82,8 @@ const ToggleGroupItem: Component<ToggleGroupItemProps> = (props) => {
           variant: context.variant || local.variant,
           size: context.size || local.size,
         }),
+        spacing() === 0 && "rounded-none border-r-0 last:border-r",
+        spacing() === 0 && "first:rounded-l-lg last:rounded-r-lg",
         local.class,
       )}
       {...others}

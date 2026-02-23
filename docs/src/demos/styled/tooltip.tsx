@@ -1,58 +1,159 @@
+import { For } from "solid-js"
 import { Button } from "@danielfrg/solid-ui/button"
 import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/solid-ui/tooltip"
-import { Plus } from "lucide-solid"
-import { For } from "solid-js"
+import { Info, Save } from "lucide-solid"
+import { ExampleWrapper, Example } from "@/components/example"
 
-export function TooltipShowcase() {
+export default function TooltipExample() {
   return (
-    <div class="flex flex-col gap-10">
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Basic</h3>
-        <div class="flex flex-wrap items-center gap-2">
-          <Tooltip openDelay={200}>
-            <TooltipTrigger as={Button} variant="outline">
-              Hover me
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip openDelay={200}>
-            <TooltipTrigger as={Button} variant="ghost">
-              Ghost trigger
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>This is a tooltip</p>
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip openDelay={200}>
-            <TooltipTrigger as={Button} variant="outline" size="icon" aria-label="Add">
-              <Plus class="size-4" />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Add new item</p>
-            </TooltipContent>
-          </Tooltip>
-        </div>
-      </section>
+    <ExampleWrapper>
+      <TooltipBasic />
+      <TooltipSides />
+      <TooltipWithIcon />
+      <TooltipLongContent />
+      <TooltipDisabled />
+      <TooltipWithKeyboard />
+      <TooltipOnLink />
+      <TooltipFormatted />
+    </ExampleWrapper>
+  )
+}
 
-      <section class="flex flex-col gap-3">
-        <h3 class="text-sm font-semibold">Sides</h3>
-        <div class="flex flex-wrap gap-2">
-          <For each={["top", "right", "bottom", "left"] as const}>
-            {(side) => (
-              <Tooltip openDelay={100}>
-                <TooltipTrigger as={Button} variant="outline" class="capitalize">
-                  {side}
-                </TooltipTrigger>
-                <TooltipContent side={side}>
-                  <p>Tooltip on the {side}</p>
-                </TooltipContent>
-              </Tooltip>
-            )}
-          </For>
-        </div>
-      </section>
-    </div>
+function TooltipBasic() {
+  return (
+    <Example title="Basic">
+      <Tooltip>
+        <TooltipTrigger as={Button} variant="outline" class="w-fit">
+          Show Tooltip
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Add to library</p>
+        </TooltipContent>
+      </Tooltip>
+    </Example>
+  )
+}
+
+function TooltipSides() {
+  return (
+    <Example title="Sides">
+      <div class="flex flex-wrap gap-2">
+        <For each={["top", "right", "bottom", "left"] as const}>
+          {(side) => (
+            <Tooltip placement={side}>
+              <TooltipTrigger as={Button} variant="outline" class="w-fit capitalize">
+                {side}
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Add to library</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        </For>
+      </div>
+    </Example>
+  )
+}
+
+function TooltipWithIcon() {
+  return (
+    <Example title="With Icon">
+      <Tooltip>
+        <TooltipTrigger as={Button} variant="ghost" size="icon">
+          <Info class="size-4" />
+          <span class="sr-only">Info</span>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Additional information</p>
+        </TooltipContent>
+      </Tooltip>
+    </Example>
+  )
+}
+
+function TooltipLongContent() {
+  return (
+    <Example title="Long Content">
+      <Tooltip>
+        <TooltipTrigger as={Button} variant="outline" class="w-fit">
+          Show Tooltip
+        </TooltipTrigger>
+        <TooltipContent>
+          To learn more about how this works, check out the docs. If you have any questions, please reach out to us.
+        </TooltipContent>
+      </Tooltip>
+    </Example>
+  )
+}
+
+function TooltipDisabled() {
+  return (
+    <Example title="Disabled">
+      <Tooltip>
+        <TooltipTrigger as="span" class="inline-block w-fit">
+          <Button variant="outline" disabled>
+            Disabled
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>This feature is currently unavailable</p>
+        </TooltipContent>
+      </Tooltip>
+    </Example>
+  )
+}
+
+function TooltipWithKeyboard() {
+  return (
+    <Example title="With Keyboard Shortcut">
+      <Tooltip>
+        <TooltipTrigger as={Button} variant="outline" size="icon">
+          <Save class="size-4" />
+        </TooltipTrigger>
+        <TooltipContent class="pr-1.5">
+          <div class="flex items-center gap-2">
+            Save Changes <kbd class="bg-muted text-muted-foreground rounded px-1.5 py-0.5 font-mono text-xs">S</kbd>
+          </div>
+        </TooltipContent>
+      </Tooltip>
+    </Example>
+  )
+}
+
+function TooltipOnLink() {
+  return (
+    <Example title="On Link">
+      <Tooltip>
+        <TooltipTrigger
+          as="a"
+          href="#"
+          class="text-primary w-fit text-sm underline-offset-4 hover:underline"
+          onClick={(e: MouseEvent) => e.preventDefault()}
+        >
+          Learn more
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Click to read the documentation</p>
+        </TooltipContent>
+      </Tooltip>
+    </Example>
+  )
+}
+
+function TooltipFormatted() {
+  return (
+    <Example title="Formatted Content">
+      <Tooltip>
+        <TooltipTrigger as={Button} variant="outline" class="w-fit">
+          Status
+        </TooltipTrigger>
+        <TooltipContent>
+          <div class="flex flex-col gap-1">
+            <p class="font-semibold">Active</p>
+            <p class="text-xs opacity-80">Last updated 2 hours ago</p>
+          </div>
+        </TooltipContent>
+      </Tooltip>
+    </Example>
   )
 }

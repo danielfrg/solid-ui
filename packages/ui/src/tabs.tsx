@@ -23,16 +23,20 @@ const Tabs: Component<TabsProps> = (props) => {
 type TabsListProps = CoreTabsListProps & {
   class?: string
   children?: JSX.Element
+  "data-variant"?: "default" | "line"
 }
 
 const TabsList: Component<TabsListProps> = (props) => {
-  const [local, others] = splitProps(props, ["class"])
+  const [local, others] = splitProps(props, ["class", "data-variant"])
+  const variant = () => local["data-variant"] ?? "default"
 
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
+      data-variant={variant()}
       class={cn(
-        "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground",
+        "group/tabs-list inline-flex h-10 items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground",
+        "data-[variant=line]:rounded-none data-[variant=line]:bg-transparent data-[variant=line]:p-0",
         local.class,
       )}
       {...others}
@@ -52,10 +56,11 @@ const TabsTrigger: Component<TabsTriggerProps> = (props) => {
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       class={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all",
-        "outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-1.5 py-0.5 text-sm font-medium ring-offset-background transition-all",
+        "outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
         "disabled:pointer-events-none disabled:opacity-50",
-        "data-[selected]:bg-background data-[selected]:text-foreground data-[selected]:shadow-sm",
+        "data-[selected]:bg-background data-[selected]:text-foreground data-[selected]:shadow-sm data-[selected]:border-transparent",
+        "group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:border-0 group-data-[variant=line]/tabs-list:border-b-2 group-data-[variant=line]/tabs-list:border-b-transparent group-data-[variant=line]/tabs-list:data-[selected]:bg-transparent group-data-[variant=line]/tabs-list:data-[selected]:shadow-none group-data-[variant=line]/tabs-list:data-[selected]:border-b-primary",
         local.class,
       )}
       {...others}
@@ -75,7 +80,7 @@ const TabsContent: Component<TabsContentProps> = (props) => {
     <TabsPrimitive.Content
       data-slot="tabs-content"
       class={cn(
-        "mt-2 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "mt-2 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50",
         local.class,
       )}
       {...others}

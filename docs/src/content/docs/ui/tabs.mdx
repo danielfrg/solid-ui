@@ -5,7 +5,7 @@ description: Styled tabbed interface for switching between content panels.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/tabs.tsx?raw"
-import { TabsShowcase } from "../../../demos/styled/tabs"
+import TabsExample from "../../../demos/styled/tabs"
 
 # Tabs
 
@@ -22,7 +22,7 @@ Import and use the Tabs components:
 
 ```tsx
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@danielfrg/solid-ui/tabs"
-<Tabs defaultValue="account">
+;<Tabs defaultValue="account">
   <TabsList>
     <TabsTrigger value="account">Account</TabsTrigger>
     <TabsTrigger value="password">Password</TabsTrigger>
@@ -35,7 +35,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@danielfrg/solid-ui/ta
 ## Demo
 
 <StyledDemoBlock files={[{ label: "tabs.tsx", code: demoCode }]}>
-  <TabsShowcase client:only="solid-js" />
+  <TabsExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

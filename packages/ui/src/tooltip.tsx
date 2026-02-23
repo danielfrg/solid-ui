@@ -5,7 +5,7 @@ import type { TooltipContentProps as CoreTooltipContentProps } from "@danielfrg/
 import { cn } from "./utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing
-const Tooltip = TooltipPrimitive
+const Tooltip = (props: any) => <TooltipPrimitive gutter={4} {...props} />
 const TooltipTrigger = TooltipPrimitive.Trigger
 
 type TooltipContentProps = CoreTooltipContentProps & {

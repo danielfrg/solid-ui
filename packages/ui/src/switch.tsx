@@ -14,17 +14,23 @@ const Switch: Component<SwitchProps> = (props) => {
 
   return (
     <SwitchPrimitive data-slot="switch" class={cn("flex items-center gap-2", local.class)} {...others}>
-      <SwitchPrimitive.Input class="[&:focus-visible+div]:outline-none [&:focus-visible+div]:ring-2 [&:focus-visible+div]:ring-ring [&:focus-visible+div]:ring-offset-2 [&:focus-visible+div]:ring-offset-background" />
+      <SwitchPrimitive.Input class="peer" />
       <SwitchPrimitive.Control
         class={cn(
-          "inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent bg-input transition-[color,background-color,box-shadow]",
-          "data-[checked]:bg-primary data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+          "inline-flex h-[18.4px] w-[32px] shrink-0 cursor-pointer items-center rounded-full border border-transparent transition-colors",
+          "bg-gray-300 dark:bg-gray-600",
+          "data-[checked]:bg-primary",
+          "peer-focus-visible:border-ring peer-focus-visible:ring-3 peer-focus-visible:ring-ring/50",
+          "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+          "data-[size=sm]:h-[14px] data-[size=sm]:w-[24px]",
         )}
       >
         <SwitchPrimitive.Thumb
           class={cn(
-            "pointer-events-none block size-5 translate-x-0 rounded-full bg-background shadow-lg ring-0 transition-transform",
-            "data-[checked]:translate-x-5",
+            "pointer-events-none block size-4 rounded-full bg-background shadow-sm ring-0 transition-transform",
+            "dark:data-[unchecked]:bg-foreground dark:data-[checked]:bg-primary-foreground",
+            "data-[size=sm]:size-3",
+            "data-[unchecked]:translate-x-0 data-[checked]:translate-x-[calc(100%-2px)]",
           )}
         />
       </SwitchPrimitive.Control>
@@ -42,7 +48,7 @@ const SwitchLabel: Component<SwitchLabelProps> = (props) => {
     <SwitchPrimitive.Label
       data-slot="switch-label"
       class={cn(
-        "text-sm font-medium leading-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
+        "text-sm font-medium leading-snug data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
         local.class,
       )}
       {...others}

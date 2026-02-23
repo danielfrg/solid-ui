@@ -5,7 +5,7 @@ description: Styled table components for displaying tabular data.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/table.tsx?raw"
-import { TableShowcase } from "../../../demos/styled/table"
+import TableExample from "../../../demos/styled/table"
 
 # Table
 
@@ -22,7 +22,7 @@ Import and use the `Table` components:
 
 ```tsx
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption } from "@danielfrg/solid-ui/table"
-<Table>
+;<Table>
   <TableCaption>A list of recent invoices.</TableCaption>
   <TableHeader>
     <TableRow>
@@ -42,7 +42,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCap
 ## Demo
 
 <StyledDemoBlock files={[{ label: "table.tsx", code: demoCode }]}>
-  <TableShowcase client:only="solid-js" />
+  <TableExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Parts

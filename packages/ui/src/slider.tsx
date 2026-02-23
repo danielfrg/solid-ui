@@ -1,7 +1,12 @@
 import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
 import { Slider as SliderPrimitive } from "@danielfrg/solid-ui-core/slider"
-import type { SliderRootProps as CoreSliderRootProps } from "@danielfrg/solid-ui-core/slider"
+import type {
+  SliderRootProps as CoreSliderRootProps,
+  SliderTrackProps as CoreSliderTrackProps,
+  SliderFillProps as CoreSliderFillProps,
+  SliderThumbProps as CoreSliderThumbProps,
+} from "@danielfrg/solid-ui-core/slider"
 import { cn } from "./utils"
 
 type SliderProps = CoreSliderRootProps & {
@@ -22,19 +27,80 @@ const Slider: Component<SliderProps> = (props) => {
       {...others}
     >
       {local.children}
-      <SliderPrimitive.Track class="relative h-1 w-full grow rounded-full bg-muted data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1">
-        <SliderPrimitive.Fill class="absolute h-full rounded-full bg-primary data-[orientation=vertical]:w-full data-[disabled]:bg-muted" />
-        <SliderPrimitive.Thumb
-          class={cn(
-            "absolute top-1/2 block size-3 -translate-y-1/2 rounded-full border border-ring bg-background",
-            "hover:ring-3 hover:ring-ring/50",
-            "data-[disabled]:pointer-events-none",
-          )}
-        >
-          <SliderPrimitive.Input />
-        </SliderPrimitive.Thumb>
-      </SliderPrimitive.Track>
     </SliderPrimitive>
+  )
+}
+
+type SliderTrackProps = CoreSliderTrackProps & {
+  class?: string
+  children?: JSX.Element
+}
+
+const SliderTrack: Component<SliderTrackProps> = (props) => {
+  const [local, others] = splitProps(props, ["class", "children"])
+
+  return (
+    <SliderPrimitive.Track
+      data-slot="slider-track"
+      class={cn(
+        "relative h-1 w-full grow rounded-full bg-muted",
+        "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1",
+        local.class,
+      )}
+      {...others}
+    >
+      {local.children}
+    </SliderPrimitive.Track>
+  )
+}
+
+type SliderFillProps = CoreSliderFillProps & {
+  class?: string
+}
+
+const SliderFill: Component<SliderFillProps> = (props) => {
+  const [local, others] = splitProps(props, ["class"])
+
+  return (
+    <SliderPrimitive.Fill
+      data-slot="slider-fill"
+      class={cn(
+        "absolute h-full rounded-full bg-primary",
+        "data-[orientation=vertical]:w-full data-[orientation=vertical]:h-[unset]",
+        "data-[disabled]:bg-muted-foreground/30",
+        local.class,
+      )}
+      {...others}
+    />
+  )
+}
+
+type SliderThumbProps = CoreSliderThumbProps & {
+  class?: string
+  children?: JSX.Element
+}
+
+const SliderThumb: Component<SliderThumbProps> = (props) => {
+  const [local, others] = splitProps(props, ["class", "children"])
+
+  return (
+    <SliderPrimitive.Thumb
+      data-slot="slider-thumb"
+      class={cn(
+        "absolute block size-3 rounded-full border border-ring bg-white transition-[color,box-shadow]",
+        "after:absolute after:-inset-2",
+        // horizontal: center vertically
+        "top-1/2 -translate-y-1/2",
+        // vertical: center horizontally instead
+        "data-[orientation=vertical]:top-[unset] data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:translate-y-0",
+        "hover:ring-3 hover:ring-ring/50 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-hidden active:ring-3 active:ring-ring/50",
+        "data-[disabled]:pointer-events-none",
+        local.class,
+      )}
+      {...others}
+    >
+      {local.children ?? <SliderPrimitive.Input />}
+    </SliderPrimitive.Thumb>
   )
 }
 
@@ -66,5 +132,12 @@ const SliderValueLabel: Component<SliderValueLabelProps> = (props) => {
   )
 }
 
-export { Slider, SliderLabel, SliderValueLabel }
-export type { SliderProps, SliderLabelProps, SliderValueLabelProps }
+export { Slider, SliderTrack, SliderFill, SliderThumb, SliderLabel, SliderValueLabel }
+export type {
+  SliderProps,
+  SliderTrackProps,
+  SliderFillProps,
+  SliderThumbProps,
+  SliderLabelProps,
+  SliderValueLabelProps,
+}

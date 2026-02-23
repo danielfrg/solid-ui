@@ -5,7 +5,7 @@ description: Styled two-state toggle button.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/toggle.tsx?raw"
-import { ToggleShowcase } from "../../../demos/styled/toggle"
+import ToggleExample from "../../../demos/styled/toggle"
 
 # Toggle
 
@@ -23,7 +23,7 @@ Import and use the `Toggle` component:
 ```tsx
 import { Toggle } from "@danielfrg/solid-ui/toggle"
 import { Bold } from "lucide-solid"
-<Toggle variant="outline" aria-label="Toggle bold">
+;<Toggle variant="outline" aria-label="Toggle bold">
   <Bold />
 </Toggle>
 ```
@@ -31,7 +31,7 @@ import { Bold } from "lucide-solid"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "toggle.tsx", code: demoCode }]}>
-  <ToggleShowcase client:only="solid-js" />
+  <ToggleExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Variants

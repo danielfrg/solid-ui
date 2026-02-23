@@ -5,7 +5,7 @@ description: Styled group of toggle buttons for single or multiple selection.
 
 import StyledDemoBlock from "../../../components/styled-demo-block.astro"
 import demoCode from "../../../demos/styled/toggle-group.tsx?raw"
-import { ToggleGroupShowcase } from "../../../demos/styled/toggle-group"
+import ToggleGroupExample from "../../../demos/styled/toggle-group"
 
 # Toggle Group
 
@@ -23,7 +23,7 @@ Import and use the ToggleGroup components:
 ```tsx
 import { ToggleGroup, ToggleGroupItem } from "@danielfrg/solid-ui/toggle-group"
 import { AlignLeft, AlignCenter, AlignRight } from "lucide-solid"
-<ToggleGroup defaultValue="center">
+;<ToggleGroup defaultValue="center">
   <ToggleGroupItem value="left" aria-label="Align left">
     <AlignLeft />
   </ToggleGroupItem>
@@ -39,7 +39,7 @@ import { AlignLeft, AlignCenter, AlignRight } from "lucide-solid"
 ## Demo
 
 <StyledDemoBlock files={[{ label: "toggle-group.tsx", code: demoCode }]}>
-  <ToggleGroupShowcase client:only="solid-js" />
+  <ToggleGroupExample client:only="solid-js" />
 </StyledDemoBlock>
 
 ## Variants
