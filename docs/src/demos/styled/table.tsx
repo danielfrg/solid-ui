@@ -4,13 +4,13 @@ import { Button } from "@danielfrg/solid-ui/button"
 import { Checkbox } from "@danielfrg/solid-ui/checkbox"
 import {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
 } from "@danielfrg/solid-ui/table"
 
 const invoices = [
@@ -19,12 +19,49 @@ const invoices = [
   { invoice: "INV003", status: "Unpaid", method: "Bank Transfer", amount: "$350.00" },
   { invoice: "INV004", status: "Paid", method: "Credit Card", amount: "$450.00" },
   { invoice: "INV005", status: "Paid", method: "PayPal", amount: "$550.00" },
+  { invoice: "INV006", status: "Pending", method: "Bank Transfer", amount: "$200.00" },
 ]
 
+const tasks = [
+  { id: "TASK-1", title: "Update documentation", status: "Done", priority: "Low" },
+  { id: "TASK-2", title: "Fix login bug", status: "In Progress", priority: "High" },
+  { id: "TASK-3", title: "Add dark mode support", status: "Todo", priority: "Medium" },
+  { id: "TASK-4", title: "Write integration tests", status: "In Progress", priority: "High" },
+  { id: "TASK-5", title: "Optimize bundle size", status: "Todo", priority: "Medium" },
+]
+
+const statusColor: Record<string, string> = {
+  Done: "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300",
+  "In Progress": "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
+  Todo: "bg-muted text-muted-foreground",
+}
+
+const priorityColor: Record<string, string> = {
+  High: "bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300",
+  Medium: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+  Low: "bg-muted text-muted-foreground",
+}
+
 export function TableShowcase() {
+  const [selected, setSelected] = createSignal<Set<string>>(new Set())
+  const allSelected = () => selected().size === tasks.length
+  const someSelected = () => selected().size > 0 && selected().size < tasks.length
+
+  const toggleAll = () => {
+    if (allSelected()) setSelected(new Set())
+    else setSelected(new Set(tasks.map((t) => t.id)))
+  }
+  const toggleRow = (id: string) => {
+    const next = new Set(selected())
+    if (next.has(id)) next.delete(id)
+    else next.add(id)
+    setSelected(next)
+  }
+
   return (
-    <div class="flex flex-col gap-12">
-      <section class="flex flex-col gap-4">
+    <div class="flex flex-col gap-10">
+      {/* Invoice table */}
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Invoice Table</h3>
         <Table>
           <TableCaption>A list of your recent invoices.</TableCaption>
@@ -51,225 +88,118 @@ export function TableShowcase() {
           <TableFooter>
             <TableRow>
               <TableCell colSpan={3}>Total</TableCell>
-              <TableCell class="text-right">$1,750.00</TableCell>
+              <TableCell class="text-right">$1,950.00</TableCell>
             </TableRow>
           </TableFooter>
         </Table>
       </section>
 
-      <section class="flex flex-col gap-4">
-        <h3 class="text-sm font-semibold">Simple Table</h3>
-        <TableSimple />
-      </section>
-
-      <section class="flex flex-col gap-4">
+      {/* Tasks with badges */}
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">With Badges</h3>
-        <TableWithBadges />
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead class="w-[100px]">ID</TableHead>
+              <TableHead>Title</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Priority</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <For each={tasks}>
+              {(task) => (
+                <TableRow>
+                  <TableCell class="font-mono text-xs">{task.id}</TableCell>
+                  <TableCell class="font-medium">{task.title}</TableCell>
+                  <TableCell>
+                    <Badge class={statusColor[task.status]} variant="secondary">{task.status}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge class={priorityColor[task.priority]} variant="secondary">{task.priority}</Badge>
+                  </TableCell>
+                </TableRow>
+              )}
+            </For>
+          </TableBody>
+        </Table>
       </section>
 
-      <section class="flex flex-col gap-4">
+      {/* With actions */}
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">With Actions</h3>
-        <TableWithActions />
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Product</TableHead>
+              <TableHead>Price</TableHead>
+              <TableHead>Stock</TableHead>
+              <TableHead class="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell class="font-medium">Wireless Headphones</TableCell>
+              <TableCell>$99.00</TableCell>
+              <TableCell>45</TableCell>
+              <TableCell class="text-right">
+                <Button variant="ghost" size="xs">Edit</Button>
+                <Button variant="ghost" size="xs" class="text-destructive">Delete</Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-medium">USB-C Cable</TableCell>
+              <TableCell>$12.00</TableCell>
+              <TableCell>200</TableCell>
+              <TableCell class="text-right">
+                <Button variant="ghost" size="xs">Edit</Button>
+                <Button variant="ghost" size="xs" class="text-destructive">Delete</Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-medium">Laptop Stand</TableCell>
+              <TableCell>$45.00</TableCell>
+              <TableCell>12</TableCell>
+              <TableCell class="text-right">
+                <Button variant="ghost" size="xs">Edit</Button>
+                <Button variant="ghost" size="xs" class="text-destructive">Delete</Button>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
       </section>
 
-      <section class="flex flex-col gap-4">
+      {/* With selection */}
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">With Selection</h3>
-        <TableWithSelection />
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead class="w-10">
+                <Checkbox checked={allSelected()} indeterminate={someSelected()} onChange={toggleAll} aria-label="Select all" />
+              </TableHead>
+              <TableHead>Task</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Priority</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <For each={tasks}>
+              {(task) => (
+                <TableRow class={selected().has(task.id) ? "bg-muted/50" : ""}>
+                  <TableCell>
+                    <Checkbox checked={selected().has(task.id)} onChange={() => toggleRow(task.id)} aria-label={`Select ${task.title}`} />
+                  </TableCell>
+                  <TableCell class="font-medium">{task.title}</TableCell>
+                  <TableCell>{task.status}</TableCell>
+                  <TableCell>{task.priority}</TableCell>
+                </TableRow>
+              )}
+            </For>
+          </TableBody>
+        </Table>
+        <p class="text-xs text-muted-foreground">{selected().size} of {tasks.length} row(s) selected.</p>
       </section>
     </div>
-  )
-}
-
-const people = [
-  { name: "Sarah Chen", email: "sarah@example.com", role: "Admin" },
-  { name: "Marc Rodriguez", email: "marc@example.com", role: "Developer" },
-  { name: "Emily Watson", email: "emily@example.com", role: "Designer" },
-]
-
-function TableSimple() {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <For each={people}>
-          {(person) => (
-            <TableRow>
-              <TableCell class="font-medium">{person.name}</TableCell>
-              <TableCell>{person.email}</TableCell>
-              <TableCell>{person.role}</TableCell>
-            </TableRow>
-          )}
-        </For>
-      </TableBody>
-    </Table>
-  )
-}
-
-const tasks = [
-  { task: "Design review", status: "Completed", priority: "High" },
-  { task: "API integration", status: "In Progress", priority: "Medium" },
-  { task: "Documentation", status: "Pending", priority: "Low" },
-  { task: "Testing", status: "In Progress", priority: "High" },
-]
-
-function statusColor(status: string) {
-  switch (status) {
-    case "Completed":
-      return "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
-    case "In Progress":
-      return "bg-amber-500/10 text-amber-600 border-amber-500/20"
-    default:
-      return "bg-muted text-muted-foreground"
-  }
-}
-
-function priorityColor(priority: string) {
-  switch (priority) {
-    case "High":
-      return "bg-blue-500/10 text-blue-600 border-blue-500/20"
-    default:
-      return "bg-muted text-muted-foreground"
-  }
-}
-
-function TableWithBadges() {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Task</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Priority</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <For each={tasks}>
-          {(task) => (
-            <TableRow>
-              <TableCell class="font-medium">{task.task}</TableCell>
-              <TableCell>
-                <Badge variant="outline" class={statusColor(task.status)}>
-                  {task.status}
-                </Badge>
-              </TableCell>
-              <TableCell>
-                <Badge variant="outline" class={priorityColor(task.priority)}>
-                  {task.priority}
-                </Badge>
-              </TableCell>
-            </TableRow>
-          )}
-        </For>
-      </TableBody>
-    </Table>
-  )
-}
-
-const products = [
-  { name: "Wireless Mouse", category: "Accessories", price: "$29.99" },
-  { name: "Mechanical Keyboard", category: "Accessories", price: "$89.99" },
-  { name: "USB-C Hub", category: "Peripherals", price: "$49.99" },
-]
-
-function TableWithActions() {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Product</TableHead>
-          <TableHead>Category</TableHead>
-          <TableHead>Price</TableHead>
-          <TableHead class="text-right">Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <For each={products}>
-          {(product) => (
-            <TableRow>
-              <TableCell class="font-medium">{product.name}</TableCell>
-              <TableCell>{product.category}</TableCell>
-              <TableCell>{product.price}</TableCell>
-              <TableCell class="text-right">
-                <Button variant="ghost" size="sm">
-                  Edit
-                </Button>
-                <Button variant="ghost" size="sm" class="text-destructive">
-                  Delete
-                </Button>
-              </TableCell>
-            </TableRow>
-          )}
-        </For>
-      </TableBody>
-    </Table>
-  )
-}
-
-const users = [
-  { id: "1", name: "Sarah Chen", email: "sarah@example.com", role: "Admin" },
-  { id: "2", name: "Marcus Rodriguez", email: "marcus@example.com", role: "Developer" },
-  { id: "3", name: "Priya Patel", email: "priya@example.com", role: "Designer" },
-  { id: "4", name: "David Kim", email: "david@example.com", role: "Developer" },
-]
-
-function TableWithSelection() {
-  const [selected, setSelected] = createSignal<Set<string>>(new Set(["1"]))
-
-  const allSelected = () => selected().size === users.length
-  const someSelected = () => selected().size > 0 && selected().size < users.length
-
-  function toggleAll() {
-    if (allSelected()) {
-      setSelected(new Set<string>())
-    } else {
-      setSelected(new Set<string>(users.map((u) => u.id)))
-    }
-  }
-
-  function toggleRow(id: string) {
-    setSelected((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) {
-        next.delete(id)
-      } else {
-        next.add(id)
-      }
-      return next
-    })
-  }
-
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead class="w-[40px]">
-            <Checkbox checked={allSelected()} indeterminate={someSelected()} onChange={toggleAll} />
-          </TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <For each={users}>
-          {(user) => (
-            <TableRow data-state={selected().has(user.id) ? "selected" : undefined}>
-              <TableCell>
-                <Checkbox checked={selected().has(user.id)} onChange={() => toggleRow(user.id)} />
-              </TableCell>
-              <TableCell class="font-medium">{user.name}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell>{user.role}</TableCell>
-            </TableRow>
-          )}
-        </For>
-      </TableBody>
-    </Table>
   )
 }

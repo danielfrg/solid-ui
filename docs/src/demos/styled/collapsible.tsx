@@ -1,104 +1,51 @@
 import { createSignal } from "solid-js"
 import { Button } from "@danielfrg/solid-ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@danielfrg/solid-ui/card"
+import { Card, CardContent } from "@danielfrg/solid-ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@danielfrg/solid-ui/collapsible"
-import { Input, InputField, InputLabel } from "@danielfrg/solid-ui/input"
-import { Tabs, TabsList, TabsTrigger } from "@danielfrg/solid-ui/tabs"
-
-type FileTreeItem = { name: string; items?: FileTreeItem[] }
-
-const fileTree: FileTreeItem[] = [
-  {
-    name: "components",
-    items: [
-      { name: "ui", items: [{ name: "button.tsx" }, { name: "card.tsx" }, { name: "dialog.tsx" }] },
-      { name: "login-form.tsx" },
-      { name: "register-form.tsx" },
-    ],
-  },
-  { name: "lib", items: [{ name: "utils.ts" }, { name: "api.ts" }] },
-  { name: "hooks", items: [{ name: "use-debounce.ts" }, { name: "use-local-storage.ts" }] },
-  { name: "types", items: [{ name: "index.d.ts" }] },
-  { name: "public", items: [{ name: "logo.svg" }, { name: "images" }] },
-  { name: "app.tsx" },
-  { name: "README.md" },
-]
-
-const renderItem = (item: FileTreeItem) => {
-  if (item.items) {
-    return (
-      <Collapsible defaultOpen class="group">
-        <CollapsibleTrigger class="inline-flex w-full items-center justify-start gap-2 rounded-md px-3 py-1 text-sm hover:bg-accent">
-          <span class="text-muted-foreground w-3 transition-transform group-data-[expanded]:rotate-90">&gt;</span>
-          <span class="font-medium">{item.name}</span>
-        </CollapsibleTrigger>
-        <CollapsibleContent class="ml-5 mt-1 flex flex-col gap-1">
-          {item.items.map((child) => renderItem(child))}
-        </CollapsibleContent>
-      </Collapsible>
-    )
-  }
-
-  return (
-    <Button variant="ghost" size="sm" class="w-full justify-start text-sm">
-      {item.name}
-    </Button>
-  )
-}
 
 export function CollapsibleBasic() {
+  const [isOpen, setIsOpen] = createSignal(false)
+
   return (
-    <Collapsible class="w-full max-w-sm">
-      <div class="flex items-center justify-between rounded-md border px-4 py-2">
-        <div>
-          <p class="text-sm font-medium">@danielfrg</p>
-          <p class="text-xs text-muted-foreground">3 new notifications</p>
-        </div>
-        <CollapsibleTrigger class="inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-accent">
-          Details
+    <Collapsible open={isOpen()} onOpenChange={setIsOpen} class="flex w-[350px] flex-col gap-2">
+      <div class="flex items-center justify-between gap-4 px-4">
+        <h4 class="text-sm font-semibold">Order #4189</h4>
+        <CollapsibleTrigger as={Button} variant="ghost" size="icon" class="size-8">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="m7 15 5 5 5-5" /><path d="m7 9 5-5 5 5" /></svg>
+          <span class="sr-only">Toggle details</span>
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent class="mt-2 rounded-md border px-4 py-2 text-sm text-muted-foreground">
-        You can view notifications for mentions, comments, and build updates.
+      <div class="flex items-center justify-between rounded-md border px-4 py-2 text-sm">
+        <span class="text-muted-foreground">Status</span>
+        <span class="font-medium">Shipped</span>
+      </div>
+      <CollapsibleContent class="flex flex-col gap-2">
+        <div class="rounded-md border px-4 py-2 text-sm">
+          <p class="font-medium">Shipping address</p>
+          <p class="text-muted-foreground">100 Market St, San Francisco</p>
+        </div>
+        <div class="rounded-md border px-4 py-2 text-sm">
+          <p class="font-medium">Items</p>
+          <p class="text-muted-foreground">2x Studio Headphones</p>
+        </div>
       </CollapsibleContent>
     </Collapsible>
   )
 }
 
 export function CollapsibleSettingsPanel() {
-  const [isOpen, setIsOpen] = createSignal(false)
-
   return (
     <Card class="mx-auto w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Radius</CardTitle>
-        <CardDescription>Set the corner radius of the element.</CardDescription>
-      </CardHeader>
       <CardContent>
-        <Collapsible open={isOpen()} onOpenChange={setIsOpen} class="flex items-start gap-2">
-          <div class="grid w-full grid-cols-2 gap-2">
-            <Input>
-              <InputLabel class="sr-only">Radius X</InputLabel>
-              <InputField />
-            </Input>
-            <Input>
-              <InputLabel class="sr-only">Radius Y</InputLabel>
-              <InputField />
-            </Input>
-            <CollapsibleContent class="col-span-full grid grid-cols-2 gap-2">
-              <Input>
-                <InputLabel class="sr-only">Radius X</InputLabel>
-                <InputField />
-              </Input>
-              <Input>
-                <InputLabel class="sr-only">Radius Y</InputLabel>
-                <InputField />
-              </Input>
-            </CollapsibleContent>
-          </div>
-          <CollapsibleTrigger class="inline-flex size-9 items-center justify-center rounded-md border bg-background text-sm shadow-xs hover:bg-accent">
-            {isOpen() ? "-" : "+"}
+        <Collapsible>
+          <CollapsibleTrigger as={Button} variant="ghost" class="group w-full justify-between">
+            Product details
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-4 transition-transform group-data-[expanded]:rotate-180"><path d="m6 9 6 6 6-6" /></svg>
           </CollapsibleTrigger>
+          <CollapsibleContent class="flex flex-col items-start gap-2 px-2.5 pt-0 pb-2.5 text-sm">
+            <p>This panel can be expanded or collapsed to reveal additional content.</p>
+            <Button size="xs">Learn More</Button>
+          </CollapsibleContent>
         </Collapsible>
       </CardContent>
     </Card>
@@ -107,16 +54,30 @@ export function CollapsibleSettingsPanel() {
 
 export function CollapsibleFileTree() {
   return (
-    <Card class="mx-auto w-full max-w-xs">
-      <CardHeader>
-        <Tabs defaultValue="explorer">
-          <TabsList class="w-full">
-            <TabsTrigger value="explorer">Explorer</TabsTrigger>
-            <TabsTrigger value="settings">Outline</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </CardHeader>
-      <CardContent class="flex flex-col gap-1">{fileTree.map((item) => renderItem(item))}</CardContent>
+    <Card class="w-full max-w-xs">
+      <CardContent class="py-3">
+        <Collapsible defaultOpen>
+          <CollapsibleTrigger class="flex w-full items-center gap-2 rounded px-2 py-1 text-sm font-medium hover:bg-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="m6 9 6 6 6-6" /></svg>
+            src
+          </CollapsibleTrigger>
+          <CollapsibleContent class="ml-4 flex flex-col border-l pl-2">
+            <Collapsible>
+              <CollapsibleTrigger class="flex w-full items-center gap-2 rounded px-2 py-1 text-sm hover:bg-muted">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="m6 9 6 6 6-6" /></svg>
+                components
+              </CollapsibleTrigger>
+              <CollapsibleContent class="ml-4 flex flex-col border-l pl-2">
+                <span class="rounded px-2 py-1 text-sm text-muted-foreground hover:bg-muted">button.tsx</span>
+                <span class="rounded px-2 py-1 text-sm text-muted-foreground hover:bg-muted">card.tsx</span>
+                <span class="rounded px-2 py-1 text-sm text-muted-foreground hover:bg-muted">dialog.tsx</span>
+              </CollapsibleContent>
+            </Collapsible>
+            <span class="rounded px-2 py-1 text-sm text-muted-foreground hover:bg-muted">app.tsx</span>
+            <span class="rounded px-2 py-1 text-sm text-muted-foreground hover:bg-muted">index.tsx</span>
+          </CollapsibleContent>
+        </Collapsible>
+      </CardContent>
     </Card>
   )
 }

@@ -3,58 +3,82 @@ import { AlignCenter, AlignLeft, AlignRight, Bold, Italic, Underline } from "luc
 
 export function ToggleGroupShowcase() {
   return (
-    <div class="flex flex-col gap-6">
-      {/* Single selection */}
-      <ToggleGroup defaultValue="center">
-        <ToggleGroupItem value="left" aria-label="Align left">
-          <AlignLeft />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="center" aria-label="Align center">
-          <AlignCenter />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="right" aria-label="Align right">
-          <AlignRight />
-        </ToggleGroupItem>
-      </ToggleGroup>
+    <div class="flex flex-col gap-10">
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Single Selection</h3>
+        <ToggleGroup defaultValue="center">
+          <ToggleGroupItem value="left" aria-label="Align left">
+            <AlignLeft class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="center" aria-label="Align center">
+            <AlignCenter class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="right" aria-label="Align right">
+            <AlignRight class="size-4" />
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </section>
 
-      {/* Outline variant */}
-      <ToggleGroup variant="outline" defaultValue="bold">
-        <ToggleGroupItem value="bold" aria-label="Toggle bold">
-          <Bold />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="italic" aria-label="Toggle italic">
-          <Italic />
-        </ToggleGroupItem>
-        <ToggleGroupItem value="underline" aria-label="Toggle underline">
-          <Underline />
-        </ToggleGroupItem>
-      </ToggleGroup>
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Outline Variant</h3>
+        <ToggleGroup variant="outline" multiple defaultValue={["bold"]}>
+          <ToggleGroupItem value="bold" aria-label="Toggle bold">
+            <Bold class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="italic" aria-label="Toggle italic">
+            <Italic class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="underline" aria-label="Toggle underline">
+            <Underline class="size-4" />
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </section>
 
-      {/* Sizes */}
-      <ToggleGroup size="sm" variant="outline" defaultValue="center">
-        <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft /></ToggleGroupItem>
-        <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter /></ToggleGroupItem>
-        <ToggleGroupItem value="right" aria-label="Align right"><AlignRight /></ToggleGroupItem>
-      </ToggleGroup>
-      <ToggleGroup size="lg" variant="outline" defaultValue="center">
-        <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft /></ToggleGroupItem>
-        <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter /></ToggleGroupItem>
-        <ToggleGroupItem value="right" aria-label="Align right"><AlignRight /></ToggleGroupItem>
-      </ToggleGroup>
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Sizes</h3>
+        <div class="flex flex-col gap-4">
+          <ToggleGroup size="sm" variant="outline" defaultValue="center">
+            <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft class="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter class="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="right" aria-label="Align right"><AlignRight class="size-4" /></ToggleGroupItem>
+          </ToggleGroup>
+          <ToggleGroup size="lg" variant="outline" defaultValue="center">
+            <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft class="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter class="size-4" /></ToggleGroupItem>
+            <ToggleGroupItem value="right" aria-label="Align right"><AlignRight class="size-4" /></ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      </section>
 
-      {/* Multiple selection */}
-      <ToggleGroup multiple defaultValue={["bold", "italic"]}>
-        <ToggleGroupItem value="bold" aria-label="Toggle bold"><Bold /></ToggleGroupItem>
-        <ToggleGroupItem value="italic" aria-label="Toggle italic"><Italic /></ToggleGroupItem>
-        <ToggleGroupItem value="underline" aria-label="Toggle underline"><Underline /></ToggleGroupItem>
-      </ToggleGroup>
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Multiple Selection</h3>
+        <ToggleGroup multiple defaultValue={["bold", "italic"]}>
+          <ToggleGroupItem value="bold" aria-label="Toggle bold">
+            <Bold class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="italic" aria-label="Toggle italic">
+            <Italic class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="underline" aria-label="Toggle underline">
+            <Underline class="size-4" />
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </section>
 
-      {/* Disabled */}
-      <ToggleGroup disabled variant="outline">
-        <ToggleGroupItem value="bold" aria-label="Toggle bold"><Bold /></ToggleGroupItem>
-        <ToggleGroupItem value="italic" aria-label="Toggle italic"><Italic /></ToggleGroupItem>
-        <ToggleGroupItem value="underline" aria-label="Toggle underline"><Underline /></ToggleGroupItem>
-      </ToggleGroup>
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Disabled</h3>
+        <ToggleGroup disabled defaultValue="center">
+          <ToggleGroupItem value="left" aria-label="Align left">
+            <AlignLeft class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="center" aria-label="Align center">
+            <AlignCenter class="size-4" />
+          </ToggleGroupItem>
+          <ToggleGroupItem value="right" aria-label="Align right">
+            <AlignRight class="size-4" />
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </section>
     </div>
   )
 }

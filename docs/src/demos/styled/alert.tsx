@@ -1,36 +1,46 @@
-import { Alert, AlertAction, AlertTitle, AlertDescription } from "@danielfrg/solid-ui/alert"
+import { Alert, AlertAction, AlertDescription, AlertTitle } from "@danielfrg/solid-ui/alert"
 import { Button } from "@danielfrg/solid-ui/button"
-import { AlertCircle, Info, Terminal } from "lucide-solid"
+import { AlertCircle, CheckCircle2, Info, Terminal } from "lucide-solid"
 
 export function AlertBasic() {
   return (
-    <Alert>
-      <Terminal />
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>You can add components to your app using the cli.</AlertDescription>
-    </Alert>
+    <div class="grid w-full max-w-md items-start gap-4">
+      <Alert>
+        <CheckCircle2 />
+        <AlertTitle>Payment successful</AlertTitle>
+        <AlertDescription>
+          Your payment of $29.99 has been processed. A receipt has been sent to your email address.
+        </AlertDescription>
+      </Alert>
+      <Alert>
+        <Info />
+        <AlertTitle>New feature available</AlertTitle>
+        <AlertDescription>We've added dark mode support. You can enable it in your account settings.</AlertDescription>
+      </Alert>
+    </div>
   )
 }
 
 export function AlertDestructive() {
   return (
-    <Alert variant="destructive">
+    <Alert variant="destructive" class="max-w-md">
       <AlertCircle />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
+      <AlertTitle>Payment failed</AlertTitle>
+      <AlertDescription>
+        Your payment could not be processed. Please check your payment method and try again.
+      </AlertDescription>
     </Alert>
   )
 }
 
 export function AlertActionDemo() {
   return (
-    <Alert>
-      <Info />
-      <AlertTitle>Update available</AlertTitle>
-      <AlertDescription>We just shipped a new version with improved performance.</AlertDescription>
+    <Alert class="max-w-md">
+      <AlertTitle>Dark mode is now available</AlertTitle>
+      <AlertDescription>Enable it under your profile settings to get started.</AlertDescription>
       <AlertAction>
-        <Button size="sm" variant="secondary">
-          Dismiss
+        <Button size="xs" variant="default">
+          Enable
         </Button>
       </AlertAction>
     </Alert>
@@ -39,10 +49,17 @@ export function AlertActionDemo() {
 
 export function AlertCustomColors() {
   return (
-    <Alert class="border-emerald-200/70 bg-emerald-50 text-emerald-900 dark:border-emerald-900/40 dark:bg-emerald-950 dark:text-emerald-100">
-      <Info />
-      <AlertTitle>Custom color</AlertTitle>
-      <AlertDescription>Use utility classes to match your product tone.</AlertDescription>
-    </Alert>
+    <div class="grid w-full max-w-md items-start gap-4">
+      <Alert class="border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
+        <Terminal />
+        <AlertTitle>Your subscription will expire in 3 days</AlertTitle>
+        <AlertDescription>Renew now to avoid service interruption.</AlertDescription>
+      </Alert>
+      <Alert class="border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-50">
+        <CheckCircle2 />
+        <AlertTitle>Account verified</AlertTitle>
+        <AlertDescription>Your email address has been verified successfully.</AlertDescription>
+      </Alert>
+    </div>
   )
 }

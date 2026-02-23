@@ -1,13 +1,13 @@
 import {
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 } from "@danielfrg/solid-ui/alert-dialog"
 import { Button } from "@danielfrg/solid-ui/button"
 
@@ -15,7 +15,7 @@ export function AlertDialogBasic() {
   return (
     <AlertDialog>
       <AlertDialogTrigger as={Button} variant="outline">
-        Delete Account
+        Show Dialog
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -38,18 +38,18 @@ export function AlertDialogSmall() {
   return (
     <AlertDialog>
       <AlertDialogTrigger as={Button} variant="outline">
-        Delete Project
+        Small Dialog
       </AlertDialogTrigger>
-      <AlertDialogContent class="max-w-sm">
+      <AlertDialogContent class="sm:max-w-sm">
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete this project?</AlertDialogTitle>
+          <AlertDialogTitle>Discard changes?</AlertDialogTitle>
           <AlertDialogDescription>
-            All project data will be removed. This action cannot be undone.
+            You have unsaved changes. Are you sure you want to discard them?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Delete</AlertDialogAction>
+          <AlertDialogCancel>Keep editing</AlertDialogCancel>
+          <AlertDialogAction>Discard</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -60,25 +60,25 @@ export function AlertDialogMedia() {
   return (
     <AlertDialog>
       <AlertDialogTrigger as={Button} variant="outline">
-        View details
+        Share Project
       </AlertDialogTrigger>
-      <AlertDialogContent class="gap-6">
-        <div class="overflow-hidden rounded-lg border">
-          <img
-            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop"
-            alt="Product preview"
-            class="aspect-[4/3] w-full object-cover"
-          />
-        </div>
+      <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Continue with purchase?</AlertDialogTitle>
-          <AlertDialogDescription>
-            You will be charged immediately and receive instant access to your download.
+          <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+              <polyline points="16 6 12 2 8 6" />
+              <line x1="12" x2="12" y1="2" y2="15" />
+            </svg>
+          </div>
+          <AlertDialogTitle class="text-center">Share this project?</AlertDialogTitle>
+          <AlertDialogDescription class="text-center">
+            Anyone with the link will be able to view and edit this project.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Confirm</AlertDialogAction>
+          <AlertDialogAction>Share</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -89,23 +89,23 @@ export function AlertDialogSmallMedia() {
   return (
     <AlertDialog>
       <AlertDialogTrigger as={Button} variant="outline">
-        View plan
+        Connect Device
       </AlertDialogTrigger>
-      <AlertDialogContent class="max-w-sm gap-6">
-        <div class="overflow-hidden rounded-lg border">
-          <img
-            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=800&auto=format&fit=crop"
-            alt="Plan preview"
-            class="aspect-[4/3] w-full object-cover"
-          />
-        </div>
+      <AlertDialogContent class="sm:max-w-sm">
         <AlertDialogHeader>
-          <AlertDialogTitle>Upgrade to Pro?</AlertDialogTitle>
-          <AlertDialogDescription>Get unlimited projects and priority support for your team.</AlertDialogDescription>
+          <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-muted">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6">
+              <path d="m7 7 10 10-5 5V2l5 5L7 17" />
+            </svg>
+          </div>
+          <AlertDialogTitle class="text-center">Allow accessory to connect?</AlertDialogTitle>
+          <AlertDialogDescription class="text-center">
+            Do you want to allow the USB accessory to connect to this device?
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Not now</AlertDialogCancel>
-          <AlertDialogAction>Upgrade</AlertDialogAction>
+          <AlertDialogCancel>Don't allow</AlertDialogCancel>
+          <AlertDialogAction>Allow</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -116,13 +116,14 @@ export function AlertDialogDestructive() {
   return (
     <AlertDialog>
       <AlertDialogTrigger as={Button} variant="destructive">
-        Delete Everything
+        Delete Account
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete all data?</AlertDialogTitle>
+          <AlertDialogTitle>Delete your account?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete all projects, users, and audit logs from your account.
+            This will permanently delete your account, all your projects, and remove all associated data. This action is
+            irreversible.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

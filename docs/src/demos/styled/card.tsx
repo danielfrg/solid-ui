@@ -3,37 +3,31 @@ import { Badge } from "@danielfrg/solid-ui/badge"
 import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
 import { Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter } from "@danielfrg/solid-ui/card"
 
-function avatarUrl(seed: number) {
-  return `https://avatar.vercel.sh/${seed}`
-}
-
 export function CardSize() {
   return (
-    <div class="grid gap-6 sm:grid-cols-2">
-      <Card class="max-w-sm">
+    <div class="flex flex-wrap gap-6">
+      <Card class="w-full max-w-xs">
         <CardHeader>
-          <CardTitle>Small card</CardTitle>
-          <CardDescription>Compact layout for tight spaces.</CardDescription>
+          <CardTitle>Small Card</CardTitle>
+          <CardDescription>A compact card for quick info.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p class="text-sm text-muted-foreground">Perfect for quick summaries and status updates.</p>
+          <p class="text-sm text-muted-foreground">Brief summary content goes here.</p>
         </CardContent>
       </Card>
-      <Card class="max-w-lg">
+      <Card class="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Large card</CardTitle>
-          <CardDescription>More room for details and actions.</CardDescription>
+          <CardTitle>Larger Card</CardTitle>
+          <CardDescription>More room for detailed content.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p class="text-sm text-muted-foreground">Use larger cards when you need to show additional context.</p>
+          <p class="text-sm text-muted-foreground">
+            This card has more space for longer descriptions, form fields, or other interactive elements.
+          </p>
         </CardContent>
-        <CardFooter>
-          <Button variant="outline" size="sm">
-            Cancel
-          </Button>
-          <Button size="sm" class="ml-auto">
-            Save
-          </Button>
+        <CardFooter class="justify-end gap-2">
+          <Button variant="outline">Cancel</Button>
+          <Button>Save</Button>
         </CardFooter>
       </Card>
     </div>
@@ -42,27 +36,23 @@ export function CardSize() {
 
 export function CardImage() {
   return (
-    <Card class="max-w-lg overflow-hidden pt-0">
-      <div class="relative">
-        <img
-          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"
-          alt="Landscape"
-          class="h-48 w-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/35" />
-      </div>
+    <Card class="w-full max-w-sm overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&h=400&fit=crop"
+        alt="Workspace"
+        class="h-48 w-full object-cover"
+      />
       <CardHeader>
-        <CardTitle>Card with image</CardTitle>
-        <CardDescription>Use media to add context to your card content.</CardDescription>
-        <CardAction>
-          <Badge variant="outline">Featured</Badge>
-        </CardAction>
+        <CardTitle>Modern Workspace</CardTitle>
+        <CardDescription>Explore our curated collection of workspace setups.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p class="text-sm text-muted-foreground">A simple image header pairs well with shorter summaries.</p>
+        <p class="text-sm text-muted-foreground">
+          Find inspiration for your home office with minimalist designs and ergonomic furniture recommendations.
+        </p>
       </CardContent>
       <CardFooter>
-        <Button class="w-full">View Event</Button>
+        <Button class="w-full">Browse Collection</Button>
       </CardFooter>
     </Card>
   )
@@ -70,46 +60,28 @@ export function CardImage() {
 
 export function CardLogin() {
   return (
-    <Card class="max-w-sm w-full">
+    <Card class="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Login</CardTitle>
+        <CardTitle>Log in</CardTitle>
         <CardDescription>Enter your credentials to access your account.</CardDescription>
         <CardAction>
-          <Button variant="link" class="p-0 h-auto text-sm">
-            Sign Up
-          </Button>
+          <Button variant="link" size="sm">Sign up</Button>
         </CardAction>
       </CardHeader>
       <CardContent>
-        <div class="grid gap-4">
-          <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none" for="email">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              class="h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm"
-            />
+        <form class="flex flex-col gap-4">
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium" for="login-email">Email</label>
+            <input id="login-email" type="email" placeholder="name@example.com" class="h-9 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
           </div>
-          <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none" for="password">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              class="h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm"
-            />
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium" for="login-password">Password</label>
+            <input id="login-password" type="password" placeholder="Enter your password" class="h-9 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
           </div>
-        </div>
+        </form>
       </CardContent>
-      <CardFooter class="flex-col gap-2">
-        <Button class="w-full">Login</Button>
-        <Button variant="outline" class="w-full">
-          Login with Google
-        </Button>
+      <CardFooter>
+        <Button class="w-full">Log in</Button>
       </CardFooter>
     </Card>
   )
@@ -117,38 +89,32 @@ export function CardLogin() {
 
 export function CardMeetingNotes() {
   return (
-    <Card class="max-w-sm w-full">
+    <Card class="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Meeting Notes</CardTitle>
-        <CardDescription>Review and manage your meeting transcripts.</CardDescription>
-        <CardAction>
-          <Button variant="outline" size="sm">
-            Transcribe
-          </Button>
-        </CardAction>
+        <CardTitle>Team Meeting</CardTitle>
+        <CardDescription>Weekly standup - Jan 15, 2025</CardDescription>
       </CardHeader>
       <CardContent>
         <p class="text-sm text-muted-foreground">
-          Discussed Q4 roadmap priorities, assigned action items for the design system migration, and reviewed the
-          latest user research findings.
+          Discussed Q1 roadmap priorities, reviewed sprint progress, and aligned on release timeline for the new
+          dashboard feature.
         </p>
       </CardContent>
-      <CardFooter class="gap-2">
+      <CardFooter class="justify-between">
         <div class="flex -space-x-2">
-          <Avatar class="size-7 border-2 border-background">
-            <AvatarImage src={avatarUrl(1)} />
-            <AvatarFallback>A</AvatarFallback>
+          <Avatar class="size-7 ring-2 ring-background">
+            <AvatarImage src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=face" />
+            <AvatarFallback class="text-xs">A</AvatarFallback>
           </Avatar>
-          <Avatar class="size-7 border-2 border-background">
-            <AvatarImage src={avatarUrl(2)} />
-            <AvatarFallback>B</AvatarFallback>
+          <Avatar class="size-7 ring-2 ring-background">
+            <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" />
+            <AvatarFallback class="text-xs">B</AvatarFallback>
           </Avatar>
-          <Avatar class="size-7 border-2 border-background">
-            <AvatarImage src={avatarUrl(3)} />
-            <AvatarFallback>C</AvatarFallback>
+          <Avatar class="size-7 ring-2 ring-background">
+            <AvatarFallback class="text-xs">+2</AvatarFallback>
           </Avatar>
         </div>
-        <span class="text-xs text-muted-foreground ml-1">+3 participants</span>
+        <Badge variant="secondary">Completed</Badge>
       </CardFooter>
     </Card>
   )
@@ -156,41 +122,31 @@ export function CardMeetingNotes() {
 
 export function CardWithAction() {
   return (
-    <Card class="max-w-sm w-full">
+    <Card class="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardDescription>Deploy your new project in one click.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div class="grid gap-4">
-          <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none" for="project-name">
-              Name
-            </label>
-            <input
-              id="project-name"
-              placeholder="My Project"
-              class="h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm"
-            />
+        <form class="flex flex-col gap-4">
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium" for="project-name">Name</label>
+            <input id="project-name" placeholder="My project" class="h-9 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
           </div>
-          <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none" for="framework">
-              Framework
-            </label>
-            <select id="framework" class="h-9 w-full rounded-md border bg-transparent px-3 text-sm shadow-sm">
-              <option>Next.js</option>
-              <option>SvelteKit</option>
-              <option>Astro</option>
-              <option>Nuxt.js</option>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium" for="project-framework">Framework</label>
+            <select id="project-framework" class="h-9 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+              <option>SolidJS</option>
+              <option>React</option>
+              <option>Svelte</option>
+              <option>Vue</option>
             </select>
           </div>
-        </div>
+        </form>
       </CardContent>
-      <CardFooter>
-        <Button variant="outline" class="w-full">
-          Cancel
-        </Button>
-        <Button class="w-full">Deploy</Button>
+      <CardFooter class="justify-between">
+        <Button variant="outline">Cancel</Button>
+        <Button>Deploy</Button>
       </CardFooter>
     </Card>
   )

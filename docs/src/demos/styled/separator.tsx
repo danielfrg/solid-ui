@@ -11,7 +11,7 @@ export function SeparatorShowcase() {
             <div class="text-muted-foreground">An open-source UI component library for SolidJS.</div>
           </div>
           <Separator />
-          <div>A set of beautifully designed components that you can customize, extend, and build on.</div>
+          <div>Beautifully designed components you can customize and build on.</div>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@danielfrg/solid-ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,20 +6,24 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@danielfrg/solid-ui/dropdown-menu"
-import { Check, LogOut, Settings, UserPlus } from "lucide-solid"
+import { For } from "solid-js"
+import { LogOut, Settings, User } from "lucide-solid"
 
-const avatarUrl = (id: number) => `https://i.pravatar.cc/128?img=${id}`
+const urls = [
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=64&h=64&fit=crop&crop=face",
+]
 
 export function AvatarBasic() {
   return (
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-6">
       <Avatar>
-        <AvatarImage src={avatarUrl(10)} />
+        <AvatarImage src={urls[0]} alt="User" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage src={avatarUrl(32)} />
-        <AvatarFallback>JD</AvatarFallback>
+        <AvatarFallback>DR</AvatarFallback>
       </Avatar>
     </div>
   )
@@ -27,72 +31,73 @@ export function AvatarBasic() {
 
 export function AvatarBadge() {
   return (
-    <div class="flex items-center gap-4">
-      <Avatar>
-        <AvatarImage src={avatarUrl(5)} />
-        <AvatarFallback>ER</AvatarFallback>
-        <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-emerald-500" />
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>AB</AvatarFallback>
-        <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-amber-500" />
-      </Avatar>
+    <div class="flex items-center gap-6">
+      <div class="relative">
+        <Avatar>
+          <AvatarImage src={urls[0]} alt="Online" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-green-500" />
+      </div>
+      <div class="relative">
+        <Avatar>
+          <AvatarImage src={urls[1]} alt="Away" />
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+        <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-yellow-500" />
+      </div>
+      <div class="relative">
+        <Avatar>
+          <AvatarFallback>OF</AvatarFallback>
+        </Avatar>
+        <span class="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-muted" />
+      </div>
     </div>
   )
 }
 
 export function AvatarBadgeIcon() {
   return (
-    <div class="flex items-center gap-4">
+    <div class="relative inline-flex">
       <Avatar>
-        <AvatarImage src={avatarUrl(16)} />
-        <AvatarFallback>OK</AvatarFallback>
-        <span class="absolute bottom-0 right-0 flex size-4 items-center justify-center rounded-full border-2 border-background bg-emerald-500 text-white">
-          <Check class="size-2.5" />
-        </span>
+        <AvatarImage src={urls[0]} alt="Verified" />
+        <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <Avatar>
-        <AvatarFallback>MV</AvatarFallback>
-        <span class="absolute bottom-0 right-0 flex size-4 items-center justify-center rounded-full border-2 border-background bg-sky-500 text-white">
-          <Check class="size-2.5" />
-        </span>
-      </Avatar>
+      <span class="absolute -bottom-0.5 -right-0.5 flex size-4 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="size-2.5"><polyline points="20 6 9 17 4 12" /></svg>
+      </span>
     </div>
   )
 }
 
 export function AvatarGroup() {
   return (
-    <div class="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-      <Avatar>
-        <AvatarImage src={avatarUrl(10)} />
-        <AvatarFallback>U1</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src={avatarUrl(32)} />
-        <AvatarFallback>U2</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src={avatarUrl(5)} />
-        <AvatarFallback>U3</AvatarFallback>
-      </Avatar>
+    <div class="flex -space-x-3">
+      <For each={urls}>
+        {(url, i) => (
+          <Avatar class="ring-2 ring-background">
+            <AvatarImage src={url} alt={`Member ${i() + 1}`} />
+            <AvatarFallback>TM</AvatarFallback>
+          </Avatar>
+        )}
+      </For>
     </div>
   )
 }
 
 export function AvatarGroupCount() {
   return (
-    <div class="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2">
-      <Avatar>
-        <AvatarImage src={avatarUrl(10)} />
-        <AvatarFallback>U1</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src={avatarUrl(32)} />
-        <AvatarFallback>U2</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback class="bg-muted text-xs font-semibold">+3</AvatarFallback>
+    <div class="flex -space-x-3">
+      <For each={urls}>
+        {(url, i) => (
+          <Avatar class="ring-2 ring-background">
+            <AvatarImage src={url} alt={`Member ${i() + 1}`} />
+            <AvatarFallback>TM</AvatarFallback>
+          </Avatar>
+        )}
+      </For>
+      <Avatar class="ring-2 ring-background">
+        <AvatarFallback class="text-xs">+3</AvatarFallback>
       </Avatar>
     </div>
   )
@@ -100,20 +105,19 @@ export function AvatarGroupCount() {
 
 export function AvatarGroupIcon() {
   return (
-    <div class="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2">
-      <Avatar>
-        <AvatarImage src={avatarUrl(45)} />
-        <AvatarFallback>U1</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src={avatarUrl(20)} />
-        <AvatarFallback>U2</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback class="bg-muted text-xs font-semibold">+2</AvatarFallback>
-        <span class="absolute -bottom-1 -right-1 flex size-5 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground">
-          <UserPlus class="size-3" />
-        </span>
+    <div class="flex -space-x-3">
+      <For each={urls.slice(0, 2)}>
+        {(url, i) => (
+          <Avatar class="ring-2 ring-background">
+            <AvatarImage src={url} alt={`Member ${i() + 1}`} />
+            <AvatarFallback>TM</AvatarFallback>
+          </Avatar>
+        )}
+      </For>
+      <Avatar class="ring-2 ring-background">
+        <AvatarFallback>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
+        </AvatarFallback>
       </Avatar>
     </div>
   )
@@ -123,19 +127,19 @@ export function AvatarSizes() {
   return (
     <div class="flex items-center gap-4">
       <Avatar class="size-7">
-        <AvatarImage src={avatarUrl(10)} />
+        <AvatarImage src={urls[0]} alt="Small" />
         <AvatarFallback class="text-xs">SM</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage src={avatarUrl(10)} />
+        <AvatarImage src={urls[0]} alt="Default" />
         <AvatarFallback>DF</AvatarFallback>
       </Avatar>
       <Avatar class="size-14">
-        <AvatarImage src={avatarUrl(10)} />
+        <AvatarImage src={urls[0]} alt="Large" />
         <AvatarFallback class="text-lg">LG</AvatarFallback>
       </Avatar>
       <Avatar class="size-20">
-        <AvatarImage src={avatarUrl(10)} />
+        <AvatarImage src={urls[0]} alt="XL" />
         <AvatarFallback class="text-xl">XL</AvatarFallback>
       </Avatar>
     </div>
@@ -145,22 +149,24 @@ export function AvatarSizes() {
 export function AvatarDropdown() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger as={Avatar} class="cursor-pointer">
-        <AvatarImage src={avatarUrl(24)} />
-        <AvatarFallback>JD</AvatarFallback>
+      <DropdownMenuTrigger class="cursor-pointer rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <Avatar>
+          <AvatarImage src={urls[0]} alt="User menu" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent class="w-48">
         <DropdownMenuItem>
-          <Settings class="mr-2 size-4" />
-          Settings
+          <User class="size-4" />
+          Profile
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <UserPlus class="mr-2 size-4" />
-          Invite team
+          <Settings class="size-4" />
+          Settings
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem class="text-destructive">
-          <LogOut class="mr-2 size-4" />
+        <DropdownMenuItem>
+          <LogOut class="size-4" />
           Log out
         </DropdownMenuItem>
       </DropdownMenuContent>

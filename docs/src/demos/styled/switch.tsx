@@ -1,48 +1,62 @@
-import { Switch, SwitchLabel } from "@danielfrg/solid-ui"
+import { Switch, SwitchLabel } from "@danielfrg/solid-ui/switch"
 
 export function SwitchShowcase() {
   return (
-    <div class="flex flex-col gap-12">
-      <section class="flex flex-col gap-4">
+    <div class="flex flex-col gap-10">
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Basic</h3>
         <Switch>
           <SwitchLabel>Airplane Mode</SwitchLabel>
         </Switch>
       </section>
 
-      <section class="flex flex-col gap-4">
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">With Description</h3>
-        <Switch>
-          <div class="flex flex-col">
-            <SwitchLabel>Share across devices</SwitchLabel>
-            <p class="text-muted-foreground text-sm">
-              Focus is shared across devices, and turns off when you leave the app.
-            </p>
+        <div class="flex items-start gap-3">
+          <Switch defaultChecked />
+          <div class="flex flex-col gap-1">
+            <SwitchLabel class="text-sm font-medium">Marketing emails</SwitchLabel>
+            <span class="text-xs text-muted-foreground">Receive emails about new products, features, and more.</span>
           </div>
-        </Switch>
+        </div>
       </section>
 
-      <section class="flex flex-col gap-4">
+      <section class="flex flex-col gap-3">
         <h3 class="text-sm font-semibold">Disabled</h3>
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-4">
           <Switch disabled>
-            <SwitchLabel>Disabled (Unchecked)</SwitchLabel>
+            <SwitchLabel class="text-muted-foreground">Disabled off</SwitchLabel>
           </Switch>
-          <Switch defaultChecked disabled>
-            <SwitchLabel>Disabled (Checked)</SwitchLabel>
+          <Switch disabled defaultChecked>
+            <SwitchLabel class="text-muted-foreground">Disabled on</SwitchLabel>
           </Switch>
         </div>
       </section>
 
-      <section class="flex flex-col gap-4">
-        <h3 class="text-sm font-semibold">Sizes</h3>
-        <div class="flex flex-col gap-6">
-          <Switch class="origin-left scale-90">
-            <SwitchLabel>Small</SwitchLabel>
-          </Switch>
-          <Switch>
-            <SwitchLabel>Default</SwitchLabel>
-          </Switch>
+      <section class="flex flex-col gap-3">
+        <h3 class="text-sm font-semibold">Settings List</h3>
+        <div class="flex max-w-sm flex-col divide-y rounded-lg border">
+          <div class="flex items-center justify-between p-4">
+            <div class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Push notifications</span>
+              <span class="text-xs text-muted-foreground">Send push notifications to your device.</span>
+            </div>
+            <Switch defaultChecked />
+          </div>
+          <div class="flex items-center justify-between p-4">
+            <div class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Email digest</span>
+              <span class="text-xs text-muted-foreground">Receive a weekly email digest.</span>
+            </div>
+            <Switch />
+          </div>
+          <div class="flex items-center justify-between p-4">
+            <div class="flex flex-col gap-1">
+              <span class="text-sm font-medium">Sound effects</span>
+              <span class="text-xs text-muted-foreground">Play sounds for notifications.</span>
+            </div>
+            <Switch defaultChecked />
+          </div>
         </div>
       </section>
     </div>
