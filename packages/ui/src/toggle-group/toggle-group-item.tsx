@@ -4,11 +4,11 @@ import type { ElementOf, PolymorphicProps } from "../polymorphic"
 import type { CollectionItemWithRef } from "../primitives"
 import { createDomCollectionItem } from "../primitives/create-dom-collection"
 import { createSelectableItem } from "../selection"
-import * as ToggleButton from "../toggle-button"
+import * as Toggle from "../toggle"
 import { useToggleGroupContext } from "./toggle-group-context"
 
 export interface ToggleGroupItemOptions extends Omit<
-  ToggleButton.ToggleButtonRootOptions,
+  Toggle.ToggleRootOptions,
   "pressed" | "defaultPressed" | "onChange"
 > {
   /** A string value for the toggle group item. All items within a toggle group should use a unique value. */
@@ -27,8 +27,7 @@ export interface ToggleGroupItemCommonProps<T extends HTMLElement = HTMLElement>
   onFocus: JSX.EventHandlerUnion<T, FocusEvent>
 }
 
-export interface ToggleGroupItemRenderProps
-  extends ToggleGroupItemCommonProps, ToggleButton.ToggleButtonRootRenderProps {
+export interface ToggleGroupItemRenderProps extends ToggleGroupItemCommonProps, Toggle.ToggleRootRenderProps {
   tabIndex: number | undefined
   "data-orientation": Orientation
 }
@@ -98,9 +97,7 @@ export function ToggleGroupItem<T extends ValidComponent = "button">(
   }
 
   return (
-    <ToggleButton.Root<
-      Component<Omit<ToggleGroupItemRenderProps, Exclude<keyof ToggleButton.ToggleButtonRootRenderProps, "tabIndex">>>
-    >
+    <Toggle.Root<Component<Omit<ToggleGroupItemRenderProps, Exclude<keyof Toggle.ToggleRootRenderProps, "tabIndex">>>>
       ref={mergeRefs((el) => (ref = el), local.ref)}
       pressed={selectionManager().isSelected(local.value)}
       tabIndex={selectableItem.tabIndex()}

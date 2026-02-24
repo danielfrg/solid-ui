@@ -1,19 +1,19 @@
 import { createSignal } from "solid-js"
 import type { JSX } from "solid-js"
-import * as ToggleButton from "@danielfrg/solid-ui/toggle-button"
+import * as Toggle from "@danielfrg/solid-ui/toggle"
 import styles from "./index.module.css"
 
-export function DemoToggleButtonControlled() {
+export function DemoToggleControlled() {
   const [pressed, setPressed] = createSignal(false)
 
   return (
     <div>
       <div class={styles.panel}>
-        <ToggleButton.Root aria-label="Favorite" pressed={pressed()} onChange={setPressed} class={styles.button}>
+        <Toggle.Root aria-label="Favorite" pressed={pressed()} onChange={setPressed} class={styles.button}>
           {(state) =>
             state.pressed() ? <HeartFilledIcon class={styles.icon} /> : <HeartOutlineIcon class={styles.icon} />
           }
-        </ToggleButton.Root>
+        </Toggle.Root>
       </div>
       <p class={styles.status}>{pressed() ? "Favorited" : "Not favorited"}.</p>
     </div>

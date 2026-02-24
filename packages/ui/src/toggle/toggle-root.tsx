@@ -19,13 +19,13 @@ import type { ElementOf, PolymorphicProps } from "../polymorphic"
 import { createToggleState } from "../primitives"
 import { callHandler, isFunction } from "../utils"
 
-export interface ToggleButtonRootState {
+export interface ToggleRootState {
   /** Whether the toggle button is on (pressed) or off (not pressed). */
   pressed: Accessor<boolean>
 }
 
-export interface ToggleButtonRootOptions extends Button.ButtonRootOptions {
-  /** The controlled pressed state of the toggle button. */
+export interface ToggleRootOptions extends Button.ButtonRootOptions {
+  /** The controlled pressed state of the toggle. */
   pressed?: boolean
 
   /**
@@ -34,38 +34,36 @@ export interface ToggleButtonRootOptions extends Button.ButtonRootOptions {
    */
   defaultPressed?: boolean
 
-  /** Event handler called when the pressed state of the toggle button changes. */
+  /** Event handler called when the pressed state of the toggle changes. */
   onChange?: (pressed: boolean) => void
 
   /**
-   * The children of the toggle button.
+   * The children of the toggle.
    * Can be a `JSX.Element` or a _render prop_ for having access to the internal state.
    */
-  children?: JSX.Element | ((state: ToggleButtonRootState) => JSX.Element)
+  children?: JSX.Element | ((state: ToggleRootState) => JSX.Element)
 }
 
-export interface ToggleButtonRootCommonProps<T extends HTMLElement = HTMLElement> {
+export interface ToggleRootCommonProps<T extends HTMLElement = HTMLElement> {
   onClick: JSX.EventHandlerUnion<T, MouseEvent>
   disabled: boolean | undefined
 }
 
-export interface ToggleButtonRootRenderProps extends ToggleButtonRootCommonProps, Button.ButtonRootRenderProps {
+export interface ToggleRootRenderProps extends ToggleRootCommonProps, Button.ButtonRootRenderProps {
   children: JSX.Element
   "aria-pressed": boolean
   "data-pressed": "" | undefined
 }
 
-export type ToggleButtonRootProps<T extends ValidComponent | HTMLElement = HTMLElement> = ToggleButtonRootOptions &
-  Partial<ToggleButtonRootCommonProps<ElementOf<T>>>
+export type ToggleRootProps<T extends ValidComponent | HTMLElement = HTMLElement> = ToggleRootOptions &
+  Partial<ToggleRootCommonProps<ElementOf<T>>>
 
 /**
  * A two-state button that allow users to toggle a selection on or off.
  * This component is based on the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
  */
-export function ToggleButtonRoot<T extends ValidComponent = "button">(
-  props: PolymorphicProps<T, ToggleButtonRootProps<T>>,
-) {
-  const [local, others] = splitProps(props as ToggleButtonRootProps, [
+export function ToggleRoot<T extends ValidComponent = "button">(props: PolymorphicProps<T, ToggleRootProps<T>>) {
+  const [local, others] = splitProps(props as ToggleRootProps, [
     "children",
     "pressed",
     "defaultPressed",
@@ -86,22 +84,22 @@ export function ToggleButtonRoot<T extends ValidComponent = "button">(
   }
 
   return (
-    <Button.Root<Component<Omit<ToggleButtonRootRenderProps, keyof Button.ButtonRootRenderProps>>>
+    <Button.Root<Component<Omit<ToggleRootRenderProps, keyof Button.ButtonRootRenderProps>>>
       aria-pressed={state.isSelected()}
       data-pressed={state.isSelected() ? "" : undefined}
       onClick={onClick}
       {...others}
     >
-      <ToggleButtonRootChild state={{ pressed: state.isSelected }}>{local.children}</ToggleButtonRootChild>
+      <ToggleRootChild state={{ pressed: state.isSelected }}>{local.children}</ToggleRootChild>
     </Button.Root>
   )
 }
 
-interface ToggleButtonRootChildProps extends Pick<ToggleButtonRootOptions, "children"> {
-  state: ToggleButtonRootState
+interface ToggleRootChildProps extends Pick<ToggleRootOptions, "children"> {
+  state: ToggleRootState
 }
 
-function ToggleButtonRootChild(props: ToggleButtonRootChildProps) {
+function ToggleRootChild(props: ToggleRootChildProps) {
   const resolvedChildren = children(() => {
     const body = props.children
     return isFunction(body) ? body(props.state) : body

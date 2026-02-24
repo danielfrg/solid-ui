@@ -24,4 +24,4 @@ This package ships raw TypeScript/TSX source and relies on the `solid` export co
 
 ## Components
 
-Accordion, Alert Dialog, Autocomplete, Avatar, Button, Checkbox, Checkbox Group, Collapsible, Combobox, Context Menu, Dialog, Drawer, Field, Fieldset, Form, Input, Listbox, Menu, Menubar, Meter, Navigation Menu, Number Field, Popover, Preview Card, Progress, Radio Group, Scroll Area, Select, Separator, Slider, Switch, Tabs, Toast, Toggle Button, Toggle Group, Tooltip.
+Accordion, Alert Dialog, Autocomplete, Avatar, Button, Checkbox, Checkbox Group, Collapsible, Combobox, Context Menu, Dialog, Drawer, Field, Fieldset, Form, Input, Listbox, Menu, Menubar, Meter, Navigation Menu, Number Field, Popover, Preview Card, Progress, Radio Group, Scroll Area, Select, Separator, Slider, Switch, Tabs, Toast, Toggle, Toggle Group, Tooltip.

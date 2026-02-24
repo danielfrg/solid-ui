@@ -208,10 +208,10 @@
       "solid": "./src/toast/index.tsx",
       "default": "./src/toast/index.tsx"
     },
-    "./toggle-button": {
-      "types": "./src/toggle-button/index.tsx",
-      "solid": "./src/toggle-button/index.tsx",
-      "default": "./src/toggle-button/index.tsx"
+    "./toggle": {
+      "types": "./src/toggle/index.tsx",
+      "solid": "./src/toggle/index.tsx",
+      "default": "./src/toggle/index.tsx"
     },
     "./toggle-group": {
       "types": "./src/toggle-group/index.tsx",

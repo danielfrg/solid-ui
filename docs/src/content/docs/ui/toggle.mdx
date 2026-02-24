@@ -1,19 +1,19 @@
 ---
-title: Toggle Button
+title: Toggle
 description: A button that toggles between a pressed and unpressed state.
 ---
 
 import DemoBlock from "@/components/demo-block.astro"
-import { DemoToggleButtonHero } from "@/demos/ui/toggle-button/hero"
-import { DemoToggleButtonDefaultPressed } from "@/demos/ui/toggle-button/default-pressed"
-import { DemoToggleButtonControlled } from "@/demos/ui/toggle-button/controlled"
+import { DemoToggleHero } from "@/demos/ui/toggle-button/hero"
+import { DemoToggleDefaultPressed } from "@/demos/ui/toggle-button/default-pressed"
+import { DemoToggleControlled } from "@/demos/ui/toggle-button/controlled"
 import heroCode from "@/demos/ui/toggle-button/hero.tsx?raw"
 import defaultPressedCode from "@/demos/ui/toggle-button/default-pressed.tsx?raw"
 import controlledCode from "@/demos/ui/toggle-button/controlled.tsx?raw"
 import toggleButtonStyles from "@/demos/ui/toggle-button/index.module.css?raw"
 import demoTheme from "@/demos/theme.css?raw"
 
-# Toggle Button
+# Toggle
 
 A button that toggles between a pressed and unpressed state.
 
@@ -25,7 +25,7 @@ A button that toggles between a pressed and unpressed state.
     { label: "theme.css", code: demoTheme },
   ]}
 >
-  <DemoToggleButtonHero client:load />
+  <DemoToggleHero client:load />
 </DemoBlock>
 
 ## Examples
@@ -42,7 +42,7 @@ Use `defaultPressed` to set the initial pressed state without controlling it.
     { label: "theme.css", code: demoTheme },
   ]}
 >
-  <DemoToggleButtonDefaultPressed client:load />
+  <DemoToggleDefaultPressed client:load />
 </DemoBlock>
 
 ### Controlled
@@ -57,5 +57,5 @@ Use `pressed` and `onChange` to control the pressed state externally.
     { label: "theme.css", code: demoTheme },
   ]}
 >
-  <DemoToggleButtonControlled client:load />
+  <DemoToggleControlled client:load />
 </DemoBlock>

@@ -1,15 +1,15 @@
 import type { JSX } from "solid-js"
-import * as ToggleButton from "@danielfrg/solid-ui/toggle-button"
+import * as Toggle from "@danielfrg/solid-ui/toggle"
 import styles from "./index.module.css"
 
-export function DemoToggleButtonHero() {
+export function DemoToggleHero() {
   return (
     <div class={styles.panel}>
-      <ToggleButton.Root aria-label="Favorite" class={styles.button}>
+      <Toggle.Root aria-label="Favorite" class={styles.button}>
         {(state) =>
           state.pressed() ? <HeartFilledIcon class={styles.icon} /> : <HeartOutlineIcon class={styles.icon} />
         }
-      </ToggleButton.Root>
+      </Toggle.Root>
     </div>
   )
 }

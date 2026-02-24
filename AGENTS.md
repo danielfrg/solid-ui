@@ -1,6 +1,6 @@
 # Solid UI unstyled and styled components
 
-Unstyled components: In the `packages/core` directory. This is the core focus of the library.
+Unstyled components: In the `packages/ui` directory. This is the core focus of the library.
 
 - Mostly forked from [Kobalte](https://kobalte.dev) and others adapted from [Base UI](https://base-ui.com/)
 
