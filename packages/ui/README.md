@@ -1,13 +1,13 @@
-# @danielfrg/solid-ui-core
+# @danielfrg/solid-ui
 
 A SolidJS collection of unstyled, headless UI components. Based on [Kobalte](https://kobalte.dev/) and [Base UI](https://base-ui.com/).
 
-For styled components with a shadcn-inspired Tailwind theme, see [`@danielfrg/solid-ui`](https://github.com/danielfrg/solid-ui/tree/main/packages/ui).
+For styled components with a shadcn-inspired Tailwind theme, see [`@danielfrg/solid-ui-nova`](https://github.com/danielfrg/solid-ui/tree/main/packages/ui).
 
 ## Installation
 
 ```bash
-npm install @danielfrg/solid-ui-core
+npm install @danielfrg/solid-ui
 ```
 
 ## Usage
@@ -15,9 +15,9 @@ npm install @danielfrg/solid-ui-core
 Import components using subpath exports:
 
 ```tsx
-import * as Dialog from "@danielfrg/solid-ui-core/dialog"
-import * as Tabs from "@danielfrg/solid-ui-core/tabs"
-import { Button } from "@danielfrg/solid-ui-core/button"
+import * as Dialog from "@danielfrg/solid-ui/dialog"
+import * as Tabs from "@danielfrg/solid-ui/tabs"
+import { Button } from "@danielfrg/solid-ui/button"
 ```
 
 This package ships raw TypeScript/TSX source and relies on the `solid` export condition. Your bundler (e.g. `vite-plugin-solid`) compiles the JSX at build time.
