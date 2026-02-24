@@ -1,17 +1,23 @@
 ---
-title: ToggleGroup
-description: A group of toggle buttons where only one or multiple can be pressed at a time.
+title: Toggle Group
+description: A set of toggle buttons where one or more can be active at a time.
 ---
 
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoToggleGroupHero } from "../../../demos/core/toggle-group/hero"
+import { DemoToggleGroupDefaultValue } from "../../../demos/core/toggle-group/default-value"
+import { DemoToggleGroupControlled } from "../../../demos/core/toggle-group/controlled"
+import { DemoToggleGroupMultiple } from "../../../demos/core/toggle-group/multiple"
 import heroCode from "../../../demos/core/toggle-group/hero.tsx?raw"
+import defaultValueCode from "../../../demos/core/toggle-group/default-value.tsx?raw"
+import controlledCode from "../../../demos/core/toggle-group/controlled.tsx?raw"
+import multipleCode from "../../../demos/core/toggle-group/multiple.tsx?raw"
 import toggleGroupStyles from "../../../demos/core/toggle-group/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
-# ToggleGroup
+# Toggle Group
 
-A group of toggle buttons where only one or multiple can be pressed at a time.
+A set of toggle buttons where one or more can be active at a time.
 
 <DemoBlock
   label="View source"
@@ -22,4 +28,51 @@ A group of toggle buttons where only one or multiple can be pressed at a time.
   ]}
 >
   <DemoToggleGroupHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Default value
+
+Use `defaultValue` to set the initially active item without controlling the state.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultValueCode },
+    { label: "index.module.css", code: toggleGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToggleGroupDefaultValue client:load />
+</DemoBlock>
+
+### Controlled
+
+Use `value` and `onChange` to control the active item externally.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: toggleGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToggleGroupControlled client:load />
+</DemoBlock>
+
+### Multiple selection
+
+Use the `multiple` prop to allow more than one item to be active simultaneously.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleCode },
+    { label: "index.module.css", code: toggleGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToggleGroupMultiple client:load />
 </DemoBlock>

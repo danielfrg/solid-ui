@@ -264,3 +264,41 @@
     opacity: 0;
   }
 }
+
+.buttonRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Named top-center region */
+.listTop {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  z-index: 9999;
+}
+
+.listTop:has(> *) {
+  min-height: 120px;
+}
+
+.listTop .toast:nth-last-child(1) {
+  z-index: 50;
+  transform: translateY(0) scale(1);
+}
+
+.listTop .toast:nth-last-child(2) {
+  z-index: 49;
+  transform: translateY(calc(var(--peek) + 0.05 * var(--toast-h))) scale(0.95);
+}
+
+.listTop .toast:nth-last-child(3) {
+  z-index: 48;
+  transform: translateY(calc(2 * var(--peek) + 0.1 * var(--toast-h))) scale(0.9);
+}

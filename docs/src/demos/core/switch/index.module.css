@@ -105,3 +105,36 @@
   line-height: 1.5rem;
   user-select: none;
 }
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-gray-600);
+}
+
+.error {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #dc2626;
+}
+
+.status {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-gray-600);
+}

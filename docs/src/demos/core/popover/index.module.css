@@ -99,3 +99,31 @@
     transform: scale(0.96);
   }
 }
+
+.anchor {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border: 1px dashed var(--color-gray-300);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  color: var(--color-gray-900);
+  line-height: 1.5rem;
+}
+
+.inlineTrigger {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.inlineTrigger:focus-visible {
+  outline: 2px solid var(--color-blue);
+  border-radius: 0.125rem;
+}

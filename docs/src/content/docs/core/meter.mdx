@@ -5,7 +5,11 @@ description: A meter element for displaying a value within a range.
 
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoMeterHero } from "../../../demos/core/meter/hero"
+import { DemoMeterCustomValueScale } from "../../../demos/core/meter/custom-value-scale"
+import { DemoMeterCustomValueLabel } from "../../../demos/core/meter/custom-value-label"
 import heroCode from "../../../demos/core/meter/hero.tsx?raw"
+import customValueScaleCode from "../../../demos/core/meter/custom-value-scale.tsx?raw"
+import customValueLabelCode from "../../../demos/core/meter/custom-value-label.tsx?raw"
 import meterStyles from "../../../demos/core/meter/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
@@ -22,4 +26,36 @@ A meter element for displaying a value within a range.
   ]}
 >
   <DemoMeterHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Custom value scale
+
+Use `minValue` and `maxValue` to define a custom range for the meter.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueScaleCode },
+    { label: "index.module.css", code: meterStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoMeterCustomValueScale client:load />
+</DemoBlock>
+
+### Custom value label
+
+Use `getValueLabel` to format the displayed value text.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueLabelCode },
+    { label: "index.module.css", code: meterStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoMeterCustomValueLabel client:load />
 </DemoBlock>

@@ -1,17 +1,19 @@
 ---
 title: Tooltip
-description: A popup that displays information related to an element when hovered or focused.
+description: A floating label that appears on hover to describe an element.
 ---
 
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoTooltipHero } from "../../../demos/core/tooltip/hero"
+import { DemoTooltipControlled } from "../../../demos/core/tooltip/controlled"
 import heroCode from "../../../demos/core/tooltip/hero.tsx?raw"
+import controlledCode from "../../../demos/core/tooltip/controlled.tsx?raw"
 import tooltipStyles from "../../../demos/core/tooltip/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
 # Tooltip
 
-A popup that displays information related to an element when hovered or focused.
+A floating label that appears on hover to describe an element.
 
 <DemoBlock
   label="View source"
@@ -22,4 +24,21 @@ A popup that displays information related to an element when hovered or focused.
   ]}
 >
   <DemoTooltipHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Controlled
+
+Use `open` and `onOpenChange` to control the tooltip visibility externally.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: tooltipStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTooltipControlled client:load />
 </DemoBlock>

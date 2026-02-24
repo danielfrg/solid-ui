@@ -6,8 +6,14 @@ description: A checkbox input for selecting a boolean state.
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoCheckboxHero } from "../../../demos/core/checkbox/hero"
 import { DemoCheckboxControlled } from "../../../demos/core/checkbox/controlled"
+import { DemoCheckboxDefaultChecked } from "../../../demos/core/checkbox/default-checked"
+import { DemoCheckboxErrorMessage } from "../../../demos/core/checkbox/error-message"
+import { DemoCheckboxHtmlForm } from "../../../demos/core/checkbox/html-form"
 import heroCode from "../../../demos/core/checkbox/hero.tsx?raw"
 import controlledCode from "../../../demos/core/checkbox/controlled.tsx?raw"
+import defaultCheckedCode from "../../../demos/core/checkbox/default-checked.tsx?raw"
+import errorMessageCode from "../../../demos/core/checkbox/error-message.tsx?raw"
+import htmlFormCode from "../../../demos/core/checkbox/html-form.tsx?raw"
 import checkboxStyles from "../../../demos/core/checkbox/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
@@ -28,6 +34,21 @@ A checkbox input for selecting a boolean state.
 
 ## Examples
 
+### Default checked
+
+Use `defaultChecked` to set the initial checked state without controlling it.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultCheckedCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxDefaultChecked client:load />
+</DemoBlock>
+
 ### Controlled checked
 
 Use the `checked` prop with `onChange` to control the checkbox state.
@@ -41,4 +62,34 @@ Use the `checked` prop with `onChange` to control the checkbox state.
   ]}
 >
   <DemoCheckboxControlled client:load />
+</DemoBlock>
+
+### Error message
+
+Use `validationState` and `Checkbox.ErrorMessage` to show validation feedback.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: errorMessageCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxErrorMessage client:load />
+</DemoBlock>
+
+### HTML form
+
+Use the `name` and `value` props with a native form to submit the checkbox value.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: htmlFormCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxHtmlForm client:load />
 </DemoBlock>

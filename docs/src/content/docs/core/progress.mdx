@@ -1,17 +1,21 @@
 ---
 title: Progress
-description: A progress bar element for displaying determinate or indeterminate progress of an operation.
+description: A progress bar for displaying task completion.
 ---
 
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoProgressHero } from "../../../demos/core/progress/hero"
+import { DemoProgressCustomValueScale } from "../../../demos/core/progress/custom-value-scale"
+import { DemoProgressCustomValueLabel } from "../../../demos/core/progress/custom-value-label"
 import heroCode from "../../../demos/core/progress/hero.tsx?raw"
+import customValueScaleCode from "../../../demos/core/progress/custom-value-scale.tsx?raw"
+import customValueLabelCode from "../../../demos/core/progress/custom-value-label.tsx?raw"
 import progressStyles from "../../../demos/core/progress/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
 # Progress
 
-A progress bar element for displaying determinate or indeterminate progress of an operation.
+A progress bar for displaying task completion.
 
 <DemoBlock
   label="View source"
@@ -22,4 +26,36 @@ A progress bar element for displaying determinate or indeterminate progress of a
   ]}
 >
   <DemoProgressHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Custom value scale
+
+Use `minValue` and `maxValue` to define a custom range.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueScaleCode },
+    { label: "index.module.css", code: progressStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoProgressCustomValueScale client:load />
+</DemoBlock>
+
+### Custom value label
+
+Use `getValueLabel` to format the displayed value text.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueLabelCode },
+    { label: "index.module.css", code: progressStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoProgressCustomValueLabel client:load />
 </DemoBlock>

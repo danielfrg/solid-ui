@@ -1,17 +1,19 @@
 ---
 title: Toast
-description: A succinct message that is displayed temporarily for non-disruptive feedback.
+description: A brief notification displayed temporarily in a corner of the screen.
 ---
 
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoToastHero } from "../../../demos/core/toast/hero"
+import { DemoToastMultipleRegions } from "../../../demos/core/toast/multiple-regions"
 import heroCode from "../../../demos/core/toast/hero.tsx?raw"
+import multipleRegionsCode from "../../../demos/core/toast/multiple-regions.tsx?raw"
 import toastStyles from "../../../demos/core/toast/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
 # Toast
 
-A succinct message that is displayed temporarily. Toasts are non-disruptive and provide feedback without interrupting the user's workflow.
+A brief notification displayed temporarily in a corner of the screen.
 
 <DemoBlock
   label="View source"
@@ -22,4 +24,21 @@ A succinct message that is displayed temporarily. Toasts are non-disruptive and 
   ]}
 >
   <DemoToastHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Multiple regions
+
+Use the `region` option in `toaster.show()` to route toasts to a specific named `Toast.Region`.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleRegionsCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastMultipleRegions client:load />
 </DemoBlock>

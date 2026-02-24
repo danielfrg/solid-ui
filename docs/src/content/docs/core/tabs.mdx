@@ -5,7 +5,19 @@ description: A set of layered sections of content that display one panel at a ti
 
 import DemoBlock from "../../../components/demo-block.astro"
 import { DemoTabsHero } from "../../../demos/core/tabs/hero"
+import { DemoTabsDefaultValue } from "../../../demos/core/tabs/default-value"
+import { DemoTabsControlled } from "../../../demos/core/tabs/controlled"
+import { DemoTabsManualActivation } from "../../../demos/core/tabs/manual-activation"
+import { DemoTabsVertical } from "../../../demos/core/tabs/vertical"
+import { DemoTabsDisabled } from "../../../demos/core/tabs/disabled"
+import { DemoTabsDynamic } from "../../../demos/core/tabs/dynamic"
 import heroCode from "../../../demos/core/tabs/hero.tsx?raw"
+import defaultValueCode from "../../../demos/core/tabs/default-value.tsx?raw"
+import controlledCode from "../../../demos/core/tabs/controlled.tsx?raw"
+import manualActivationCode from "../../../demos/core/tabs/manual-activation.tsx?raw"
+import verticalCode from "../../../demos/core/tabs/vertical.tsx?raw"
+import disabledCode from "../../../demos/core/tabs/disabled.tsx?raw"
+import dynamicCode from "../../../demos/core/tabs/dynamic.tsx?raw"
 import tabsStyles from "../../../demos/core/tabs/index.module.css?raw"
 import demoTheme from "../../../demos/theme.css?raw"
 
@@ -22,4 +34,96 @@ A set of layered sections of content, known as tab panels, that display one pane
   ]}
 >
   <DemoTabsHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Default value
+
+Use `defaultValue` to set the initially active tab without controlling the state.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultValueCode },
+    { label: "index.module.css", code: tabsStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTabsDefaultValue client:load />
+</DemoBlock>
+
+### Controlled
+
+Use `value` and `onChange` to control the active tab externally.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: tabsStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTabsControlled client:load />
+</DemoBlock>
+
+### Manual activation
+
+Use `activationMode="manual"` so keyboard navigation moves focus without activating the tab — the user must press Enter or Space to select.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: manualActivationCode },
+    { label: "index.module.css", code: tabsStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTabsManualActivation client:load />
+</DemoBlock>
+
+### Vertical
+
+Use `orientation="vertical"` to render tabs in a vertical layout.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: verticalCode },
+    { label: "index.module.css", code: tabsStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTabsVertical client:load />
+</DemoBlock>
+
+### Disabled tab
+
+Use the `disabled` prop on an individual `Tabs.Trigger` to disable it.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: disabledCode },
+    { label: "index.module.css", code: tabsStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTabsDisabled client:load />
+</DemoBlock>
+
+### Dynamic tabs
+
+Drive the list of tabs from a signal to add or remove tabs at runtime.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: dynamicCode },
+    { label: "index.module.css", code: tabsStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTabsDynamic client:load />
 </DemoBlock>
