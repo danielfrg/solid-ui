@@ -47,7 +47,7 @@ export function Polymorphic<RenderProps>(props: RenderProps & PolymorphicAttribu
   const [local, others] = splitProps(props, ["as"])
 
   if (!local.as) {
-    throw new Error("[@danielfrg-solid-ui]: Polymorphic is missing the required `as` prop.")
+    throw new Error("[solid-ui]: Polymorphic is missing the required `as` prop.")
   }
 
   return (

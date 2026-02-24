@@ -18,7 +18,7 @@ export function useMenuRootContext() {
   const context = useContext(MenuRootContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useMenuRootContext` must be used within a `Menu.Root` component")
+    throw new Error("[solid-ui]: `useMenuRootContext` must be used within a `Menu.Root` component")
   }
 
   return context

@@ -7,7 +7,7 @@ import type {
   AccordionTriggerProps as CoreAccordionTriggerProps,
   AccordionContentProps as CoreAccordionContentProps,
 } from "@danielfrg/solid-ui/accordion"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type AccordionProps = CoreAccordionRootProps & {
   class?: string

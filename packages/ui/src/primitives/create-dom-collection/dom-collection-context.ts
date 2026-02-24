@@ -16,7 +16,7 @@ export function useDomCollectionContext<T extends DomCollectionItem = DomCollect
   const context = useOptionalDomCollectionContext()
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useDomCollectionContext` must be used within a `DomCollectionProvider` component")
+    throw new Error("[solid-ui]: `useDomCollectionContext` must be used within a `DomCollectionProvider` component")
   }
 
   return context as DomCollectionContextValue<T>

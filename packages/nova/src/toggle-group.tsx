@@ -6,7 +6,7 @@ import type {
   ToggleGroupRootProps as CoreToggleGroupRootProps,
   ToggleGroupItemProps as CoreToggleGroupItemProps,
 } from "@danielfrg/solid-ui/toggle-group"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 import { toggleVariants } from "./toggle"
 
 const ToggleGroupContext = createContext<{

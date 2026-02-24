@@ -12,7 +12,7 @@ export function useInputContext() {
   const context = useContext(InputContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useInputContext` must be used within an `Input` component")
+    throw new Error("[solid-ui]: `useInputContext` must be used within an `Input` component")
   }
 
   return context

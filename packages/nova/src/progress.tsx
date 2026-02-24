@@ -2,7 +2,7 @@ import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
 import { Progress as ProgressPrimitive } from "@danielfrg/solid-ui/progress"
 import type { ProgressRootProps as CoreProgressRootProps } from "@danielfrg/solid-ui/progress"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type ProgressProps = CoreProgressRootProps & {
   class?: string

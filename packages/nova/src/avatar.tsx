@@ -6,7 +6,7 @@ import type {
   AvatarImageProps as CoreAvatarImageProps,
   AvatarFallbackProps as CoreAvatarFallbackProps,
 } from "@danielfrg/solid-ui/avatar"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type AvatarProps = CoreAvatarRootProps & {
   class?: string

@@ -43,7 +43,7 @@ export function NavigationMenuArrow<T extends ValidComponent = "div">(
 
   createEffect(
     on(menubarContext.value, (value) => {
-      setTimeout(() => {
+      queueMicrotask(() => {
         if (!value || (value as string).includes("link-trigger-")) return
         const triggerRef = document.querySelector(`[data-kb-menu-value-trigger="${value}"]`)
         if (!triggerRef || !ref) return

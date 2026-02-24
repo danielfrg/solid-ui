@@ -13,7 +13,7 @@ export function useAccordionContext() {
   const context = useContext(AccordionContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useAccordionContext` must be used within a `Accordion.Root` component")
+    throw new Error("[solid-ui]: `useAccordionContext` must be used within a `Accordion.Root` component")
   }
 
   return context

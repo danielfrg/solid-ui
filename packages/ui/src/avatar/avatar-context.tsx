@@ -14,7 +14,7 @@ export function useAvatarContext() {
   const context = useContext(AvatarContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useAvatarContext` must be used within an `Avatar.Root` component")
+    throw new Error("[solid-ui]: `useAvatarContext` must be used within an `Avatar.Root` component")
   }
 
   return context

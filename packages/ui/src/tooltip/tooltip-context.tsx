@@ -28,7 +28,7 @@ export function useTooltipContext() {
   const context = useContext(TooltipContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useTooltipContext` must be used within a `Tooltip` component")
+    throw new Error("[solid-ui]: `useTooltipContext` must be used within a `Tooltip` component")
   }
 
   return context

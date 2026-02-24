@@ -109,7 +109,7 @@ export function MenuSubTrigger<T extends ValidComponent = "div">(props: Polymorp
     const parentMenuContext = context.parentMenuContext()
 
     if (parentMenuContext == null) {
-      throw new Error("[kobalte]: `Menu.SubTrigger` must be used within a `Menu.Sub` component")
+      throw new Error("[solid-ui]: `Menu.SubTrigger` must be used within a `Menu.Sub` component")
     }
 
     return parentMenuContext.listState().selectionManager()
@@ -250,7 +250,7 @@ export function MenuSubTrigger<T extends ValidComponent = "div">(props: Polymorp
 
   createEffect(() => {
     if (context.registerItemToParentDomCollection == null) {
-      throw new Error("[kobalte]: `Menu.SubTrigger` must be used within a `Menu.Sub` component")
+      throw new Error("[solid-ui]: `Menu.SubTrigger` must be used within a `Menu.Sub` component")
     }
 
     const unregister = context.registerItemToParentDomCollection({

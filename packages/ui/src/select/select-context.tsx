@@ -52,7 +52,7 @@ export function useSelectContext() {
   const context = useContext(SelectContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useSelectContext` must be used within a `Select` component")
+    throw new Error("[solid-ui]: `useSelectContext` must be used within a `Select` component")
   }
 
   return context

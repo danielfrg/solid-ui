@@ -39,7 +39,7 @@ export function useSliderContext() {
   const context = useContext(SliderContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useSliderContext` must be used within a `Slider.Root` component")
+    throw new Error("[solid-ui]: `useSliderContext` must be used within a `Slider.Root` component")
   }
 
   return context

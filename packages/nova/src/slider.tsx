@@ -7,7 +7,7 @@ import type {
   SliderFillProps as CoreSliderFillProps,
   SliderThumbProps as CoreSliderThumbProps,
 } from "@danielfrg/solid-ui/slider"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type SliderProps = CoreSliderRootProps & {
   class?: string

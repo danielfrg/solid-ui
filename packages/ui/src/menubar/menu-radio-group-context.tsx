@@ -12,7 +12,7 @@ export function useMenuRadioGroupContext<TValue = string>() {
   const context = useContext(MenuRadioGroupContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useMenuRadioGroupContext` must be used within a `Menu.RadioGroup` component")
+    throw new Error("[solid-ui]: `useMenuRadioGroupContext` must be used within a `Menu.RadioGroup` component")
   }
 
   return context as MenuRadioGroupContextValue<TValue>

@@ -55,7 +55,7 @@ export function NavigationMenuTrigger<T extends ValidComponent = "button">(
 
     timeoutId = window.setTimeout(() => {
       menuContext?.triggerRef()?.focus()
-      setTimeout(() => {
+      queueMicrotask(() => {
         context.setAutoFocusMenu(true)
       })
     }, context.delayDuration())

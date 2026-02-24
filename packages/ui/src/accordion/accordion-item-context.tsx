@@ -15,7 +15,7 @@ export function useAccordionItemContext() {
   const context = useContext(AccordionItemContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useAccordionItemContext` must be used within a `Accordion.Item` component")
+    throw new Error("[solid-ui]: `useAccordionItemContext` must be used within a `Accordion.Item` component")
   }
 
   return context

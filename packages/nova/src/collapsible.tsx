@@ -6,7 +6,7 @@ import type {
   CollapsibleTriggerProps as CoreCollapsibleTriggerProps,
   CollapsibleContentProps as CoreCollapsibleContentProps,
 } from "@danielfrg/solid-ui/collapsible"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type CollapsibleProps = CoreCollapsibleRootProps & {
   class?: string

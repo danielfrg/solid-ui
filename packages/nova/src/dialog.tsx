@@ -10,7 +10,7 @@ import type {
   DialogCloseButtonProps as CoreDialogCloseButtonProps,
   DialogPortalProps as CoreDialogPortalProps,
 } from "@danielfrg/solid-ui/dialog"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 const Dialog = DialogPrimitive
 const DialogTrigger = DialogPrimitive.Trigger

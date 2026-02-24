@@ -16,7 +16,7 @@ export function useToggleGroupContext() {
   const context = useContext(ToggleGroupContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useToggleGroupContext` must be used within a `ToggleGroup` component")
+    throw new Error("[solid-ui]: `useToggleGroupContext` must be used within a `ToggleGroup` component")
   }
 
   return context

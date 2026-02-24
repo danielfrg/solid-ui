@@ -29,7 +29,7 @@ export function useNumberFieldContext() {
   const context = useContext(NumberFieldContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useNumberFieldContext` must be used within a `NumberField` component")
+    throw new Error("[solid-ui]: `useNumberFieldContext` must be used within a `NumberField` component")
   }
 
   return context

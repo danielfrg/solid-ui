@@ -35,7 +35,7 @@ export function usePopoverContext() {
   const context = useContext(PopoverContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `usePopoverContext` must be used within a `Popover` component")
+    throw new Error("[solid-ui]: `usePopoverContext` must be used within a `Popover` component")
   }
 
   return context

@@ -29,7 +29,7 @@ export function useDrawerContext() {
   const context = useContext(DrawerContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useDrawerContext` must be used within a `Drawer` component")
+    throw new Error("[solid-ui]: `useDrawerContext` must be used within a `Drawer` component")
   }
 
   return context

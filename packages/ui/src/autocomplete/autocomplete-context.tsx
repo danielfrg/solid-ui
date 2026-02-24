@@ -14,7 +14,7 @@ export function useAutocompleteContext() {
   const context = useContext(AutocompleteContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useAutocompleteContext` must be used within an `Autocomplete` component")
+    throw new Error("[solid-ui]: `useAutocompleteContext` must be used within an `Autocomplete` component")
   }
 
   return context

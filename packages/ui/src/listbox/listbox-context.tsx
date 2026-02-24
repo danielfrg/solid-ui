@@ -17,7 +17,7 @@ export function useListboxContext() {
   const context = useContext(ListboxContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useListboxContext` must be used within a `Listbox` component")
+    throw new Error("[solid-ui]: `useListboxContext` must be used within a `Listbox` component")
   }
 
   return context

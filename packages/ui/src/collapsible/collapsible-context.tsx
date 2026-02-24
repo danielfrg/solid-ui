@@ -23,7 +23,7 @@ export function useCollapsibleContext() {
   const context = useContext(CollapsibleContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useCollapsibleContext` must be used within a `Collapsible.Root` component")
+    throw new Error("[solid-ui]: `useCollapsibleContext` must be used within a `Collapsible.Root` component")
   }
 
   return context

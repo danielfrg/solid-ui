@@ -9,7 +9,7 @@ import type {
   AlertDialogDescriptionProps as CoreAlertDialogDescriptionProps,
   AlertDialogCloseButtonProps as CoreAlertDialogCloseButtonProps,
 } from "@danielfrg/solid-ui/alert-dialog"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing
 const AlertDialog = AlertDialogPrimitive

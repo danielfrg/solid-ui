@@ -47,7 +47,7 @@ export function useScrollAreaContext() {
   const context = useContext(ScrollAreaContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useScrollAreaContext` must be used within a `ScrollArea` component")
+    throw new Error("[solid-ui]: `useScrollAreaContext` must be used within a `ScrollArea` component")
   }
 
   return context

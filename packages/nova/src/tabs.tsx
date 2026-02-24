@@ -7,7 +7,7 @@ import type {
   TabsTriggerProps as CoreTabsTriggerProps,
   TabsContentProps as CoreTabsContentProps,
 } from "@danielfrg/solid-ui/tabs"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type TabsProps = CoreTabsRootProps & {
   class?: string

@@ -22,7 +22,7 @@ export function useSwitchContext() {
   const context = useContext(SwitchContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useSwitchContext` must be used within a `Switch` component")
+    throw new Error("[solid-ui]: `useSwitchContext` must be used within a `Switch` component")
   }
 
   return context

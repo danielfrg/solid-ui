@@ -1,6 +1,6 @@
 import type { Component, ComponentProps, JSX } from "solid-js"
 import { splitProps } from "solid-js"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type CardProps = ComponentProps<"div"> & {
   class?: string

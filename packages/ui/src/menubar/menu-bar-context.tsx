@@ -36,7 +36,7 @@ export function useMenuBarContext() {
   const context = useContext(MenuBarContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useMenuBarContext` must be used within a `Menu` component")
+    throw new Error("[solid-ui]: `useMenuBarContext` must be used within a `Menu` component")
   }
 
   return context

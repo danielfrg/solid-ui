@@ -19,7 +19,7 @@ export function useMeterContext() {
   const context = useContext(MeterContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useMeterContext` must be used within a `Meter.Root` component")
+    throw new Error("[solid-ui]: `useMeterContext` must be used within a `Meter.Root` component")
   }
 
   return context

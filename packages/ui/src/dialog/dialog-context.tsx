@@ -32,7 +32,7 @@ export function useDialogContext() {
   const context = useContext(DialogContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: \`useDialogContext\` must be used within a \`Dialog\` component")
+    throw new Error("[solid-ui]: \`useDialogContext\` must be used within a \`Dialog\` component")
   }
 
   return context

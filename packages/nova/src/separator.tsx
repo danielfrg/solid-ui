@@ -1,7 +1,7 @@
 import type { Component, ComponentProps } from "solid-js"
 import { splitProps } from "solid-js"
 import { Separator as SeparatorPrimitive } from "@danielfrg/solid-ui/separator"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type SeparatorProps = ComponentProps<"hr"> & {
   class?: string

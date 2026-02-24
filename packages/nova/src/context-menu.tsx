@@ -16,7 +16,7 @@ import type {
   ContextMenuSubmenuTriggerProps as CoreContextMenuSubmenuTriggerProps,
   ContextMenuSubmenuPopupProps as CoreContextMenuSubmenuPopupProps,
 } from "@danielfrg/solid-ui/context-menu"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 const ContextMenu = ContextMenuPrimitive.Root
 const ContextMenuTrigger = ContextMenuPrimitive.Trigger

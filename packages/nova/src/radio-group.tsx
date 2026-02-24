@@ -5,7 +5,7 @@ import type {
   RadioGroupRootProps as CoreRadioGroupRootProps,
   RadioGroupItemProps as CoreRadioGroupItemProps,
 } from "@danielfrg/solid-ui/radio-group"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type RadioGroupProps = CoreRadioGroupRootProps & {
   class?: string

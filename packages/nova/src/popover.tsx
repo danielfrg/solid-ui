@@ -2,7 +2,7 @@ import type { Component, JSX } from "solid-js"
 import { splitProps } from "solid-js"
 import { Popover as PopoverPrimitive } from "@danielfrg/solid-ui/popover"
 import type { PopoverContentProps as CorePopoverContentProps } from "@danielfrg/solid-ui/popover"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 // Re-export Root and Trigger directly to preserve polymorphic `as` prop typing
 const PopoverRoot = PopoverPrimitive

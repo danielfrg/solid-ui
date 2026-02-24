@@ -34,7 +34,7 @@ export function useNavigationMenuContext() {
   const context = useOptionalNavigationMenuContext()
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useNavigationMenuContext` must be used within a `NavigationMenu` component")
+    throw new Error("[solid-ui]: `useNavigationMenuContext` must be used within a `NavigationMenu` component")
   }
 
   return context

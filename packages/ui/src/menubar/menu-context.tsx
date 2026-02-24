@@ -53,7 +53,7 @@ export function useMenuContext() {
   const context = useOptionalMenuContext()
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useMenuContext` must be used within a `Menu` component")
+    throw new Error("[solid-ui]: `useMenuContext` must be used within a `Menu` component")
   }
 
   return context

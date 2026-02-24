@@ -11,7 +11,7 @@ export function useMenuGroupContext() {
   const context = useContext(MenuGroupContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useMenuGroupContext` must be used within a `Menu.Group` component")
+    throw new Error("[solid-ui]: `useMenuGroupContext` must be used within a `Menu.Group` component")
   }
 
   return context

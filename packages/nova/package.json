@@ -161,11 +161,6 @@
       "solid": "./src/context-menu.tsx",
       "default": "./src/context-menu.tsx"
     },
-    "./utils": {
-      "types": "./src/utils.ts",
-      "solid": "./src/utils.ts",
-      "default": "./src/utils.ts"
-    },
     "./theme.css": "./src/theme.css"
   },
   "peerDependencies": {

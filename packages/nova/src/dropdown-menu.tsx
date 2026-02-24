@@ -15,7 +15,7 @@ import type {
   MenuSubmenuTriggerProps as CoreMenuSubmenuTriggerProps,
   MenuSubmenuPopupProps as CoreMenuSubmenuPopupProps,
 } from "@danielfrg/solid-ui/menu"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 const DropdownMenu = MenuPrimitive.Root
 const DropdownMenuTrigger = MenuPrimitive.Trigger

@@ -63,7 +63,7 @@ export function useComboboxContext() {
   const context = useContext(ComboboxContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useComboboxContext` must be used within a `Combobox` component")
+    throw new Error("[solid-ui]: `useComboboxContext` must be used within a `Combobox` component")
   }
 
   return context

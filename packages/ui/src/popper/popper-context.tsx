@@ -15,7 +15,7 @@ export function usePopperContext() {
   const context = useContext(PopperContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `usePopperContext` must be used within a `Popper` component")
+    throw new Error("[solid-ui]: `usePopperContext` must be used within a `Popper` component")
   }
 
   return context

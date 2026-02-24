@@ -14,7 +14,7 @@ export function useContextMenuContext() {
   const context = useOptionalContextMenuContext()
 
   if (context === undefined) {
-    throw new Error("[ui]: `useContextMenuContext` must be used within a `ContextMenu` component")
+    throw new Error("[solid-ui]: `useContextMenuContext` must be used within a `ContextMenu` component")
   }
 
   return context

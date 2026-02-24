@@ -25,7 +25,7 @@ export function usePreviewCardContext() {
   const context = useContext(PreviewCardContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `usePreviewCardContext` must be used within a `PreviewCard` component")
+    throw new Error("[solid-ui]: `usePreviewCardContext` must be used within a `PreviewCard` component")
   }
 
   return context

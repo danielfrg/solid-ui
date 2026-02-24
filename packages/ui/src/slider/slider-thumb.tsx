@@ -218,7 +218,7 @@ export function useThumbContext() {
   const context = useContext(ThumbContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useThumbContext` must be used within a `Slider.Thumb` component")
+    throw new Error("[solid-ui]: `useThumbContext` must be used within a `Slider.Thumb` component")
   }
 
   return context

@@ -24,7 +24,7 @@ export function useCheckboxContext() {
   const context = useContext(CheckboxContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useCheckboxContext` must be used within a `Checkbox` component")
+    throw new Error("[solid-ui]: `useCheckboxContext` must be used within a `Checkbox` component")
   }
 
   return context

@@ -34,7 +34,7 @@ export function useRadioGroupItemContext() {
   const context = useContext(RadioGroupItemContext)
 
   if (context === undefined) {
-    throw new Error("[kobalte]: `useRadioGroupItemContext` must be used within a `RadioGroup.Item` component")
+    throw new Error("[solid-ui]: `useRadioGroupItemContext` must be used within a `RadioGroup.Item` component")
   }
 
   return context

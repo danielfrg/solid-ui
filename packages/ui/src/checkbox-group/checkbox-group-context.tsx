@@ -20,7 +20,7 @@ export function useCheckboxGroupContext() {
   const context = useContext(CheckboxGroupContext)
 
   if (context === undefined) {
-    throw new Error("[ui]: `useCheckboxGroupContext` must be used within a `CheckboxGroup` component")
+    throw new Error("[solid-ui]: `useCheckboxGroupContext` must be used within a `CheckboxGroup` component")
   }
 
   return context

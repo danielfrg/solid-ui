@@ -9,7 +9,7 @@ import type {
   InputDescriptionProps as CoreInputDescriptionProps,
   InputErrorMessageProps as CoreInputErrorMessageProps,
 } from "@danielfrg/solid-ui/input"
-import { cn } from "./utils"
+import { cn } from "@danielfrg/solid-ui/utils"
 
 type InputProps = CoreInputRootProps & {
   class?: string
