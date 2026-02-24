@@ -1,5 +1,7 @@
 import { type ParentProps, type ValidComponent, splitProps } from "solid-js"
 
+import { mergeProps } from "../utils"
+
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
 
 export interface FieldsetRootOptions {
@@ -25,12 +27,13 @@ export function FieldsetRoot<T extends ValidComponent = "fieldset">(
 ) {
   const [local, others] = splitProps(props as ParentProps<FieldsetRootProps>, ["disabled"])
 
-  return (
-    <Polymorphic<FieldsetRootRenderProps>
-      as="fieldset"
-      disabled={local.disabled}
-      data-disabled={local.disabled ? "" : undefined}
-      {...others}
-    />
-  )
+  const rootProps = mergeProps(
+    {
+      disabled: local.disabled,
+      "data-disabled": local.disabled ? "" : undefined,
+    },
+    others,
+  ) as unknown as FieldsetRootRenderProps & typeof others
+
+  return <Polymorphic<FieldsetRootRenderProps> as="fieldset" {...rootProps} />
 }

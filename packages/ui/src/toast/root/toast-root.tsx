@@ -9,7 +9,7 @@ import {
   type JSX,
   type ValidComponent,
 } from "solid-js"
-import { contains, getActiveElement } from "../../utils"
+import { contains, getActiveElement, mergeProps } from "../../utils"
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../../polymorphic"
 import { isFocusVisible } from "../utils/focus-visible"
 import { useToastProviderContext } from "../provider/toast-provider-context"
@@ -527,34 +527,37 @@ export function ToastRoot<T extends ValidComponent = "div">(props: PolymorphicPr
     [ToastRootCssVars.height]: toast().height ? `${toast().height}px` : undefined,
   })
 
+  const rootProps = mergeProps(
+    {
+      ref: (el: HTMLElement) => {
+        refs.rootRef = el
+      },
+      role: isHighPriority() ? "alertdialog" : "dialog",
+      tabIndex: 0,
+      "aria-modal": false,
+      "aria-labelledby": titleId(),
+      "aria-describedby": descriptionId(),
+      "aria-hidden": isHighPriority() && !focused() ? true : undefined,
+      inert: toast().limited ? true : undefined,
+      "data-expanded": expanded() ? "" : undefined,
+      "data-limited": toast().limited ? "" : undefined,
+      "data-type": toast().type,
+      "data-swiping": isSwiping() ? "" : undefined,
+      "data-swipe-direction": currentSwipeDir(),
+      "data-starting-style": transitionStatus() === "starting" ? "" : undefined,
+      "data-ending-style": transitionStatus() === "ending" ? "" : undefined,
+      style: rootStyle(),
+      onPointerDown: swipeEnabled() ? (e: PointerEvent) => handlePointerDown(e) : undefined,
+      onPointerMove: swipeEnabled() ? (e: PointerEvent) => handlePointerMove(e) : undefined,
+      onPointerUp: swipeEnabled() ? (e: PointerEvent) => handlePointerUp(e) : undefined,
+      onKeyDown: (e: KeyboardEvent) => handleKeyDown(e),
+    },
+    props as Record<string, unknown>,
+  ) as unknown as ToastRootProps & Record<string, unknown>
+
   return (
     <ToastRootContext.Provider value={rootContext}>
-      <Polymorphic
-        as="div"
-        ref={(el: HTMLElement) => {
-          refs.rootRef = el
-        }}
-        role={isHighPriority() ? "alertdialog" : "dialog"}
-        tabIndex={0}
-        aria-modal={false}
-        aria-labelledby={titleId()}
-        aria-describedby={descriptionId()}
-        aria-hidden={isHighPriority() && !focused() ? true : undefined}
-        inert={toast().limited ? true : undefined}
-        data-expanded={expanded() ? "" : undefined}
-        data-limited={toast().limited ? "" : undefined}
-        data-type={toast().type}
-        data-swiping={isSwiping() ? "" : undefined}
-        data-swipe-direction={currentSwipeDir()}
-        data-starting-style={transitionStatus() === "starting" ? "" : undefined}
-        data-ending-style={transitionStatus() === "ending" ? "" : undefined}
-        style={rootStyle()}
-        onPointerDown={swipeEnabled() ? (e: PointerEvent) => handlePointerDown(e) : undefined}
-        onPointerMove={swipeEnabled() ? (e: PointerEvent) => handlePointerMove(e) : undefined}
-        onPointerUp={swipeEnabled() ? (e: PointerEvent) => handlePointerUp(e) : undefined}
-        onKeyDown={(e: KeyboardEvent) => handleKeyDown(e)}
-        {...(props as Record<string, unknown>)}
-      />
+      <Polymorphic as="div" {...rootProps} />
     </ToastRootContext.Provider>
   )
 }

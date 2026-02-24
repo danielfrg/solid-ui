@@ -6,7 +6,7 @@
  * https://github.com/adobe/react-spectrum/blob/22cb32d329e66c60f55d4fc4025d1d44bb015d71/packages/@react-aria/listbox/src/useListBox.ts
  */
 
-import { Key, access, composeEventHandlers, createGenerateId, mergeDefaultProps, mergeRefs } from "../utils"
+import { Key, access, composeEventHandlers, createGenerateId, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import {
   type Accessor,
   type JSX,
@@ -242,20 +242,23 @@ export function ListboxRoot<Option, OptGroup = never, T extends ValidComponent =
     isVirtualized: () => local.virtualized,
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "listbox",
+      tabIndex: selectableList.tabIndex(),
+      "aria-multiselectable": listState().selectionManager().selectionMode() === "multiple" ? true : undefined,
+      onKeyDown: composeEventHandlers([local.onKeyDown, selectableList.onKeyDown]),
+      onMouseDown: composeEventHandlers([local.onMouseDown, selectableList.onMouseDown]),
+      onFocusIn: composeEventHandlers([local.onFocusIn, selectableList.onFocusIn]),
+      onFocusOut: composeEventHandlers([local.onFocusOut, selectableList.onFocusOut]),
+    },
+    others,
+  ) as unknown as ListboxRootRenderProps & typeof others
+
   return (
     <ListboxContext.Provider value={context}>
-      <Polymorphic<ListboxRootRenderProps>
-        as="ul"
-        ref={mergeRefs((el) => (ref = el), local.ref)}
-        role="listbox"
-        tabIndex={selectableList.tabIndex()}
-        aria-multiselectable={listState().selectionManager().selectionMode() === "multiple" ? true : undefined}
-        onKeyDown={composeEventHandlers([local.onKeyDown, selectableList.onKeyDown])}
-        onMouseDown={composeEventHandlers([local.onMouseDown, selectableList.onMouseDown])}
-        onFocusIn={composeEventHandlers([local.onFocusIn, selectableList.onFocusIn])}
-        onFocusOut={composeEventHandlers([local.onFocusOut, selectableList.onFocusOut])}
-        {...others}
-      >
+      <Polymorphic<ListboxRootRenderProps> as="ul" {...rootProps}>
         <Show when={!local.virtualized} fallback={local.children?.(listState().collection)}>
           <Key each={[...listState().collection()]} by="key">
             {(item) => (

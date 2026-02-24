@@ -1,4 +1,6 @@
 import { type Component, type ValidComponent, createMemo, splitProps } from "solid-js"
+
+import { mergeProps } from "../utils"
 import type { ElementOf, PolymorphicProps } from "../polymorphic"
 
 import {
@@ -96,13 +98,17 @@ export function SelectRoot<Option, OptGroup = never, T extends ValidComponent = 
     }
   }
 
+  const rootProps = mergeProps(
+    {
+      value: value() as any,
+      defaultValue: defaultValue() as any,
+      onChange: onChange,
+      selectionMode: local.multiple ? "multiple" : "single",
+    },
+    others,
+  ) as unknown as SelectRootRenderProps & typeof others
+
   return (
-    <SelectBase<Option, OptGroup, Component<Omit<SelectRootRenderProps, keyof SelectBaseRenderProps>>>
-      value={value() as any}
-      defaultValue={defaultValue() as any}
-      onChange={onChange}
-      selectionMode={local.multiple ? "multiple" : "single"}
-      {...others}
-    />
+    <SelectBase<Option, OptGroup, Component<Omit<SelectRootRenderProps, keyof SelectBaseRenderProps>>> {...rootProps} />
   )
 }

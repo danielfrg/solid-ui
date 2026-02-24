@@ -6,7 +6,7 @@
  * https://github.com/adobe/react-spectrum/blob/99ca82e87ba2d7fdd54f5b49326fd242320b4b51/packages/%40react-aria/spinbutton/src/useSpinButton.ts
  */
 
-import { type ValidationState, callHandler, mergeDefaultProps } from "../utils"
+import { type ValidationState, callHandler, mergeDefaultProps, mergeProps } from "../utils"
 import { type JSX, type ValidComponent, createEffect, createMemo, on, splitProps } from "solid-js"
 
 import { combineStyle } from "@solid-primitives/props"
@@ -194,28 +194,29 @@ export function SpinButtonRoot<T extends ValidComponent = "div">(props: Polymorp
     }),
   )
 
-  return (
-    <Polymorphic<SpinButtonRootRenderProps>
-      as="div"
-      role="spinbutton"
-      style={combineStyle(
+  const rootProps = mergeProps(
+    {
+      role: "spinbutton",
+      style: combineStyle(
         {
           "touch-action": "none",
         },
         local.style,
-      )}
-      aria-valuenow={local.value != null && !Number.isNaN(local.value) ? local.value : undefined}
-      aria-valuetext={textValue()}
-      aria-valuemin={local.minValue}
-      aria-valuemax={local.maxValue}
-      aria-required={props.required || undefined}
-      aria-disabled={props.disabled || undefined}
-      aria-readonly={props.readOnly || undefined}
-      aria-invalid={local.validationState === "invalid" || undefined}
-      onKeyDown={onKeyDown}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      {...others}
-    />
-  )
+      ),
+      "aria-valuenow": local.value != null && !Number.isNaN(local.value) ? local.value : undefined,
+      "aria-valuetext": textValue(),
+      "aria-valuemin": local.minValue,
+      "aria-valuemax": local.maxValue,
+      "aria-required": props.required || undefined,
+      "aria-disabled": props.disabled || undefined,
+      "aria-readonly": props.readOnly || undefined,
+      "aria-invalid": local.validationState === "invalid" || undefined,
+      onKeyDown: onKeyDown,
+      onFocus: onFocus,
+      onBlur: onBlur,
+    },
+    others,
+  ) as unknown as SpinButtonRootRenderProps & typeof others
+
+  return <Polymorphic<SpinButtonRootRenderProps> as="div" {...rootProps} />
 }

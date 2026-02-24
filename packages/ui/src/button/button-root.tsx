@@ -1,4 +1,4 @@
-import { mergeDefaultProps, mergeRefs } from "../utils"
+import { mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type ValidComponent, createMemo, splitProps } from "solid-js"
 
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
@@ -58,17 +58,30 @@ export function ButtonRoot<T extends ValidComponent = "button">(props: Polymorph
     return tagName() === "a" && ref?.getAttribute("href") != null
   })
 
-  return (
-    <Polymorphic<ButtonRootRenderProps>
-      as="button"
-      ref={mergeRefs((el) => (ref = el), local.ref)}
-      type={isNativeButton() || isNativeInput() ? local.type : undefined}
-      role={!isNativeButton() && !isNativeLink() ? "button" : undefined}
-      tabIndex={!isNativeButton() && !isNativeLink() && !local.disabled ? 0 : undefined}
-      disabled={isNativeButton() || isNativeInput() ? local.disabled : undefined}
-      aria-disabled={!isNativeButton() && !isNativeInput() && local.disabled ? true : undefined}
-      data-disabled={local.disabled ? "" : undefined}
-      {...others}
-    />
-  )
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      get type() {
+        return isNativeButton() || isNativeInput() ? local.type : undefined
+      },
+      get role() {
+        return !isNativeButton() && !isNativeLink() ? "button" : undefined
+      },
+      get tabIndex() {
+        return !isNativeButton() && !isNativeLink() && !local.disabled ? 0 : undefined
+      },
+      get disabled() {
+        return isNativeButton() || isNativeInput() ? local.disabled : undefined
+      },
+      get "aria-disabled"() {
+        return !isNativeButton() && !isNativeInput() && local.disabled ? true : undefined
+      },
+      get "data-disabled"() {
+        return local.disabled ? "" : undefined
+      },
+    },
+    others,
+  ) as unknown as ButtonRootRenderProps & typeof others
+
+  return <Polymorphic<ButtonRootRenderProps> as="button" {...rootProps} />
 }

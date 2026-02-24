@@ -6,7 +6,7 @@
  * https://github.com/adobe/react-spectrum/blob/c183944ce6a8ca1cf280a1c7b88d2ba393dd0252/packages/@react-aria/accordion/src/useAccordion.ts
  */
 
-import { composeEventHandlers, createGenerateId, mergeDefaultProps, mergeRefs } from "../utils"
+import { composeEventHandlers, createGenerateId, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type JSX, type ValidComponent, createSignal, createUniqueId, splitProps } from "solid-js"
 
 import { createListState, createSelectableList } from "../list"
@@ -120,19 +120,22 @@ export function AccordionRoot<T extends ValidComponent = "div">(props: Polymorph
     generateId: createGenerateId(() => local.id),
   }
 
+  const rootProps = mergeProps(
+    {
+      id: local.id,
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      onKeyDown: composeEventHandlers([local.onKeyDown, selectableList.onKeyDown]),
+      onMouseDown: composeEventHandlers([local.onMouseDown, selectableList.onMouseDown]),
+      onFocusIn: composeEventHandlers([local.onFocusIn]),
+      onFocusOut: composeEventHandlers([local.onFocusOut, selectableList.onFocusOut]),
+    },
+    others,
+  ) as unknown as AccordionRootRenderProps & typeof others
+
   return (
     <DomCollectionProvider>
       <AccordionContext.Provider value={context}>
-        <Polymorphic<AccordionRootRenderProps>
-          as="div"
-          id={local.id}
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          onKeyDown={composeEventHandlers([local.onKeyDown, selectableList.onKeyDown])}
-          onMouseDown={composeEventHandlers([local.onMouseDown, selectableList.onMouseDown])}
-          onFocusIn={composeEventHandlers([local.onFocusIn])}
-          onFocusOut={composeEventHandlers([local.onFocusOut, selectableList.onFocusOut])}
-          {...others}
-        />
+        <Polymorphic<AccordionRootRenderProps> as="div" {...rootProps} />
       </AccordionContext.Provider>
     </DomCollectionProvider>
   )

@@ -6,7 +6,7 @@
  * https://github.com/adobe/react-spectrum/blob/1ddcde7b4fef9af7f08e11bb78d71fe60bbcc64b/packages/@react-aria/progress/src/useProgressBar.ts
  */
 
-import { clamp, createGenerateId, mergeDefaultProps } from "../utils"
+import { clamp, createGenerateId, mergeDefaultProps, mergeProps } from "../utils"
 import {
   type Accessor,
   type Component,
@@ -111,14 +111,25 @@ export function ProgressRoot<T extends ValidComponent = "div">(props: Polymorphi
     registerLabelId: createRegisterId(setLabelId),
   }
 
+  const rootProps = mergeProps(
+    {
+      role: "progressbar",
+      get indeterminate() {
+        return local.indeterminate || false
+      },
+      get "data-progress"() {
+        return dataset()["data-progress"]
+      },
+      get "data-indeterminate"() {
+        return dataset()["data-indeterminate"]
+      },
+    },
+    mergedProps,
+  ) as unknown as ProgressRootRenderProps & typeof mergedProps
+
   return (
     <ProgressContext.Provider value={context}>
-      <Meter<Component<Omit<ProgressRootRenderProps, keyof MeterRootRenderProps>>>
-        role="progressbar"
-        indeterminate={local.indeterminate || false}
-        {...dataset()}
-        {...mergedProps}
-      />
+      <Meter<Component<Omit<ProgressRootRenderProps, keyof MeterRootRenderProps>>> {...rootProps} />
     </ProgressContext.Provider>
   )
 }

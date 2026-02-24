@@ -1,4 +1,4 @@
-import { mergeDefaultProps } from "../utils"
+import { mergeDefaultProps, mergeProps } from "../utils"
 import { type JSX, type ParentProps, type ValidComponent, createMemo, createSignal, splitProps } from "solid-js"
 
 import { createControllableSignal } from "../primitives"
@@ -66,14 +66,17 @@ export function CheckboxGroupRoot<T extends ValidComponent = "div">(
     toggle,
   }
 
+  const rootProps = mergeProps(
+    {
+      role: "group",
+      "data-disabled": local.disabled ? "" : undefined,
+    },
+    others,
+  ) as unknown as CheckboxGroupRootRenderProps & typeof others
+
   return (
     <CheckboxGroupContext.Provider value={context}>
-      <Polymorphic<CheckboxGroupRootRenderProps>
-        as="div"
-        role="group"
-        data-disabled={local.disabled ? "" : undefined}
-        {...others}
-      />
+      <Polymorphic<CheckboxGroupRootRenderProps> as="div" {...rootProps} />
     </CheckboxGroupContext.Provider>
   )
 }

@@ -7,7 +7,7 @@
  * https://github.com/adobe/react-spectrum/blob/70e7caf1946c423bc9aa9cb0e50dbdbe953d239b/packages/@react-stately/radio/src/useRadioGroupState.ts
  */
 
-import { type Orientation, type ValidationState, access, mergeDefaultProps, mergeRefs } from "../utils"
+import { type Orientation, type ValidationState, access, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type ValidComponent, createUniqueId, splitProps } from "solid-js"
 
 import {
@@ -162,24 +162,59 @@ export function RadioGroupRoot<T extends ValidComponent = "div">(props: Polymorp
     setSelectedValue,
   }
 
+  const dataset = formControlContext.dataset
+
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "radiogroup",
+      get id() {
+        return access(formControlProps.id)!
+      },
+      get "aria-invalid"() {
+        return formControlContext.validationState() === "invalid" || undefined
+      },
+      get "aria-required"() {
+        return formControlContext.isRequired() || undefined
+      },
+      get "aria-disabled"() {
+        return formControlContext.isDisabled() || undefined
+      },
+      get "aria-readonly"() {
+        return formControlContext.isReadOnly() || undefined
+      },
+      get "aria-orientation"() {
+        return local.orientation
+      },
+      get "aria-labelledby"() {
+        return ariaLabelledBy()
+      },
+      get "aria-describedby"() {
+        return ariaDescribedBy()
+      },
+      get "data-valid"() {
+        return dataset()["data-valid"]
+      },
+      get "data-invalid"() {
+        return dataset()["data-invalid"]
+      },
+      get "data-required"() {
+        return dataset()["data-required"]
+      },
+      get "data-disabled"() {
+        return dataset()["data-disabled"]
+      },
+      get "data-readonly"() {
+        return dataset()["data-readonly"]
+      },
+    },
+    others,
+  ) as unknown as RadioGroupRootRenderProps & typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
       <RadioGroupContext.Provider value={context}>
-        <Polymorphic<RadioGroupRootRenderProps>
-          as="div"
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          role="radiogroup"
-          id={access(formControlProps.id)!}
-          aria-invalid={formControlContext.validationState() === "invalid" || undefined}
-          aria-required={formControlContext.isRequired() || undefined}
-          aria-disabled={formControlContext.isDisabled() || undefined}
-          aria-readonly={formControlContext.isReadOnly() || undefined}
-          aria-orientation={local.orientation}
-          aria-labelledby={ariaLabelledBy()}
-          aria-describedby={ariaDescribedBy()}
-          {...formControlContext.dataset()}
-          {...others}
-        />
+        <Polymorphic<RadioGroupRootRenderProps> as="div" {...rootProps} />
       </RadioGroupContext.Provider>
     </FormControlContext.Provider>
   )

@@ -13,6 +13,7 @@ import {
   createGenerateId,
   isFunction,
   mergeDefaultProps,
+  mergeProps,
   mergeRefs,
 } from "../utils"
 import {
@@ -164,19 +165,22 @@ export function SwitchRoot<T extends ValidComponent = "div">(props: PolymorphicP
     setInputRef,
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "group",
+      id: access(formControlProps.id),
+      onPointerDown: onPointerDown,
+      ...formControlContext.dataset(),
+      ...dataset(),
+    },
+    others,
+  ) as unknown as SwitchRootRenderProps & typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
       <SwitchContext.Provider value={context}>
-        <Polymorphic<SwitchRootRenderProps>
-          as="div"
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          role="group"
-          id={access(formControlProps.id)}
-          onPointerDown={onPointerDown}
-          {...formControlContext.dataset()}
-          {...dataset()}
-          {...others}
-        >
+        <Polymorphic<SwitchRootRenderProps> as="div" {...rootProps}>
           <SwitchRootChild state={context}>{local.children}</SwitchRootChild>
         </Polymorphic>
       </SwitchContext.Provider>

@@ -6,7 +6,14 @@
  * https://github.com/ariakit/ariakit/blob/84e97943ad637a582c01c9b56d880cd95f595737/packages/ariakit/src/hovercard/hovercard.tsx
  */
 
-import { contains, createGlobalListeners, getEventPoint, isPointInPolygon, mergeDefaultProps } from "../utils"
+import {
+  contains,
+  createGlobalListeners,
+  getEventPoint,
+  isPointInPolygon,
+  mergeDefaultProps,
+  mergeProps,
+} from "../utils"
 import {
   type Accessor,
   type ParentProps,
@@ -236,14 +243,18 @@ export function PreviewCardRoot(props: PreviewCardRootProps) {
     setContentRef,
   }
 
+  const popperProps = mergeProps(
+    {
+      anchorRef: triggerRef,
+      contentRef: contentRef,
+      onCurrentPlacementChange: setCurrentPlacement,
+    },
+    others,
+  ) as unknown as PopperRootOptions & typeof others
+
   return (
     <PreviewCardContext.Provider value={context}>
-      <Popper
-        anchorRef={triggerRef}
-        contentRef={contentRef}
-        onCurrentPlacementChange={setCurrentPlacement}
-        {...others}
-      />
+      <Popper {...popperProps} />
     </PreviewCardContext.Provider>
   )
 }

@@ -1,4 +1,4 @@
-import { createGenerateId, mergeDefaultProps } from "../utils"
+import { createGenerateId, mergeDefaultProps, mergeProps } from "../utils"
 import { type Accessor, type ParentProps, createMemo, createSignal, createUniqueId, splitProps } from "solid-js"
 
 import createPresence from "solid-presence"
@@ -98,9 +98,17 @@ export function PopoverRoot(props: PopoverRootProps) {
     registerDescriptionId: createRegisterId(setDescriptionId),
   }
 
+  const popperProps = mergeProps(
+    {
+      anchorRef: anchorRef,
+      contentRef: contentRef,
+    },
+    others,
+  ) as unknown as PopperRootOptions & typeof others
+
   return (
     <PopoverContext.Provider value={context}>
-      <Popper anchorRef={anchorRef} contentRef={contentRef} {...others} />
+      <Popper {...popperProps} />
     </PopoverContext.Provider>
   )
 }

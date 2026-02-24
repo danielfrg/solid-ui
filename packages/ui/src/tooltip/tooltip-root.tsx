@@ -20,6 +20,7 @@ import {
   getWindow,
   isPointInPolygon,
   mergeDefaultProps,
+  mergeProps,
 } from "../utils"
 import {
   type Accessor,
@@ -393,17 +394,21 @@ export function TooltipRoot(props: TooltipRootProps) {
     setContentRef,
   }
 
+  const popperProps = mergeProps(
+    {
+      anchorRef: triggerRef,
+      contentRef: contentRef,
+      onCurrentPlacementChange: (value: Placement) => {
+        setCurrentPlacement(value)
+        local.onCurrentPlacementChange?.(value)
+      },
+    },
+    others,
+  ) as unknown as PopperRootOptions & typeof others
+
   return (
     <TooltipContext.Provider value={context}>
-      <Popper
-        anchorRef={triggerRef}
-        contentRef={contentRef}
-        onCurrentPlacementChange={(value) => {
-          setCurrentPlacement(value)
-          local.onCurrentPlacementChange?.(value)
-        }}
-        {...others}
-      />
+      <Popper {...popperProps} />
     </TooltipContext.Provider>
   )
 }

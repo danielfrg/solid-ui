@@ -6,7 +6,7 @@
  * https://github.com/radix-ui/primitives/blob/21a7c97dc8efa79fecca36428eec49f187294085/packages/react/collapsible/src/Collapsible.tsx
  */
 
-import { createGenerateId, mergeDefaultProps } from "../utils"
+import { createGenerateId, mergeDefaultProps, mergeProps } from "../utils"
 import { type Accessor, type ValidComponent, createMemo, createSignal, createUniqueId, splitProps } from "solid-js"
 
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
@@ -80,9 +80,11 @@ export function CollapsibleRoot<T extends ValidComponent = "div">(props: Polymor
     registerContentId: createRegisterId(setContentId),
   }
 
+  const rootProps = mergeProps({ ...dataset() }, others) as unknown as CollapsibleRootRenderProps & typeof others
+
   return (
     <CollapsibleContext.Provider value={context}>
-      <Polymorphic<CollapsibleRootRenderProps> as="div" {...dataset()} {...others} />
+      <Polymorphic<CollapsibleRootRenderProps> as="div" {...rootProps} />
     </CollapsibleContext.Provider>
   )
 }

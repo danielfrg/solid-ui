@@ -6,7 +6,7 @@
  * https://github.com/radix-ui/primitives/blob/ea6376900d54af536dbb7b71b4fefd6ec2ce9dc0/packages/react/menubar/src/Menubar.tsx
  */
 
-import { type Orientation, contains, createGenerateId, mergeDefaultProps, mergeRefs } from "../utils"
+import { type Orientation, contains, createGenerateId, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import {
   type Accessor,
   type Setter,
@@ -238,17 +238,20 @@ export function MenuBarRoot<T extends ValidComponent = "div">(props: Polymorphic
     if (value() != null) setLastValue(value()!)
   })
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el: HTMLElement) => (ref = el), local.ref),
+      role: "menubar",
+      "data-orientation": local.orientation!,
+      "aria-orientation": local.orientation!,
+      ...dataset(),
+    },
+    others,
+  ) as unknown as MenuBarRootRenderProps & typeof others
+
   return (
     <MenuBarContext.Provider value={context}>
-      <Polymorphic<MenuBarRootRenderProps>
-        as="div"
-        ref={mergeRefs((el: HTMLElement) => (ref = el), local.ref)}
-        role="menubar"
-        data-orientation={local.orientation!}
-        aria-orientation={local.orientation!}
-        {...dataset()}
-        {...others}
-      />
+      <Polymorphic<MenuBarRootRenderProps> as="div" {...rootProps} />
     </MenuBarContext.Provider>
   )
 }

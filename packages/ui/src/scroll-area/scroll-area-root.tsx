@@ -1,4 +1,4 @@
-import { mergeRefs } from "../utils"
+import { mergeProps, mergeRefs } from "../utils"
 import { type JSX, type ParentProps, type ValidComponent, createSignal, onCleanup, splitProps } from "solid-js"
 
 import { combineStyle } from "@solid-primitives/props"
@@ -235,22 +235,25 @@ export function ScrollAreaRoot<T extends ValidComponent = "div">(
       "--scroll-area-corner-height": `${cornerHeight()}px`,
     }) as Record<string, string>
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => {
+        rootRef = el
+      }, local.ref),
+      style: combineStyle(rootStyle(), local.style),
+      "data-scrolling": scrolling() ? "" : undefined,
+      "data-hovering": hovering() ? "" : undefined,
+      "data-has-overflow-x": hasOverflowX() ? "" : undefined,
+      "data-has-overflow-y": hasOverflowY() ? "" : undefined,
+      onPointerEnter: onPointerEnter,
+      onPointerLeave: onPointerLeave,
+    },
+    others,
+  ) as unknown as ScrollAreaRootRenderProps & typeof others
+
   return (
     <ScrollAreaContext.Provider value={context}>
-      <Polymorphic<ScrollAreaRootRenderProps>
-        as="div"
-        ref={mergeRefs((el) => {
-          rootRef = el
-        }, local.ref)}
-        style={combineStyle(rootStyle(), local.style)}
-        data-scrolling={scrolling() ? "" : undefined}
-        data-hovering={hovering() ? "" : undefined}
-        data-has-overflow-x={hasOverflowX() ? "" : undefined}
-        data-has-overflow-y={hasOverflowY() ? "" : undefined}
-        onPointerEnter={onPointerEnter}
-        onPointerLeave={onPointerLeave}
-        {...others}
-      />
+      <Polymorphic<ScrollAreaRootRenderProps> as="div" {...rootProps} />
     </ScrollAreaContext.Provider>
   )
 }

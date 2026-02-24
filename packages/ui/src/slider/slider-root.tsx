@@ -6,7 +6,15 @@
  * https://github.com/radix-ui/primitives/blob/21a7c97dc8efa79fecca36428eec49f187294085/packages/react/slider/src/Slider.tsx
  */
 
-import { type ValidationState, access, clamp, createGenerateId, mergeDefaultProps, mergeRefs } from "../utils"
+import {
+  type ValidationState,
+  access,
+  clamp,
+  createGenerateId,
+  mergeDefaultProps,
+  mergeProps,
+  mergeRefs,
+} from "../utils"
 import { type Accessor, type ValidComponent, createMemo, createSignal, createUniqueId, splitProps } from "solid-js"
 
 import { FORM_CONTROL_PROP_NAMES, FormControlContext, createFormControl } from "../form-control"
@@ -349,18 +357,21 @@ export function SliderRoot<T extends ValidComponent = "div">(props: PolymorphicP
     getValueLabel: local.getValueLabel,
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "group",
+      id: access(formControlProps.id),
+      ...dataset(),
+    },
+    others,
+  ) as unknown as SliderRootRenderProps & typeof others
+
   return (
     <DomCollectionProvider>
       <FormControlContext.Provider value={formControlContext}>
         <SliderContext.Provider value={context}>
-          <Polymorphic<SliderRootRenderProps>
-            as="div"
-            ref={mergeRefs((el) => (ref = el), local.ref)}
-            role="group"
-            id={access(formControlProps.id)}
-            {...dataset()}
-            {...others}
-          />
+          <Polymorphic<SliderRootRenderProps> as="div" {...rootProps} />
         </SliderContext.Provider>
       </FormControlContext.Provider>
     </DomCollectionProvider>

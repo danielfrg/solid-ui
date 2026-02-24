@@ -15,6 +15,7 @@ import {
   isAppleDevice,
   isFunction,
   mergeDefaultProps,
+  mergeProps,
 } from "../utils"
 import {
   type Accessor,
@@ -813,18 +814,29 @@ export function ComboboxBase<Option, OptGroup = never, T extends ValidComponent 
     registerListboxId: createRegisterId(setListboxId),
   }
 
+  const popperRootProps = mergeProps(
+    {
+      anchorRef: controlRef,
+      contentRef: contentRef,
+    },
+    popperProps,
+  ) as unknown as PopperRootOptions & typeof popperProps
+
+  const rootProps = mergeProps(
+    {
+      role: "group",
+      id: access(formControlProps.id)!,
+      ...formControlContext.dataset(),
+      ...dataset(),
+    },
+    others,
+  ) as unknown as ComboboxBaseRenderProps & typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
       <ComboboxContext.Provider value={context}>
-        <Popper anchorRef={controlRef} contentRef={contentRef} {...popperProps}>
-          <Polymorphic<ComboboxBaseRenderProps>
-            as="div"
-            role="group"
-            id={access(formControlProps.id)!}
-            {...formControlContext.dataset()}
-            {...dataset()}
-            {...others}
-          />
+        <Popper {...popperRootProps}>
+          <Polymorphic<ComboboxBaseRenderProps> as="div" {...rootProps} />
         </Popper>
       </ComboboxContext.Provider>
     </FormControlContext.Provider>

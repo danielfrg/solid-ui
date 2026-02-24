@@ -1,4 +1,4 @@
-import { mergeDefaultProps } from "../utils"
+import { mergeDefaultProps, mergeProps } from "../utils"
 import { type ParentProps, createSignal, createUniqueId, splitProps } from "solid-js"
 
 import { useLocale } from "../i18n"
@@ -43,14 +43,18 @@ export function ContextMenuRoot(props: ContextMenuRootProps) {
     setAnchorRect,
   }
 
+  const rootProps = mergeProps(
+    {
+      open: disclosureState.isOpen(),
+      onOpenChange: disclosureState.setIsOpen,
+      getAnchorRect: anchorRect,
+    },
+    others,
+  ) as unknown as MenuRootOptions & typeof others
+
   return (
     <ContextMenuContext.Provider value={context}>
-      <InternalMenuRoot
-        open={disclosureState.isOpen()}
-        onOpenChange={disclosureState.setIsOpen}
-        getAnchorRect={anchorRect}
-        {...others}
-      />
+      <InternalMenuRoot {...rootProps} />
     </ContextMenuContext.Provider>
   )
 }

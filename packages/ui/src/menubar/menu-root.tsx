@@ -1,4 +1,4 @@
-import { type Orientation, createGenerateId, mergeDefaultProps } from "../utils"
+import { type Orientation, createGenerateId, mergeDefaultProps, mergeProps } from "../utils"
 import { type ParentProps, createUniqueId, splitProps } from "solid-js"
 
 import { useOptionalMenuBarContext } from "./menu-bar-context"
@@ -57,9 +57,17 @@ export function InternalMenuRoot(props: MenuRootProps) {
     orientation: () => local.orientation ?? optionalMenuBarContext?.orientation() ?? "horizontal",
   }
 
+  const rootProps = mergeProps(
+    {
+      open: disclosureState.isOpen(),
+      onOpenChange: disclosureState.setIsOpen,
+    },
+    others,
+  ) as unknown as InternalMenuOptions & typeof others
+
   return (
     <MenuRootContext.Provider value={context}>
-      <InternalMenu open={disclosureState.isOpen()} onOpenChange={disclosureState.setIsOpen} {...others} />
+      <InternalMenu {...rootProps} />
     </MenuRootContext.Provider>
   )
 }

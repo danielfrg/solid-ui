@@ -1,4 +1,4 @@
-import { type Orientation, createGenerateId, mergeDefaultProps, mergeRefs } from "../utils"
+import { type Orientation, createGenerateId, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type JSX, type ValidComponent, createUniqueId, splitProps } from "solid-js"
 
 import { CompositeRoot } from "../composite/composite-root"
@@ -82,22 +82,26 @@ export function ToolbarRoot<T extends ValidComponent = "div">(props: Polymorphic
     generateId: createGenerateId(() => local.id!),
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "toolbar",
+      orientation: local.orientation === "horizontal" ? "horizontal" : "vertical",
+      loopFocus: local.loopFocus,
+      highlightedIndex: local.highlightedIndex,
+      onHighlightedIndexChange: local.onHighlightedIndexChange,
+      highlightItemOnHover: local.highlightItemOnHover,
+      disabled: local.disabled,
+      onKeyDown: local.onKeyDown,
+      "data-orientation": local.orientation,
+      "data-disabled": local.disabled ? "" : undefined,
+    },
+    others as { id: string },
+  ) as unknown as ToolbarRootRenderProps & typeof others
+
   return (
     <ToolbarContext.Provider value={context}>
-      <CompositeRoot
-        ref={mergeRefs((el) => (ref = el), local.ref)}
-        role="toolbar"
-        orientation={local.orientation === "horizontal" ? "horizontal" : "vertical"}
-        loopFocus={local.loopFocus}
-        highlightedIndex={local.highlightedIndex}
-        onHighlightedIndexChange={local.onHighlightedIndexChange}
-        highlightItemOnHover={local.highlightItemOnHover}
-        disabled={local.disabled}
-        onKeyDown={local.onKeyDown}
-        data-orientation={local.orientation}
-        data-disabled={local.disabled ? "" : undefined}
-        {...(others as { id: string })}
-      />
+      <CompositeRoot {...rootProps} />
     </ToolbarContext.Provider>
   )
 }

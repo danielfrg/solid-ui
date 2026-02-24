@@ -6,7 +6,7 @@
  * https://github.com/adobe/react-spectrum/blob/b35d5c02fe900badccd0cf1a8f23bb593419f238/packages/@react-aria/link/src/useLink.ts
  */
 
-import { mergeRefs } from "../utils"
+import { mergeProps, mergeRefs } from "../utils"
 import { type ValidComponent, splitProps } from "solid-js"
 
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
@@ -45,16 +45,17 @@ export function LinkRoot<T extends ValidComponent = "a">(props: PolymorphicProps
     () => "a",
   )
 
-  return (
-    <Polymorphic<LinkRootRenderProps>
-      as="a"
-      ref={mergeRefs((el) => (ref = el), local.ref)}
-      role={tagName() !== "a" || local.disabled ? "link" : undefined}
-      tabIndex={tagName() !== "a" && !local.disabled ? 0 : undefined}
-      href={!local.disabled ? local.href : undefined}
-      aria-disabled={local.disabled ? true : undefined}
-      data-disabled={local.disabled ? "" : undefined}
-      {...others}
-    />
-  )
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: tagName() !== "a" || local.disabled ? "link" : undefined,
+      tabIndex: tagName() !== "a" && !local.disabled ? 0 : undefined,
+      href: !local.disabled ? local.href : undefined,
+      "aria-disabled": local.disabled ? true : undefined,
+      "data-disabled": local.disabled ? "" : undefined,
+    },
+    others,
+  ) as unknown as LinkRootRenderProps & typeof others
+
+  return <Polymorphic<LinkRootRenderProps> as="a" {...rootProps} />
 }

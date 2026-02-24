@@ -1,4 +1,4 @@
-import { mergeDefaultProps } from "../utils"
+import { mergeDefaultProps, mergeProps } from "../utils"
 import { type ParentProps, type ValidComponent, splitProps } from "solid-js"
 
 import {
@@ -54,9 +54,12 @@ export function FieldRoot<T extends ValidComponent = "div">(
 
   const { formControlContext } = createFormControl(local)
 
+  const rootProps = mergeProps({ ...formControlContext.dataset() }, others) as unknown as FieldRootRenderProps &
+    typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
-      <Polymorphic<FieldRootRenderProps> as="div" {...formControlContext.dataset()} {...others} />
+      <Polymorphic<FieldRootRenderProps> as="div" {...rootProps} />
     </FormControlContext.Provider>
   )
 }

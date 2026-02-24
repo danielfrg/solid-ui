@@ -1,5 +1,7 @@
 import { type JSX, type ParentProps, type ValidComponent, splitProps } from "solid-js"
 
+import { mergeProps } from "../utils"
+
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
 
 export interface FormRootOptions {
@@ -33,5 +35,7 @@ export function FormRoot<T extends ValidComponent = "form">(props: PolymorphicPr
     local.onSubmit?.(e)
   }
 
-  return <Polymorphic<FormRootRenderProps> as="form" onSubmit={onSubmit} {...others} />
+  const rootProps = mergeProps({ onSubmit }, others) as unknown as FormRootRenderProps & typeof others
+
+  return <Polymorphic<FormRootRenderProps> as="form" {...rootProps} />
 }

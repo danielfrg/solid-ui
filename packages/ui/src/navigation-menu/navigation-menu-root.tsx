@@ -1,4 +1,4 @@
-import { callHandler, mergeDefaultProps, mergeRefs } from "../utils"
+import { callHandler, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import {
   type Accessor,
   type Component,
@@ -181,24 +181,34 @@ export function NavigationMenuRoot<T extends ValidComponent = "ul">(
     setPreviousMenu,
   }
 
+  const popperRootProps = mergeProps(
+    {
+      anchorRef: rootRef,
+      contentRef: viewportRef,
+      placement: currentPlacement(),
+      onCurrentPlacementChange: setCurrentPlacement,
+    },
+    popperProps,
+  ) as unknown as PopperRootOptions & typeof popperProps
+
+  const menuRootProps = mergeProps(
+    {
+      ref: mergeRefs(context.setRootRef, local.ref),
+      value: value() ?? null,
+      onValueChange: setValue,
+      autoFocusMenu: autoFocusMenu(),
+      onAutoFocusMenuChange: setAutoFocusMenu,
+    },
+    others,
+  ) as unknown as NavigationMenuRootRenderProps & typeof others
+
   return (
     <NavigationMenuContext.Provider value={context}>
-      <Popper
-        anchorRef={rootRef}
-        contentRef={viewportRef}
-        placement={currentPlacement()}
-        onCurrentPlacementChange={setCurrentPlacement}
-        {...popperProps}
-      >
+      <Popper {...popperRootProps}>
         <nav>
           <MenuBarRoot<Component<Omit<NavigationMenuRootRenderProps, keyof MenuBarRootRenderProps>>>
             as="ul"
-            ref={mergeRefs(context.setRootRef, local.ref)}
-            value={value() ?? null}
-            onValueChange={setValue}
-            autoFocusMenu={autoFocusMenu()}
-            onAutoFocusMenuChange={setAutoFocusMenu}
-            {...others}
+            {...menuRootProps}
           />
         </nav>
       </Popper>

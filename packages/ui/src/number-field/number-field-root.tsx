@@ -4,6 +4,7 @@ import {
   createGenerateId,
   getPrecision,
   mergeDefaultProps,
+  mergeProps,
   mergeRefs,
   snapValueToStep,
 } from "../utils"
@@ -317,17 +318,20 @@ export function NumberFieldRoot<T extends ValidComponent = "div">(props: Polymor
     ),
   )
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "group",
+      id: access(formControlProps.id),
+      ...formControlContext.dataset(),
+    },
+    others,
+  ) as unknown as NumberFieldRootRenderProps & typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
       <NumberFieldContext.Provider value={context}>
-        <Polymorphic<NumberFieldRootRenderProps>
-          as="div"
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          role="group"
-          id={access(formControlProps.id)}
-          {...formControlContext.dataset()}
-          {...others}
-        />
+        <Polymorphic<NumberFieldRootRenderProps> as="div" {...rootProps} />
       </NumberFieldContext.Provider>
     </FormControlContext.Provider>
   )

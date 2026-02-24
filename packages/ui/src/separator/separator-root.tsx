@@ -1,4 +1,4 @@
-import { type Orientation, mergeDefaultProps, mergeRefs } from "../utils"
+import { type Orientation, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type ValidComponent, splitProps } from "solid-js"
 
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
@@ -42,14 +42,21 @@ export function SeparatorRoot<T extends ValidComponent = "hr">(props: Polymorphi
     () => "hr",
   )
 
-  return (
-    <Polymorphic<SeparatorRootRenderProps>
-      as="hr"
-      ref={mergeRefs((el) => (ref = el), local.ref)}
-      role={tagName() !== "hr" ? "separator" : undefined}
-      aria-orientation={local.orientation === "vertical" ? "vertical" : undefined}
-      data-orientation={local.orientation}
-      {...others}
-    />
-  )
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      get role() {
+        return tagName() !== "hr" ? "separator" : undefined
+      },
+      get "aria-orientation"() {
+        return local.orientation === "vertical" ? "vertical" : undefined
+      },
+      get "data-orientation"() {
+        return local.orientation
+      },
+    },
+    others,
+  ) as unknown as SeparatorRootRenderProps & typeof others
+
+  return <Polymorphic<SeparatorRootRenderProps> as="hr" {...rootProps} />
 }

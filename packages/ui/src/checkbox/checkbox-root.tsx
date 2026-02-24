@@ -13,6 +13,7 @@ import {
   createGenerateId,
   isFunction,
   mergeDefaultProps,
+  mergeProps,
   mergeRefs,
 } from "../utils"
 import {
@@ -176,19 +177,22 @@ export function CheckboxRoot<T extends ValidComponent = "div">(props: Polymorphi
     setInputRef,
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "group",
+      id: access(formControlProps.id),
+      onPointerDown: onPointerDown,
+      ...formControlContext.dataset(),
+      ...dataset(),
+    },
+    others,
+  ) as unknown as CheckboxRootRenderProps & typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
       <CheckboxContext.Provider value={context}>
-        <Polymorphic<CheckboxRootRenderProps>
-          as="div"
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          role="group"
-          id={access(formControlProps.id)}
-          onPointerDown={onPointerDown}
-          {...formControlContext.dataset()}
-          {...dataset()}
-          {...others}
-        >
+        <Polymorphic<CheckboxRootRenderProps> as="div" {...rootProps}>
           <CheckboxRootChild state={context}>{local.children}</CheckboxRootChild>
         </Polymorphic>
       </CheckboxContext.Provider>

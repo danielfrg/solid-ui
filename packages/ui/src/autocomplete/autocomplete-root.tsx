@@ -1,4 +1,6 @@
 import { type ValidComponent, createEffect, createMemo, createSignal, splitProps } from "solid-js"
+
+import { mergeProps } from "../utils"
 import {
   ComboboxBase,
   type ComboboxBaseOptions,
@@ -101,22 +103,26 @@ export function AutocompleteRoot<Option, OptGroup = never, T extends ValidCompon
     isLoadingSuggestions,
   }
 
+  const rootProps = mergeProps(
+    {
+      closeOnSelection: true,
+      shouldFocusWrap: true,
+      noResetInputOnBlur: true,
+      allowsEmptyCollection: true,
+      options: local.options as any,
+      value: value() as any,
+      defaultValue: defaultValue() as any,
+      onInputChange: onInputChange,
+      defaultFilter: () => true,
+      onChange: onChange as any,
+      selectionMode: local.multiple ? "multiple" : "single",
+    },
+    others as Record<string, unknown>,
+  ) as unknown as ComboboxBaseOptions<Option, OptGroup> & typeof others
+
   return (
     <AutocompleteContext.Provider value={context}>
-      <ComboboxBase
-        closeOnSelection
-        shouldFocusWrap
-        noResetInputOnBlur
-        allowsEmptyCollection={true}
-        options={local.options as any}
-        value={value() as any}
-        defaultValue={defaultValue() as any}
-        onInputChange={onInputChange}
-        defaultFilter={() => true}
-        onChange={onChange as any}
-        selectionMode={local.multiple ? "multiple" : "single"}
-        {...others}
-      />
+      <ComboboxBase {...rootProps} />
     </AutocompleteContext.Provider>
   )
 }

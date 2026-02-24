@@ -7,7 +7,7 @@
  * https://github.com/adobe/react-spectrum/blob/6b51339cca0b8344507d3c8e81e7ad05d6e75f9b/packages/@react-aria/tabs/src/useTabList.ts
  */
 
-import { type Orientation, mergeDefaultProps } from "../utils"
+import { type Orientation, mergeDefaultProps, mergeProps } from "../utils"
 import { type ValidComponent, createEffect, createSignal, createUniqueId, on, splitProps } from "solid-js"
 
 import { createSingleSelectListState } from "../list"
@@ -155,10 +155,17 @@ export function TabsRoot<T extends ValidComponent = "div">(props: PolymorphicPro
     generateContentId: (value) => `${others.id!}-content-${value}`,
   }
 
+  const rootProps = mergeProps(
+    {
+      "data-orientation": context.orientation(),
+    },
+    others,
+  ) as unknown as TabsRootRenderProps & typeof others
+
   return (
     <DomCollectionProvider>
       <TabsContext.Provider value={context}>
-        <Polymorphic<TabsRootRenderProps> as="div" data-orientation={context.orientation()} {...others} />
+        <Polymorphic<TabsRootRenderProps> as="div" {...rootProps} />
       </TabsContext.Provider>
     </DomCollectionProvider>
   )

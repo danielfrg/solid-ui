@@ -6,7 +6,7 @@
  * https://github.com/adobe/react-spectrum/blob/main/packages/%40react-aria/meter/src/useMeter.ts
  */
 
-import { clamp, createGenerateId, mergeDefaultProps } from "../utils"
+import { clamp, createGenerateId, mergeDefaultProps, mergeProps } from "../utils"
 import { type Accessor, type ValidComponent, createMemo, createSignal, createUniqueId, splitProps } from "solid-js"
 
 import { createNumberFormatter } from "../i18n"
@@ -137,19 +137,33 @@ export function MeterRoot<T extends ValidComponent = "div">(props: PolymorphicPr
     registerLabelId: createRegisterId(setLabelId),
   }
 
+  const rootProps = mergeProps(
+    {
+      get role() {
+        return local.role || "meter"
+      },
+      get "aria-valuenow"() {
+        return local.indeterminate ? undefined : value()
+      },
+      get "aria-valuemin"() {
+        return local.minValue
+      },
+      get "aria-valuemax"() {
+        return local.maxValue
+      },
+      get "aria-valuetext"() {
+        return valueLabel()
+      },
+      get "aria-labelledby"() {
+        return labelId()
+      },
+    },
+    others,
+  ) as unknown as MeterRootRenderProps & typeof others
+
   return (
     <MeterContext.Provider value={context}>
-      <Polymorphic<MeterRootRenderProps>
-        as="div"
-        role={local.role || "meter"}
-        aria-valuenow={local.indeterminate ? undefined : value()}
-        aria-valuemin={local.minValue}
-        aria-valuemax={local.maxValue}
-        aria-valuetext={valueLabel()}
-        aria-labelledby={labelId()}
-        {...dataset()}
-        {...others}
-      />
+      <Polymorphic<MeterRootRenderProps> as="div" {...rootProps} />
     </MeterContext.Provider>
   )
 }

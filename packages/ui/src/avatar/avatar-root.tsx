@@ -8,6 +8,8 @@
 
 import { type ValidComponent, createSignal, splitProps } from "solid-js"
 
+import { mergeProps } from "../utils"
+
 import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
 import { AvatarContext, type AvatarContextValue } from "./avatar-context"
 import type { AvatarLoadingStatus } from "./types"
@@ -51,9 +53,11 @@ export function AvatarRoot<T extends ValidComponent = "span">(props: Polymorphic
     },
   }
 
+  const rootProps = mergeProps(others as Record<string, unknown>) as unknown as AvatarRootRenderProps & typeof others
+
   return (
     <AvatarContext.Provider value={context}>
-      <Polymorphic<AvatarRootRenderProps> as="span" {...others} />
+      <Polymorphic<AvatarRootRenderProps> as="span" {...rootProps} />
     </AvatarContext.Provider>
   )
 }

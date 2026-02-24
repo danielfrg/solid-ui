@@ -7,7 +7,7 @@
  * and disabled item skipping.
  */
 
-import { composeEventHandlers, mergeDefaultProps, mergeRefs } from "../utils"
+import { composeEventHandlers, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type JSX, type ValidComponent, createSignal, splitProps } from "solid-js"
 
 import { useLocale } from "../i18n"
@@ -244,19 +244,22 @@ export function CompositeRoot<T extends ValidComponent = "div">(props: Polymorph
     isDisabled: () => local.disabled ?? false,
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: undefined,
+      "aria-orientation": local.orientation === "both" ? undefined : local.orientation,
+      "data-orientation": local.orientation === "both" ? undefined : local.orientation,
+      "data-disabled": local.disabled ? "" : undefined,
+      onKeyDown: composeEventHandlers([local.onKeyDown, onKeyDown]),
+    },
+    others,
+  ) as unknown as CompositeRootRenderProps & typeof others
+
   return (
     <CompositeContext.Provider value={context}>
       <CompositeListProvider value={listContext}>
-        <Polymorphic<CompositeRootRenderProps>
-          as="div"
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          role={undefined}
-          aria-orientation={local.orientation === "both" ? undefined : local.orientation}
-          data-orientation={local.orientation === "both" ? undefined : local.orientation}
-          data-disabled={local.disabled ? "" : undefined}
-          onKeyDown={composeEventHandlers([local.onKeyDown, onKeyDown])}
-          {...others}
-        />
+        <Polymorphic<CompositeRootRenderProps> as="div" {...rootProps} />
       </CompositeListProvider>
     </CompositeContext.Provider>
   )

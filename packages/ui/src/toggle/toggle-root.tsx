@@ -17,7 +17,7 @@ import { type Accessor, type Component, type JSX, type ValidComponent, children,
 import * as Button from "../button"
 import type { ElementOf, PolymorphicProps } from "../polymorphic"
 import { createToggleState } from "../primitives"
-import { callHandler, isFunction } from "../utils"
+import { callHandler, isFunction, mergeProps } from "../utils"
 
 export interface ToggleRootState {
   /** Whether the toggle button is on (pressed) or off (not pressed). */
@@ -83,13 +83,21 @@ export function ToggleRoot<T extends ValidComponent = "button">(props: Polymorph
     state.toggle()
   }
 
+  const rootProps = mergeProps(
+    {
+      get "aria-pressed"() {
+        return state.isSelected()
+      },
+      get "data-pressed"() {
+        return state.isSelected() ? "" : undefined
+      },
+      onClick: onClick,
+    },
+    others,
+  ) as unknown as Omit<ToggleRootRenderProps, keyof Button.ButtonRootRenderProps> & typeof others
+
   return (
-    <Button.Root<Component<Omit<ToggleRootRenderProps, keyof Button.ButtonRootRenderProps>>>
-      aria-pressed={state.isSelected()}
-      data-pressed={state.isSelected() ? "" : undefined}
-      onClick={onClick}
-      {...others}
-    >
+    <Button.Root<Component<Omit<ToggleRootRenderProps, keyof Button.ButtonRootRenderProps>>> {...rootProps}>
       <ToggleRootChild state={{ pressed: state.isSelected }}>{local.children}</ToggleRootChild>
     </Button.Root>
   )

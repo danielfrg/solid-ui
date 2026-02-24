@@ -1,4 +1,4 @@
-import { type ValidationState, access, createGenerateId, mergeDefaultProps, mergeRefs } from "../utils"
+import { type ValidationState, access, createGenerateId, mergeDefaultProps, mergeProps, mergeRefs } from "../utils"
 import { type JSX, type ValidComponent, createUniqueId, splitProps } from "solid-js"
 
 import {
@@ -114,17 +114,20 @@ export function InputRoot<T extends ValidComponent = "div">(props: PolymorphicPr
     onInput,
   }
 
+  const rootProps = mergeProps(
+    {
+      ref: mergeRefs((el) => (ref = el), local.ref),
+      role: "group",
+      id: access(formControlProps.id),
+      ...formControlContext.dataset(),
+    },
+    others,
+  ) as unknown as InputRootRenderProps & typeof others
+
   return (
     <FormControlContext.Provider value={formControlContext}>
       <InputContext.Provider value={context}>
-        <Polymorphic<InputRootRenderProps>
-          as="div"
-          ref={mergeRefs((el) => (ref = el), local.ref)}
-          role="group"
-          id={access(formControlProps.id)}
-          {...formControlContext.dataset()}
-          {...others}
-        />
+        <Polymorphic<InputRootRenderProps> as="div" {...rootProps} />
       </InputContext.Provider>
     </FormControlContext.Provider>
   )

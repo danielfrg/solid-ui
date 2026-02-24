@@ -1,4 +1,4 @@
-import { mergeDefaultProps } from "../utils"
+import { mergeDefaultProps, mergeProps } from "../utils"
 import { type ParentProps, createUniqueId } from "solid-js"
 
 import {
@@ -19,5 +19,7 @@ export function DropdownMenuRoot(props: DropdownMenuRootProps) {
 
   const mergedProps = mergeDefaultProps({ id: defaultId }, props)
 
-  return <InternalMenuRoot {...mergedProps} />
+  const rootProps = mergeProps(mergedProps as Record<string, unknown>) as unknown as InternalMenuRootProps
+
+  return <InternalMenuRoot {...rootProps} />
 }

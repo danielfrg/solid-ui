@@ -1,4 +1,4 @@
-import { type OverrideComponentProps } from "../utils"
+import { mergeProps, type OverrideComponentProps } from "../utils"
 import { type Component, type ValidComponent, createMemo, splitProps } from "solid-js"
 
 import type { ElementOf, PolymorphicProps } from "../polymorphic"
@@ -92,13 +92,19 @@ export function ComboboxRoot<Option, OptGroup = never, T extends ValidComponent 
     }
   }
 
+  const rootProps = mergeProps(
+    {
+      value: value() as any,
+      defaultValue: defaultValue() as any,
+      onChange: onChange,
+      selectionMode: local.multiple ? "multiple" : "single",
+    },
+    others as Record<string, unknown>,
+  ) as unknown as ComboboxBaseOptions<Option, OptGroup> & typeof others
+
   return (
     <ComboboxBase<Option, OptGroup, Component<Omit<ComboboxRootRenderProps, keyof ComboboxBaseRenderProps>>>
-      value={value() as any}
-      defaultValue={defaultValue() as any}
-      onChange={onChange}
-      selectionMode={local.multiple ? "multiple" : "single"}
-      {...others}
+      {...rootProps}
     />
   )
 }
