@@ -411,6 +411,38 @@
     display: block;
   }
 
+  /* View as Markdown link */
+  .md-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--docs-text-weak);
+    background: transparent;
+    border: none;
+    border-bottom: none;
+    text-decoration: none !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+
+  .md-view-btn:hover {
+    color: var(--docs-text);
+    text-decoration: underline !important;
+    text-underline-offset: 4px;
+    border-bottom: none;
+  }
+
+  .md-view-btn svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
   .table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

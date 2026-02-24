@@ -1,5 +1,7 @@
 # UI components
 
-SolidJS collection of unstyled UI components that I use in my projects.
+Unstyled UI components for SolidJS.
 
-Most of them are straight from [Kobalte](https://kobalte.dev/) and others migrated from [Base UI](https://base-ui.com/).
+The objective is to have a solid [Base UI](https://base-ui.com/) like implementation in SolidJS.
+
+Mostly forked from [Kobalte](https://kobalte.dev) some have been replaced with Base UI implementatons and others adapted from Base UI directly.
