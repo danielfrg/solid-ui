@@ -2,7 +2,14 @@ import { For, createSignal } from "solid-js"
 import { Toast } from "@danielfrg/solid-ui/toast"
 import styles from "./index.module.css"
 
-export function DemoToastHero() {
+const TEXTS = [
+  "Short message.",
+  "A bit longer message that spans two lines.",
+  "This is a longer description that intentionally takes more vertical space to demonstrate stacking with varying heights.",
+  "An even longer description that should span multiple lines so we can verify the clamped collapsed height and smooth expansion animation when hovering or focusing the viewport.",
+]
+
+export function DemoToastVaryingHeights() {
   return (
     <Toast.Provider>
       <ToastButton />
@@ -21,15 +28,16 @@ function ToastButton() {
 
   function createToast() {
     setCount((prev) => prev + 1)
+    const description = TEXTS[Math.floor(Math.random() * TEXTS.length)]
     toastManager.add({
       title: `Toast ${count()} created`,
-      description: "This is a toast notification.",
+      description,
     })
   }
 
   return (
     <button type="button" class={styles.Button} onClick={createToast}>
-      Create toast
+      Create varying height toast
     </button>
   )
 }

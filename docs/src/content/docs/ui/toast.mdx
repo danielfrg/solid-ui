@@ -5,15 +5,25 @@ description: A brief notification displayed temporarily in a corner of the scree
 
 import DemoBlock from "@/components/demo-block.astro"
 import { DemoToastHero } from "@/demos/ui/toast/hero"
-import { DemoToastMultipleRegions } from "@/demos/ui/toast/multiple-regions"
+import { DemoToastPosition } from "@/demos/ui/toast/position"
+import { DemoToastPromise } from "@/demos/ui/toast/promise"
+import { DemoToastUndo } from "@/demos/ui/toast/undo"
+import { DemoToastCustomData } from "@/demos/ui/toast/custom-data"
+import { DemoToastVaryingHeights } from "@/demos/ui/toast/varying-heights"
 import heroCode from "@/demos/ui/toast/hero.tsx?raw"
-import multipleRegionsCode from "@/demos/ui/toast/multiple-regions.tsx?raw"
+import positionCode from "@/demos/ui/toast/position.tsx?raw"
+import promiseCode from "@/demos/ui/toast/promise.tsx?raw"
+import undoCode from "@/demos/ui/toast/undo.tsx?raw"
+import customDataCode from "@/demos/ui/toast/custom-data.tsx?raw"
+import varyingHeightsCode from "@/demos/ui/toast/varying-heights.tsx?raw"
 import toastStyles from "@/demos/ui/toast/index.module.css?raw"
 import demoTheme from "@/demos/theme.css?raw"
 
 # Toast
 
-A brief notification displayed temporarily in a corner of the screen.
+Generates toast notifications.
+
+Based on Base UI's [toast](https://base-ui.com/react/components/toast) component.
 
 <DemoBlock
   label="View source"
@@ -28,17 +38,81 @@ A brief notification displayed temporarily in a corner of the screen.
 
 ## Examples
 
-### Multiple regions
+### Position
 
-Use the `region` option in `toaster.show()` to route toasts to a specific named `Toast.Region`.
+Use a top-aligned `Viewport` and `swipeDirection="up"` on each `Root` for a top-center stack.
 
 <DemoBlock
   label="View source"
   files={[
-    { label: "component.tsx", code: multipleRegionsCode },
+    { label: "component.tsx", code: positionCode },
     { label: "index.module.css", code: toastStyles },
     { label: "theme.css", code: demoTheme },
   ]}
 >
-  <DemoToastMultipleRegions client:load />
+  <DemoToastPosition client:load />
+</DemoBlock>
+
+### Promise
+
+Pass a `Promise` to `toastManager.promise()` with `loading`, `success`, and `error` options. The toast
+automatically transitions between states as the promise settles.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: promiseCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastPromise client:load />
+</DemoBlock>
+
+### Undo
+
+Use `actionProps` when adding a toast to supply an action button. The action can close the current
+toast and trigger follow-up behaviour.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: undoCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastUndo client:load />
+</DemoBlock>
+
+### Custom data
+
+Attach arbitrary typed data to a toast via the `data` option. Use a type guard to narrow the toast
+type inside the list renderer.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customDataCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastCustomData client:load />
+</DemoBlock>
+
+### Varying heights
+
+The stack layout uses per-toast height measurements, so toasts of different sizes animate and
+collapse correctly.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: varyingHeightsCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastVaryingHeights client:load />
 </DemoBlock>

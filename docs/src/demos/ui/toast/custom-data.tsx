@@ -1,11 +1,20 @@
-import { For, createSignal } from "solid-js"
+import { For, Show } from "solid-js"
 import { Toast } from "@danielfrg/solid-ui/toast"
+import type { ToastObject } from "@danielfrg/solid-ui/toast"
 import styles from "./index.module.css"
 
-export function DemoToastHero() {
+interface CustomToastData extends Record<string, unknown> {
+  userId: string
+}
+
+function isCustomToast(toast: ToastObject): toast is ToastObject<CustomToastData> {
+  return typeof (toast.data as CustomToastData | undefined)?.userId === "string"
+}
+
+export function DemoToastCustomData() {
   return (
     <Toast.Provider>
-      <ToastButton />
+      <CustomToastButton />
       <Toast.Portal>
         <Toast.Viewport class={styles.Viewport}>
           <ToastList />
@@ -15,21 +24,20 @@ export function DemoToastHero() {
   )
 }
 
-function ToastButton() {
+function CustomToastButton() {
   const toastManager = Toast.useToastManager()
-  const [count, setCount] = createSignal(0)
 
-  function createToast() {
-    setCount((prev) => prev + 1)
+  function action() {
+    const data: CustomToastData = { userId: "123" }
     toastManager.add({
-      title: `Toast ${count()} created`,
-      description: "This is a toast notification.",
+      title: "Toast with custom data",
+      data,
     })
   }
 
   return (
-    <button type="button" class={styles.Button} onClick={createToast}>
-      Create toast
+    <button type="button" onClick={action} class={styles.Button}>
+      Create custom toast
     </button>
   )
 }
@@ -41,8 +49,15 @@ function ToastList() {
       {(toast) => (
         <Toast.Root toast={toast} class={styles.Toast}>
           <Toast.Content class={styles.Content}>
-            <Toast.Title class={styles.Title} />
-            <Toast.Description class={styles.Description} />
+            <Toast.Title class={styles.Title}>{toast.title}</Toast.Title>
+            <Show
+              when={isCustomToast(toast) && (toast as ToastObject<CustomToastData>).data}
+              fallback={<Toast.Description class={styles.Description} />}
+            >
+              {(data) => (
+                <Toast.Description class={styles.Description}>`data.userId` is {data().userId}</Toast.Description>
+              )}
+            </Show>
             <Toast.Close class={styles.Close} aria-label="Close">
               <XIcon class={styles.Icon} />
             </Toast.Close>

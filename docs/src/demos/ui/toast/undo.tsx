@@ -1,11 +1,11 @@
-import { For, createSignal } from "solid-js"
+import { For } from "solid-js"
 import { Toast } from "@danielfrg/solid-ui/toast"
 import styles from "./index.module.css"
 
-export function DemoToastHero() {
+export function DemoToastUndo() {
   return (
     <Toast.Provider>
-      <ToastButton />
+      <Form />
       <Toast.Portal>
         <Toast.Viewport class={styles.Viewport}>
           <ToastList />
@@ -15,21 +15,29 @@ export function DemoToastHero() {
   )
 }
 
-function ToastButton() {
+function Form() {
   const toastManager = Toast.useToastManager()
-  const [count, setCount] = createSignal(0)
 
-  function createToast() {
-    setCount((prev) => prev + 1)
-    toastManager.add({
-      title: `Toast ${count()} created`,
-      description: "This is a toast notification.",
+  function action() {
+    const id = toastManager.add({
+      title: "Action performed",
+      description: "You can undo this action.",
+      type: "success",
+      actionProps: {
+        children: "Undo",
+        onClick() {
+          toastManager.close(id)
+          toastManager.add({
+            title: "Action undone",
+          })
+        },
+      },
     })
   }
 
   return (
-    <button type="button" class={styles.Button} onClick={createToast}>
-      Create toast
+    <button type="button" onClick={action} class={styles.Button}>
+      Perform action
     </button>
   )
 }
@@ -43,6 +51,7 @@ function ToastList() {
           <Toast.Content class={styles.Content}>
             <Toast.Title class={styles.Title} />
             <Toast.Description class={styles.Description} />
+            <Toast.Action class={styles.UndoButton} />
             <Toast.Close class={styles.Close} aria-label="Close">
               <XIcon class={styles.Icon} />
             </Toast.Close>

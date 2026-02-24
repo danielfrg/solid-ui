@@ -1,11 +1,11 @@
-import { For, createSignal } from "solid-js"
+import { For } from "solid-js"
 import { Toast } from "@danielfrg/solid-ui/toast"
 import styles from "./index.module.css"
 
-export function DemoToastHero() {
+export function DemoToastPromise() {
   return (
     <Toast.Provider>
-      <ToastButton />
+      <PromiseDemo />
       <Toast.Portal>
         <Toast.Viewport class={styles.Viewport}>
           <ToastList />
@@ -15,21 +15,32 @@ export function DemoToastHero() {
   )
 }
 
-function ToastButton() {
+function PromiseDemo() {
   const toastManager = Toast.useToastManager()
-  const [count, setCount] = createSignal(0)
 
-  function createToast() {
-    setCount((prev) => prev + 1)
-    toastManager.add({
-      title: `Toast ${count()} created`,
-      description: "This is a toast notification.",
-    })
+  function runPromise() {
+    toastManager.promise(
+      new Promise<string>((resolve, reject) => {
+        const shouldSucceed = Math.random() > 0.3
+        setTimeout(() => {
+          if (shouldSucceed) {
+            resolve("operation completed")
+          } else {
+            reject(new Error("operation failed"))
+          }
+        }, 2000)
+      }),
+      {
+        loading: "Loading data...",
+        success: (data: string) => `Success: ${data}`,
+        error: (err: unknown) => `Error: ${(err as Error).message}`,
+      },
+    )
   }
 
   return (
-    <button type="button" class={styles.Button} onClick={createToast}>
-      Create toast
+    <button type="button" onClick={runPromise} class={styles.Button}>
+      Run promise
     </button>
   )
 }

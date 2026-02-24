@@ -2,12 +2,12 @@ import { For, createSignal } from "solid-js"
 import { Toast } from "@danielfrg/solid-ui/toast"
 import styles from "./index.module.css"
 
-export function DemoToastHero() {
+export function DemoToastPosition() {
   return (
     <Toast.Provider>
       <ToastButton />
       <Toast.Portal>
-        <Toast.Viewport class={styles.Viewport}>
+        <Toast.Viewport class={styles.ViewportTop}>
           <ToastList />
         </Toast.Viewport>
       </Toast.Portal>
@@ -39,7 +39,7 @@ function ToastList() {
   return (
     <For each={toasts()}>
       {(toast) => (
-        <Toast.Root toast={toast} class={styles.Toast}>
+        <Toast.Root toast={toast} swipeDirection="up" class={styles.ToastTop}>
           <Toast.Content class={styles.Content}>
             <Toast.Title class={styles.Title} />
             <Toast.Description class={styles.Description} />
