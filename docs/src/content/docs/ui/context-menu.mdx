@@ -1,58 +1,29 @@
 ---
 title: Context Menu
-description: Styled right-click menu with support for submenus, checkbox items, and radio groups.
+description: A menu that appears at the pointer on right click or long press.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/context-menu.tsx?raw"
-import ContextMenuExample from "../../../demos/styled/context-menu"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoContextMenuHero } from "@/demos/ui/context-menu/hero"
+import heroCode from "@/demos/ui/context-menu/hero.tsx?raw"
+import contextMenuStyles from "@/demos/ui/context-menu/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Context Menu
 
-## Usage
+A context menu component that appears at the pointer position when the user right-clicks or long-presses on a trigger area.
 
-Add the theme to your CSS:
+This component is based on Kobalte's `ContextMenu`. `ContextMenu.Root` wraps the menu, `ContextMenu.Trigger` defines the right-click area (renders a `div`), and `ContextMenu.Popup` holds the content. The menu opens at the cursor position rather than anchored to a trigger element.
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+For a button-triggered dropdown menu, see [Menu](/core/menu/). For a horizontal menubar, see [Menubar](/core/menubar/).
 
-Import and use the Context Menu components:
-
-```tsx
-import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from "@danielfrg/solid-ui/context-menu"
-;<ContextMenu>
-  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
-  <ContextMenuContent>
-    <ContextMenuItem>Back</ContextMenuItem>
-    <ContextMenuItem>Forward</ContextMenuItem>
-    <ContextMenuItem>Reload</ContextMenuItem>
-  </ContextMenuContent>
-</ContextMenu>
-```
-
-## Demo
-
-<StyledDemoBlock files={[{ label: "context-menu.tsx", code: demoCode }]}>
-  <ContextMenuExample client:only="solid-js" />
-</StyledDemoBlock>
-
-## Parts
-
-| Component                 | Description                                       |
-| ------------------------- | ------------------------------------------------- |
-| `ContextMenu`             | Root container (manages open state)               |
-| `ContextMenuTrigger`      | Area that responds to right-click / long-press    |
-| `ContextMenuContent`      | The popup panel (includes Portal)                 |
-| `ContextMenuItem`         | A menu item                                       |
-| `ContextMenuCheckboxItem` | A toggleable checkbox menu item                   |
-| `ContextMenuRadioGroup`   | Groups radio items                                |
-| `ContextMenuRadioItem`    | A radio menu item                                 |
-| `ContextMenuGroup`        | Groups related items                              |
-| `ContextMenuLabel`        | A non-interactive label for a group               |
-| `ContextMenuSeparator`    | A visual separator between items                  |
-| `ContextMenuShortcut`     | Displays a keyboard shortcut hint                 |
-| `ContextMenuSub`          | Root for a submenu                                |
-| `ContextMenuSubTrigger`   | Item that opens a submenu (includes chevron icon) |
-| `ContextMenuSubContent`   | The submenu popup panel                           |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: contextMenuStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoContextMenuHero client:load />
+</DemoBlock>

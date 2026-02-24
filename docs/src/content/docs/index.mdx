@@ -3,50 +3,47 @@ title: "danielfrg/solid-ui"
 description: SolidJS UI components
 ---
 
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoButtonHero } from "@/demos/ui/button/hero"
+import heroCode from "@/demos/ui/button/hero.tsx?raw"
+import buttonStyles from "@/demos/ui/button/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
+
 # danielfrg/solid-ui
 
-A collection of unstyled and styled SolidJS components.
+Unstyled UI components for SolidJS.
 
-- Unstyled components from `@danielfrg/solid-ui-core`: mostly forked from [Kobalte](https://kobalte.dev) and others adapted from [Base UI](https://base-ui.com/)
-  - **This is the main focus of this project**
-  - Demos copy the styles from base-ui and examples are a combiation of Kobalte and Base UI
-- Styled components from `@danielfrg/solid-ui`: Use the headless components and adapt the [shadcn](https://ui.shadcn.com/) component styles (variants and so on) and based on their Nova theme.
-  - Demos copy the shadcn "create" examples and copy the nova theme
+Mostly forked from [Kobalte](https://kobalte.dev) and others adapted from [Base UI](https://base-ui.com/).
 
-This **is** a component library. We don't handle the distribution of the components like shadcn, you actually install the library with the components.
-If you want to customize it just install the core components and fork the styles package.
-With LLMs it's very easy to create a fork with your own style.
-This is made for myself so I make my life easier.
+Also provide an implementation of [shadcn style components](/nova) (with variants and so on) based on their Nova styles in `@danielfrg/solid-ui-nova`
+
+If you want your own components you can fork the styled package and customize them.
+It's very easy to create your own styles with LLMs by forking the nova example theme.
 
 # Quick start
 
-Install the styled components:
+Install:
 
 ```bash
 npm install @danielfrg/solid-ui
 ```
 
-Add the theme to your CSS:
-
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
-
-Import and use:
+Import the components you need:
 
 ```tsx
 import { Button } from "@danielfrg/solid-ui/button"
-<Button variant="outline">Click me</Button>
 ```
 
-For headless/unstyled primitives only:
+Use and style the components in your app:
 
-```bash
-npm install @danielfrg/solid-ui-core
-```
-
-```tsx
-import { Button } from "@danielfrg/solid-ui-core/button"
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: buttonStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoButtonHero client:load />
+</DemoBlock>
 

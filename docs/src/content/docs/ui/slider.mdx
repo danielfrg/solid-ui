@@ -1,45 +1,129 @@
 ---
 title: Slider
-description: Styled range input for selecting a numeric value.
+description: A slider input for selecting a numeric value within a range.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/slider.tsx?raw"
-import SliderExample from "../../../demos/styled/slider"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoSliderHero } from "@/demos/ui/slider/hero"
+import { DemoSliderMultipleThumbs } from "@/demos/ui/slider/multiple-thumbs"
+import { DemoSliderStep } from "@/demos/ui/slider/step"
+import { DemoSliderMinStepsBetween } from "@/demos/ui/slider/min-steps-between"
+import { DemoSliderVertical } from "@/demos/ui/slider/vertical"
+import { DemoSliderCustomValueLabel } from "@/demos/ui/slider/custom-value-label"
+import { DemoSliderControlled } from "@/demos/ui/slider/controlled"
+import heroCode from "@/demos/ui/slider/hero.tsx?raw"
+import multipleThumbsCode from "@/demos/ui/slider/multiple-thumbs.tsx?raw"
+import stepCode from "@/demos/ui/slider/step.tsx?raw"
+import minStepsBetweenCode from "@/demos/ui/slider/min-steps-between.tsx?raw"
+import verticalCode from "@/demos/ui/slider/vertical.tsx?raw"
+import customValueLabelCode from "@/demos/ui/slider/custom-value-label.tsx?raw"
+import controlledCode from "@/demos/ui/slider/controlled.tsx?raw"
+import sliderStyles from "@/demos/ui/slider/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Slider
 
-## Usage
+A slider input for selecting a numeric value within a range.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the Slider components:
+### Multiple thumbs
 
-```tsx
-import { Slider, SliderLabel, SliderValueLabel } from "@danielfrg/solid-ui/slider"
-;<Slider defaultValue={[50]}>
-  <div class="flex justify-between mb-3">
-    <SliderLabel>Volume</SliderLabel>
-    <SliderValueLabel />
-  </div>
-</Slider>
-```
+Use multiple `Slider.Thumb` elements inside the track to create a range slider.
 
-## Demo
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleThumbsCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderMultipleThumbs client:load />
+</DemoBlock>
 
-<StyledDemoBlock files={[{ label: "slider.tsx", code: demoCode }]}>
-  <SliderExample client:only="solid-js" />
-</StyledDemoBlock>
+### Step
 
-## Parts
+Use the `step` prop to control the increment between values.
 
-| Component          | Description                               |
-| ------------------ | ----------------------------------------- |
-| `Slider`           | Root with built-in track, fill, and thumb |
-| `SliderLabel`      | Text label for the slider                 |
-| `SliderValueLabel` | Displays the current value                |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: stepCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderStep client:load />
+</DemoBlock>
+
+### Min steps between thumbs
+
+Use `minStepsBetweenThumbs` to enforce a minimum distance between thumbs in a range slider.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: minStepsBetweenCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderMinStepsBetween client:load />
+</DemoBlock>
+
+### Vertical
+
+Use `orientation="vertical"` to render a vertical slider.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: verticalCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderVertical client:load />
+</DemoBlock>
+
+### Custom value label
+
+Use the `getValueLabel` prop to format the displayed value, for example to add units or format a range.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueLabelCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderCustomValueLabel client:load />
+</DemoBlock>
+
+### Controlled
+
+Use the `value` and `onChange` props to control the slider state.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: sliderStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSliderControlled client:load />
+</DemoBlock>

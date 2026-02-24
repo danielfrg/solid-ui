@@ -1,0 +1,71 @@
+---
+title: Alert Dialog
+description: Styled modal dialog that interrupts the user with important content and expects a confirmation response.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/alert-dialog.tsx?raw"
+import AlertDialogExample from "@/demos/nova/alert-dialog"
+
+# Alert Dialog
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Alert Dialog components:
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from "@danielfrg/solid-ui-nova/alert-dialog"
+
+<AlertDialog>
+  <AlertDialogTrigger>Delete</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
+  <AlertDialogExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component                | Description                                          |
+| ------------------------ | ---------------------------------------------------- |
+| `AlertDialog`            | Root container (manages open state)                  |
+| `AlertDialogTrigger`     | Button that opens the alert dialog                   |
+| `AlertDialogContent`     | The modal panel (includes Portal and Overlay)        |
+| `AlertDialogHeader`      | Layout wrapper for title and description             |
+| `AlertDialogFooter`      | Layout wrapper for action buttons                    |
+| `AlertDialogTitle`       | Accessible title                                     |
+| `AlertDialogDescription` | Accessible description                               |
+| `AlertDialogAction`      | Confirm button (styled as primary, closes on click)  |
+| `AlertDialogCancel`      | Cancel button (styled as outline, closes on click)   |
+| `AlertDialogMedia`       | Media/icon container for visual elements             |
+| `AlertDialogOverlay`     | Backdrop overlay (included automatically in Content) |

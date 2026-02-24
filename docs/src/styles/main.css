@@ -3,12 +3,12 @@
 
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@danielfrg/solid-ui/theme.css";
+@import "@danielfrg/solid-ui-nova/theme.css";
 @import "../demos/theme.css";
 @plugin "@tailwindcss/typography";
 
 /* Scan styled package source for Tailwind class usage */
-@source "../../../packages/ui/src";
+@source "../../../packages/nova/src";
 
 /* ============================================
    Docs site custom properties & base styles

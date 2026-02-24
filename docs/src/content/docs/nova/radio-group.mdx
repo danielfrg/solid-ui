@@ -1,0 +1,50 @@
+---
+title: Radio Group
+description: Styled radio button group for selecting one option from a set.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/radio-group.tsx?raw"
+import RadioGroupExample from "@/demos/nova/radio-group"
+
+# Radio Group
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the RadioGroup components:
+
+```tsx
+import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "@danielfrg/solid-ui-nova/radio-group"
+;<RadioGroup defaultValue="comfortable">
+  <RadioGroupItem value="default">
+    <RadioGroupItemLabel>Default</RadioGroupItemLabel>
+  </RadioGroupItem>
+  <RadioGroupItem value="comfortable">
+    <RadioGroupItemLabel>Comfortable</RadioGroupItemLabel>
+  </RadioGroupItem>
+  <RadioGroupItem value="compact">
+    <RadioGroupItemLabel>Compact</RadioGroupItemLabel>
+  </RadioGroupItem>
+</RadioGroup>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "radio-group.tsx", code: demoCode }]}>
+  <RadioGroupExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component             | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| `RadioGroup`          | Root container with selection state                  |
+| `RadioGroupItem`      | Individual radio with built-in control and indicator |
+| `RadioGroupItemLabel` | Label text for a radio item                          |

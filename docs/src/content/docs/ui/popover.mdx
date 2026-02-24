@@ -1,62 +1,61 @@
 ---
 title: Popover
-description: Styled popover for displaying rich content in a floating panel.
+description: A floating overlay anchored to a trigger element.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/popover.tsx?raw"
-import PopoverExample from "../../../demos/styled/popover"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoPopoverHero } from "@/demos/ui/popover/hero"
+import { DemoPopoverControlled } from "@/demos/ui/popover/controlled"
+import { DemoPopoverCustomAnchor } from "@/demos/ui/popover/custom-anchor"
+import heroCode from "@/demos/ui/popover/hero.tsx?raw"
+import controlledCode from "@/demos/ui/popover/controlled.tsx?raw"
+import customAnchorCode from "@/demos/ui/popover/custom-anchor.tsx?raw"
+import popoverStyles from "@/demos/ui/popover/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Popover
 
-## Usage
+A floating overlay anchored to a trigger element.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: popoverStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoPopoverHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the `Popover` components:
+### Controlled
 
-```tsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverDescription,
-} from "@danielfrg/solid-ui/popover"
-import { Button } from "@danielfrg/solid-ui/button"
+Use `open` and `onOpenChange` to control the popover visibility externally.
 
-;<Popover>
-  <PopoverTrigger as={Button} variant="outline">
-    Open
-  </PopoverTrigger>
-  <PopoverContent>
-    <PopoverHeader>
-      <PopoverTitle>Title</PopoverTitle>
-      <PopoverDescription>Description here.</PopoverDescription>
-    </PopoverHeader>
-  </PopoverContent>
-</Popover>
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: popoverStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoPopoverControlled client:load />
+</DemoBlock>
 
-## Demo
+### Custom anchor
 
-<StyledDemoBlock files={[{ label: "popover.tsx", code: demoCode }]}>
-  <PopoverExample client:only="solid-js" />
-</StyledDemoBlock>
+Use `Popover.Anchor` to anchor the popover to a region instead of the trigger element alone.
 
-## Parts
-
-| Component            | Description                                  |
-| -------------------- | -------------------------------------------- |
-| `Popover`            | Root provider with placement options         |
-| `PopoverTrigger`     | Element that toggles the popover             |
-| `PopoverContent`     | Styled floating panel with border and shadow |
-| `PopoverHeader`      | Container for title and description          |
-| `PopoverTitle`       | Title text for the popover                   |
-| `PopoverDescription` | Description text for the popover             |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customAnchorCode },
+    { label: "index.module.css", code: popoverStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoPopoverCustomAnchor client:load />
+</DemoBlock>

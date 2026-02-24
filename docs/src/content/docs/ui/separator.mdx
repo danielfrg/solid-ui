@@ -1,42 +1,42 @@
 ---
 title: Separator
-description: Styled separator for visually dividing content.
+description: A separator element accessible to screen readers.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/separator.tsx?raw"
-import SeparatorExample from "../../../demos/styled/separator"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoSeparatorHero } from "@/demos/ui/separator/hero"
+import heroCode from "@/demos/ui/separator/hero.tsx?raw"
+import { DemoSeparatorHorizontal } from "@/demos/ui/separator/horizontal"
+import horizontalCode from "@/demos/ui/separator/horizontal.tsx?raw"
+import separatorStyles from "@/demos/ui/separator/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Separator
 
-## Usage
+A separator element accessible to screen readers.
 
-Add the theme to your CSS:
+## Vertical
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: separatorStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSeparatorHero client:load />
+</DemoBlock>
 
-Import and use the `Separator` component:
+## Horizontal
 
-```tsx
-import { Separator } from "@danielfrg/solid-ui/separator";
-
-<Separator />
-<Separator orientation="vertical" />
-```
-
-## Demo
-
-<StyledDemoBlock files={[{ label: "separator.tsx", code: demoCode }]}>
-  <SeparatorExample client:only="solid-js" />
-</StyledDemoBlock>
-
-## Props
-
-| Prop          | Type                         | Default        |
-| ------------- | ---------------------------- | -------------- |
-| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
-| `decorative`  | `boolean`                    | —              |
-| `class`       | `string`                     | —              |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: horizontalCode },
+    { label: "index.module.css", code: separatorStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSeparatorHorizontal client:load />
+</DemoBlock>

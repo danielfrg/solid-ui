@@ -1,0 +1,146 @@
+---
+title: Combobox
+description: A searchable dropdown for selecting a value from a list of options.
+---
+
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoComboboxHero } from "@/demos/ui/combobox/hero"
+import { DemoComboboxDefaultValue } from "@/demos/ui/combobox/default-value"
+import { DemoComboboxControlled } from "@/demos/ui/combobox/controlled"
+import { DemoComboboxDescription } from "@/demos/ui/combobox/description"
+import { DemoComboboxErrorMessage } from "@/demos/ui/combobox/error-message"
+import { DemoComboboxHtmlForm } from "@/demos/ui/combobox/html-form"
+import { DemoComboboxObject } from "@/demos/ui/combobox/object"
+import { DemoComboboxMultiple } from "@/demos/ui/combobox/multiple"
+import heroCode from "@/demos/ui/combobox/hero.tsx?raw"
+import defaultValueCode from "@/demos/ui/combobox/default-value.tsx?raw"
+import controlledCode from "@/demos/ui/combobox/controlled.tsx?raw"
+import descriptionCode from "@/demos/ui/combobox/description.tsx?raw"
+import errorMessageCode from "@/demos/ui/combobox/error-message.tsx?raw"
+import htmlFormCode from "@/demos/ui/combobox/html-form.tsx?raw"
+import objectCode from "@/demos/ui/combobox/object.tsx?raw"
+import multipleCode from "@/demos/ui/combobox/multiple.tsx?raw"
+import comboboxStyles from "@/demos/ui/combobox/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
+
+# Combobox
+
+A searchable dropdown for selecting a value from a list of options.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Default value
+
+Use `defaultValue` to pre-select an option without controlling the state.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultValueCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxDefaultValue client:load />
+</DemoBlock>
+
+### Controlled
+
+Use `value`, `onChange`, and `onInputChange` to control the selection externally.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxControlled client:load />
+</DemoBlock>
+
+### Description
+
+Use `Combobox.Description` to add a hint below the control.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: descriptionCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxDescription client:load />
+</DemoBlock>
+
+### Error message
+
+Use `validationState` and `Combobox.ErrorMessage` to show validation feedback.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: errorMessageCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxErrorMessage client:load />
+</DemoBlock>
+
+### HTML form
+
+Use the `name` prop with `Combobox.HiddenSelect` to include the value in a native form submission.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: htmlFormCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxHtmlForm client:load />
+</DemoBlock>
+
+### Object options
+
+Use `optionValue`, `optionTextValue`, `optionLabel`, and `optionDisabled` to work with object arrays.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: objectCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxObject client:load />
+</DemoBlock>
+
+### Multiple selection
+
+Use the `multiple` prop to allow selecting more than one option.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleCode },
+    { label: "index.module.css", code: comboboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoComboboxMultiple client:load />
+</DemoBlock>

@@ -1,0 +1,36 @@
+---
+title: Input
+description: Styled text input with label, description, and error message support.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/input.tsx?raw"
+import InputExample from "@/demos/nova/input"
+
+# Input
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Input components:
+
+```tsx
+import { Input, InputField, InputLabel } from "@danielfrg/solid-ui-nova/input"
+
+<Input>
+  <InputLabel>Email</InputLabel>
+  <InputField type="email" placeholder="you@example.com" />
+</Input>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "input.tsx", code: demoCode }]}>
+  <InputExample client:only="solid-js" />
+</StyledDemoBlock>

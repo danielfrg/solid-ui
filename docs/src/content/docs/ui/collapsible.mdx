@@ -1,59 +1,25 @@
 ---
 title: Collapsible
-description: Styled interactive component that expands and collapses content.
+description: An interactive component which expands and collapses a content area.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/collapsible.tsx?raw"
-import { CollapsibleBasic, CollapsibleSettingsPanel, CollapsibleFileTree } from "../../../demos/styled/collapsible"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoCollapsibleHero } from "@/demos/ui/collapsible/hero"
+import heroCode from "@/demos/ui/collapsible/hero.tsx?raw"
+import collapsibleStyles from "@/demos/ui/collapsible/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Collapsible
 
-## Usage
+An interactive component which expands and collapses a content area.
 
-Add the theme to your CSS:
-
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
-
-Import and use the Collapsible components:
-
-```tsx
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@danielfrg/solid-ui/collapsible"
-<Collapsible>
-  <CollapsibleTrigger class="inline-flex h-8 items-center justify-center rounded-md px-3 text-sm font-medium hover:bg-accent">
-    Toggle
-  </CollapsibleTrigger>
-  <CollapsibleContent>Hidden content revealed on toggle.</CollapsibleContent>
-</Collapsible>
-```
-
-## Demo
-
-### Basic
-
-<StyledDemoBlock files={[{ label: "collapsible.tsx", code: demoCode }]}>
-  <CollapsibleBasic client:only="solid-js" />
-</StyledDemoBlock>
-
-### Settings Panel
-
-<StyledDemoBlock files={[{ label: "collapsible.tsx", code: demoCode }]}>
-  <CollapsibleSettingsPanel client:only="solid-js" />
-</StyledDemoBlock>
-
-### File Tree
-
-<StyledDemoBlock files={[{ label: "collapsible.tsx", code: demoCode }]}>
-  <CollapsibleFileTree client:only="solid-js" />
-</StyledDemoBlock>
-
-## Parts
-
-| Component            | Description                          |
-| -------------------- | ------------------------------------ |
-| `Collapsible`        | Root container with open/close state |
-| `CollapsibleTrigger` | Button that toggles visibility       |
-| `CollapsibleContent` | Content that expands/collapses       |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: collapsibleStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCollapsibleHero client:load />
+</DemoBlock>

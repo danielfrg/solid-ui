@@ -1,0 +1,44 @@
+---
+title: Card
+description: Styled card container with header, content, and footer sections.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/card.tsx?raw"
+import CardExample from "@/demos/nova/card"
+
+# Card
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the `Card` components:
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@danielfrg/solid-ui-nova/card"
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Content goes here.</p>
+  </CardContent>
+  <CardFooter>
+    <p>Footer</p>
+  </CardFooter>
+</Card>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "card.tsx", code: demoCode }]}>
+  <CardExample client:only="solid-js" />
+</StyledDemoBlock>

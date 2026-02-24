@@ -1,0 +1,61 @@
+---
+title: Meter
+description: A meter element for displaying a value within a range.
+---
+
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoMeterHero } from "@/demos/ui/meter/hero"
+import { DemoMeterCustomValueScale } from "@/demos/ui/meter/custom-value-scale"
+import { DemoMeterCustomValueLabel } from "@/demos/ui/meter/custom-value-label"
+import heroCode from "@/demos/ui/meter/hero.tsx?raw"
+import customValueScaleCode from "@/demos/ui/meter/custom-value-scale.tsx?raw"
+import customValueLabelCode from "@/demos/ui/meter/custom-value-label.tsx?raw"
+import meterStyles from "@/demos/ui/meter/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
+
+# Meter
+
+A meter element for displaying a value within a range.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: meterStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoMeterHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Custom value scale
+
+Use `minValue` and `maxValue` to define a custom range for the meter.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueScaleCode },
+    { label: "index.module.css", code: meterStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoMeterCustomValueScale client:load />
+</DemoBlock>
+
+### Custom value label
+
+Use `getValueLabel` to format the displayed value text.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueLabelCode },
+    { label: "index.module.css", code: meterStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoMeterCustomValueLabel client:load />
+</DemoBlock>

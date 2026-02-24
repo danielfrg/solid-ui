@@ -1,0 +1,38 @@
+---
+title: Accordion
+description: Styled vertically stacked sections that expand and collapse.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/accordion.tsx?raw"
+import AccordionExample from "@/demos/nova/accordion"
+
+# Accordion
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Accordion components:
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@danielfrg/solid-ui-nova/accordion"
+
+<Accordion defaultValue={["item-1"]}>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
+  <AccordionExample client:only="solid-js" />
+</StyledDemoBlock>

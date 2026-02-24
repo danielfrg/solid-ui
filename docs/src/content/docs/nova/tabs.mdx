@@ -1,0 +1,48 @@
+---
+title: Tabs
+description: Styled tabbed interface for switching between content panels.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/tabs.tsx?raw"
+import TabsExample from "@/demos/nova/tabs"
+
+# Tabs
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Tabs components:
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@danielfrg/solid-ui-nova/tabs"
+;<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Account settings here.</TabsContent>
+  <TabsContent value="password">Password settings here.</TabsContent>
+</Tabs>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "tabs.tsx", code: demoCode }]}>
+  <TabsExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component     | Description                            |
+| ------------- | -------------------------------------- |
+| `Tabs`        | Root container with active tab state   |
+| `TabsList`    | Container for tab triggers             |
+| `TabsTrigger` | Button that activates a tab panel      |
+| `TabsContent` | Content panel shown when tab is active |

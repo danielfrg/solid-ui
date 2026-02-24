@@ -1,0 +1,65 @@
+---
+title: Toggle Group
+description: Styled group of toggle buttons for single or multiple selection.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/toggle-group.tsx?raw"
+import ToggleGroupExample from "@/demos/nova/toggle-group"
+
+# Toggle Group
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the ToggleGroup components:
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from "@danielfrg/solid-ui-nova/toggle-group"
+import { AlignLeft, AlignCenter, AlignRight } from "lucide-solid"
+;<ToggleGroup defaultValue="center">
+  <ToggleGroupItem value="left" aria-label="Align left">
+    <AlignLeft />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Align center">
+    <AlignCenter />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Align right">
+    <AlignRight />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "toggle-group.tsx", code: demoCode }]}>
+  <ToggleGroupExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Variants
+
+| Variant   | Description            |
+| --------- | ---------------------- |
+| `default` | Transparent background |
+| `outline` | Bordered with shadow   |
+
+## Sizes
+
+| Size      | Description         |
+| --------- | ------------------- |
+| `default` | Standard size (h-9) |
+| `sm`      | Small (h-8)         |
+| `lg`      | Large (h-10)        |
+
+## Parts
+
+| Component         | Description                                               |
+| ----------------- | --------------------------------------------------------- |
+| `ToggleGroup`     | Root container (passes variant/size to items via context) |
+| `ToggleGroupItem` | Individual toggle button                                  |

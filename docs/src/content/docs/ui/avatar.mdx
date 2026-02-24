@@ -1,36 +1,25 @@
 ---
 title: Avatar
-description: Styled image element with a fallback for representing users.
+description: An image element with a fallback for representing the user.
 ---
 
-import StyledDemoBlock from "@/components/styled-demo-block.astro"
-import demoCode from "@/demos/styled/avatar.tsx?raw"
-import AvatarExample from "@/demos/styled/avatar"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoAvatarHero } from "@/demos/ui/avatar/hero"
+import heroCode from "@/demos/ui/avatar/hero.tsx?raw"
+import avatarStyles from "@/demos/ui/avatar/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Avatar
 
-## Usage
+An image element with a fallback for representing the user.
 
-Add the theme to your CSS:
-
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
-
-Import and use the Avatar components:
-
-```tsx
-import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui/avatar"
-
-<Avatar>
-  <AvatarImage src="/avatar.png" />
-  <AvatarFallback>CN</AvatarFallback>
-</Avatar>
-```
-
-## Demo
-
-<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
-  <AvatarExample client:only="solid-js" />
-</StyledDemoBlock>
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: avatarStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAvatarHero client:load />
+</DemoBlock>

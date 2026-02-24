@@ -1,0 +1,35 @@
+---
+title: Button
+description: Styled button component with multiple variants and sizes.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import ButtonExample from "@/demos/nova/button"
+import demoCode from "@/demos/nova/button.tsx?raw"
+
+# Button
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the `Button` component:
+
+```tsx
+import { Button } from "@danielfrg/solid-ui-nova/button"
+
+;<Button variant="outline" size="sm">
+  Click me
+</Button>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "button.tsx", code: demoCode }]}>
+  <ButtonExample client:only="solid-js" />
+</StyledDemoBlock>

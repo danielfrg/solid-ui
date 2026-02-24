@@ -1,0 +1,33 @@
+---
+title: Badge
+description: Styled badge component for displaying short status text.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/badge.tsx?raw"
+import BadgeExample from "@/demos/nova/badge"
+
+# Badge
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the `Badge` component:
+
+```tsx
+import { Badge } from "@danielfrg/solid-ui-nova/badge"
+
+<Badge variant="outline">Badge</Badge>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "badge.tsx", code: demoCode }]}>
+  <BadgeExample client:only="solid-js" />
+</StyledDemoBlock>

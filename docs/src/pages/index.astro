@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content"
-import Docs from "../layouts/Docs.astro"
+import Docs from "@/layouts/Docs.astro"
 
 const docs = await getCollection("docs")
 const entry = docs.find((item) => item.slug === "index")

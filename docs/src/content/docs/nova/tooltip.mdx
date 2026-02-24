@@ -1,0 +1,48 @@
+---
+title: Tooltip
+description: Styled tooltip that displays on hover.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/tooltip.tsx?raw"
+import TooltipExample from "@/demos/nova/tooltip"
+
+# Tooltip
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the `Tooltip` components:
+
+```tsx
+import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/solid-ui-nova/tooltip"
+import { Button } from "@danielfrg/solid-ui-nova/button"
+;<Tooltip>
+  <TooltipTrigger as={Button} variant="outline">
+    Hover me
+  </TooltipTrigger>
+  <TooltipContent>
+    <p>Tooltip content</p>
+  </TooltipContent>
+</Tooltip>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "tooltip.tsx", code: demoCode }]}>
+  <TooltipExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component        | Description                          |
+| ---------------- | ------------------------------------ |
+| `Tooltip`        | Root provider                        |
+| `TooltipTrigger` | Element that triggers the tooltip    |
+| `TooltipContent` | Styled content with arrow and portal |

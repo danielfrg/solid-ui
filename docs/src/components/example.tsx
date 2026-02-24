@@ -1,4 +1,4 @@
-import { cn } from "@danielfrg/solid-ui/utils"
+import { cn } from "@danielfrg/solid-ui-nova/utils"
 import type { JSX } from "solid-js"
 import { splitProps } from "solid-js"
 

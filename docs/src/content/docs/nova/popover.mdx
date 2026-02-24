@@ -1,0 +1,62 @@
+---
+title: Popover
+description: Styled popover for displaying rich content in a floating panel.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/popover.tsx?raw"
+import PopoverExample from "@/demos/nova/popover"
+
+# Popover
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the `Popover` components:
+
+```tsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverDescription,
+} from "@danielfrg/solid-ui-nova/popover"
+import { Button } from "@danielfrg/solid-ui-nova/button"
+
+;<Popover>
+  <PopoverTrigger as={Button} variant="outline">
+    Open
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Title</PopoverTitle>
+      <PopoverDescription>Description here.</PopoverDescription>
+    </PopoverHeader>
+  </PopoverContent>
+</Popover>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "popover.tsx", code: demoCode }]}>
+  <PopoverExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component            | Description                                  |
+| -------------------- | -------------------------------------------- |
+| `Popover`            | Root provider with placement options         |
+| `PopoverTrigger`     | Element that toggles the popover             |
+| `PopoverContent`     | Styled floating panel with border and shadow |
+| `PopoverHeader`      | Container for title and description          |
+| `PopoverTitle`       | Title text for the popover                   |
+| `PopoverDescription` | Description text for the popover             |

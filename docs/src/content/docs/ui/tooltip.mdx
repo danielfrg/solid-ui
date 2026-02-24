@@ -1,48 +1,44 @@
 ---
 title: Tooltip
-description: Styled tooltip that displays on hover.
+description: A floating label that appears on hover to describe an element.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/tooltip.tsx?raw"
-import TooltipExample from "../../../demos/styled/tooltip"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoTooltipHero } from "@/demos/ui/tooltip/hero"
+import { DemoTooltipControlled } from "@/demos/ui/tooltip/controlled"
+import heroCode from "@/demos/ui/tooltip/hero.tsx?raw"
+import controlledCode from "@/demos/ui/tooltip/controlled.tsx?raw"
+import tooltipStyles from "@/demos/ui/tooltip/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Tooltip
 
-## Usage
+A floating label that appears on hover to describe an element.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: tooltipStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTooltipHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the `Tooltip` components:
+### Controlled
 
-```tsx
-import { Tooltip, TooltipTrigger, TooltipContent } from "@danielfrg/solid-ui/tooltip"
-import { Button } from "@danielfrg/solid-ui/button"
-;<Tooltip>
-  <TooltipTrigger as={Button} variant="outline">
-    Hover me
-  </TooltipTrigger>
-  <TooltipContent>
-    <p>Tooltip content</p>
-  </TooltipContent>
-</Tooltip>
-```
+Use `open` and `onOpenChange` to control the tooltip visibility externally.
 
-## Demo
-
-<StyledDemoBlock files={[{ label: "tooltip.tsx", code: demoCode }]}>
-  <TooltipExample client:only="solid-js" />
-</StyledDemoBlock>
-
-## Parts
-
-| Component        | Description                          |
-| ---------------- | ------------------------------------ |
-| `Tooltip`        | Root provider                        |
-| `TooltipTrigger` | Element that triggers the tooltip    |
-| `TooltipContent` | Styled content with arrow and portal |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: tooltipStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoTooltipControlled client:load />
+</DemoBlock>

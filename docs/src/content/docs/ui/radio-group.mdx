@@ -1,50 +1,112 @@
 ---
 title: Radio Group
-description: Styled radio button group for selecting one option from a set.
+description: A group of radio buttons for selecting one option from a set.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/radio-group.tsx?raw"
-import RadioGroupExample from "../../../demos/styled/radio-group"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoRadioGroupHero } from "@/demos/ui/radio-group/hero"
+import { DemoRadioGroupDefaultValue } from "@/demos/ui/radio-group/default-value"
+import { DemoRadioGroupControlled } from "@/demos/ui/radio-group/controlled"
+import { DemoRadioGroupDescription } from "@/demos/ui/radio-group/description"
+import { DemoRadioGroupErrorMessage } from "@/demos/ui/radio-group/error-message"
+import { DemoRadioGroupHtmlForm } from "@/demos/ui/radio-group/html-form"
+import heroCode from "@/demos/ui/radio-group/hero.tsx?raw"
+import defaultValueCode from "@/demos/ui/radio-group/default-value.tsx?raw"
+import controlledCode from "@/demos/ui/radio-group/controlled.tsx?raw"
+import descriptionCode from "@/demos/ui/radio-group/description.tsx?raw"
+import errorMessageCode from "@/demos/ui/radio-group/error-message.tsx?raw"
+import htmlFormCode from "@/demos/ui/radio-group/html-form.tsx?raw"
+import radioGroupStyles from "@/demos/ui/radio-group/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Radio Group
 
-## Usage
+A group of radio buttons for selecting one option from a set.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: radioGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoRadioGroupHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the RadioGroup components:
+### Default value
 
-```tsx
-import { RadioGroup, RadioGroupItem, RadioGroupItemLabel } from "@danielfrg/solid-ui/radio-group"
-;<RadioGroup defaultValue="comfortable">
-  <RadioGroupItem value="default">
-    <RadioGroupItemLabel>Default</RadioGroupItemLabel>
-  </RadioGroupItem>
-  <RadioGroupItem value="comfortable">
-    <RadioGroupItemLabel>Comfortable</RadioGroupItemLabel>
-  </RadioGroupItem>
-  <RadioGroupItem value="compact">
-    <RadioGroupItemLabel>Compact</RadioGroupItemLabel>
-  </RadioGroupItem>
-</RadioGroup>
-```
+Use `defaultValue` to set the initially selected option without controlling the state.
 
-## Demo
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultValueCode },
+    { label: "index.module.css", code: radioGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoRadioGroupDefaultValue client:load />
+</DemoBlock>
 
-<StyledDemoBlock files={[{ label: "radio-group.tsx", code: demoCode }]}>
-  <RadioGroupExample client:only="solid-js" />
-</StyledDemoBlock>
+### Controlled
 
-## Parts
+Use `value` and `onChange` to control the selected option externally.
 
-| Component             | Description                                          |
-| --------------------- | ---------------------------------------------------- |
-| `RadioGroup`          | Root container with selection state                  |
-| `RadioGroupItem`      | Individual radio with built-in control and indicator |
-| `RadioGroupItemLabel` | Label text for a radio item                          |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: radioGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoRadioGroupControlled client:load />
+</DemoBlock>
+
+### Description
+
+Use `RadioGroup.Description` to add a hint below the options.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: descriptionCode },
+    { label: "index.module.css", code: radioGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoRadioGroupDescription client:load />
+</DemoBlock>
+
+### Error message
+
+Use `validationState` and `RadioGroup.ErrorMessage` to show validation feedback.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: errorMessageCode },
+    { label: "index.module.css", code: radioGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoRadioGroupErrorMessage client:load />
+</DemoBlock>
+
+### HTML form
+
+Use the `name` prop to include the selected value in a native form submission.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: htmlFormCode },
+    { label: "index.module.css", code: radioGroupStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoRadioGroupHtmlForm client:load />
+</DemoBlock>

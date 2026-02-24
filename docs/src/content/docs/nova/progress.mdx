@@ -1,0 +1,46 @@
+---
+title: Progress
+description: Styled progress bar showing task completion.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/progress.tsx?raw"
+import ProgressExample from "@/demos/nova/progress"
+
+# Progress
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Progress components:
+
+```tsx
+import { Progress, ProgressLabel, ProgressValue } from "@danielfrg/solid-ui-nova/progress"
+;<Progress value={33}>
+  <div class="flex justify-between mb-2">
+    <ProgressLabel>Loading...</ProgressLabel>
+    <ProgressValue />
+  </div>
+</Progress>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "progress.tsx", code: demoCode }]}>
+  <ProgressExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component            | Description                       |
+| -------------------- | --------------------------------- |
+| `Progress`           | Root with built-in track and fill |
+| `ProgressLabel`      | Text label for the progress bar   |
+| `ProgressValueLabel` | Displays the current percentage   |
+| `ProgressValue`      | Alias for `ProgressValueLabel`    |

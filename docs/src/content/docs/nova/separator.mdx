@@ -1,0 +1,42 @@
+---
+title: Separator
+description: Styled separator for visually dividing content.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/separator.tsx?raw"
+import SeparatorExample from "@/demos/nova/separator"
+
+# Separator
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the `Separator` component:
+
+```tsx
+import { Separator } from "@danielfrg/solid-ui-nova/separator";
+
+<Separator />
+<Separator orientation="vertical" />
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "separator.tsx", code: demoCode }]}>
+  <SeparatorExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Props
+
+| Prop          | Type                         | Default        |
+| ------------- | ---------------------------- | -------------- |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` |
+| `decorative`  | `boolean`                    | —              |
+| `class`       | `string`                     | —              |

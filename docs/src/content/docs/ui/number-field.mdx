@@ -1,0 +1,129 @@
+---
+title: Number Field
+description: A numeric input with increment and decrement controls.
+---
+
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoNumberFieldHero } from "@/demos/ui/number-field/hero"
+import { DemoNumberFieldDefaultValue } from "@/demos/ui/number-field/default-value"
+import { DemoNumberFieldControlled } from "@/demos/ui/number-field/controlled"
+import { DemoNumberFieldDescription } from "@/demos/ui/number-field/description"
+import { DemoNumberFieldErrorMessage } from "@/demos/ui/number-field/error-message"
+import { DemoNumberFieldHtmlForm } from "@/demos/ui/number-field/html-form"
+import { DemoNumberFieldFormat } from "@/demos/ui/number-field/format"
+import heroCode from "@/demos/ui/number-field/hero.tsx?raw"
+import defaultValueCode from "@/demos/ui/number-field/default-value.tsx?raw"
+import controlledCode from "@/demos/ui/number-field/controlled.tsx?raw"
+import descriptionCode from "@/demos/ui/number-field/description.tsx?raw"
+import errorMessageCode from "@/demos/ui/number-field/error-message.tsx?raw"
+import htmlFormCode from "@/demos/ui/number-field/html-form.tsx?raw"
+import formatCode from "@/demos/ui/number-field/format.tsx?raw"
+import numberFieldStyles from "@/demos/ui/number-field/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
+
+# Number Field
+
+A numeric input with increment and decrement controls.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Default value
+
+Use `defaultValue` to set the initial value without controlling the state.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultValueCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldDefaultValue client:load />
+</DemoBlock>
+
+### Controlled
+
+Use `rawValue` and `onRawValueChange` to control the numeric value externally.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldControlled client:load />
+</DemoBlock>
+
+### Description
+
+Use `NumberField.Description` to add a hint below the input.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: descriptionCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldDescription client:load />
+</DemoBlock>
+
+### Error message
+
+Use `validationState` and `NumberField.ErrorMessage` to show validation feedback.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: errorMessageCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldErrorMessage client:load />
+</DemoBlock>
+
+### HTML form
+
+Use the `name` prop with `NumberField.HiddenInput` to include the value in a native form submission.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: htmlFormCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldHtmlForm client:load />
+</DemoBlock>
+
+### Format options
+
+Use `formatOptions` to format the displayed value, for example as currency.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: formatCode },
+    { label: "index.module.css", code: numberFieldStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoNumberFieldFormat client:load />
+</DemoBlock>

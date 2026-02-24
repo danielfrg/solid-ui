@@ -1,35 +1,61 @@
 ---
 title: Button
-description: Styled button component with multiple variants and sizes.
+description: An accessible, unstyled Solid button component.
 ---
 
-import StyledDemoBlock from "@/components/styled-demo-block.astro"
-import ButtonExample from "@/demos/styled/button"
-import demoCode from "@/demos/styled/button.tsx?raw"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoButtonHero } from "@/demos/ui/button/hero"
+import { DemoButtonLoading } from "@/demos/ui/button/loading"
+import { DemoButtonAsTag } from "@/demos/ui/button/as-tag.tsx"
+import heroCode from "@/demos/ui/button/hero.tsx?raw"
+import loadingCode from "@/demos/ui/button/loading.tsx?raw"
+import asTagCode from "@/demos/ui/button/as-tag.tsx?raw"
+import buttonStyles from "@/demos/ui/button/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Button
 
-## Usage
+A button component that can be rendered as another tag or focusable when disabled.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: buttonStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoButtonHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the `Button` component:
+### Rendering as another tag
 
-```tsx
-import { Button } from "@danielfrg/solid-ui/button"
+The button can remain keyboard accessible while being rendered as another tag, such as a `<div>`, by specifying `as`.
 
-;<Button variant="outline" size="sm">
-  Click me
-</Button>
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: asTagCode },
+    { label: "index.module.css", code: buttonStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoButtonAsTag client:load />
+</DemoBlock>
 
-## Demo
+### Loading states
 
-<StyledDemoBlock files={[{ label: "button.tsx", code: demoCode }]}>
-  <ButtonExample client:only="solid-js" />
-</StyledDemoBlock>
+For buttons that enter a loading state after being clicked, ensure focus remains on the button when it becomes disabled to prevent focus loss.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: loadingCode },
+    { label: "index.module.css", code: buttonStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoButtonLoading client:load />
+</DemoBlock>

@@ -1,0 +1,44 @@
+---
+title: Toast
+description: A brief notification displayed temporarily in a corner of the screen.
+---
+
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoToastHero } from "@/demos/ui/toast/hero"
+import { DemoToastMultipleRegions } from "@/demos/ui/toast/multiple-regions"
+import heroCode from "@/demos/ui/toast/hero.tsx?raw"
+import multipleRegionsCode from "@/demos/ui/toast/multiple-regions.tsx?raw"
+import toastStyles from "@/demos/ui/toast/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
+
+# Toast
+
+A brief notification displayed temporarily in a corner of the screen.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastHero client:load />
+</DemoBlock>
+
+## Examples
+
+### Multiple regions
+
+Use the `region` option in `toaster.show()` to route toasts to a specific named `Toast.Region`.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleRegionsCode },
+    { label: "index.module.css", code: toastStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToastMultipleRegions client:load />
+</DemoBlock>

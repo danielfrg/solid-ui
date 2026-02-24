@@ -1,0 +1,36 @@
+---
+title: Avatar
+description: Styled image element with a fallback for representing users.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/avatar.tsx?raw"
+import AvatarExample from "@/demos/nova/avatar"
+
+# Avatar
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Avatar components:
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from "@danielfrg/solid-ui-nova/avatar"
+
+<Avatar>
+  <AvatarImage src="/avatar.png" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "avatar.tsx", code: demoCode }]}>
+  <AvatarExample client:only="solid-js" />
+</StyledDemoBlock>

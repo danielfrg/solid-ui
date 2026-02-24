@@ -1,0 +1,43 @@
+---
+title: Checkbox
+description: Styled checkbox control with check and indeterminate icons.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/checkbox.tsx?raw"
+import CheckboxExample from "@/demos/nova/checkbox"
+
+# Checkbox
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Checkbox components:
+
+```tsx
+import { Checkbox, CheckboxLabel } from "@danielfrg/solid-ui-nova/checkbox"
+
+;<Checkbox defaultChecked>
+  <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
+</Checkbox>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
+  <CheckboxExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component             | Description                                      |
+| --------------------- | ------------------------------------------------ |
+| `Checkbox`            | Root with built-in control, input, and indicator |
+| `CheckboxLabel`       | Label text for the checkbox                      |
+| `CheckboxDescription` | Additional descriptive text                      |

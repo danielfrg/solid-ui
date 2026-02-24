@@ -1,46 +1,61 @@
 ---
 title: Progress
-description: Styled progress bar showing task completion.
+description: A progress bar for displaying task completion.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/progress.tsx?raw"
-import ProgressExample from "../../../demos/styled/progress"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoProgressHero } from "@/demos/ui/progress/hero"
+import { DemoProgressCustomValueScale } from "@/demos/ui/progress/custom-value-scale"
+import { DemoProgressCustomValueLabel } from "@/demos/ui/progress/custom-value-label"
+import heroCode from "@/demos/ui/progress/hero.tsx?raw"
+import customValueScaleCode from "@/demos/ui/progress/custom-value-scale.tsx?raw"
+import customValueLabelCode from "@/demos/ui/progress/custom-value-label.tsx?raw"
+import progressStyles from "@/demos/ui/progress/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Progress
 
-## Usage
+A progress bar for displaying task completion.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: progressStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoProgressHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the Progress components:
+### Custom value scale
 
-```tsx
-import { Progress, ProgressLabel, ProgressValue } from "@danielfrg/solid-ui/progress"
-;<Progress value={33}>
-  <div class="flex justify-between mb-2">
-    <ProgressLabel>Loading...</ProgressLabel>
-    <ProgressValue />
-  </div>
-</Progress>
-```
+Use `minValue` and `maxValue` to define a custom range.
 
-## Demo
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueScaleCode },
+    { label: "index.module.css", code: progressStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoProgressCustomValueScale client:load />
+</DemoBlock>
 
-<StyledDemoBlock files={[{ label: "progress.tsx", code: demoCode }]}>
-  <ProgressExample client:only="solid-js" />
-</StyledDemoBlock>
+### Custom value label
 
-## Parts
+Use `getValueLabel` to format the displayed value text.
 
-| Component            | Description                       |
-| -------------------- | --------------------------------- |
-| `Progress`           | Root with built-in track and fill |
-| `ProgressLabel`      | Text label for the progress bar   |
-| `ProgressValueLabel` | Displays the current percentage   |
-| `ProgressValue`      | Alias for `ProgressValueLabel`    |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: customValueLabelCode },
+    { label: "index.module.css", code: progressStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoProgressCustomValueLabel client:load />
+</DemoBlock>

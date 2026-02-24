@@ -1,0 +1,58 @@
+---
+title: Context Menu
+description: Styled right-click menu with support for submenus, checkbox items, and radio groups.
+---
+
+import StyledDemoBlock from "@/components/styled-demo-block.astro"
+import demoCode from "@/demos/nova/context-menu.tsx?raw"
+import ContextMenuExample from "@/demos/nova/context-menu"
+
+# Context Menu
+
+## Usage
+
+Add the theme to your CSS:
+
+```css
+@import "tailwindcss";
+@import "@danielfrg/solid-ui-nova/theme.css";
+```
+
+Import and use the Context Menu components:
+
+```tsx
+import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from "@danielfrg/solid-ui-nova/context-menu"
+;<ContextMenu>
+  <ContextMenuTrigger>Right click here</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Back</ContextMenuItem>
+    <ContextMenuItem>Forward</ContextMenuItem>
+    <ContextMenuItem>Reload</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+## Demo
+
+<StyledDemoBlock files={[{ label: "context-menu.tsx", code: demoCode }]}>
+  <ContextMenuExample client:only="solid-js" />
+</StyledDemoBlock>
+
+## Parts
+
+| Component                 | Description                                       |
+| ------------------------- | ------------------------------------------------- |
+| `ContextMenu`             | Root container (manages open state)               |
+| `ContextMenuTrigger`      | Area that responds to right-click / long-press    |
+| `ContextMenuContent`      | The popup panel (includes Portal)                 |
+| `ContextMenuItem`         | A menu item                                       |
+| `ContextMenuCheckboxItem` | A toggleable checkbox menu item                   |
+| `ContextMenuRadioGroup`   | Groups radio items                                |
+| `ContextMenuRadioItem`    | A radio menu item                                 |
+| `ContextMenuGroup`        | Groups related items                              |
+| `ContextMenuLabel`        | A non-interactive label for a group               |
+| `ContextMenuSeparator`    | A visual separator between items                  |
+| `ContextMenuShortcut`     | Displays a keyboard shortcut hint                 |
+| `ContextMenuSub`          | Root for a submenu                                |
+| `ContextMenuSubTrigger`   | Item that opens a submenu (includes chevron icon) |
+| `ContextMenuSubContent`   | The submenu popup panel                           |

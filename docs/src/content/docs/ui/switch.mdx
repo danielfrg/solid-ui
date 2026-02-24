@@ -1,41 +1,95 @@
 ---
 title: Switch
-description: Styled toggle switch for on/off states.
+description: A switch control for toggling between on and off.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/switch.tsx?raw"
-import SwitchExample from "../../../demos/styled/switch"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoSwitchHero } from "@/demos/ui/switch/hero"
+import { DemoSwitchDefaultChecked } from "@/demos/ui/switch/default-checked"
+import { DemoSwitchControlled } from "@/demos/ui/switch/controlled"
+import { DemoSwitchDescription } from "@/demos/ui/switch/description"
+import { DemoSwitchErrorMessage } from "@/demos/ui/switch/error-message"
+import heroCode from "@/demos/ui/switch/hero.tsx?raw"
+import defaultCheckedCode from "@/demos/ui/switch/default-checked.tsx?raw"
+import controlledCode from "@/demos/ui/switch/controlled.tsx?raw"
+import descriptionCode from "@/demos/ui/switch/description.tsx?raw"
+import errorMessageCode from "@/demos/ui/switch/error-message.tsx?raw"
+import switchStyles from "@/demos/ui/switch/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Switch
 
-## Usage
+A switch control for toggling between on and off.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: switchStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSwitchHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the Switch components:
+### Default checked
 
-```tsx
-import { Switch, SwitchLabel } from "@danielfrg/solid-ui/switch"
-;<Switch defaultChecked>
-  <SwitchLabel>Airplane Mode</SwitchLabel>
-</Switch>
-```
+Use `defaultChecked` to set the initial state without controlling it.
 
-## Demo
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultCheckedCode },
+    { label: "index.module.css", code: switchStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSwitchDefaultChecked client:load />
+</DemoBlock>
 
-<StyledDemoBlock files={[{ label: "switch.tsx", code: demoCode }]}>
-  <SwitchExample client:only="solid-js" />
-</StyledDemoBlock>
+### Controlled
 
-## Parts
+Use `checked` and `onChange` to control the switch state.
 
-| Component     | Description                          |
-| ------------- | ------------------------------------ |
-| `Switch`      | Root with built-in control and thumb |
-| `SwitchLabel` | Label text for the switch            |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: switchStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSwitchControlled client:load />
+</DemoBlock>
+
+### Description
+
+Use `Switch.Description` to add a hint below the label.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: descriptionCode },
+    { label: "index.module.css", code: switchStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSwitchDescription client:load />
+</DemoBlock>
+
+### Error message
+
+Use `validationState` and `Switch.ErrorMessage` to show validation feedback.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: errorMessageCode },
+    { label: "index.module.css", code: switchStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoSwitchErrorMessage client:load />
+</DemoBlock>

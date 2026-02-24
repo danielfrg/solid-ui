@@ -1,38 +1,95 @@
 ---
 title: Accordion
-description: Styled vertically stacked sections that expand and collapse.
+description: A vertically stacked set of interactive headings that each reveal an associated section of content.
 ---
 
-import StyledDemoBlock from "@/components/styled-demo-block.astro"
-import demoCode from "@/demos/styled/accordion.tsx?raw"
-import AccordionExample from "@/demos/styled/accordion"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoAccordionHero } from "@/demos/ui/accordion/hero"
+import { DemoAccordionMultiple } from "@/demos/ui/accordion/multiple"
+import { DemoAccordionDefaultValue } from "@/demos/ui/accordion/default-value"
+import { DemoAccordionControlled } from "@/demos/ui/accordion/controlled"
+import { DemoAccordionCollapsible } from "@/demos/ui/accordion/collapsible"
+import heroCode from "@/demos/ui/accordion/hero.tsx?raw"
+import multipleCode from "@/demos/ui/accordion/multiple.tsx?raw"
+import defaultValueCode from "@/demos/ui/accordion/default-value.tsx?raw"
+import controlledCode from "@/demos/ui/accordion/controlled.tsx?raw"
+import collapsibleCode from "@/demos/ui/accordion/collapsible.tsx?raw"
+import accordionStyles from "@/demos/ui/accordion/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Accordion
 
-## Usage
+A vertically stacked set of interactive headings that each reveal an associated section of content.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: accordionStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAccordionHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the Accordion components:
+### Multiple open items
 
-```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@danielfrg/solid-ui/accordion"
+Use the `multiple` prop to allow multiple panels to be open simultaneously.
 
-<Accordion defaultValue={["item-1"]}>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
-    <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-  </AccordionItem>
-</Accordion>
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleCode },
+    { label: "index.module.css", code: accordionStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAccordionMultiple client:load />
+</DemoBlock>
 
-## Demo
+### Default value
 
-<StyledDemoBlock files={[{ label: "accordion.tsx", code: demoCode }]}>
-  <AccordionExample client:only="solid-js" />
-</StyledDemoBlock>
+Use `defaultValue` to set which panel is open by default without controlling the state.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultValueCode },
+    { label: "index.module.css", code: accordionStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAccordionDefaultValue client:load />
+</DemoBlock>
+
+### Controlled
+
+Use `value` and `onChange` to control the open state externally.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: accordionStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAccordionControlled client:load />
+</DemoBlock>
+
+### Collapsible
+
+Use the `collapsible` prop to allow the active panel to be closed by clicking its trigger again.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: collapsibleCode },
+    { label: "index.module.css", code: accordionStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAccordionCollapsible client:load />
+</DemoBlock>

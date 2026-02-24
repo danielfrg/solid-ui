@@ -1,71 +1,70 @@
 ---
 title: Alert Dialog
-description: Styled modal dialog that interrupts the user with important content and expects a confirmation response.
+description: A modal dialog that interrupts the user with important content and expects a response.
 ---
 
-import StyledDemoBlock from "@/components/styled-demo-block.astro"
-import demoCode from "@/demos/styled/alert-dialog.tsx?raw"
-import AlertDialogExample from "@/demos/styled/alert-dialog"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoAlertDialogHero } from "@/demos/ui/alert-dialog/hero"
+import { DemoAlertDialogCloseConfirmation } from "@/demos/ui/alert-dialog/close-confirmation"
+import { DemoAlertDialogDetachedTriggers } from "@/demos/ui/alert-dialog/detached-triggers"
+import { DemoAlertDialogMultipleTriggers } from "@/demos/ui/alert-dialog/multiple-triggers"
+import heroCode from "@/demos/ui/alert-dialog/hero.tsx?raw"
+import closeConfirmationCode from "@/demos/ui/alert-dialog/close-confirmation.tsx?raw"
+import detachedTriggersCode from "@/demos/ui/alert-dialog/detached-triggers.tsx?raw"
+import multipleTriggersCode from "@/demos/ui/alert-dialog/multiple-triggers.tsx?raw"
+import alertDialogStyles from "@/demos/ui/alert-dialog/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Alert Dialog
 
-## Usage
+A modal dialog that interrupts the user with important content and expects a response.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: alertDialogStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAlertDialogHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+Close confirmation.
 
-Import and use the Alert Dialog components:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: closeConfirmationCode },
+    { label: "index.module.css", code: alertDialogStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAlertDialogCloseConfirmation client:load />
+</DemoBlock>
 
-```tsx
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogAction,
-  AlertDialogCancel,
-} from "@danielfrg/solid-ui/alert-dialog"
+Detached triggers.
 
-<AlertDialog>
-  <AlertDialogTrigger>Delete</AlertDialogTrigger>
-  <AlertDialogContent>
-    <AlertDialogHeader>
-      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
-    </AlertDialogHeader>
-    <AlertDialogFooter>
-      <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
-    </AlertDialogFooter>
-  </AlertDialogContent>
-</AlertDialog>
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: detachedTriggersCode },
+    { label: "index.module.css", code: alertDialogStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAlertDialogDetachedTriggers client:load />
+</DemoBlock>
 
-## Demo
+Multiple triggers.
 
-<StyledDemoBlock files={[{ label: "alert-dialog.tsx", code: demoCode }]}>
-  <AlertDialogExample client:only="solid-js" />
-</StyledDemoBlock>
-
-## Parts
-
-| Component                | Description                                          |
-| ------------------------ | ---------------------------------------------------- |
-| `AlertDialog`            | Root container (manages open state)                  |
-| `AlertDialogTrigger`     | Button that opens the alert dialog                   |
-| `AlertDialogContent`     | The modal panel (includes Portal and Overlay)        |
-| `AlertDialogHeader`      | Layout wrapper for title and description             |
-| `AlertDialogFooter`      | Layout wrapper for action buttons                    |
-| `AlertDialogTitle`       | Accessible title                                     |
-| `AlertDialogDescription` | Accessible description                               |
-| `AlertDialogAction`      | Confirm button (styled as primary, closes on click)  |
-| `AlertDialogCancel`      | Cancel button (styled as outline, closes on click)   |
-| `AlertDialogMedia`       | Media/icon container for visual elements             |
-| `AlertDialogOverlay`     | Backdrop overlay (included automatically in Content) |
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: multipleTriggersCode },
+    { label: "index.module.css", code: alertDialogStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoAlertDialogMultipleTriggers client:load />
+</DemoBlock>

@@ -1,6 +1,6 @@
 ---
 import Base from "./Base.astro"
-import ExamplesNav from "../components/ExamplesNav.astro"
+import ExamplesNav from "@/components/ExamplesNav.astro"
 
 const { title, theme = "default" } = Astro.props
 const themes = {
@@ -35,13 +35,13 @@ const themeStyle = Object.entries(themeVars)
 	.join(";")
 ---
 
-<Base title={`${title} | @danielfrg/solid-ui`}>
+<Base title={`${title} | @danielfrg/solid-ui-nova`}>
   <div class="docs-page">
     <div class="docs-container">
       <header class="header">
         <div class="header-content">
           <a href="/" class="logo">
-            <img class="logo-icon" src="/favicon.svg" alt="@danielfrg/solid-ui" />
+            <img class="logo-icon" src="/favicon.svg" alt="@danielfrg/solid-ui-nova" />
             danielfrg/solid-ui
           </a>
           <nav class="nav">
@@ -63,7 +63,7 @@ const themeStyle = Object.entries(themeVars)
 
       <footer class="footer">
         <div class="footer-content">
-          <span>@danielfrg/solid-ui - SolidJS UI components</span>
+          <span>@danielfrg/solid-ui-nova - SolidJS UI components</span>
           <a href="https://github.com/danielfrg/solid-ui" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </footer>

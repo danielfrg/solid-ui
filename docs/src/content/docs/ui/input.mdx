@@ -1,36 +1,25 @@
 ---
 title: Input
-description: Styled text input with label, description, and error message support.
+description: A text input that allows users to input custom text entries with a keyboard.
 ---
 
-import StyledDemoBlock from "../../../components/styled-demo-block.astro"
-import demoCode from "../../../demos/styled/input.tsx?raw"
-import InputExample from "../../../demos/styled/input"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoInputHero } from "@/demos/ui/input/hero"
+import heroCode from "@/demos/ui/input/hero.tsx?raw"
+import inputStyles from "@/demos/ui/input/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Input
 
-## Usage
+A text input that allows users to input custom text entries with a keyboard.
 
-Add the theme to your CSS:
-
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
-
-Import and use the Input components:
-
-```tsx
-import { Input, InputField, InputLabel } from "@danielfrg/solid-ui/input"
-
-<Input>
-  <InputLabel>Email</InputLabel>
-  <InputField type="email" placeholder="you@example.com" />
-</Input>
-```
-
-## Demo
-
-<StyledDemoBlock files={[{ label: "input.tsx", code: demoCode }]}>
-  <InputExample client:only="solid-js" />
-</StyledDemoBlock>
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: inputStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoInputHero client:load />
+</DemoBlock>

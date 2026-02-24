@@ -1,43 +1,95 @@
 ---
 title: Checkbox
-description: Styled checkbox control with check and indeterminate icons.
+description: A checkbox input for selecting a boolean state.
 ---
 
-import StyledDemoBlock from "@/components/styled-demo-block.astro"
-import demoCode from "@/demos/styled/checkbox.tsx?raw"
-import CheckboxExample from "@/demos/styled/checkbox"
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoCheckboxHero } from "@/demos/ui/checkbox/hero"
+import { DemoCheckboxControlled } from "@/demos/ui/checkbox/controlled"
+import { DemoCheckboxDefaultChecked } from "@/demos/ui/checkbox/default-checked"
+import { DemoCheckboxErrorMessage } from "@/demos/ui/checkbox/error-message"
+import { DemoCheckboxHtmlForm } from "@/demos/ui/checkbox/html-form"
+import heroCode from "@/demos/ui/checkbox/hero.tsx?raw"
+import controlledCode from "@/demos/ui/checkbox/controlled.tsx?raw"
+import defaultCheckedCode from "@/demos/ui/checkbox/default-checked.tsx?raw"
+import errorMessageCode from "@/demos/ui/checkbox/error-message.tsx?raw"
+import htmlFormCode from "@/demos/ui/checkbox/html-form.tsx?raw"
+import checkboxStyles from "@/demos/ui/checkbox/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
 
 # Checkbox
 
-## Usage
+A checkbox input for selecting a boolean state.
 
-Add the theme to your CSS:
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxHero client:load />
+</DemoBlock>
 
-```css
-@import "tailwindcss";
-@import "@danielfrg/solid-ui/theme.css";
-```
+## Examples
 
-Import and use the Checkbox components:
+### Default checked
 
-```tsx
-import { Checkbox, CheckboxLabel } from "@danielfrg/solid-ui/checkbox"
+Use `defaultChecked` to set the initial checked state without controlling it.
 
-;<Checkbox defaultChecked>
-  <CheckboxLabel>Accept terms and conditions</CheckboxLabel>
-</Checkbox>
-```
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: defaultCheckedCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxDefaultChecked client:load />
+</DemoBlock>
 
-## Demo
+### Controlled checked
 
-<StyledDemoBlock files={[{ label: "checkbox.tsx", code: demoCode }]}>
-  <CheckboxExample client:only="solid-js" />
-</StyledDemoBlock>
+Use the `checked` prop with `onChange` to control the checkbox state.
 
-## Parts
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: controlledCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxControlled client:load />
+</DemoBlock>
 
-| Component             | Description                                      |
-| --------------------- | ------------------------------------------------ |
-| `Checkbox`            | Root with built-in control, input, and indicator |
-| `CheckboxLabel`       | Label text for the checkbox                      |
-| `CheckboxDescription` | Additional descriptive text                      |
+### Error message
+
+Use `validationState` and `Checkbox.ErrorMessage` to show validation feedback.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: errorMessageCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxErrorMessage client:load />
+</DemoBlock>
+
+### HTML form
+
+Use the `name` and `value` props with a native form to submit the checkbox value.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: htmlFormCode },
+    { label: "index.module.css", code: checkboxStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoCheckboxHtmlForm client:load />
+</DemoBlock>
