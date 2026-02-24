@@ -64,7 +64,7 @@ jobs:
 
       - name: Set package version
         working-directory: packages/ui
-        run: npm version ${{ inputs.version }} --no-git-tag-version
+        run: bun -e "import fs from 'node:fs'; const path = 'package.json'; const pkg = JSON.parse(fs.readFileSync(path, 'utf8')); pkg.version = '${{ inputs.version }}'; fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');"
 
       - name: Publish to npm (dry run)
         if: ${{ inputs.dry-run }}
