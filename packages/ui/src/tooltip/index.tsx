@@ -12,6 +12,8 @@ import {
   type TooltipContentProps,
   type TooltipContentRenderProps,
 } from "./tooltip-content"
+import { TooltipProvider as Provider, type TooltipProviderOptions, type TooltipProviderProps } from "./tooltip-provider"
+import type { TooltipProviderStore } from "./tooltip-provider-context"
 import { TooltipPortal as Portal, type TooltipPortalProps } from "./tooltip-portal"
 import { TooltipRoot as Root, type TooltipRootOptions, type TooltipRootProps } from "./tooltip-root"
 import {
@@ -32,6 +34,9 @@ export type {
   TooltipContentRenderProps,
   TooltipContentProps,
   TooltipPortalProps,
+  TooltipProviderOptions,
+  TooltipProviderProps,
+  TooltipProviderStore,
   TooltipRootOptions,
   TooltipRootProps,
   TooltipTriggerOptions,
@@ -40,12 +45,13 @@ export type {
   TooltipTriggerProps,
 }
 
-export { Arrow, Content, Portal, Root, Trigger }
+export { Arrow, Content, Portal, Provider, Root, Trigger }
 
 export const Tooltip = Object.assign(Root, {
   Arrow,
   Content,
   Portal,
+  Provider,
   Trigger,
 })
 

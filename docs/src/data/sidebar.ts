@@ -56,6 +56,7 @@ export const sidebar: SidebarSection[] = [
       { label: "Toast", slug: "ui/toast" },
       { label: "Toggle", slug: "ui/toggle-button" },
       { label: "Toggle Group", slug: "ui/toggle-group" },
+      { label: "Toolbar", slug: "ui/toolbar" },
       { label: "Tooltip", slug: "ui/tooltip" },
     ],
   },

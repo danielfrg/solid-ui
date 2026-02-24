@@ -1,0 +1,29 @@
+---
+title: Toolbar
+description: A grouping container for related controls with roving focus.
+---
+
+import DemoBlock from "@/components/demo-block.astro"
+import { DemoToolbarHero } from "@/demos/ui/toolbar/hero"
+import heroCode from "@/demos/ui/toolbar/hero.tsx?raw"
+import toolbarStyles from "@/demos/ui/toolbar/index.module.css?raw"
+import demoTheme from "@/demos/theme.css?raw"
+
+# Toolbar
+
+A grouping container for related controls with roving focus and arrow-key navigation.
+
+<DemoBlock
+  label="View source"
+  files={[
+    { label: "component.tsx", code: heroCode },
+    { label: "index.module.css", code: toolbarStyles },
+    { label: "theme.css", code: demoTheme },
+  ]}
+>
+  <DemoToolbarHero client:load />
+</DemoBlock>
+
+## Usage
+
+Use `Toolbar.Group` to cluster related items, `Toolbar.Separator` to divide sections, and `Toolbar.Input` or `Toolbar.Link` for non-button controls. Arrow keys move focus across all items.

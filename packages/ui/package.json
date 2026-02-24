@@ -83,6 +83,11 @@
       "solid": "./src/combobox/index.tsx",
       "default": "./src/combobox/index.tsx"
     },
+    "./composite": {
+      "types": "./src/composite/index.tsx",
+      "solid": "./src/composite/index.tsx",
+      "default": "./src/composite/index.tsx"
+    },
     "./context-menu": {
       "types": "./src/context-menu/index.tsx",
       "solid": "./src/context-menu/index.tsx",
@@ -212,6 +217,11 @@
       "types": "./src/toggle-group/index.tsx",
       "solid": "./src/toggle-group/index.tsx",
       "default": "./src/toggle-group/index.tsx"
+    },
+    "./toolbar": {
+      "types": "./src/toolbar/index.tsx",
+      "solid": "./src/toolbar/index.tsx",
+      "default": "./src/toolbar/index.tsx"
     },
     "./tooltip": {
       "types": "./src/tooltip/index.tsx",

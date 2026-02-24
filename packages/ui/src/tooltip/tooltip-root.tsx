@@ -38,14 +38,14 @@ import { Popper, type PopperRootOptions } from "../popper"
 import type { Placement } from "../popper/utils"
 import { createDisclosureState, createRegisterId } from "../primitives"
 import { TooltipContext, type TooltipContextValue, type TooltipDataSet } from "./tooltip-context"
+import { useTooltipProviderContext, type TooltipProviderStore } from "./tooltip-provider-context"
 import { getTooltipSafeArea } from "./utils"
 
-const tooltips: any = {}
 let tooltipsCounter = 0
-let globalWarmedUp = false
-let globalWarmUpTimeout: number | undefined
-let globalCoolDownTimeout: number | undefined
-let globalSkipDelayTimeout: number | undefined
+const globalStore: TooltipProviderStore = {
+  tooltips: {},
+  warmedUp: false,
+}
 
 export interface TooltipRootOptions extends Omit<PopperRootOptions, "anchorRef" | "contentRef"> {
   /** The controlled open state of the tooltip. */
@@ -107,12 +107,15 @@ export function TooltipRoot(props: TooltipRootProps) {
   // This is not the DOM id.
   const tooltipId = `${++tooltipsCounter}`
 
+  const provider = useTooltipProviderContext()
+  const store = provider?.store ?? globalStore
+
   const mergedProps = mergeDefaultProps(
     {
       id: defaultId,
-      openDelay: 700,
-      closeDelay: 300,
-      skipDelayDuration: 300,
+      openDelay: provider?.delay() ?? 700,
+      closeDelay: provider?.closeDelay() ?? 300,
+      skipDelayDuration: provider?.skipDelayDuration() ?? 300,
     },
     props,
   )
@@ -152,14 +155,17 @@ export function TooltipRoot(props: TooltipRootProps) {
   })
 
   const ensureTooltipEntry = () => {
-    tooltips[tooltipId] = hideTooltip
+    store.tooltips[tooltipId] = hideTooltip
   }
 
   const closeOpenTooltips = () => {
-    for (const hideTooltipId in tooltips) {
+    for (const hideTooltipId in store.tooltips) {
       if (hideTooltipId !== tooltipId) {
-        tooltips[hideTooltipId](true)
-        delete tooltips[hideTooltipId]
+        const hide = store.tooltips[hideTooltipId]
+        if (hide) {
+          hide(true)
+          delete store.tooltips[hideTooltipId]
+        }
       }
     }
   }
@@ -180,23 +186,23 @@ export function TooltipRoot(props: TooltipRootProps) {
       }, local.closeDelay)
     }
 
-    window.clearTimeout(globalWarmUpTimeout)
-    globalWarmUpTimeout = undefined
+    window.clearTimeout(store.warmUpTimeout)
+    store.warmUpTimeout = undefined
 
     if (local.skipDelayDuration && local.skipDelayDuration >= 0) {
-      globalSkipDelayTimeout = window.setTimeout(() => {
-        window.clearTimeout(globalSkipDelayTimeout)
-        globalSkipDelayTimeout = undefined
+      store.skipDelayTimeout = window.setTimeout(() => {
+        window.clearTimeout(store.skipDelayTimeout)
+        store.skipDelayTimeout = undefined
       }, local.skipDelayDuration)
     }
 
-    if (globalWarmedUp) {
-      window.clearTimeout(globalCoolDownTimeout)
+    if (store.warmedUp) {
+      window.clearTimeout(store.coolDownTimeout)
 
-      globalCoolDownTimeout = window.setTimeout(() => {
-        delete tooltips[tooltipId]
-        globalCoolDownTimeout = undefined
-        globalWarmedUp = false
+      store.coolDownTimeout = window.setTimeout(() => {
+        delete store.tooltips[tooltipId]
+        store.coolDownTimeout = undefined
+        store.warmedUp = false
       }, local.closeDelay)
     }
   }
@@ -210,17 +216,17 @@ export function TooltipRoot(props: TooltipRootProps) {
     closeTimeoutId = undefined
     closeOpenTooltips()
     ensureTooltipEntry()
-    globalWarmedUp = true
+    store.warmedUp = true
     disclosureState.open()
 
-    window.clearTimeout(globalWarmUpTimeout)
-    globalWarmUpTimeout = undefined
+    window.clearTimeout(store.warmUpTimeout)
+    store.warmUpTimeout = undefined
 
-    window.clearTimeout(globalCoolDownTimeout)
-    globalCoolDownTimeout = undefined
+    window.clearTimeout(store.coolDownTimeout)
+    store.coolDownTimeout = undefined
 
-    window.clearTimeout(globalSkipDelayTimeout)
-    globalSkipDelayTimeout = undefined
+    window.clearTimeout(store.skipDelayTimeout)
+    store.skipDelayTimeout = undefined
   }
 
   const warmupTooltip = () => {
@@ -231,10 +237,10 @@ export function TooltipRoot(props: TooltipRootProps) {
     closeOpenTooltips()
     ensureTooltipEntry()
 
-    if (!disclosureState.isOpen() && !globalWarmUpTimeout && !globalWarmedUp) {
-      globalWarmUpTimeout = window.setTimeout(() => {
-        globalWarmUpTimeout = undefined
-        globalWarmedUp = true
+    if (!disclosureState.isOpen() && !store.warmUpTimeout && !store.warmedUp) {
+      store.warmUpTimeout = window.setTimeout(() => {
+        store.warmUpTimeout = undefined
+        store.warmedUp = true
         showTooltip()
       }, local.openDelay)
     } else if (!disclosureState.isOpen()) {
@@ -247,7 +253,7 @@ export function TooltipRoot(props: TooltipRootProps) {
       return
     }
 
-    if (!immediate && local.openDelay && local.openDelay > 0 && !closeTimeoutId && !globalSkipDelayTimeout) {
+    if (!immediate && local.openDelay && local.openDelay > 0 && !closeTimeoutId && !store.skipDelayTimeout) {
       warmupTooltip()
     } else {
       showTooltip()
@@ -259,9 +265,9 @@ export function TooltipRoot(props: TooltipRootProps) {
       return
     }
 
-    window.clearTimeout(globalWarmUpTimeout)
-    globalWarmUpTimeout = undefined
-    globalWarmedUp = false
+    window.clearTimeout(store.warmUpTimeout)
+    store.warmUpTimeout = undefined
+    store.warmedUp = false
   }
 
   const cancelClosing = () => {
@@ -358,10 +364,10 @@ export function TooltipRoot(props: TooltipRootProps) {
   onCleanup(() => {
     clearTimeout(closeTimeoutId)
 
-    const tooltip = tooltips[tooltipId]
+    const tooltip = store.tooltips[tooltipId]
 
     if (tooltip) {
-      delete tooltips[tooltipId]
+      delete store.tooltips[tooltipId]
     }
   })
 

@@ -42,6 +42,13 @@ import {
   type DrawerPopupProps,
   type DrawerPopupRenderProps,
 } from "./drawer-popup"
+import {
+  DrawerSwipeArea as SwipeArea,
+  type DrawerSwipeAreaCommonProps,
+  type DrawerSwipeAreaOptions,
+  type DrawerSwipeAreaProps,
+  type DrawerSwipeAreaRenderProps,
+} from "./drawer-swipe-area"
 import { DrawerRoot as Root, type DrawerRootOptions, type DrawerRootProps } from "./drawer-root"
 
 export type {
@@ -64,6 +71,10 @@ export type {
   DrawerPortalProps,
   DrawerRootOptions,
   DrawerRootProps,
+  DrawerSwipeAreaOptions,
+  DrawerSwipeAreaCommonProps,
+  DrawerSwipeAreaRenderProps,
+  DrawerSwipeAreaProps,
   DrawerTitleOptions,
   DrawerTitleCommonProps,
   DrawerTitleRenderProps,
@@ -74,7 +85,7 @@ export type {
   DrawerTriggerProps,
 }
 
-export { Backdrop, Close, Description, Popup, Portal, Root, Title, Trigger }
+export { Backdrop, Close, Description, Popup, Portal, Root, SwipeArea, Title, Trigger }
 
 export const Drawer = Object.assign(Root, {
   Backdrop,
@@ -82,6 +93,7 @@ export const Drawer = Object.assign(Root, {
   Description,
   Popup,
   Portal,
+  SwipeArea,
   Title,
   Trigger,
 })
