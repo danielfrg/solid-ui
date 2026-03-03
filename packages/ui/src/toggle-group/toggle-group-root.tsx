@@ -45,10 +45,9 @@ export interface ToggleGroupRootCommonProps {}
 
 export interface ToggleGroupRootRenderProps extends ToggleGroupRootCommonProps {}
 
-export type ToggleGroupRootProps<T extends ValidComponent | HTMLElement = HTMLElement> = ToggleGroupRootOptions &
-  Partial<ToggleGroupRootCommonProps>
+export type ToggleGroupRootProps = ToggleGroupRootOptions & Partial<ToggleGroupRootCommonProps>
 
-export function ToggleGroup<T extends ValidComponent = "div">(props: PolymorphicProps<T, ToggleGroupRootProps<T>>) {
+export function ToggleGroup<T extends ValidComponent = "div">(props: PolymorphicProps<T, ToggleGroupRootProps>) {
   const [local, others] = splitProps(props as ToggleGroupRootProps, ["value", "defaultValue", "onChange", "multiple"])
 
   const value = createMemo(() => {

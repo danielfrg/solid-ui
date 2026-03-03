@@ -18,14 +18,13 @@ export interface FormControlErrorMessageCommonProps {
 
 export interface FormControlErrorMessageRenderProps extends FormControlErrorMessageCommonProps, FormControlDataSet {}
 
-export type FormControlErrorMessageProps<T extends ValidComponent | HTMLElement = HTMLElement> =
-  FormControlErrorMessageOptions & Partial<FormControlErrorMessageCommonProps>
+export type FormControlErrorMessageProps = FormControlErrorMessageOptions & Partial<FormControlErrorMessageCommonProps>
 
 /**
  * The error message that gives the user information about how to fix a validation error on the form control.
  */
 export function FormControlErrorMessage<T extends ValidComponent = "div">(
-  props: PolymorphicProps<T, FormControlErrorMessageProps<T>>,
+  props: PolymorphicProps<T, FormControlErrorMessageProps>,
 ) {
   const context = useFormControlContext()
 

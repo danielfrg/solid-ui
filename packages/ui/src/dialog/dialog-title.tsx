@@ -12,13 +12,12 @@ export interface DialogTitleCommonProps {
 
 export interface DialogTitleRenderProps extends DialogTitleCommonProps {}
 
-export type DialogTitleProps<T extends ValidComponent | HTMLElement = HTMLElement> = DialogTitleOptions &
-  Partial<DialogTitleCommonProps>
+export type DialogTitleProps = DialogTitleOptions & Partial<DialogTitleCommonProps>
 
 /**
  * An accessible title to be announced when the dialog is open.
  */
-export function DialogTitle<T extends ValidComponent = "h2">(props: PolymorphicProps<T, DialogTitleProps<T>>) {
+export function DialogTitle<T extends ValidComponent = "h2">(props: PolymorphicProps<T, DialogTitleProps>) {
   const context = useDialogContext()
 
   const mergedProps = mergeDefaultProps(

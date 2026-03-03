@@ -12,10 +12,9 @@ export interface PopoverTitleCommonProps {
 
 export interface PopoverTitleRenderProps extends PopoverTitleCommonProps, PopoverDataSet {}
 
-export type PopoverTitleProps<T extends ValidComponent | HTMLElement = HTMLElement> = PopoverTitleOptions &
-  Partial<PopoverTitleCommonProps>
+export type PopoverTitleProps = PopoverTitleOptions & Partial<PopoverTitleCommonProps>
 
-export function PopoverTitle<T extends ValidComponent = "h2">(props: PolymorphicProps<T, PopoverTitleProps<T>>) {
+export function PopoverTitle<T extends ValidComponent = "h2">(props: PolymorphicProps<T, PopoverTitleProps>) {
   const context = usePopoverContext()
 
   const mergedProps = mergeDefaultProps(

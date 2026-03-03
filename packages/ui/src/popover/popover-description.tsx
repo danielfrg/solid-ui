@@ -12,11 +12,10 @@ export interface PopoverDescriptionCommonProps {
 
 export interface PopoverDescriptionRenderProps extends PopoverDescriptionCommonProps, PopoverDataSet {}
 
-export type PopoverDescriptionProps<T extends ValidComponent | HTMLElement = HTMLElement> = PopoverDescriptionOptions &
-  Partial<PopoverDescriptionCommonProps>
+export type PopoverDescriptionProps = PopoverDescriptionOptions & Partial<PopoverDescriptionCommonProps>
 
 export function PopoverDescription<T extends ValidComponent = "p">(
-  props: PolymorphicProps<T, PopoverDescriptionProps<T>>,
+  props: PolymorphicProps<T, PopoverDescriptionProps>,
 ) {
   const context = usePopoverContext()
 

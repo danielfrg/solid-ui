@@ -12,14 +12,13 @@ export interface FormControlDescriptionCommonProps {
 
 export interface FormControlDescriptionRenderProps extends FormControlDescriptionCommonProps, FormControlDataSet {}
 
-export type FormControlDescriptionProps<T extends ValidComponent | HTMLElement = HTMLElement> =
-  FormControlDescriptionOptions & Partial<FormControlDescriptionCommonProps>
+export type FormControlDescriptionProps = FormControlDescriptionOptions & Partial<FormControlDescriptionCommonProps>
 
 /**
  * The description that gives the user more information on the form control.
  */
 export function FormControlDescription<T extends ValidComponent = "div">(
-  props: PolymorphicProps<T, FormControlDescriptionProps<T>>,
+  props: PolymorphicProps<T, FormControlDescriptionProps>,
 ) {
   const context = useFormControlContext()
 

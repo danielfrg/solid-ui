@@ -12,15 +12,12 @@ export interface DialogDescriptionCommonProps {
 
 export interface DialogDescriptionRenderProps extends DialogDescriptionCommonProps {}
 
-export type DialogDescriptionProps<T extends ValidComponent | HTMLElement = HTMLElement> = DialogDescriptionOptions &
-  Partial<DialogDescriptionCommonProps>
+export type DialogDescriptionProps = DialogDescriptionOptions & Partial<DialogDescriptionCommonProps>
 
 /**
  * An optional accessible description to be announced when the dialog is open.
  */
-export function DialogDescription<T extends ValidComponent = "p">(
-  props: PolymorphicProps<T, DialogDescriptionProps<T>>,
-) {
+export function DialogDescription<T extends ValidComponent = "p">(props: PolymorphicProps<T, DialogDescriptionProps>) {
   const context = useDialogContext()
 
   const mergedProps = mergeDefaultProps(
