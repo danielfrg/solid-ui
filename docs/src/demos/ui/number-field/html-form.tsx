@@ -25,8 +25,12 @@ export function DemoNumberFieldHtmlForm() {
         <NumberField.HiddenInput />
       </NumberField.Root>
       <div class={styles.actions}>
-        <button type="reset" class={styles.button}>Reset</button>
-        <button type="submit" class={styles.button}>Submit</button>
+        <button type="reset" class={styles.button}>
+          Reset
+        </button>
+        <button type="submit" class={styles.button}>
+          Submit
+        </button>
       </div>
     </form>
   )

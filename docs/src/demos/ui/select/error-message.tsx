@@ -30,9 +30,7 @@ export function DemoSelectErrorMessage() {
             <ChevronDownIcon />
           </Select.Icon>
         </Select.Trigger>
-        <Select.ErrorMessage class={styles.error}>
-          Please select a fruit.
-        </Select.ErrorMessage>
+        <Select.ErrorMessage class={styles.error}>Please select a fruit.</Select.ErrorMessage>
         <Select.Portal>
           <Select.Content class={styles.content}>
             <Select.Listbox class={styles.listbox} />

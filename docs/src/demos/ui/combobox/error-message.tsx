@@ -35,9 +35,7 @@ export function DemoComboboxErrorMessage() {
           </>
         )}
       </Combobox.Control>
-      <Combobox.ErrorMessage class={styles.error}>
-        Please select a fruit.
-      </Combobox.ErrorMessage>
+      <Combobox.ErrorMessage class={styles.error}>Please select a fruit.</Combobox.ErrorMessage>
       <Combobox.Portal>
         <Combobox.Content class={styles.content}>
           <Combobox.Listbox class={styles.listbox} />

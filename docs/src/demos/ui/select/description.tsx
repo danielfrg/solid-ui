@@ -24,9 +24,7 @@ export function DemoSelectDescription() {
             <ChevronDownIcon />
           </Select.Icon>
         </Select.Trigger>
-        <Select.Description class={styles.description}>
-          Choose your favorite fruit from the list.
-        </Select.Description>
+        <Select.Description class={styles.description}>Choose your favorite fruit from the list.</Select.Description>
         <Select.Portal>
           <Select.Content class={styles.content}>
             <Select.Listbox class={styles.listbox} />

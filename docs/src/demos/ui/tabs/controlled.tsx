@@ -9,9 +9,15 @@ export function DemoTabsControlled() {
     <div>
       <Tabs.Root value={tab()} onChange={setTab} class={styles.root}>
         <Tabs.List class={styles.list}>
-          <Tabs.Trigger value="account" class={styles.trigger}>Account</Tabs.Trigger>
-          <Tabs.Trigger value="password" class={styles.trigger}>Password</Tabs.Trigger>
-          <Tabs.Trigger value="settings" class={styles.trigger}>Settings</Tabs.Trigger>
+          <Tabs.Trigger value="account" class={styles.trigger}>
+            Account
+          </Tabs.Trigger>
+          <Tabs.Trigger value="password" class={styles.trigger}>
+            Password
+          </Tabs.Trigger>
+          <Tabs.Trigger value="settings" class={styles.trigger}>
+            Settings
+          </Tabs.Trigger>
           <Tabs.Indicator class={styles.indicator} />
         </Tabs.List>
         <Tabs.Content value="account" class={styles.content}>

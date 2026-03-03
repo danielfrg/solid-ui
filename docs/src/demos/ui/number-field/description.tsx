@@ -14,9 +14,7 @@ export function DemoNumberFieldDescription() {
           <PlusIcon />
         </NumberField.IncrementTrigger>
       </div>
-      <NumberField.Description class={styles.description}>
-        Enter a quantity between 1 and 99.
-      </NumberField.Description>
+      <NumberField.Description class={styles.description}>Enter a quantity between 1 and 99.</NumberField.Description>
       <NumberField.HiddenInput />
     </NumberField.Root>
   )

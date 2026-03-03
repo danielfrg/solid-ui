@@ -33,9 +33,7 @@ export function DemoSelectObject() {
       )}
     >
       <Select.Trigger class={styles.trigger} aria-label="Fruit">
-        <Select.Value<Food> class={styles.value}>
-          {(state) => state.selectedOption().label}
-        </Select.Value>
+        <Select.Value<Food> class={styles.value}>{(state) => state.selectedOption().label}</Select.Value>
         <Select.Icon class={styles.icon}>
           <ChevronDownIcon />
         </Select.Icon>

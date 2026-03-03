@@ -7,9 +7,7 @@ export function DemoPopoverControlled() {
 
   return (
     <Popover.Root open={open()} onOpenChange={setOpen}>
-      <Popover.Trigger class={styles.button}>
-        {open() ? "Close" : "View notifications"}
-      </Popover.Trigger>
+      <Popover.Trigger class={styles.button}>{open() ? "Close" : "View notifications"}</Popover.Trigger>
       <Popover.Portal>
         <Popover.Content class={styles.content}>
           <Popover.Arrow />

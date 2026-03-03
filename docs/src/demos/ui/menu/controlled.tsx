@@ -13,11 +13,19 @@ export function DemoMenuControlled() {
       <Menu.Portal>
         <Menu.Popup class={styles.popup}>
           <Menu.Arrow class={styles.arrow} />
-          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>Add to Library</Menu.Item>
-          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>Add to Playlist</Menu.Item>
+          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>
+            Add to Library
+          </Menu.Item>
+          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>
+            Add to Playlist
+          </Menu.Item>
           <Menu.Separator class={styles.separator} />
-          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>Play Next</Menu.Item>
-          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>Play Last</Menu.Item>
+          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>
+            Play Next
+          </Menu.Item>
+          <Menu.Item class={styles.item} onSelect={() => setOpen(false)}>
+            Play Last
+          </Menu.Item>
         </Menu.Popup>
       </Menu.Portal>
     </Menu.Root>

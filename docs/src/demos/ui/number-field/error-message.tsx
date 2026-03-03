@@ -22,9 +22,7 @@ export function DemoNumberFieldErrorMessage() {
           <PlusIcon />
         </NumberField.IncrementTrigger>
       </div>
-      <NumberField.ErrorMessage class={styles.error}>
-        Quantity must be exactly 40.
-      </NumberField.ErrorMessage>
+      <NumberField.ErrorMessage class={styles.error}>Quantity must be exactly 40.</NumberField.ErrorMessage>
       <NumberField.HiddenInput />
     </NumberField.Root>
   )

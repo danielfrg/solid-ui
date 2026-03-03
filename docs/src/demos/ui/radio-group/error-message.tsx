@@ -45,9 +45,7 @@ export function DemoRadioGroupErrorMessage() {
         Granny Smith
       </label>
 
-      <RadioGroup.ErrorMessage class={styles.error}>
-        Please select an apple variety.
-      </RadioGroup.ErrorMessage>
+      <RadioGroup.ErrorMessage class={styles.error}>Please select an apple variety.</RadioGroup.ErrorMessage>
     </RadioGroup.Root>
   )
 }

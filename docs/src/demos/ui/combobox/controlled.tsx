@@ -13,7 +13,9 @@ export function DemoComboboxControlled() {
         options={FRUITS}
         value={value()}
         onChange={setValue}
-        onInputChange={(v) => { if (!v) setValue(undefined) }}
+        onInputChange={(v) => {
+          if (!v) setValue(undefined)
+        }}
         itemComponent={(props) => (
           <Combobox.Item item={props.item} class={styles.item}>
             <Combobox.ItemLabel>{props.item.rawValue}</Combobox.ItemLabel>

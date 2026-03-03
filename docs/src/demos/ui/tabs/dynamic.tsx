@@ -22,7 +22,9 @@ export function DemoTabsDynamic() {
   return (
     <div class={styles.dynamicWrapper}>
       <div class={styles.dynamicControls}>
-        <button class={styles.dynamicButton} onClick={addTab}>Add tab</button>
+        <button class={styles.dynamicButton} onClick={addTab}>
+          Add tab
+        </button>
         <button class={styles.dynamicButton} onClick={removeTab} disabled={tabs().length <= 1}>
           Remove tab
         </button>
@@ -31,7 +33,9 @@ export function DemoTabsDynamic() {
         <Tabs.List class={styles.list}>
           <For each={tabs()}>
             {(tab) => (
-              <Tabs.Trigger value={tab} class={styles.trigger}>{tab}</Tabs.Trigger>
+              <Tabs.Trigger value={tab} class={styles.trigger}>
+                {tab}
+              </Tabs.Trigger>
             )}
           </For>
           <Tabs.Indicator class={styles.indicator} />
