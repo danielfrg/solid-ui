@@ -1,19 +1,19 @@
 import { mergeDefaultProps } from "../utils"
 import { type ValidComponent, createEffect, onCleanup, splitProps } from "solid-js"
 
-import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
+import { Polymorphic, type PolymorphicProps } from "../polymorphic"
 import { useDialogContext } from "./dialog-context"
 
 export interface DialogDescriptionOptions {}
 
-export interface DialogDescriptionCommonProps<T extends HTMLElement = HTMLElement> {
+export interface DialogDescriptionCommonProps {
   id: string
 }
 
 export interface DialogDescriptionRenderProps extends DialogDescriptionCommonProps {}
 
 export type DialogDescriptionProps<T extends ValidComponent | HTMLElement = HTMLElement> = DialogDescriptionOptions &
-  Partial<DialogDescriptionCommonProps<ElementOf<T>>>
+  Partial<DialogDescriptionCommonProps>
 
 /**
  * An optional accessible description to be announced when the dialog is open.

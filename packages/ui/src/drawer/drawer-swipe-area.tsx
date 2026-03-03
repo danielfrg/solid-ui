@@ -38,8 +38,6 @@ function isOpenDirection(side: DrawerSide, deltaX: number, deltaY: number): bool
  * A swipe area that listens for edge swipes to open the drawer.
  */
 export function DrawerSwipeArea<T extends ValidComponent = "div">(props: PolymorphicProps<T, DrawerSwipeAreaProps<T>>) {
-  let ref: HTMLElement | undefined
-
   const dialogContext = useDialogContext()
   const drawerContext = useDrawerContext()
 
@@ -114,7 +112,7 @@ export function DrawerSwipeArea<T extends ValidComponent = "div">(props: Polymor
   return (
     <Polymorphic<DrawerSwipeAreaRenderProps>
       as="div"
-      ref={mergeRefs((el) => (ref = el), local.ref)}
+      ref={mergeRefs(local.ref)}
       data-side={drawerContext.side()}
       data-disabled={local.disabled ? "" : undefined}
       onPointerDown={onPointerDown}

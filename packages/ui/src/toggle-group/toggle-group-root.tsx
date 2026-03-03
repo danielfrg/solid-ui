@@ -1,7 +1,7 @@
 import { type Component, type ValidComponent, createMemo, splitProps } from "solid-js"
 
 import { mergeProps } from "../utils"
-import type { ElementOf, PolymorphicProps } from "../polymorphic"
+import type { PolymorphicProps } from "../polymorphic"
 import { ToggleGroupBase, type ToggleGroupBaseOptions, type ToggleGroupBaseRenderProps } from "./toggle-group-base"
 
 export interface ToggleGroupSingleOptions {
@@ -41,12 +41,12 @@ export interface ToggleGroupMultipleOptions {
 export type ToggleGroupRootOptions = (ToggleGroupSingleOptions | ToggleGroupMultipleOptions) &
   Omit<ToggleGroupBaseOptions, "value" | "defaultValue" | "onChange" | "selectionMode">
 
-export interface ToggleGroupRootCommonProps<T extends HTMLElement = HTMLElement> {}
+export interface ToggleGroupRootCommonProps {}
 
 export interface ToggleGroupRootRenderProps extends ToggleGroupRootCommonProps {}
 
 export type ToggleGroupRootProps<T extends ValidComponent | HTMLElement = HTMLElement> = ToggleGroupRootOptions &
-  Partial<ToggleGroupRootCommonProps<ElementOf<T>>>
+  Partial<ToggleGroupRootCommonProps>
 
 export function ToggleGroup<T extends ValidComponent = "div">(props: PolymorphicProps<T, ToggleGroupRootProps<T>>) {
   const [local, others] = splitProps(props as ToggleGroupRootProps, ["value", "defaultValue", "onChange", "multiple"])

@@ -1,7 +1,7 @@
 import { mergeDefaultProps } from "../utils"
 import { Show, type ValidComponent, createEffect, onCleanup, splitProps } from "solid-js"
 
-import { type ElementOf, Polymorphic, type PolymorphicProps } from "../polymorphic"
+import { Polymorphic, type PolymorphicProps } from "../polymorphic"
 import { type FormControlDataSet, useFormControlContext } from "./form-control-context"
 
 export interface FormControlErrorMessageOptions {
@@ -12,14 +12,14 @@ export interface FormControlErrorMessageOptions {
   forceMount?: boolean
 }
 
-export interface FormControlErrorMessageCommonProps<T extends HTMLElement = HTMLElement> {
+export interface FormControlErrorMessageCommonProps {
   id: string
 }
 
 export interface FormControlErrorMessageRenderProps extends FormControlErrorMessageCommonProps, FormControlDataSet {}
 
 export type FormControlErrorMessageProps<T extends ValidComponent | HTMLElement = HTMLElement> =
-  FormControlErrorMessageOptions & Partial<FormControlErrorMessageCommonProps<ElementOf<T>>>
+  FormControlErrorMessageOptions & Partial<FormControlErrorMessageCommonProps>
 
 /**
  * The error message that gives the user information about how to fix a validation error on the form control.
