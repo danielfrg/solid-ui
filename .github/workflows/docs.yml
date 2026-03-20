@@ -29,7 +29,7 @@ jobs:
         run: vp install --frozen-lockfile
 
       - name: Build docs
-        run: pnpm --filter docs build
+        run: vp exec pnpm --filter docs build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -33,5 +33,5 @@ jobs:
         run: vp run test:run
 
       - name: Verify package is publishable
-        run: npm publish --dry-run
+        run: vp exec npm publish --dry-run
         working-directory: packages/ui
