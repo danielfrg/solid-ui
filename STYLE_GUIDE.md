@@ -6,7 +6,7 @@
 - Avoid using the `any` type
 - Prefer single word variable names where possible
 - Keep all files lowercase, with words separated by dashes
-- Use Bun APIs when possible, like `Bun.file()`
+- Use Node.js standard APIs
 
 ## Avoid let statements
 

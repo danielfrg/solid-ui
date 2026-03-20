@@ -13,18 +13,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
         with:
-          bun-version: latest
+          cache: true
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: vp install --frozen-lockfile
 
       - name: Check formatting
-        run: bun run format -- --check
+        run: vp fmt --check
+
+      - name: Lint
+        run: vp lint --config oxlint.config.json
 
       - name: Typecheck
-        run: bun run typecheck
+        run: vp run typecheck
 
       - name: Run tests
-        run: bun run test:run
+        run: vp run test:run
+
+      - name: Verify package is publishable
+        run: npm publish --dry-run
+        working-directory: packages/ui

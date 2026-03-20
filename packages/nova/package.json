@@ -2,33 +2,30 @@
   "name": "@danielfrg/solid-ui-nova",
   "version": "0.0.1",
   "description": "Styled SolidJS UI components with a shadcn-inspired Tailwind theme",
-  "type": "module",
-  "sideEffects": false,
+  "keywords": [
+    "components",
+    "shadcn",
+    "solid",
+    "solidjs",
+    "styled",
+    "tailwind",
+    "ui"
+  ],
+  "homepage": "https://github.com/danielfrg/solid-ui",
+  "bugs": "https://github.com/danielfrg/solid-ui/issues",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/danielfrg/solid-ui.git",
     "directory": "packages/nova"
   },
-  "homepage": "https://github.com/danielfrg/solid-ui",
-  "bugs": "https://github.com/danielfrg/solid-ui/issues",
-  "keywords": [
-    "solid",
-    "solidjs",
-    "ui",
-    "components",
-    "tailwind",
-    "shadcn",
-    "styled"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "files": [
     "src"
   ],
-  "module": "./src/index.ts",
+  "type": "module",
+  "sideEffects": false,
   "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
     ".": {
@@ -163,12 +160,15 @@
     },
     "./theme.css": "./src/theme.css"
   },
-  "peerDependencies": {
-    "solid-js": "^1.8.15",
-    "tailwindcss": "^4.0.0"
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@danielfrg/solid-ui": "workspace:*",
     "class-variance-authority": "^0.7.1"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.8.15",
+    "tailwindcss": "^4.0.0"
   }
 }

@@ -27,7 +27,7 @@ And copy the nova theme from the shadcn package.
 
 For Coding Style see [STYLE_GUIDE.md](STYLE_GUIDE.md).
 
-- Use Bun instead of Node and npm.
+- Use Vite+ (`vp`) for runtime/package management with pnpm.
 
 ## TypeScript
 
