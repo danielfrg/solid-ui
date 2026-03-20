@@ -32,6 +32,6 @@ jobs:
       - name: Run tests
         run: vp run test:run
 
-      - name: Verify package is publishable
-        run: vp exec npm publish --dry-run
+      - name: Verify package is packable
+        run: vp exec npm pack --dry-run
         working-directory: packages/ui
